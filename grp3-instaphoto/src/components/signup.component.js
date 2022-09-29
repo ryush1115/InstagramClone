@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
-export default class SignUp extends Component {
-  render() {
+import React, { useState } from "react";
+
+const SignupComponent=()=>{
     return (
       <form>
         <div className="header">
@@ -53,5 +53,8 @@ export default class SignUp extends Component {
         </p>
       </form>
     )
-  }
+
 }
+
+ 
+export default SignupComponent;

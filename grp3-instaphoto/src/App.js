@@ -1,9 +1,11 @@
 import React from 'react'
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
-import './App.css'
+// import './App.css'
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
 import Login from './components/login.component'
 import SignUp from './components/signup.component'
+import Userprofile from './components/userprofile.component'
+
 function App() {
   return (
     <Router>
@@ -25,6 +27,11 @@ function App() {
                     Sign up
                   </Link>
                 </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to={'/user-profile'}>
+                    User Profile
+                  </Link>
+                </li>
               </ul>
             </div>
           </div>
@@ -35,6 +42,7 @@ function App() {
               <Route exact path="/" element={<Login />} />
               <Route path="/sign-in" element={<Login />} />
               <Route path="/sign-up" element={<SignUp />} />
+              <Route path="/user-profile" element={<Userprofile />} />              
             </Routes>
           </div>
         </div>
