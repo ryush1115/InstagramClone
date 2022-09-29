@@ -3,42 +3,37 @@ export default class Login extends Component {
   render() {
     return (
       <form>
-        <h3>Sign In</h3>
-        <div className="mb-3">
-          <label>Email address</label>
+        <div className="header">
+            <h3>Welcome to Instaphoto&nbsp;</h3>
+            <img src={require('../images/logo.PNG')} alt="logo" />
+        </div>
+        <br></br>
+        <div className="login-and-password">
+          <label>Email</label>
           <input
             type="email"
             className="form-control"
             placeholder="Enter email"
           />
         </div>
-        <div className="mb-3">
+        <div className="login-and-password">
           <label>Password</label>
+          <p>Forgot password?</p>
           <input
             type="password"
             className="form-control"
             placeholder="Enter password"
           />
         </div>
-        <div className="mb-3">
-          <div className="custom-control custom-checkbox">
-            <input
-              type="checkbox"
-              className="custom-control-input"
-              id="customCheck1"
-            />
-            <label className="custom-control-label" htmlFor="customCheck1">
-              Remember me
-            </label>
-          </div>
-        </div>
+        <br></br>
         <div className="d-grid">
           <button type="submit" className="btn btn-primary">
-            Submit
+            Sign in
           </button>
         </div>
-        <p className="forgot-password text-right">
-          Forgot <a href="#">password?</a>
+        <p className="login-create-account text-right">
+          Don't have an account? <br></br>
+          <a href="#"> Sign up now to join communities across the globe </a>
         </p>
       </form>
     )
