@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 const SignupComponent=()=>{
     return (
-      <form>
+      <form className = "auth-inner">
         <div className="header">
             <h3>Welcome to Instaphoto&nbsp;</h3>
             <img src={require('../images/logo.PNG')} alt="logo" />
