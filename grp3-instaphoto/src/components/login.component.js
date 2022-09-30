@@ -4,7 +4,8 @@ const LoginComponent=()=>{
 
  
     return (
-        <form>
+    <div className = "auth-wrapper">
+        <form className = "auth-inner">
         <div className="header">
             <h3>Welcome to Instaphoto&nbsp;</h3>
             <img src={require('../images/logo.PNG')} alt="logo" />
@@ -38,7 +39,8 @@ const LoginComponent=()=>{
           <a href="#"> Sign up now to join communities across the globe </a>
         </p>
       </form>
- 
+    </div>
+
     )
 } 
  
