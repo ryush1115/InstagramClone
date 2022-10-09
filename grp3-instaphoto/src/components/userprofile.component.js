@@ -5,6 +5,8 @@ import { Navbar, Card, ListGroup, ListGroupItem } from 'react-bootstrap';
 
 
 const UserprofileComponent=()=>{
+
+    
     return (
         <Fragment>
         <Navbar className='home'>
