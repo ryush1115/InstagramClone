@@ -1,6 +1,19 @@
 import React, { useState } from "react";
+import {Routes, Route, useNavigate} from 'react-router-dom';
 
 const LoginComponent=()=>{
+  const navigate = useNavigate();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const navigateToProfile = () => {
+    navigate('/user-profile');
+  };
+
+  const navigateToSignup = () => {
+    navigate('/sign-up');
+  };
+
 
  
     return (
@@ -17,6 +30,8 @@ const LoginComponent=()=>{
             type="email"
             className="form-control"
             placeholder="Enter email"
+            value={email}
+            onChange={e => setEmail(e.target.value)}
           />
         </div>
         <div className="login-and-password">
@@ -26,17 +41,19 @@ const LoginComponent=()=>{
             type="password"
             className="form-control"
             placeholder="Enter password"
+            value={password}
+            onChange={e => setPassword(e.target.value)}
           />
         </div>
         <br></br>
         <div className="d-grid">
-          <button type="submit" className="btn btn-primary">
+          <button type="submit" className="btn btn-primary" onClick={navigateToProfile}>
             Sign in
           </button>
         </div>
         <p className="login-create-account text-right">
           Don't have an account? <br></br>
-          <a href="#"> Sign up now to join communities across the globe </a>
+          <a href="#" onClick={navigateToSignup}> Sign up now to join communities across the globe </a>
         </p>
       </form>
     </div>

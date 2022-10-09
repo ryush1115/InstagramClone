@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import {Routes, Route, useNavigate} from 'react-router-dom';
 
 const SignupComponent=()=>{
-
+  const navigate = useNavigate();
+  
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -11,6 +13,11 @@ const SignupComponent=()=>{
     e.preventDefault();
     console.log(username, email, password, confirmPassword);
   };
+
+  const navigateToLogin = () => {
+    navigate('/sign-in');
+  };
+
 
 
     return (
@@ -70,7 +77,7 @@ const SignupComponent=()=>{
           </button>
         </div>
         <p className="forgot-password text-right">
-          Already registered <a href="/sign-in">sign in?</a>
+          Already registered <a href="/sign-in" onClick={navigateToLogin}>sign in?</a>
         </p>
       </form>
     )
