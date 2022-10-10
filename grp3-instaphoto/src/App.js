@@ -38,9 +38,10 @@ function App() {
                 </li>
                 <li className="nav-item">
                   <Link className="nav-link" to={'/activity-feed'}>
-                    ActivityFeed
+                    Activity Feed
                   </Link>
                 </li>
+ 
 
                 {/* <li className="nav-item">
                   <Link className="nav-link" to={'/user-pic'}>
@@ -59,8 +60,8 @@ function App() {
               <Route exact path="/" element={<Login />} />
               <Route path="/sign-in" element={<Login />} />
               <Route path="/sign-up" element={<SignUp />} />
-              <Route path="/user-profile" element={<Userprofile />} />   
-              <Route path="/activity-feed" element={<ActivityFeed />} />
+              <Route path="/user-profile" element={<Userprofile />} />
+              <Route path="/activity-feed" element={<ActivityFeed />} />   
               {/* <Route path="/user-pic" element={<Userpic />} />               */}
             </Routes>
           </div>

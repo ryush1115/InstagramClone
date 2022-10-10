@@ -1,34 +1,123 @@
-import React, { useState, Fragment } from "react";
+import React, { useState, Fragment} from "react";
+import '../activityfeed.css';
+import '../userprofile.css';
+import { Navbar, Card, ListGroup, ListGroupItem } from 'react-bootstrap';
+import Post from './post.component';
+
+// import { goToAnchor, configureAnchors } from 'react-scrollable-anchor';
+
+// <img src="https://images.unsplash.com/photo-1511765224389-37f0e77cf0eb?w=500&h=500&fit=crop" class="gallery-image" alt=""/>
+
 
 const ActivityFeedComponent=()=>{
     return (
-      <Fragment>
-          <head>
-        <title>Instaphoto</title>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-        </head>
-        <body class="mb-5">
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container">
-            <div class="d-flex align-items-center justify-content-between w-100">
-                <a class="navbar-brand" href="#">
-                    <img src='../images/logo.PNG' class="instaPhotoLogo"/>
-                    
-                </a>
-
-
-
+        <Fragment>
+        <Navbar className='home'>
+            
+        <Card className='card'>
+        <div className = 'logo'>
+            <h>Instaphoto&nbsp;</h>
+            <img src={require('../images/logo.PNG')} alt="logo" />
+        </div>
+        <br></br>
+        <div>
+          <Card.Img
+            src={require('../images/grp3.PNG')}
+            variant='top'
+            className='sig'
+          />
+        <p className = 'username'> grp3foreva</p>
+        </div>
+        <div>
+          <Card.Body>
+            <Card.Text>
+              <div className='space'></div>
+              <ListGroup variant='flush'>
+                <ListGroupItem className='list'>
+                  {/* <span className='link' onClick={() => goToAnchor('section1')}> */}
+                  <span>
+                    Home
+                  </span>
+                </ListGroupItem>
+                <ListGroupItem className='list'>
+                  {/* <span className='link' onClick={() => goToAnchor('section2')}> */}
+                  <span>
+                    Create
+                  </span>
+                </ListGroupItem>
+                <ListGroupItem className='list'>
+                  {/* <span className='link' onClick={() => goToAnchor('section3')}> */}
+                  <span>
+                    Profile
+                  </span>
+                </ListGroupItem>
+              </ListGroup>
+            </Card.Text>
+          </Card.Body>
+          </div>
+          <br></br>
+          <div className = 'suggestions'>
+            <p className="suggestion-text">Suggestions for you</p>
+            <button className="show-all-btn">See all</button>
+            <div className="profile-card">
+                <div>
+                    <img className = 'other-user' src={require('../images/grp3.PNG')} alt=""/>
+                </div>
+                <button className="action-btn" type="button">
+                    <span className="username">akikozzm</span>
+                    <span className="follow">Follow</span>
+                </button>
             </div>
+            <div className="profile-card">
+                <div>
+                    <img className = 'other-user' src={require('../images/grp3.PNG')} alt=""/>
+                </div>
+                <button className="action-btn" type="button">
+                    <span className="username">akikozzm</span>
+                    <span className="follow">Follow</span>
+                </button>
             </div>
-            </nav>
+            <div className="profile-card">
+                <div>
+                    <img className = 'other-user' src={require('../images/grp3.PNG')} alt=""/>
+                </div>
+                <button className="action-btn" type="button">
+                    <span className="username">akikozzm</span>
+                    <span className="follow">Follow</span>
+                </button>
+            </div>
+          </div>
+        </Card>
+      </Navbar>
+
+      <header>
+
+<div class="container">
+    <div class="profile">
+        <div class="profile-image">
+            <img src={require('../images/grp3.PNG')} alt=""/>
+        </div>
+        <div class="profile-user-settings">
+            <h1 class="profile-user-name">grp3foreva</h1>
+        </div>
+    </div>
+</div>
+</header>
+
+<main>
+<div class="container">
+<div class="feed">
+    <div class="feedWrapper">
+        <Post/>
+    </div>
+</div>
+</div>    
+</main>
+
+</Fragment>
 
 
-
-        </body>
-
-      </Fragment>
-      )
+    )  
 }
+
 export default ActivityFeedComponent;
