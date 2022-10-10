@@ -1,32 +1,49 @@
 import '../post.css';
-import React, { useState, Fragment} from "react";
-import {MoreVert} from "@material-ui/icons"
+import React, { useState, Fragment } from "react";
+import { MoreVert } from "@material-ui/icons"
 
-const Post=()=>{
+const Post = () => {
     return (
-        <div className = "post">
-            <div className="postWrapper"></div>
+        <div className="post">
+            <div className="postWrapper">
                 <div className="postTop">
                     <div className="postTopLeft">
-                        <img className="postProfileImg" src= './images/grp3.PNG' alt=""/>
-                        <span className="postUsername">jmscn</span>
-                        <span className="postDate">5 minutes ago</span>
-                    </div>
-                    <div className="postTopRight">
+                        <img
+                            className="postProfileImg"
+                            src={require('../images/test.png')}
+                            alt=""
+                        />
+                        <span
+                            className="postUsername">jmscn
+                        </span>
+
                     </div>
                 </div>
-                
+
                 <div className="postCenter">
-                    <span className="postText">Hey! Its my first post  :)</span>
-                    <img className="postImage" src="../images/userpic.PNG" alt=""/>
-
-                <div className="postBottom"></div>
-                    <div className="postBottomLeft"></div>
-                    <div className="postBottomRight"></div>
-
-
-
+                    <img 
+                    className="postImage" 
+                    src={require('../images/userpic.PNG')}
+                    alt="" />
                 </div>
+
+                <div className="postBottom">
+                    <div className="postBottomLeft">
+                        <img className="likeIcon" src= {require("../images/heart.png")} alt="" />
+                        <img className="likeIcon" src= {require("../images/comment.png")} alt="" />
+                        <span className="postLikeCounter"> 32 likes</span>
+                    </div>
+                    
+                    <div className="postBottomRight">
+                        
+                        <span className="postCommentText">9 comments</span>
+
+                    </div>
+                    
+                </div>
+
+
+            </div>
         </div>
     )
 

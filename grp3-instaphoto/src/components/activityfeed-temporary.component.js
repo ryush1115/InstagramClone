@@ -6,7 +6,7 @@ import Post from './post.component';
 import FriendBar from './friendbar.component'
 import CreatePost from './createpost.component';
 
-const ActivityFeedComponent=()=>{
+const ActivityFeedTempComponent=()=>{
     return (
         <Fragment>
         <Navbar className='home'>
@@ -106,6 +106,7 @@ const ActivityFeedComponent=()=>{
 <div class="feed">
     <div class="feedWrapper">
         <Post/>
+        <CreatePost/>
         <Post/>
         <Post/>
     </div>
@@ -119,4 +120,4 @@ const ActivityFeedComponent=()=>{
     )  
 }
 
-export default ActivityFeedComponent;
+export default ActivityFeedTempComponent;

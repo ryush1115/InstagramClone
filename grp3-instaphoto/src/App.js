@@ -6,6 +6,7 @@ import Login from './components/login.component'
 import SignUp from './components/signup.component'
 import Userprofile from './components/userprofile.component'
 import ActivityFeed from './components/activityfeed.component'
+import ActivityFeedTempComponent from './components/activityfeed-temporary.component'
 
 // import Userpic from './components/test'
 
@@ -41,6 +42,12 @@ function App() {
                     Activity Feed
                   </Link>
                 </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to={'/activity-feed-temp'}>
+                    Create Post
+                  </Link>
+                </li>
+                
  
 
                 {/* <li className="nav-item">
@@ -62,7 +69,8 @@ function App() {
               <Route path="/sign-up" element={<SignUp />} />
               <Route path="/user-profile" element={<Userprofile />} />
               <Route path="/activity-feed" element={<ActivityFeed />} />   
-              {/* <Route path="/user-pic" element={<Userpic />} />               */}
+              <Route path = "/activity-feed-temp" element = {<ActivityFeedTempComponent />}/>
+              {/* <Route path="/user-pic" element={<Userpic />} />                */}
             </Routes>
           </div>
         </div>
