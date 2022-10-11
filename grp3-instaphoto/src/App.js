@@ -7,6 +7,10 @@ import SignUp from './components/signup.component'
 import Userprofile from './components/userprofile.component'
 import Sidebar from './components/sidebar.component'
 
+// import Photos from './components/testing'
+
+
+
 
 function App() {
   return (
@@ -39,6 +43,11 @@ function App() {
                     Sidebar
                   </Link>
                 </li>
+                {/* <li className="nav-item">
+                  <Link className="nav-link" to={'/addpost'}>
+                    CreatePost
+                  </Link>
+                </li> */}
               </ul>
             </div>
           </div>
@@ -52,7 +61,9 @@ function App() {
               <Route path="/sign-in" element={<Login />} />
               <Route path="/sign-up" element={<SignUp />} />
               <Route path="/user-profile" element={<Userprofile />} />   
-              <Route path="/sidebar" element={<Sidebar />} />              
+              <Route path="/sidebar" element={<Sidebar />} />  
+              {/* <Route path="/addpost" element={<Createpost />} />   */}
+                          
             </Routes>
           </div>
         </div>
