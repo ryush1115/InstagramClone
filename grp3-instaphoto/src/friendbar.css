@@ -1,4 +1,4 @@
-.container-0 {
+.container {
   border-radius: 0 0 0 0;
   position: relative;
   width: 100%;
@@ -35,13 +35,28 @@
   margin-right: 14px;
 }
 
+.image-cropper {
+  width: 80px;
+  height: 80px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%;
+}
+.image-cropper-1 {
+  width: 40px;
+  height: 40px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
 .image {
   background-size: cover;
   background-position: center;
   position: relative;
   width: 90px;
   height: 90px;
-  display: flex;
+  display: inline;
   flex-direction: row;
   justify-content: flex-start;
   align-items: stretch;

@@ -108,6 +108,10 @@ const ActivityFeedComponent=()=>{
         <Post/>
         <Post/>
         <Post/>
+        <Post/>
+        <Post/>
+        <Post/>
+
     </div>
 </div>
 </div>    
