@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
 import Login from './components/login.component'
 import SignUp from './components/signup.component'
 import Userprofile from './components/userprofile.component'
-// import Userpic from './components/test'
+import Sidebar from './components/sidebar.component'
 
 
 function App() {
@@ -34,11 +34,11 @@ function App() {
                     User Profile
                   </Link>
                 </li>
-                {/* <li className="nav-item">
-                  <Link className="nav-link" to={'/user-pic'}>
-                    Test
+                <li className="nav-item">
+                  <Link className="nav-link" to={'/sidebar'}>
+                    Sidebar
                   </Link>
-                </li> */}
+                </li>
               </ul>
             </div>
           </div>
@@ -52,7 +52,7 @@ function App() {
               <Route path="/sign-in" element={<Login />} />
               <Route path="/sign-up" element={<SignUp />} />
               <Route path="/user-profile" element={<Userprofile />} />   
-              {/* <Route path="/user-pic" element={<Userpic />} />               */}
+              <Route path="/sidebar" element={<Sidebar />} />              
             </Routes>
           </div>
         </div>
