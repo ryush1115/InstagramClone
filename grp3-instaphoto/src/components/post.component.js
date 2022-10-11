@@ -1,6 +1,5 @@
 import '../post.css';
 import React, { useState, Fragment } from "react";
-import { MoreVert } from "@material-ui/icons"
 
 const Post = () => {
     return (
