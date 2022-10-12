@@ -5,15 +5,12 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
 import Login from './components/login.component'
 import SignUp from './components/signup.component'
 import Userprofile from './components/userprofile.component'
-<<<<<<< Updated upstream
-=======
 import ActivityFeed from './components/activityfeed.component'
 import ActivityFeedTempComponent from './components/activityfeed-temporary.component'
 import FriendBar from './components/friendbar.component'
 import FriendSuggestion from './components/FriendSuggestion.component'
 
 
->>>>>>> Stashed changes
 // import Userpic from './components/test'
 
 
@@ -43,8 +40,6 @@ function App() {
                     User Profile
                   </Link>
                 </li>
-<<<<<<< Updated upstream
-=======
                 <li className="nav-item">
                   <Link className="nav-link" to={'/activity-feed'}>
                     Activity Feed
@@ -69,7 +64,6 @@ function App() {
                 
  
 
->>>>>>> Stashed changes
                 {/* <li className="nav-item">
                   <Link className="nav-link" to={'/user-pic'}>
                     Test
@@ -87,10 +81,6 @@ function App() {
               <Route exact path="/" element={<Login />} />
               <Route path="/sign-in" element={<Login />} />
               <Route path="/sign-up" element={<SignUp />} />
-<<<<<<< Updated upstream
-              <Route path="/user-profile" element={<Userprofile />} />   
-              {/* <Route path="/user-pic" element={<Userpic />} />               */}
-=======
               <Route path="/user-profile" element={<Userprofile />} />
               <Route path="/activity-feed" element={<ActivityFeed />} />   
               <Route path = "/activity-feed-temp" element = {<ActivityFeedTempComponent />}/>
@@ -98,7 +88,6 @@ function App() {
               <Route path = "/FriendSuggestion" element = {<FriendSuggestion />}/>
 
               {/* <Route path="/user-pic" element={<Userpic />} />                */}
->>>>>>> Stashed changes
             </Routes>
           </div>
         </div>
