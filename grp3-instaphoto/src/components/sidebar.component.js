@@ -1,10 +1,14 @@
-import React, { useState, Fragment} from "react";
+import React, { useState, Fragment, useRef} from "react";
 import '../userprofile.css';
 import { Navbar, Card, ListGroup, ListGroupItem } from 'react-bootstrap';
 
-const SidebarComponent=()=>{
+const Sidebar =(props)=>{
+  console.log("printing create outside of function " + props.create)
+  
+  const handleCreate = () => {
+    props.setCreate(1);
+  };
 
-    
     return (
         <Navbar className='home'>
             
@@ -28,19 +32,16 @@ const SidebarComponent=()=>{
               <div className='space'></div>
               <ListGroup variant='flush'>
                 <ListGroupItem className='list'>
-                  {/* <span className='link' onClick={() => goToAnchor('section1')}> */}
                   <span>
                     Home
                   </span>
                 </ListGroupItem>
                 <ListGroupItem className='list'>
-                  {/* <span className='link' onClick={() => goToAnchor('section2')}> */}
-                  <span>
+                  <span onClick = {handleCreate}>
                     Create
                   </span>
                 </ListGroupItem>
                 <ListGroupItem className='list'>
-                  {/* <span className='link' onClick={() => goToAnchor('section3')}> */}
                   <span>
                     Profile
                   </span>
@@ -87,4 +88,4 @@ const SidebarComponent=()=>{
 )  
 }
 
-export default SidebarComponent;
+export default Sidebar;

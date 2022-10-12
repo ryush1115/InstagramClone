@@ -7,7 +7,7 @@ const LoginComponent=()=>{
   const [password, setPassword] = useState('');
 
   const navigateToProfile = () => {
-    navigate('/user-profile');
+    navigate('/userprofile');
   };
 
   const navigateToSignup = () => {

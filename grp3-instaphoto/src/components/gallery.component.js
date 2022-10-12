@@ -3,26 +3,28 @@ import '../userprofile.css';
 import Sidebar from './sidebar.component'
 
 
-const UserprofileComponent=()=>{
+const Gallery =({imageSrc})=>{
 
-    const add_pic = () => {
-        // e.preventDefault();
-        console.log("You clicked on it")
+    console.log('printing within userprofile component' + imageSrc);
+
+    if (imageSrc!== 'default') {
+        console.log("You added an image")
         const galleryItemElem = document.createElement('div');
         galleryItemElem.className = 'gallery-item';
-
+    
         const myImage = document.createElement('img');
-        myImage.src="https://picsum.photos/id/237/500/500";
+        myImage.src=imageSrc.src;
         myImage.className = 'gallery-image';
+ 
 
         galleryItemElem.appendChild(myImage);
-    
+        // this.props.profileRef.current.scrollTo(50).prepend(galleryItemElem);
         document.getElementById("gallery").prepend(galleryItemElem);
     }
 
     return (
         <Fragment>
-            <Sidebar/>
+            {/* <Sidebar/> */}
       <header>
 
 <div className="container">
@@ -45,9 +47,7 @@ const UserprofileComponent=()=>{
 </header>
 
 <main>
-    <button onClick = {add_pic}>
-        click here 
-    </button> 
+
 <div className="gallery" id = "gallery">
     <div className="gallery-item">
         <img src="https://images.unsplash.com/photo-1511765224389-37f0e77cf0eb?w=500&h=500&fit=crop" className="gallery-image" alt=""/>
@@ -100,4 +100,4 @@ const UserprofileComponent=()=>{
     )  
 }
 
-export default UserprofileComponent;
+export default Gallery;

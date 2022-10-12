@@ -4,12 +4,10 @@ import './App.css'
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
 import Login from './components/login.component'
 import SignUp from './components/signup.component'
-import Userprofile from './components/userprofile.component'
+import Gallery from './components/gallery.component'
 import Sidebar from './components/sidebar.component'
-
-// import Photos from './components/testing'
-
-
+import Userprofile from './components/userprofile'
+import Createpost from './components/createpost.component'
 
 
 function App() {
@@ -34,8 +32,8 @@ function App() {
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to={'/user-profile'}>
-                    User Profile
+                  <Link className="nav-link" to={'/gallery'}>
+                    Gallery
                   </Link>
                 </li>
                 <li className="nav-item">
@@ -43,11 +41,16 @@ function App() {
                     Sidebar
                   </Link>
                 </li>
-                {/* <li className="nav-item">
-                  <Link className="nav-link" to={'/addpost'}>
-                    CreatePost
+                <li className="userprofile">
+                  <Link className="nav-link" to={'/userprofile'}>
+                    User profile
                   </Link>
-                </li> */}
+                </li>
+                <li className="createpost">
+                  <Link className="nav-link" to={'/createpost'}>
+                    Create Post
+                  </Link>
+                </li>
               </ul>
             </div>
           </div>
@@ -60,9 +63,10 @@ function App() {
               <Route exact path="/" element={<Login />} />
               <Route path="/sign-in" element={<Login />} />
               <Route path="/sign-up" element={<SignUp />} />
-              <Route path="/user-profile" element={<Userprofile />} />   
+              <Route path="/gallery" element={<Gallery />} />   
               <Route path="/sidebar" element={<Sidebar />} />  
-              {/* <Route path="/addpost" element={<Createpost />} />   */}
+              <Route path="/userprofile" element={<Userprofile />} />  
+              <Route path="/createpost" element={<Createpost />} />  
                           
             </Routes>
           </div>
