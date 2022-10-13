@@ -7,7 +7,10 @@ const Sidebar =(props)=>{
   
   const handleCreate = () => {
     props.setCreate(1);
+    props.setPostCount(40);
   };
+
+  console.log("printing post count" + props.postCount);
 
     return (
         <Navbar className='home'>

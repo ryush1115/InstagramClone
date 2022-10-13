@@ -3,10 +3,10 @@ import '../userprofile.css';
 import Sidebar from './sidebar.component'
 
 
-const Gallery =({imageSrc})=>{
+const Gallery =({imageSrc, postCount})=>{
 
-    console.log('printing within userprofile component' + imageSrc);
-
+    console.log('printing within gallery' + postCount);
+    
     if (imageSrc!== 'default') {
         console.log("You added an image")
         const galleryItemElem = document.createElement('div');
@@ -21,10 +21,8 @@ const Gallery =({imageSrc})=>{
         // this.props.profileRef.current.scrollTo(50).prepend(galleryItemElem);
         document.getElementById("gallery").prepend(galleryItemElem);
     }
-
     return (
         <Fragment>
-            {/* <Sidebar/> */}
       <header>
 
 <div className="container">
@@ -37,7 +35,7 @@ const Gallery =({imageSrc})=>{
         </div>
         <div className="profile-stats">
             <ul>
-                <li><span className="profile-stat-count">39</span> posts</li>
+                <li><span className="profile-stat-count">{postCount}</span> posts</li>
                 <li><span className="profile-stat-count">169</span> followers</li>
                 <li><span className="profile-stat-count">667</span> following</li>
             </ul>

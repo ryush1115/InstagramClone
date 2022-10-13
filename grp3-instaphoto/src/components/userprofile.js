@@ -11,6 +11,8 @@ const Userprofile=()=>{
     const [images, setImages] = useState([]);
     const [imageSrc, setImageSrc] = useState('default');
     const [create, setCreate] = useState('default');
+    const [postCount, setPostCount] = useState(39);
+
     console.log("printing create in user profile " + create);
     
     const onDrop = useCallback((acceptedFiles) => {
@@ -32,8 +34,8 @@ const Userprofile=()=>{
     if (imageSrc === 'default' && create === 1){
     return (
         <Fragment>
-            <Sidebar create = {create} setCreate = {setCreate}/>
-            <Gallery imageSrc = {imageSrc}/>
+            <Sidebar create = {create} setCreate = {setCreate} postCount = {postCount} setPostCount = {setPostCount}/>
+            <Gallery imageSrc = {imageSrc} postCount = {postCount}/>
             <CreatePost onDrop={onDrop} accept={"image/*"}/>
             <ImageGrid images={images} imageSrc ={imageSrc} setImageSrc = {setImageSrc}/>
         </Fragment>
@@ -42,9 +44,8 @@ const Userprofile=()=>{
     else{
         return (
             <Fragment>
-                <Sidebar create = {create} setCreate = {setCreate}/>
-                <Gallery imageSrc = {imageSrc}/>
-                {/* <CreatePost profilePost = {profilePost} setProfilePost = {setProfilePost}/> */}
+                <Sidebar create = {create} setCreate = {setCreate} postCount = {postCount} setPostCount = {setPostCount}/>
+                <Gallery imageSrc = {imageSrc} postCount = {postCount}/>
             </Fragment>
         )
     }
