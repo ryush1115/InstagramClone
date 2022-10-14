@@ -115,3 +115,45 @@
     justify-content: right;
     padding: 1rem;
   }
+
+  .text-center {
+    text-align: center;
+    padding: 15px;
+    border: 3px blue dashed;
+    width: 100%;
+    margin: 50px;
+    margin-left: 90px;
+  }
+
+  .btn {
+    border: none;
+    text-align: center;
+    background-color: rgb(218, 216, 216);
+    height: 50px;
+    border-radius: 12px;
+    color: black;
+    font-weight: bold;
+    transition-duration: 0.6s;
+  }
+  .btn:hover {
+    background-color: blue;
+    color: aliceblue;
+  }
+
+  .file-list {
+    /* border: 3px dotted black; */
+    display: flex !important;
+    flex-wrap: wrap;
+    width: auto;
+    padding: 10px 20px;
+    margin: 20px 30px;
+    margin-left: 200px;
+    /* border: 3px dotted black; */
+  }
+  .file-list img {
+    margin-left: 100px;
+    height: 100%;
+    width: 100px;
+    padding-right: 10px;
+    object-fit: cover;
+  }

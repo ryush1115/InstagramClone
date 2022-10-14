@@ -12,6 +12,10 @@ import FriendSuggestion from './components/FriendSuggestion.component'
 
 
 // import Userpic from './components/test'
+import Gallery from './components/gallery.component'
+import Sidebar from './components/sidebar.component'
+import Userprofile from './components/userprofile'
+import Createpost from './components/createpost.component'
 
 
 function App() {
@@ -36,8 +40,8 @@ function App() {
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to={'/user-profile'}>
-                    User Profile
+                  <Link className="nav-link" to={'/gallery'}>
+                    Gallery
                   </Link>
                 </li>
                 <li className="nav-item">
@@ -67,8 +71,20 @@ function App() {
                 {/* <li className="nav-item">
                   <Link className="nav-link" to={'/user-pic'}>
                     Test
+                  <Link className="nav-link" to={'/sidebar'}>
+                    Sidebar
                   </Link>
-                </li> */}
+                </li>
+                <li className="userprofile">
+                  <Link className="nav-link" to={'/userprofile'}>
+                    User profile
+                  </Link>
+                </li>
+                <li className="createpost">
+                  <Link className="nav-link" to={'/createpost'}>
+                    Create Post
+                  </Link>
+                </li>
               </ul>
             </div>
           </div>
@@ -88,6 +104,11 @@ function App() {
               <Route path = "/FriendSuggestion" element = {<FriendSuggestion />}/>
 
               {/* <Route path="/user-pic" element={<Userpic />} />                */}
+              <Route path="/gallery" element={<Gallery />} />   
+              <Route path="/sidebar" element={<Sidebar />} />  
+              <Route path="/userprofile" element={<Userprofile />} />  
+              <Route path="/createpost" element={<Createpost />} />  
+                          
             </Routes>
           </div>
         </div>

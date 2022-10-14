@@ -1,6 +1,25 @@
 import React, { useState } from "react";
+import {Routes, Route, useNavigate} from 'react-router-dom';
 
 const SignupComponent=()=>{
+  const navigate = useNavigate();
+  
+  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    console.log(username, email, password, confirmPassword);
+  };
+
+  const navigateToLogin = () => {
+    navigate('/sign-in');
+  };
+
+
+
     return (
       <form className = "auth-inner">
         <div className="header">
@@ -17,6 +36,8 @@ const SignupComponent=()=>{
             type="text"
             className="form-control"
             placeholder="Username"
+            value={username}
+            onChange={e => setUsername(e.target.value)}
           />
         </div>
         <div className="login-and-password">
@@ -24,7 +45,10 @@ const SignupComponent=()=>{
           <input 
             type="email" 
             className="form-control" 
-            placeholder="Email" />
+            placeholder="Email" 
+            value={email}
+            onChange={e => setEmail(e.target.value)}
+            />
         </div>
         <div className="login-and-password">
           <label>Password</label>
@@ -32,6 +56,8 @@ const SignupComponent=()=>{
             type="password"
             className="form-control"
             placeholder="Password"
+            value={password}
+            onChange={e => setPassword(e.target.value)}
           />
         </div>
         <div className="login-and-password">
@@ -40,16 +66,18 @@ const SignupComponent=()=>{
             type="password"
             className="form-control"
             placeholder="Re-enter password"
+            value={confirmPassword}
+            onChange={e => setConfirmPassword(e.target.value)}
           />
         </div>
         <br></br>
         <div className="d-grid">
-          <button type="submit" className="btn btn-primary">
+          <button type="submit" className="btn btn-primary" onClick={handleSubmit}>
             Finish
           </button>
         </div>
         <p className="forgot-password text-right">
-          Already registered <a href="/sign-in">sign in?</a>
+          Already registered <a href="/sign-in" onClick={navigateToLogin}>sign in?</a>
         </p>
       </form>
     )
