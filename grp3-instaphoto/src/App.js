@@ -14,7 +14,6 @@ import FriendSuggestion from './components/FriendSuggestion.component'
 // import Userpic from './components/test'
 import Gallery from './components/gallery.component'
 import Sidebar from './components/sidebar.component'
-import Userprofile from './components/userprofile'
 import Createpost from './components/createpost.component'
 
 
@@ -65,26 +64,12 @@ function App() {
                   </Link>
                 </li>
 
-                
- 
-
-                {/* <li className="nav-item">
-                  <Link className="nav-link" to={'/user-pic'}>
-                    Test
-                  <Link className="nav-link" to={'/sidebar'}>
-                    Sidebar
-                  </Link>
-                </li>
-                <li className="userprofile">
-                  <Link className="nav-link" to={'/userprofile'}>
-                    User profile
-                  </Link>
-                </li>
-                <li className="createpost">
-                  <Link className="nav-link" to={'/createpost'}>
+                <li className = "createpost">
+                  <Link className = "nav-link" to={'/createpost'}>
                     Create Post
                   </Link>
                 </li>
+
               </ul>
             </div>
           </div>
@@ -99,7 +84,7 @@ function App() {
               <Route path="/sign-up" element={<SignUp />} />
               <Route path="/user-profile" element={<Userprofile />} />
               <Route path="/activity-feed" element={<ActivityFeed />} />   
-              <Route path = "/activity-feed-temp" element = {<ActivityFeedTempComponent />}/>
+              {/* <Route path = "/activity-feed-temp" element = {<ActivityFeedTempComponent />}/> */}
               <Route path = "/friendbar" element = {<FriendBar />}/>
               <Route path = "/FriendSuggestion" element = {<FriendSuggestion />}/>
 
