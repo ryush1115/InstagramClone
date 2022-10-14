@@ -1,10 +1,16 @@
 import React, { useState, Fragment} from "react";
+import {Routes, Route, useNavigate} from 'react-router-dom';
 import '../userprofile.css';
 import { Navbar, Card, ListGroup, ListGroupItem } from 'react-bootstrap';
 // import { goToAnchor, configureAnchors } from 'react-scrollable-anchor';
 
 
 const UserprofileComponent=()=>{
+    const navigate = useNavigate();
+    const navigateToFriendSuggestion = () => {
+        navigate('/FriendSuggestion');
+      };
+
     return (
         <Fragment>
         <Navbar className='home'>
@@ -53,7 +59,7 @@ const UserprofileComponent=()=>{
           <br></br>
           <div className = 'suggestions'>
             <p className="suggestion-text">Suggestions for you</p>
-            <button className="show-all-btn">See all</button>
+            <button className="show-all-btn" onClick={navigateToFriendSuggestion}>See all</button>
             <div className="profile-card">
                 <div>
                     <img className = 'other-user' src={require('../images/grp3.PNG')} alt=""/>

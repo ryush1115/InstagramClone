@@ -1,5 +1,6 @@
-import React, { useState, Fragment, useRef, useContext} from "react";
+import React, {useState, Fragment, useRef, useContext} from "react";
 import { Navbar, Card, Button, ListGroup, ListGroupItem } from 'react-bootstrap';
+import ReactDOM from "react-dom";
 import '../FriendSuggestion.css';
 import ellipse507 from "../images/ellipse507.png";
 import ellipse504 from "../images/ellipse504.png";
@@ -8,7 +9,38 @@ import ellipse508 from "../images/ellipse508.png";
 import ellipse5041 from "../images/ellipse5041.png";
 import ellipse506 from "../images/ellipse506.png";
 
-function FriendSuggestion (){  
+const FriendSuggestion =()=>{  
+  const [buttonText, setButtonText] =  useState('Follow');
+  const [Following, setFollowing] =  useState(false);
+
+  const FollowHandler =()=>{
+    setButtonText(Following? "Follow" : "Following");
+    setFollowing(!Following);
+  }
+
+  // const btn1 = Document.getElementById("btn");
+
+  // btn1.addEventListener('click', handleClick);
+  
+  // function handleClick(){
+  // const initialText = "Follow";
+  
+  // if (btn1.textContent.toLowerCase().includes(initialText.toLowerCase())){
+  // btn1.textContent = "Following";
+  // }else{
+  // btn1.textContent = initialText;
+  // }
+  // };   
+
+
+  // function handleClick(text){
+  // console.log(text);
+  //   if(text==="Follow"){
+  //     setButtonText("Following")}
+  //     else if(text==="Following"){
+  //       setButtonText("Follow");}
+  //     }
+  
     return (
         <Fragment>
         <Navbar className='home'>
@@ -93,79 +125,86 @@ function FriendSuggestion (){
 
         </div>
 
-        
+  
 
-<div className="container-0">
-      <span className="text-0">Suggested</span>
-      <div className="container-1">
-        <img className="image-0" src={ellipse504} />
-        <div className="container-2">
-          <div className="container-3">
-            <span className="text-1">akikozzm</span>
-            <span className="text-2">Cool Person</span>
+<div className="container-0_FriendSuggestion">
+      <span className="text-0_FriendSuggestion">Suggested</span>
+      <div className="container-1_FriendSuggestion">
+        <img className="image-0_FriendSuggestion" src={ellipse504} />
+        <div className="container-2_FriendSuggestion">
+          <div className="container-3_FriendSuggestion">
+            <span className="text-1_FriendSuggestion">akikozzm</span>
+            <span className="text-2_FriendSuggestion">Cool Person</span>
           </div>
-          <div className="container-4">
-            <span className="text-3">Following</span>
+          <div className="container-4_FriendSuggestion">
+            
+            <span className="text-3_FriendSuggestion" onClick={FollowHandler} >{buttonText}</span>
+//place the follow button inside this span
+          </div>
+          {/* <script>
+            const newNode = document.createElement("button");
+            const parentDiv = document.getElementById("btn").parentNode;
+
+          </script> */}
+        </div>
+      </div>
+      <div className="container-5_FriendSuggestion">
+        <img className="image-1_FriendSuggestion" src={ellipse505} />
+        <div className="container-6_FriendSuggestion">
+          <div className="container-7_FriendSuggestion">
+            <span className="text-4_FriendSuggestion">someoneelse</span>
+            <span className="text-5_FriendSuggestion">ZZ Akiko</span>
+          </div>
+          <div className="container-8_FriendSuggestion">
+            <span className="text-6_FriendSuggestion" >Follow</span>
           </div>
         </div>
       </div>
-      <div className="container-5">
-        <img className="image-1" src={ellipse505} />
-        <div className="container-6">
-          <div className="container-7">
-            <span className="text-4">someoneelse</span>
-            <span className="text-5">ZZ Akiko</span>
+      <div className="container-9_FriendSuggestion">
+        <img className="image-2_FriendSuggestion" src={ellipse506} />
+        <div className="container-10_FriendSuggestion">
+          <div className="container-11_FriendSuggestion">
+            <span className="text-7_FriendSuggestion">Mannnnnnnn1</span>
+            <span className="text-8_FriendSuggestion">Sporty Guy</span>
           </div>
-          <div className="container-8">
-            <span className="text-6">Follow</span>
-          </div>
-        </div>
-      </div>
-      <div className="container-9">
-        <img className="image-2" src={ellipse506} />
-        <div className="container-10">
-          <div className="container-11">
-            <span className="text-7">Mannnnnnnn1</span>
-            <span className="text-8">Sporty Guy</span>
-          </div>
-          <div className="container-12">
-            <span className="text-9">Follow</span>
+          <div className="container-12_FriendSuggestion">
+            <span className="text-9_FriendSuggestion">Follow</span>
           </div>
         </div>
       </div>
-      <div className="container-13">
-        <img className="image-3" src={ellipse507} />
-        <div className="container-14">
-          <div className="container-15">
-            <span className="text-10">highighighhuang</span>
-            <span className="text-11">Not so low</span>
+      <div className="container-13_FriendSuggestion">
+        <img className="image-3_FriendSuggestion" src={ellipse507} />
+        <div className="container-14_FriendSuggestion">
+          <div className="container-15_FriendSuggestion">
+            <span className="text-10_FriendSuggestion">highighighhuang</span>
+            <span className="text-11_FriendSuggestion">Not so low</span>
           </div>
-          <div className="container-16">
-            <span className="text-12">Follow</span>
-          </div>
-        </div>
-      </div>
-      <div className="container-17">
-        <img className="image-4" src={ellipse508} />
-        <div className="container-18">
-          <div className="container-19">
-            <span className="text-13">anytimeisnaptime</span>
-            <span className="text-14">Celebrity Cat 123</span>
-          </div>
-          <div className="container-20">
-            <span className="text-15">Follow</span>
+          <div className="container-16_FriendSuggestion">
+            <span className="text-12_FriendSuggestion">Follow</span>
           </div>
         </div>
       </div>
-      <div className="container-21">
-        <img className="image-5" src={ellipse5041} />
-        <div className="container-22">
-          <div className="container-23">
-            <span className="text-16">TigerMom123</span>
-            <span className="text-17">Lin</span>
+      <div className="container-17_FriendSuggestion">
+        <img className="image-4_FriendSuggestion" src={ellipse508} />
+        <div className="container-18_FriendSuggestion">
+          <div className="container-19_FriendSuggestion">
+            <span className="text-13_FriendSuggestion">anytimeisnaptime</span>
+            <span className="text-14_FriendSuggestion">Celebrity Cat 123</span>
           </div>
-          <div className="container-24">
-            <span className="text-18">Follow</span>
+          <div className="container-20_FriendSuggestion">
+            <span className="text-15_FriendSuggestion">Follow</span>
+          </div>
+        </div>
+      </div>
+      <div className="container-21_FriendSuggestion">
+        <img className="image-5_FriendSuggestion" src={ellipse5041} />
+        <div className="container-22_FriendSuggestion">
+          <div className="container-23_FriendSuggestion">
+            <span className="text-16_FriendSuggestion">TigerMom123</span>
+            <span className="text-17_FriendSuggestion">Lin</span>
+          </div>
+          <div className="container-24_FriendSuggestion">
+            <span className="text-18_FriendSuggestion">Follow</span>
           </div>
         </div>
       </div>
