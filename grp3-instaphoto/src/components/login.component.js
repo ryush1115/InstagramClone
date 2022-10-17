@@ -14,8 +14,6 @@ const LoginComponent=()=>{
     navigate('/sign-up');
   };
 
-
- 
     return (
     <div className = "auth-wrapper">
         <form className = "auth-inner">
