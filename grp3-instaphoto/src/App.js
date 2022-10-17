@@ -6,7 +6,7 @@ import Login from './components/login.component'
 import SignUp from './components/signup.component'
 import Userprofile from './components/userprofile.component'
 import ActivityFeed from './components/activityfeed.component'
-import ActivityFeedTempComponent from './components/activityfeed-temporary.component'
+//import ActivityFeedTempComponent from './components/activityfeed-temporary.component'
 import FriendBar from './components/friendbar.component'
 import FriendSuggestion from './components/FriendSuggestion.component'
 
@@ -48,11 +48,11 @@ function App() {
                     Activity Feed
                   </Link>
                 </li>
-                <li className="nav-item">
-                  <Link className="nav-link" to={'/activity-feed-temp'}>
-                    Create Post
-                  </Link>
-                </li>
+                // <li className="nav-item">
+                //   <Link className="nav-link" to={'/activity-feed-temp'}>
+                //     Create Post
+                //   </Link>
+                // </li>
                 <li className="nav-item">
                   <Link className="nav-link" to={'/friendbar'}>
                     FriendBar
@@ -75,7 +75,7 @@ function App() {
           </div>
         </nav>
         {/* <div className="auth-wrapper"> */}
-        <div>  
+        <div>
           <div>
           {/* <div className="auth-inner"> */}
             <Routes>
@@ -83,17 +83,17 @@ function App() {
               <Route path="/sign-in" element={<Login />} />
               <Route path="/sign-up" element={<SignUp />} />
               <Route path="/user-profile" element={<Userprofile />} />
-              <Route path="/activity-feed" element={<ActivityFeed />} />   
+              <Route path="/activity-feed" element={<ActivityFeed />} />
               {/* <Route path = "/activity-feed-temp" element = {<ActivityFeedTempComponent />}/> */}
               <Route path = "/friendbar" element = {<FriendBar />}/>
               <Route path = "/FriendSuggestion" element = {<FriendSuggestion />}/>
 
               {/* <Route path="/user-pic" element={<Userpic />} />                */}
-              <Route path="/gallery" element={<Gallery />} />   
-              <Route path="/sidebar" element={<Sidebar />} />  
-              <Route path="/userprofile" element={<Userprofile />} />  
-              <Route path="/createpost" element={<Createpost />} />  
-                          
+              <Route path="/gallery" element={<Gallery />} />
+              <Route path="/sidebar" element={<Sidebar />} />
+              <Route path="/userprofile" element={<Userprofile />} />
+              <Route path="/createpost" element={<Createpost />} />
+
             </Routes>
           </div>
         </div>
