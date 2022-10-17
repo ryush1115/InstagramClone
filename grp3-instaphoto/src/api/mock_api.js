@@ -20,7 +20,7 @@ const rootURL = 'http://localhost:8000'
 
 // Sends a Get request to the endpoint
 // returns all the Users
-export const await getUsers = () => {
+export const getUsers = async () => {
   try{
     const response = await axios.get(`${rootURL}/User`);
     return response.data;
@@ -36,12 +36,49 @@ export const await getUsers = () => {
 // returns the attributes of the User
 export const getUser = async(userId) => {
   try {
-    const response = await.axios.get(`${rootURLUser}/User/${id}`);
+    const response = await axios.get(`${rootURL}/User/${userId}`);
     return response.data;
   } catch (err) {
-    console.error(err)
+    console.error(err);
   }
 };
+
+// Takes a user email address as input
+// and sends a Get request to the /User endpoint
+// returns the password of the User with the email address
+export const getPassword = async(userEmail) => {
+  try {
+    const response = await axios.get(`${rootURL}/User/${userEmail}`);
+    return response.data;
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+// To do
+// Follow/Unfollow Users
+
+
+// Create a Post (without the Id) as input
+// and sends a POST request to the /Post endpoint
+// returns the attributes of the Post with the id
+
+export const createPost = async (PostObject) => {
+  try {
+    const response = await axios.post(
+      `${rootURL}/Post`,
+      `username=${PostObject.username}&postImage=${PostObject.postImage}
+      &publicPrivate=${PostObject.publicPrivate}
+      &postTageOfOtherUsers=${PostObject.postTageOfOtherUsers}`
+    );
+    console.log(`username=${PostObject.username}&postImage=${PostObject.postImage}
+    &publicPrivate=${PostObject.publicPrivate}
+    &postTageOfOtherUsers=${PostObject.postTageOfOtherUsers}`);
+    return response.data;
+  } catch (err) {
+    console.error(err);
+  }
+}
 
 // Takes a user (without the Id) as input
 // and sends a POST request to the /User endpoint

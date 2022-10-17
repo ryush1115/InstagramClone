@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import {Routes, Route, useNavigate} from 'react-router-dom';
 
+// import API functions
+import { getUsers, getUser, createUser } from '../api/mock_api';
+
 const LoginComponent=()=>{
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
@@ -14,9 +17,49 @@ const LoginComponent=()=>{
     navigate('/sign-up');
   };
 
+  const [error, setError] = useState(null);
+  const [state, setState] = useState({
+    email:'',
+    password:'',
+  });
+
+  // handle changes
+  const handleChange = (e) => {
+    const { id, value } = e.target;
+    setState((prevState) => ({
+      ...prevState,
+      [id]: value,
+    }));
+  };
+
+  // validate email
+  const validateEmail = (email) => {
+  const re =
+    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(String(email).toLowerCase());
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (!validateEmail(state.email)) {
+      setError('Invalid Email');
+      console.log('Invalid Email');
+    }
+
+    if (state.password.length < 8) {
+      setError('Password must be at least 8 chars long');
+      console.log('Password must be at least 8 chars long');
+    }
+    if (!error) {
+      // No errors.
+    }
+    }
+
     return (
     <div className = "auth-wrapper">
-        <form className = "auth-inner">
+        // Added onSubmit = {handleSubmit}
+        <form className = "auth-inner" onSubmit = {handleSubmit}>
         <div className="header">
             <h3>Welcome to Instaphoto&nbsp;</h3>
             <img src={require('../images/logo.PNG')} alt="logo" />
@@ -57,7 +100,7 @@ const LoginComponent=()=>{
     </div>
 
     )
-} 
- 
- 
+}
+
+
 export default LoginComponent;
