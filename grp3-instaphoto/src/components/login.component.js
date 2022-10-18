@@ -18,48 +18,65 @@ const LoginComponent=()=>{
   };
 
   const [error, setError] = useState(null);
-  const [state, setState] = useState({
-    email:'',
-    password:'',
-  });
+
+  // 1. *** Don't do this for HW2 *** read the json database first
+  // 2. Check whether the email values are in the database by calling API with specific ID
+  //    a. if not, then sign up
+  //    b. *** Don't do this for HW2*** if yes, check password ! NO NEED TO CHECK THIS! Not safe to check password in the front
+  //        *** i. if no, warn user
+  //        *** ii if yes, go to c
+  //    c. sign in button to create a new page -> fetch from backend and present them to frontend
+  //      the page should have a framework, and each framework should have variables to be submitted based on user's data
+
 
   // handle changes
-  const handleChange = (e) => {
-    const { id, value } = e.target;
-    setState((prevState) => ({
-      ...prevState,
-      [id]: value,
-    }));
-  };
+  // const handleChange = (e) => {
+  //   const { id, value } = e.target;
+  //   setState((prevState) => ({
+  //     ...prevState,
+  //     [id]: value,
+  //   }));
+  // };
 
   // validate email
   const validateEmail = (email) => {
-  const re =
-    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  return re.test(String(email).toLowerCase());
+  const regex =
+    /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
+      
+    return regex.test(String(email).toLowerCase());
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmitClick = (e) => {
     e.preventDefault();
 
-    if (!validateEmail(state.email)) {
-      setError('Invalid Email');
+    if (!validateEmail(email)) {
+      setError('Invalid Email'); 
       console.log('Invalid Email');
     }
 
-    if (state.password.length < 8) {
+    if (password.length < 8) {
       setError('Password must be at least 8 chars long');
       console.log('Password must be at least 8 chars long');
     }
-    if (!error) {
-      // No errors.
+    if (!error===null) {
+      console.log(error);
+      navigate('/userprofile');
+
+      // if useNavigate to navigate to a page. then the page will re-render
+      // if have useEffect with no parameter, then that will re-render
     }
     }
 
+    // first do the validation in the front end
+    // have a wrapper function to call to encapsulate the two function (1. validate email format/pw lenght)
+    // &. 2. check if email is in database
+    // try to get a certain based on email key, if get an error then user does not exist, direct to sign up
+
+    // to transition from 1 page to another, use a hook called useNavigate
+
     return (
     <div className = "auth-wrapper">
-        // Added onSubmit = {handleSubmit}
-        <form className = "auth-inner" onSubmit = {handleSubmit}>
+        <form className = "auth-inner">
         <div className="header">
             <h3>Welcome to Instaphoto&nbsp;</h3>
             <img src={require('../images/logo.PNG')} alt="logo" />
@@ -88,7 +105,7 @@ const LoginComponent=()=>{
         </div>
         <br></br>
         <div className="d-grid">
-          <button type="submit" className="btn btn-primary" onClick={navigateToProfile}>
+          <button type="submit" className="btn btn-primary" onClick={handleSubmitClick}>
             Sign in
           </button>
         </div>
@@ -101,6 +118,5 @@ const LoginComponent=()=>{
 
     )
 }
-
 
 export default LoginComponent;

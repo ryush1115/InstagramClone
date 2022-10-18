@@ -6,8 +6,21 @@ import Post from './post.component';
 import FriendBar from './friendbar.component'
 import CreatePost from './createpost.component';
 
+// use map data to render multiple iteratesion of my Post component
+// 1. import the json file (just import it).
+// 2. pass the parameters to the post compoennt
+// 3. use a map. 
+
+
+// at row # 117, pass in the data from the above json file, before creating each post
+
 const ActivityFeedComponent=()=>{
-    return (
+    
+  
+
+
+  
+  return (
         <Fragment>
         <Navbar className='home'>
             
@@ -100,6 +113,8 @@ const ActivityFeedComponent=()=>{
     </div>
 </div>
 </header>
+
+
 
 <main>
 <div class="container">
