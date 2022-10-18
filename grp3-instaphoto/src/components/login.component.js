@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import {Routes, Route, useNavigate} from 'react-router-dom';
 
 // import API functions
-import { getUsers, getUser, createUser } from '../api/mock_api';
+import { getUsers, getUser, createUser, getTimelinePost } from '../api/mock_api';
 
 const LoginComponent=()=>{
   const navigate = useNavigate();
@@ -46,8 +46,14 @@ const LoginComponent=()=>{
     return regex.test(String(email).toLowerCase());
   };
 
+  // asynchronous function
+  // how to encapsulate two function (1. asynch, 2. sync) into another function
+  // const checkEmailInDB = () > {
+  // }
+
   const handleSubmitClick = (e) => {
     e.preventDefault();
+    
 
     if (!validateEmail(email)) {
       setError('Invalid Email'); 
@@ -58,7 +64,7 @@ const LoginComponent=()=>{
       setError('Password must be at least 8 chars long');
       console.log('Password must be at least 8 chars long');
     }
-    if (!error===null) {
+    if (!error) {
       console.log(error);
       navigate('/userprofile');
 

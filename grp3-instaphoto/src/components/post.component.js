@@ -1,6 +1,7 @@
 import '../post.css';
 import React, { useState, Fragment } from "react";
 
+
 const Post = () => {
     return (
         <div className="post">

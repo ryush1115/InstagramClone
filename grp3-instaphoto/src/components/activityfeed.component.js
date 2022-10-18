@@ -5,7 +5,9 @@ import { Navbar, Card, ListGroup, ListGroupItem } from 'react-bootstrap';
 import Post from './post.component';
 import FriendBar from './friendbar.component'
 import CreatePost from './createpost.component';
+import { getUsers, getUser, createUser, getTimelinePosts } from '../api/mock_api';
 
+// TO DO: JC
 // use map data to render multiple iteratesion of my Post component
 // 1. import the json file (just import it).
 // 2. pass the parameters to the post compoennt
@@ -15,15 +17,9 @@ import CreatePost from './createpost.component';
 // at row # 117, pass in the data from the above json file, before creating each post
 
 const ActivityFeedComponent=()=>{
-    
-  
-
-
-  
   return (
         <Fragment>
         <Navbar className='home'>
-            
         <Card className='card'>
         <div className = 'logo'>
             <h>Instaphoto&nbsp;</h>
@@ -113,6 +109,7 @@ const ActivityFeedComponent=()=>{
     </div>
 </div>
 </header>
+
 
 
 

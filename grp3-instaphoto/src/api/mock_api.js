@@ -11,6 +11,9 @@ import axios from 'axios';
 // https://634749ccdb76843976a974a6.mockapi.io/Comment
 
 // JSON-server URL
+// To run the server, enter into command line/terminal: 
+// json-server db-grp3-instaphoto.json --port 8000
+
 const rootURL = 'http://localhost:8000'
 //const rootURLUser = 'http://localhost:8000/User'
 //const rootURLPost = 'http://localhost:8000/Post'
@@ -31,7 +34,34 @@ export const getUsers = async () => {
   }
 };
 
-// Takes the id of a user as input
+// Sends a Get request to the endpoint
+// returns all the Users
+export const getPosts = async () => {
+  try{
+    const response = await axios.get(`${rootURL}/Post`);
+    return response.data;
+    // data is stored in the data 
+    // field of the response
+  }catch (err) {
+    console.error(err);
+  }
+}
+
+
+// Takes the id of a Post as input
+// and sends a Get request to the /Post: id endpoint
+// returns the attributes of the Post
+export const getPost = async(PostId) => {
+  try{
+    const response = await axios.get(`${rootURL}/Post/${PostId}`);
+    return response.data;
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+
+// Takes the id of a User as input
 // and sends a Get request to the /User: id endpoint
 // returns the attributes of the User
 export const getUser = async(userId) => {
@@ -100,3 +130,29 @@ export const createUser = async (UserObject) => {
     console.error(err);
   }
 };
+
+// Sends a Get request to the endpoint
+// returns all the Timeline Posts
+export const getTimelinePosts = async () => {
+  try {
+    const response = await axios.get(`${rootURL}/TimeLinePost`);
+    return response.data;
+    // data is stored in the data
+    // field of the response
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+// Takes the id of a timeline post as input
+// and sends a Get request to the /TimelinePost: id endpoint
+// return the attributes of the TimelinePost
+export const getTimeLinePost = async (TimeLinePostId) => {
+  try {
+    const response = await axios.get(`${rootURL}/TimeLinePost/${TimeLinePostId}`);
+    return response.data;
+  } catch (err) {
+    console.error(err);
+  }
+}
+

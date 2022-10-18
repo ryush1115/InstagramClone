@@ -6,7 +6,6 @@ import Login from './components/login.component'
 import SignUp from './components/signup.component'
 import Userprofile from './components/userprofile.component'
 import ActivityFeed from './components/activityfeed.component'
-//import ActivityFeedTempComponent from './components/activityfeed-temporary.component'
 import FriendBar from './components/friendbar.component'
 import FriendSuggestion from './components/FriendSuggestion.component'
 
@@ -39,8 +38,8 @@ function App() {
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to={'/gallery'}>
-                    Gallery
+                  <Link className="nav-link" to={'/userprofile'}>
+                    User Profile
                   </Link>
                 </li>
                 <li className="nav-item">
@@ -48,11 +47,6 @@ function App() {
                     Activity Feed
                   </Link>
                 </li>
-                // <li className="nav-item">
-                //   <Link className="nav-link" to={'/activity-feed-temp'}>
-                //     Create Post
-                //   </Link>
-                // </li>
                 <li className="nav-item">
                   <Link className="nav-link" to={'/friendbar'}>
                     FriendBar
@@ -84,7 +78,6 @@ function App() {
               <Route path="/sign-up" element={<SignUp />} />
               <Route path="/user-profile" element={<Userprofile />} />
               <Route path="/activity-feed" element={<ActivityFeed />} />
-              {/* <Route path = "/activity-feed-temp" element = {<ActivityFeedTempComponent />}/> */}
               <Route path = "/friendbar" element = {<FriendBar />}/>
               <Route path = "/FriendSuggestion" element = {<FriendSuggestion />}/>
 

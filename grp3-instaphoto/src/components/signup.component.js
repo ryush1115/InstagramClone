@@ -10,14 +10,38 @@ const SignupComponent=()=>{
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState(null);
+  const [connected, setConnected] = useState(false);
 
   // new User fields input in the form
   let newUsername;
   let newEmail;
   let newPassword;
+  let newConfirmedPassword;
+
+
+  const handleOnChange = (e) => {
+    // update the fields inside event handlers
+    // set username, email and password
+    if (e.target.name === 'username') {
+      newUsername = e.target.value;
+    }
+    if (e.target.name === 'email') {
+      newEmail = e.target.value;
+    }
+    if (e.target.name === 'password') {
+      newPassword = e.target.value;
+    }
+    if (e.target.name === 'confirmedpassword') {
+      newConfirmedPassword = e.target.value;
+    }  
+
+  }
 
   const handleSubmitClick = e => {
     e.preventDefault();
+    console.log("test output!!");
+    console.log("password length: " + password.length);
+    console.log(username, email, password, confirmPassword);
 
     // validate email format
     if (!validateEmail(email)) {
@@ -29,12 +53,13 @@ const SignupComponent=()=>{
     if (password.length < 8) {
       setError('Password must be at least 8 chars long');
       console.log('Password must be at least 8 chars long');
+      console.log(error);
     }
 
     // check of password and confirm password are identical
     if (confirmPassword !== password) {
       setError('Passwords entered do not match!');
-      console.log('Password must be at least 8 chars long');
+      console.log('Passwords entered do not match!');
     }
 
     //TO DO: check if email is not in the database
@@ -46,7 +71,7 @@ const SignupComponent=()=>{
     console.log(username, email, password, confirmPassword);
     console.log(error);
 
-    if (!error===null) {
+    if (!error) {
       console.log(error);
       // if all validated, then add user to the json database
       // Post a User object to the database with email and password
@@ -144,7 +169,7 @@ const SignupComponent=()=>{
         </div>
         <br></br>
         <div className="d-grid">
-          <button type="submit" className="btn btn-primary" onClick={handleSubmitClick}>
+          <button type="submit" className="btn btn-primary" onClick={handleCreateNewStudent}>
             Finish
           </button>
         </div>
