@@ -1,0 +1,228 @@
+{
+  "User": [
+    {
+      "email": "Webster2@hotmail.com",
+      "username": "Elmer.Weissnat10",
+      "password": "F2KC9R__6fRb8xI",
+      "profilePicture": "http://loremflickr.com/640/480",
+      "follow": [
+        "Frederic.Strosin5"
+      ],
+      "id": "1"
+    },
+    {
+      "email": "Claire37@gmail.com",
+      "username": "Frederic.Strosin5",
+      "password": "3Rvqa8WqKaorqkT",
+      "profilePicture": "http://loremflickr.com/640/480",
+      "follow": [],
+      "id": "2"
+    },
+    {
+      "email": "Ryley74@yahoo.com",
+      "username": "Xavier.Vandervort",
+      "password": "4c5YHKOXvh2appg",
+      "profilePicture": "http://loremflickr.com/640/480",
+      "follow": [],
+      "id": "3"
+    },
+    {
+      "email": "Twila_Jacobson4@hotmail.com",
+      "username": "Violette30",
+      "password": "Rss65HE8u_Ch30B",
+      "profilePicture": "http://loremflickr.com/640/480",
+      "follow": [],
+      "id": "4"
+    },
+    {
+      "email": "Gina9@yahoo.com",
+      "username": "Jakob.Breitenberg21",
+      "password": "RcyWueTgAhBeLts",
+      "profilePicture": "http://loremflickr.com/640/480",
+      "follow": [],
+      "id": "5"
+    },
+    {
+      "email": "undefined",
+      "username": "undefined\n        ",
+      "password": "undefined",
+      "profilePicture": "\n        ",
+      "follow": "",
+      "id": "Gr3r1dL"
+    },
+    {
+      "email": "undefined",
+      "username": "undefined\n        ",
+      "password": "undefined",
+      "profilePicture": "\n        ",
+      "follow": "",
+      "id": "DaNYYMJ"
+    },
+    {
+      "email": "undefined",
+      "username": "undefined\n        ",
+      "password": "undefined",
+      "profilePicture": "\n        ",
+      "follow": "",
+      "id": "XIxWHsG"
+    },
+    {
+      "email": "undefined",
+      "username": "undefined\n        ",
+      "password": "undefined",
+      "profilePicture": "\n        ",
+      "follow": "",
+      "id": "AM0SMGC"
+    }
+  ],
+  "Post": [
+    {
+      "username": "Augusta_Breitenberg76",
+      "postImage": "http://loremflickr.com/640/480",
+      "publicPrivate": false,
+      "postTagOfOtherUsers": [],
+      "postId": "1"
+    },
+    {
+      "username": "Gerda.Ziemann",
+      "postImage": "http://loremflickr.com/640/480",
+      "publicPrivate": false,
+      "postTagOfOtherUsers": [],
+      "postId": "2"
+    },
+    {
+      "username": "Hans53",
+      "postImage": "http://loremflickr.com/640/480",
+      "publicPrivate": false,
+      "postTagOfOtherUsers": [],
+      "postId": "3"
+    },
+    {
+      "username": "Kendra96",
+      "postImage": "http://loremflickr.com/640/480",
+      "publicPrivate": false,
+      "postTagOfOtherUsers": [],
+      "postId": "4"
+    },
+    {
+      "username": "Mason_Satterfield",
+      "postImage": "http://loremflickr.com/640/480",
+      "publicPrivate": false,
+      "postTagOfOtherUsers": [],
+      "postId": "5"
+    }
+  ],
+  "Comment": [
+    {
+      "username": "Heath_Buckridge",
+      "message": "message 1",
+      "tagOfOtherUsers": [],
+      "id": "1"
+    },
+    {
+      "username": "Sigmund.Roberts",
+      "message": "message 2",
+      "tagOfOtherUsers": [],
+      "id": "2"
+    },
+    {
+      "username": "Kale73",
+      "message": "message 3",
+      "tagOfOtherUsers": [],
+      "id": "3"
+    },
+    {
+      "username": "Carissa_Hartmann84",
+      "message": "message 4",
+      "tagOfOtherUsers": [],
+      "id": "4"
+    },
+    {
+      "username": "Beverly.Thiel1",
+      "message": "message 5",
+      "tagOfOtherUsers": [],
+      "id": "5"
+    }
+  ],
+  "Like": [
+    {
+      "username": "Jaqueline54",
+      "id": "1"
+    },
+    {
+      "username": "Lewis45",
+      "id": "2"
+    },
+    {
+      "username": "Monty.Weissnat34",
+      "id": "3"
+    },
+    {
+      "username": "Cathy.Crona22",
+      "id": "4"
+    },
+    {
+      "username": "Idella_Raynor77",
+      "id": "5"
+    },
+    {
+      "username": "Albin.Fritsch",
+      "id": "6"
+    },
+    {
+      "username": "Rosetta_Muller",
+      "id": "7"
+    }
+  ],
+  "TimelinePost": [
+    {
+      "username": "Gladys_Tillman85",
+      "postImage": "http://loremflickr.com/640/480",
+      "likes": [],
+      "comments": [],
+      "id": "1"
+    },
+    {
+      "username": "Tyshawn_Gusikowski70",
+      "postImage": "http://loremflickr.com/640/480",
+      "likes": [],
+      "comments": [],
+      "id": "2"
+    },
+    {
+      "username": "Hipolito.Roob",
+      "postImage": "http://loremflickr.com/640/480",
+      "likes": [],
+      "comments": [],
+      "id": "3"
+    },
+    {
+      "username": "Lowell82",
+      "postImage": "http://loremflickr.com/640/480",
+      "likes": [],
+      "comments": [],
+      "id": "4"
+    },
+    {
+      "username": "Marquise25",
+      "postImage": "http://loremflickr.com/640/480",
+      "likes": [],
+      "comments": [],
+      "id": "5"
+    },
+    {
+      "username": "Laron_Stehr",
+      "postImage": "http://loremflickr.com/640/480",
+      "likes": [],
+      "comments": [],
+      "id": "6"
+    },
+    {
+      "username": "Amaya.Gleichner70",
+      "postImage": "http://loremflickr.com/640/480",
+      "likes": [],
+      "comments": [],
+      "id": "7"
+    }
+  ]
+}

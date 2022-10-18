@@ -1,20 +1,35 @@
-import React, { useState, Fragment, useRef} from "react";
+import React, { useState, Fragment} from "react";
+import '../activityfeed.css';
 import '../userprofile.css';
 import { Navbar, Card, ListGroup, ListGroupItem } from 'react-bootstrap';
+import Post from './post.component';
+import FriendBar from './friendbar.component'
+import CreatePost from './createpost.component';
+import { getUsers, getUser, createUser, getTimelinePosts } from '../api/mock_api';
 
-const Sidebar =(props)=>{
-  console.log("printing create outside of function " + props.create)
-  
-  const handleCreate = () => {
-    props.setCreate(1);
-    props.setPostCount(40);
-  };
+// TO DO: JC
+// use map data to render multiple iterations of my Post component
+// 1. import the json file (just import it).
+// 2. pass the parameters to the post compoennt
+// 3. use a map. 
 
-  console.log("printing post count" + props.postCount);
 
-    return (
+// at row # 117, pass in the data from the above json file, before creating each post
+
+// const numbers = [1,2,3,4,5]
+// const feedItems = numbers.maps((numbers) => 
+
+
+// Qn. 
+// How to pass props into Post Component?
+// How to use Map to create multiple Posts/ infinity scroll?
+
+// );
+
+const ActivityFeedComponent=()=>{
+  return (
+        <Fragment>
         <Navbar className='home'>
-            
         <Card className='card'>
         <div className = 'logo'>
             <h>Instaphoto&nbsp;</h>
@@ -35,16 +50,19 @@ const Sidebar =(props)=>{
               <div className='space'></div>
               <ListGroup variant='flush'>
                 <ListGroupItem className='list'>
+                  {/* <span className='link' onClick={() => goToAnchor('section1')}> */}
                   <span>
                     Home
                   </span>
                 </ListGroupItem>
                 <ListGroupItem className='list'>
-                  <span onClick = {handleCreate}>
+                  {/* <span className='link' onClick={() => goToAnchor('section2')}> */}
+                  <span>
                     Create
                   </span>
                 </ListGroupItem>
                 <ListGroupItem className='list'>
+                  {/* <span className='link' onClick={() => goToAnchor('section3')}> */}
                   <span>
                     Profile
                   </span>
@@ -88,7 +106,41 @@ const Sidebar =(props)=>{
         </Card>
       </Navbar>
 
-)  
+      <header>
+
+<div class="container">
+    <div class="profile">
+        <div class="profile-image">
+            <img src={require('../images/grp3.PNG')} alt=""/>
+        </div>
+        <div class="profile-user-settings">
+            <h1 class="profile-user-name">grp3foreva</h1>
+        </div>
+    </div>
+</div>
+</header>
+
+<main>
+<div class="container">
+<div class="feed">
+    <div class="feedWrapper">
+        <Post />
+        <Post/>
+        <Post/>
+        <Post/>
+        <Post/>
+        <Post/>
+        <Post/>
+
+    </div>
+</div>
+</div>    
+</main>
+
+</Fragment>
+
+
+    )  
 }
 
-export default Sidebar;
+export default ActivityFeedComponent;

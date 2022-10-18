@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import {Routes, Route, useNavigate} from 'react-router-dom';
+import { getUsers, getUser, createUser } from '../api/mock_api';
 
 const SignupComponent=()=>{
   const navigate = useNavigate();
@@ -8,17 +9,117 @@ const SignupComponent=()=>{
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [error, setError] = useState(null);
+  const [connected, setConnected] = useState(false);
 
-  const handleSubmit = e => {
+  // new User fields input in the form
+  let newUsername;
+  let newEmail;
+  let newPassword;
+  let newConfirmPassword;
+
+  const handleOnChange = (e) => {
+    // update the fields inside event handlers
+    // set username, email and password
+
+    if (e.target.name === 'username') {
+      newUsername = e.target.value;
+      // setUsername(e.target.value)
+    }
+    if (e.target.name === 'email') {
+      newEmail = e.target.value;
+      setEmail(e.target.value)
+
+    }
+    if (e.target.name === 'password') {
+      newPassword = e.target.value;
+      setPassword(e.target.value)
+
+    }
+    if (e.target.name === 'confirmPassword') {
+      newConfirmPassword = e.target.value;
+      setConfirmPassword(e.target.value)
+    }
+
+    //setUsername(e.target.value)
+    //setEmail(e.target.value)
+
+  }
+
+  const handleSubmitClick = (e) => {
     e.preventDefault();
+    console.log("test output!!");
+    console.log("password length: " + password.length);
     console.log(username, email, password, confirmPassword);
-  };
+
+    // validate email format
+    if (!validateEmail(email)) {
+      console.log('Invalid Email');
+    }
+
+    // check if password
+    if (password.length < 8) {
+      console.log('Password must be at least 8 chars long');
+    }
+
+    // check of password and confirm password are identical
+    if (confirmPassword !== password) {
+      console.log('Passwords entered do not match!');
+    }
+
+    //TO DO: check if email is not in the database
+    //TO DO: check if username is not in the database
+
+    // if no error, then navigate to userProfile
+
+    console.log(username, email, password, confirmPassword);
+    console.log(error);
+
+    if (validateEmail(email) && password.length >= 8) {
+      console.log(error);
+      // if all validated, then add user to the json database
+      // Post a User object to the database with email and password
+      // call createUser
+
+      // navigate to the home page
+      navigate('/userprofile');
+    };
+  }
+
+  const validateEmail = (email) => {
+    const regex =
+      /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
+      return regex.test(String(email).toLowerCase());
+    };
+
+  const handleCreateNewStudent = async(e) => {
+    // stop default behavior to avoid reloading the page
+    e.preventDefault();
+  
+    // create new User variable
+    const newUser = {username: newUsername, email: newEmail, password: newPassword, profilePicture:"",follow:[]};
+
+    // send POST request to create new User
+    const newStoredUser = await createUser(newUser);
+
+    console.log("New Student Created");
+
+    /*
+    "email": "Webster2@hotmail.com",
+        "username": "Elmer.Weissnat10",
+        "password": "F2KC9R__6fRb8xI",
+        "profilePicture": "http://loremflickr.com/640/480",
+        "follow": ["Frederic.Strosin5"],
+        "id": "1"
+     */
+  }  
+
+  // how to call a synchronous (handle creation) and asynchronous function (create new student), based on the same click event?
+  // onChange={e => setEmail(e.target.value)}
 
   const navigateToLogin = () => {
     navigate('/sign-in');
   };
-
-
 
     return (
       <form className = "auth-inner">
@@ -36,8 +137,9 @@ const SignupComponent=()=>{
             type="text"
             className="form-control"
             placeholder="Username"
+            name="username"
             value={username}
-            onChange={e => setUsername(e.target.value)}
+            onChange={handleOnChange}
           />
         </div>
         <div className="login-and-password">
@@ -46,8 +148,9 @@ const SignupComponent=()=>{
             type="email" 
             className="form-control" 
             placeholder="Email" 
+            name="email"
             value={email}
-            onChange={e => setEmail(e.target.value)}
+            onChange={handleOnChange}
             />
         </div>
         <div className="login-and-password">
@@ -55,9 +158,10 @@ const SignupComponent=()=>{
           <input
             type="password"
             className="form-control"
-            placeholder="Password"
+            name="password"
+            placeholder="Password (more than 8 characters)"
             value={password}
-            onChange={e => setPassword(e.target.value)}
+            onChange={handleOnChange}
           />
         </div>
         <div className="login-and-password">
@@ -66,13 +170,14 @@ const SignupComponent=()=>{
             type="password"
             className="form-control"
             placeholder="Re-enter password"
+            name="confirmPassword"
             value={confirmPassword}
-            onChange={e => setConfirmPassword(e.target.value)}
+            onChange={handleOnChange}
           />
         </div>
         <br></br>
         <div className="d-grid">
-          <button type="submit" className="btn btn-primary" onClick={handleSubmit}>
+          <button type="submit" className="btn btn-primary" onClick={handleCreateNewStudent}>
             Finish
           </button>
         </div>
@@ -81,8 +186,6 @@ const SignupComponent=()=>{
         </p>
       </form>
     )
-
 }
 
- 
 export default SignupComponent;

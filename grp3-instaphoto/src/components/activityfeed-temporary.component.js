@@ -1,18 +1,14 @@
-import React, { useState, Fragment, useRef} from "react";
+import React, { useState, Fragment} from "react";
+import '../activityfeed.css';
 import '../userprofile.css';
 import { Navbar, Card, ListGroup, ListGroupItem } from 'react-bootstrap';
+import Post from './post.component';
+import FriendBar from './friendbar.component'
+import CreatePost from './createpost.component';
 
-const Sidebar =(props)=>{
-  console.log("printing create outside of function " + props.create)
-  
-  const handleCreate = () => {
-    props.setCreate(1);
-    props.setPostCount(40);
-  };
-
-  console.log("printing post count" + props.postCount);
-
+const ActivityFeedTempComponent=()=>{
     return (
+        <Fragment>
         <Navbar className='home'>
             
         <Card className='card'>
@@ -35,16 +31,19 @@ const Sidebar =(props)=>{
               <div className='space'></div>
               <ListGroup variant='flush'>
                 <ListGroupItem className='list'>
+                  {/* <span className='link' onClick={() => goToAnchor('section1')}> */}
                   <span>
                     Home
                   </span>
                 </ListGroupItem>
                 <ListGroupItem className='list'>
-                  <span onClick = {handleCreate}>
+                  {/* <span className='link' onClick={() => goToAnchor('section2')}> */}
+                  <span>
                     Create
                   </span>
                 </ListGroupItem>
                 <ListGroupItem className='list'>
+                  {/* <span className='link' onClick={() => goToAnchor('section3')}> */}
                   <span>
                     Profile
                   </span>
@@ -88,7 +87,37 @@ const Sidebar =(props)=>{
         </Card>
       </Navbar>
 
-)  
+      <header>
+
+<div class="container">
+    <div class="profile">
+        <div class="profile-image">
+            <img src={require('../images/grp3.PNG')} alt=""/>
+        </div>
+        <div class="profile-user-settings">
+            <h1 class="profile-user-name">grp3foreva</h1>
+        </div>
+    </div>
+</div>
+</header>
+
+<main>
+<div class="container">
+<div class="feed">
+    <div class="feedWrapper">
+        <Post/>
+        <CreatePost/>
+        <Post/>
+        <Post/>
+    </div>
+</div>
+</div>    
+</main>
+
+</Fragment>
+
+
+    )  
 }
 
-export default Sidebar;
+export default ActivityFeedTempComponent;
