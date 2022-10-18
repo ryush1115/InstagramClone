@@ -1,4 +1,10 @@
+
+// import testing library functions
 import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import renderer from 'react-test-renderer';
+import {within} from '@testing-library/dom'
+
 import App from './App';
 
 test('renders learn react link', () => {
@@ -17,3 +23,4 @@ test('renders learn react link', () => {
 // this is a list of data. in db, you have list of people you follow (for those people, the follow attribute is true).
 // you will get the db with the follow/unfollow status.
 // just render them with 
+

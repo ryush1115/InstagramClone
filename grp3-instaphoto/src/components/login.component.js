@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import {Routes, Route, useNavigate} from 'react-router-dom';
 
 // import API functions
-import { getUsers, getUser, createUser, getTimelinePost } from '../api/mock_api';
+import { getUsers, getUser, createUser } from '../api/mock_api';
 
 const LoginComponent=()=>{
   const navigate = useNavigate();
@@ -16,8 +16,7 @@ const LoginComponent=()=>{
   const navigateToSignup = () => {
     navigate('/sign-up');
   };
-
-  const [error, setError] = useState(null);
+  //const [error, setError] = useState('');
 
   // 1. *** Don't do this for HW2 *** read the json database first
   // 2. Check whether the email values are in the database by calling API with specific ID
@@ -27,16 +26,6 @@ const LoginComponent=()=>{
   //        *** ii if yes, go to c
   //    c. sign in button to create a new page -> fetch from backend and present them to frontend
   //      the page should have a framework, and each framework should have variables to be submitted based on user's data
-
-
-  // handle changes
-  // const handleChange = (e) => {
-  //   const { id, value } = e.target;
-  //   setState((prevState) => ({
-  //     ...prevState,
-  //     [id]: value,
-  //   }));
-  // };
 
   // validate email
   const validateEmail = (email) => {
@@ -54,18 +43,23 @@ const LoginComponent=()=>{
   const handleSubmitClick = (e) => {
     e.preventDefault();
     
-
     if (!validateEmail(email)) {
-      setError('Invalid Email'); 
+      //setError('Invalid Email'); 
       console.log('Invalid Email');
+      
     }
 
     if (password.length < 8) {
-      setError('Password must be at least 8 chars long');
+      //setError('Password must be at least 8 chars long');
       console.log('Password must be at least 8 chars long');
+      
     }
-    if (!error) {
-      console.log(error);
+    if (validateEmail(email) && password.length >= 8) {
+      console.log("valid email and password");
+      
+      // check if the email is in the database?
+      //if(email) exists in the backend?
+
       navigate('/userprofile');
 
       // if useNavigate to navigate to a page. then the page will re-render
@@ -111,7 +105,7 @@ const LoginComponent=()=>{
         </div>
         <br></br>
         <div className="d-grid">
-          <button type="submit" className="btn btn-primary" onClick={handleSubmitClick}>
+          <button type="submit" className="btn btn-primary" onClick={(e) => handleSubmitClick(e)}>
             Sign in
           </button>
         </div>

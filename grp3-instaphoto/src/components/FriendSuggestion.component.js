@@ -20,12 +20,11 @@ const FriendSuggestion =()=>{
 
   // use a use state on a list. each element in the list should have a attribute of 
   // whether you have followed this person.
-  // show it with a map (see Eric's mocked backed examle)
+  // show it with a map (see Eric's mocked backend example)
 
   // const btn1 = Document.getElementById("btn");
 
-  // btn1.addEventListener('click', handleClick);
-  
+  // btn1.addEventListener('click', handleClick)
   // function handleClick(){
   // const initialText = "Follow";
   

@@ -16,7 +16,6 @@ const Post = () => {
                         <span
                             className="postUsername">jmscn
                         </span>
-
                     </div>
                 </div>
 

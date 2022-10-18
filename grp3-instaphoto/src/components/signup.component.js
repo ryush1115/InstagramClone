@@ -16,28 +16,37 @@ const SignupComponent=()=>{
   let newUsername;
   let newEmail;
   let newPassword;
-  let newConfirmedPassword;
-
+  let newConfirmPassword;
 
   const handleOnChange = (e) => {
     // update the fields inside event handlers
     // set username, email and password
+
     if (e.target.name === 'username') {
       newUsername = e.target.value;
+      // setUsername(e.target.value)
     }
     if (e.target.name === 'email') {
       newEmail = e.target.value;
+      setEmail(e.target.value)
+
     }
     if (e.target.name === 'password') {
       newPassword = e.target.value;
+      setPassword(e.target.value)
+
     }
-    if (e.target.name === 'confirmedpassword') {
-      newConfirmedPassword = e.target.value;
-    }  
+    if (e.target.name === 'confirmPassword') {
+      newConfirmPassword = e.target.value;
+      setConfirmPassword(e.target.value)
+    }
+
+    //setUsername(e.target.value)
+    //setEmail(e.target.value)
 
   }
 
-  const handleSubmitClick = e => {
+  const handleSubmitClick = (e) => {
     e.preventDefault();
     console.log("test output!!");
     console.log("password length: " + password.length);
@@ -45,20 +54,16 @@ const SignupComponent=()=>{
 
     // validate email format
     if (!validateEmail(email)) {
-      setError('Invalid Email'); 
       console.log('Invalid Email');
     }
 
     // check if password
     if (password.length < 8) {
-      setError('Password must be at least 8 chars long');
       console.log('Password must be at least 8 chars long');
-      console.log(error);
     }
 
     // check of password and confirm password are identical
     if (confirmPassword !== password) {
-      setError('Passwords entered do not match!');
       console.log('Passwords entered do not match!');
     }
 
@@ -67,11 +72,10 @@ const SignupComponent=()=>{
 
     // if no error, then navigate to userProfile
 
-    console.log("error" + error);
     console.log(username, email, password, confirmPassword);
     console.log(error);
 
-    if (!error) {
+    if (validateEmail(email) && password.length >= 8) {
       console.log(error);
       // if all validated, then add user to the json database
       // Post a User object to the database with email and password
@@ -111,7 +115,7 @@ const SignupComponent=()=>{
   }  
 
   // how to call a synchronous (handle creation) and asynchronous function (create new student), based on the same click event?
-
+  // onChange={e => setEmail(e.target.value)}
 
   const navigateToLogin = () => {
     navigate('/sign-in');
@@ -133,8 +137,9 @@ const SignupComponent=()=>{
             type="text"
             className="form-control"
             placeholder="Username"
+            name="username"
             value={username}
-            onChange={e => setUsername(e.target.value)}
+            onChange={handleOnChange}
           />
         </div>
         <div className="login-and-password">
@@ -143,8 +148,9 @@ const SignupComponent=()=>{
             type="email" 
             className="form-control" 
             placeholder="Email" 
+            name="email"
             value={email}
-            onChange={e => setEmail(e.target.value)}
+            onChange={handleOnChange}
             />
         </div>
         <div className="login-and-password">
@@ -152,9 +158,10 @@ const SignupComponent=()=>{
           <input
             type="password"
             className="form-control"
+            name="password"
             placeholder="Password (more than 8 characters)"
             value={password}
-            onChange={e => setPassword(e.target.value)}
+            onChange={handleOnChange}
           />
         </div>
         <div className="login-and-password">
@@ -163,8 +170,9 @@ const SignupComponent=()=>{
             type="password"
             className="form-control"
             placeholder="Re-enter password"
+            name="confirmPassword"
             value={confirmPassword}
-            onChange={e => setConfirmPassword(e.target.value)}
+            onChange={handleOnChange}
           />
         </div>
         <br></br>
