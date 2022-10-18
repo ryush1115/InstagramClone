@@ -3,7 +3,6 @@ import '../activityfeed.css';
 import '../userprofile.css';
 import { Navbar, Card, ListGroup, ListGroupItem } from 'react-bootstrap';
 import Post from './post.component';
-import FriendBar from './friendbar.component'
 import CreatePost from './createpost.component';
 
 const ActivityFeedTempComponent=()=>{

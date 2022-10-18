@@ -2,7 +2,9 @@ import '../post.css';
 import React, { useState, Fragment } from "react";
 
 
-const Post = () => {
+const Post = (props) => {
+
+    
     return (
         <div className="post">
             <div className="postWrapper">
@@ -14,7 +16,7 @@ const Post = () => {
                             alt=""
                         />
                         <span
-                            className="postUsername">jmscn
+                            className="postUsername"> jmscn
                         </span>
                     </div>
                 </div>
@@ -32,7 +34,10 @@ const Post = () => {
                         <img className="likeIcon" src= {require("../images/comment.png")} alt="" />
                         <span className="postLikeCounter"> 32 likes</span>
                     </div>
-                    
+                    <form id="commentBox">
+                    <label></label>
+                        <input type="text" className="commentBox" size="50" placeholder="Enter a comment..."/>
+                    </form>
                     <div className="postBottomRight">
                         
                         <span className="postCommentText">9 comments</span>

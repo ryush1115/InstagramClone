@@ -8,7 +8,7 @@ const CreatePost = ({profilePost, setProfilePost, onDrop, accept, open}) => {
     // const { toggleModal } = props;
     // const filepickerRef = useRef(null);
 
-    // const [postImage, setPostImage] = useState(null);
+    // const [postImage, setPostImage] = useState(null);f
     // const [uploadedPostImage, setUploadedPostImage] = useState(null);
     
     const handleChange = () => {
@@ -51,11 +51,17 @@ const CreatePost = ({profilePost, setProfilePost, onDrop, accept, open}) => {
               Drag’ n’ drop some files here, or click to select files
             </p>
           )}
+
+
           <button type="button" onClick={open} className="btn">
             Click to select files
           </button>
         </div>
       </div>
+      <form id="commentBox">
+        
+        <input type="text" className="commentBox" size="20" placeholder="Enter a comment..."/>
+      </form>
       
       <aside>
         <ul>{files}</ul>

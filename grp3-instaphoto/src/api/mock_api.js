@@ -61,7 +61,6 @@ export const getPost = async(PostId) => {
 }
 
 
-
 // Takes the id of a User as input
 // and sends a Get request to the /User: id endpoint
 // returns the attributes of the User
