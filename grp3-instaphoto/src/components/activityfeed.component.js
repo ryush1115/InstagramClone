@@ -7,6 +7,22 @@ import Post2 from './post2.component';
 import CreatePost from './createpost.component';
 import { getUsers, getUser, createUser, getTimelinePosts, getPosts, createPost } from '../api/mock_api';
 
+// TO DO: JC
+// use map data to render multiple iterations of my Post component
+// 1. import the json file (just import it).
+// 2. pass the parameters to the post compoennt
+// 3. use a map.
+
+
+// at row # 117, pass in the data from the above json file, before creating each post
+
+
+// Qn.
+// How to pass props into Post Component?
+// How to use Map to create multiple Posts/ infinity scroll?
+
+
+
 const ActivityFeedComponent=()=>{
 
    function PostRow(props) {

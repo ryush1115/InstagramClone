@@ -47,11 +47,11 @@ function App() {
                     Activity Feed
                   </Link>
                 </li>
-                <li className="nav-item">
+                {/* <li className="nav-item">
                   <Link className="nav-link" to={'/friendbar'}>
                     FriendBar
                   </Link>
-                </li>
+                </li> */}
                 <li className = "nav-item">
                   <Link className = "nav-link" to={'/FriendSuggestion'}>
                     Friend Suggestion
