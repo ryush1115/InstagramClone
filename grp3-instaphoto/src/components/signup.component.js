@@ -20,27 +20,25 @@ const SignupComponent=()=>{
 
   const handleOnChange = (e) => {
     // update the fields inside event handlers
-    // set username, email and password
 
     if (e.target.name === 'username') {
       newUsername = e.target.value;
-      // setUsername(e.target.value)
+      //setUsername(e.target.value)
     }
     if (e.target.name === 'email') {
       newEmail = e.target.value;
-      setEmail(e.target.value)
+      //setEmail(e.target.value)
 
     }
     if (e.target.name === 'password') {
       newPassword = e.target.value;
-      setPassword(e.target.value)
+      //setPassword(e.target.value)
 
     }
     if (e.target.name === 'confirmPassword') {
       newConfirmPassword = e.target.value;
-      setConfirmPassword(e.target.value)
+      //setConfirmPassword(e.target.value)
     }
-
     //setUsername(e.target.value)
     //setEmail(e.target.value)
 
@@ -69,14 +67,12 @@ const SignupComponent=()=>{
 
     //TO DO: check if email is not in the database
     //TO DO: check if username is not in the database
-
     // if no error, then navigate to userProfile
-
     console.log(username, email, password, confirmPassword);
-    console.log(error);
+    
 
     if (validateEmail(email) && password.length >= 8) {
-      console.log(error);
+      
       // if all validated, then add user to the json database
       // Post a User object to the database with email and password
       // call createUser

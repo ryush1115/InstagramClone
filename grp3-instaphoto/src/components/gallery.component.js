@@ -2,7 +2,6 @@ import React, { useState, Fragment} from "react";
 import '../userprofile.css';
 import Sidebar from './sidebar.component'
 
-
 const Gallery =({imageSrc, postCount})=>{
 
     console.log('printing within gallery' + postCount);
@@ -15,7 +14,6 @@ const Gallery =({imageSrc, postCount})=>{
         const myImage = document.createElement('img');
         myImage.src=imageSrc.src;
         myImage.className = 'gallery-image';
- 
 
         galleryItemElem.appendChild(myImage);
         // this.props.profileRef.current.scrollTo(50).prepend(galleryItemElem);

@@ -78,59 +78,58 @@
   "Post": [
     {
       "username": "Augusta_Breitenberg76",
-      "postImage": "http://loremflickr.com/640/480/?lock=1",
-      "postComment": "Cute cat!!!!",
+      "postImage": "http://loremflickr.com/640/480",
+      "postComment": [
+        "Adorable!!",
+        "very cute!"
+      ],
       "publicPrivate": false,
       "postTagOfOtherUsers": [],
-      "id": "1"
+      "postId": "1"
     },
     {
       "username": "Gerda.Ziemann",
-      "postImage": "http://loremflickr.com/640/480/?lock=2  ",
-      "postComment": "Adorable cat!!!",
+      "postImage": "http://loremflickr.com/640/480",
+      "postComment": [
+        "Adorable!!",
+        "very cute!"
+      ],
       "publicPrivate": false,
       "postTagOfOtherUsers": [],
-      "id": "2"
+      "postId": "2"
     },
     {
       "username": "Hans53",
-      "postImage": "http://loremflickr.com/640/480/paris?lock=1",
-      "postComment": "Are you in paris??",
+      "postImage": "http://loremflickr.com/640/480",
+      "postComment": [
+        "Adorable!!",
+        "very cute!"
+      ],
       "publicPrivate": false,
       "postTagOfOtherUsers": [],
-      "id": "3"
+      "postId": "3"
     },
     {
       "username": "Kendra96",
-      "postImage": "https://loremflickr.com/g/320/240/paris?lock=2",
-      "postComment": "Cool photo",
+      "postImage": "http://loremflickr.com/640/480",
+      "postComment": [
+        "Adorable!!",
+        "very cute!"
+      ],
       "publicPrivate": false,
       "postTagOfOtherUsers": [],
-      "id": "4"
+      "postId": "4"
     },
     {
       "username": "Mason_Satterfield",
-      "postImage": "http://loremflickr.com/640/480/dog?lock=1",
-      "postComment": "Woof woor!!",
+      "postImage": "http://loremflickr.com/640/480",
+      "postComment": [
+        "Adorable!!",
+        "very cute!"
+      ],
       "publicPrivate": false,
       "postTagOfOtherUsers": [],
-      "id": "5"
-    },
-    {
-      "username": "helllooo",
-      "postImage": "http://loremflickr.com/640/480?lock=8\n      ",
-      "postComment": "my first comment!\n      ",
-      "publicPrivate": "false\n      ",
-      "postTageOfOtherUsers": "undefined",
-      "id": "CmsW4ln"
-    },
-    {
-      "username": "helllooo",
-      "postImage": "http://loremflickr.com/640/480\n      ",
-      "postComment": "my second comment\n      ",
-      "publicPrivate": "false\n      ",
-      "postTageOfOtherUsers": "undefined",
-      "id": "xuKqSvJ"
+      "postId": "5"
     }
   ],
   "Comment": [

@@ -61,7 +61,6 @@ export const getPost = async(PostId) => {
 }
 
 
-
 // Takes the id of a User as input
 // and sends a Get request to the /User: id endpoint
 // returns the attributes of the User
@@ -99,6 +98,7 @@ export const createPost = async (PostObject) => {
     const response = await axios.post(
       `${rootURL}/Post`,
       `username=${PostObject.username}&postImage=${PostObject.postImage}
+      &postComment=${PostObject.postComment}
       &publicPrivate=${PostObject.publicPrivate}
       &postTageOfOtherUsers=${PostObject.postTageOfOtherUsers}`
     );
