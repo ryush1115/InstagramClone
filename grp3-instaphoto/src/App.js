@@ -6,8 +6,6 @@ import Login from './components/login.component'
 import SignUp from './components/signup.component'
 import Userprofile from './components/userprofile.component'
 import ActivityFeed from './components/activityfeed.component'
-import ActivityFeed2 from './components/activityfeed2.component'
-
 import FriendBar from './components/friendbar.component'
 import FriendSuggestion from './components/FriendSuggestion.component'
 
@@ -50,11 +48,6 @@ function App() {
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to={'/activity-feed2'}>
-                    Activity Feed 2
-                  </Link>
-                </li>
-                <li className="nav-item">
                   <Link className="nav-link" to={'/friendbar'}>
                     FriendBar
                   </Link>
@@ -65,11 +58,11 @@ function App() {
                   </Link>
                 </li>
 
-                <li className = "createpost">
+                {/* <li className = "createpost">
                   <Link className = "nav-link" to={'/createpost'}>
                     Create Post
                   </Link>
-                </li>
+                </li> */}
 
               </ul>
             </div>
@@ -85,7 +78,6 @@ function App() {
               <Route path="/sign-up" element={<SignUp />} />
               <Route path="/user-profile" element={<Userprofile />} />
               <Route path="/activity-feed" element={<ActivityFeed />} />
-              <Route path="/activity-feed2" element={<ActivityFeed2 />} />
               <Route path = "/friendbar" element = {<FriendBar />}/>
               <Route path = "/FriendSuggestion" element = {<FriendSuggestion />}/>
 
