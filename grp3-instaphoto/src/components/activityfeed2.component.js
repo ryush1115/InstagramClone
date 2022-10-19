@@ -30,7 +30,7 @@ const ActivityFeedComponent2=()=>{
       <tr>
       <div className="post"
           >
-          {props.post.username}
+          {/* {props.post.username} */}
           <div className="postWrapper">
               <div className="postTop">
                   <div className="postTopLeft">
@@ -63,7 +63,7 @@ const ActivityFeedComponent2=()=>{
                     {props.post.postComment}
                   </div>
                   <div className="postBottomRight">
-                      <span className="postCommentText">{props.post.postComment} comments</span>
+                      <span className="postCommentText"> Click for more comments</span>
                   </div>
               </div>
           </div>
@@ -136,13 +136,12 @@ const ActivityFeedComponent2=()=>{
 
     return(
       <div>
-        <form>
+        {/* <form>
           <input
             type="text"
             placeholder="filter by username..."
-            
           />
-        </form>
+        </form> */}
         <PostTable username={username} posts={props.roster}/>
       </div>
     )
@@ -237,6 +236,10 @@ const ActivityFeedComponent2=()=>{
       <div>
         {' '}
         <FilterablePostTable reload={loadData}/>
+        <div>
+          <label> Create a post here!! </label>
+          
+        </div>
         <form id='add-post' onSubmit={handleCreatePost}>
           <input
             type="text"
@@ -263,39 +266,31 @@ const ActivityFeedComponent2=()=>{
   }
 
   return (
-        <Fragment>
-        
-<header>
-<AddPost />
-<div class="container">
-    <div class="profile">
-        <div class="profile-image">
-            <img src={require('../images/grp3.PNG')} alt=""/>
-        </div>
-        <div class="profile-user-settings">
-            <h1 class="profile-user-name">grp3foreva</h1>
-        </div>
-    </div>
-</div>
-
-
-
-</header>
+    <Fragment>        
+      <header>
+      <div class="container">
+          <div class="profile">
+              <div class="profile-image">
+                  <img src={require('../images/grp3.PNG')} alt=""/>
+              </div>
+              <div class="profile-user-settings">
+                  <h1 class="profile-user-name">grp3foreva</h1>
+              </div>
+          </div>
+      </div>
+      </header>
 
 <main>
+  
 <div class="container">
 <div class="feed">
     <div class="feedWrapper">
-        <Post/>
-
-
+    <AddPost />
     </div>
 </div>
 </div>
 </main>
-
 </Fragment>
 )
 }
-
 export default ActivityFeedComponent2;
