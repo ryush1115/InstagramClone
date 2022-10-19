@@ -3,6 +3,7 @@ import '../activityfeed.css';
 import '../userprofile.css';
 import { Navbar, Card, ListGroup, ListGroupItem } from 'react-bootstrap';
 import Post from './post.component';
+import Post2 from './post2.component';
 import CreatePost from './createpost.component';
 import { getUsers, getUser, createUser, getTimelinePosts, getPosts, createPost } from '../api/mock_api';
 
@@ -10,56 +11,66 @@ import { getUsers, getUser, createUser, getTimelinePosts, getPosts, createPost }
 // use map data to render multiple iterations of my Post component
 // 1. import the json file (just import it).
 // 2. pass the parameters to the post compoennt
-// 3. use a map. 
+// 3. use a map.
 
 
 // at row # 117, pass in the data from the above json file, before creating each post
 
 
-// Qn. 
+// Qn.
 // How to pass props into Post Component?
 // How to use Map to create multiple Posts/ infinity scroll?
 
-// Look at the Student Roster Example
 
 
-const ActivityFeedComponent2=()=>{ 
-  
-  /*
-  // local state to store and update list of posts
-  const [roster, setRoster] = useState([]);
-
-  // ref to indicate if this is the first rendering
-  const firstRendering = useRef(true);
-  // get the list of posts from the backend
-  useEffect(() => {
-    // get the list of posts from the backend
-    async function fetchData() {
-      const data = await getPosts();
-      setRoster(data);
-    }
-    // only load data on the first rendering, 
-    // or when a new Post is created
-
-    if (firstRendering.current || props.reload.current){
-      firstRendering.current = false;
-      props.reload.current = false; // set reload to false
-      fetchData();
-    }
-  }); 
-  */
-
-
-  
+const ActivityFeedComponent2=()=>{
 
    function PostRow(props) {
     return (
       <tr>
-        <Post />
+      <div className="post"
+          >
+          {props.post.username}
+          <div className="postWrapper">
+              <div className="postTop">
+                  <div className="postTopLeft">
+                      {/* <img
+                          className="postProfileImg"
+                          src={require('../images/test.png')}
+                          alt=""
+                      /> */}
+                      <span
+                          className="postUsername"> {props.post.username}
+                      </span>
+                  </div>
+              </div>
+
+              <div className="postCenter">
+                  <img
+                  className="postImage"
+                  src={props.post.postImage}
+                  alt="" />
+              </div>
+
+              <div className="postBottom">
+                  <div className="postBottomLeft">
+                  </div>
+                  <form id="commentBox">
+                  <label></label>
+                      <input type="text" className="commentBox" size="50" placeholder="Enter a comment..."/>
+                  </form>
+                  <div>
+                    {props.post.postComment}
+                  </div>
+                  <div className="postBottomRight">
+                      <span className="postCommentText">{props.post.postComment} comments</span>
+                  </div>
+              </div>
+          </div>
+      </div>
       </tr>
     );
    }
-
 
   function PostTable(props) {
     // counter to provide unique key to rows
@@ -81,7 +92,7 @@ const ActivityFeedComponent2=()=>{
         if(usernameFilter === 'SHOW_ALL') {
           rows.push(
             <PostRow post={element}
-            key={counter.curret}
+            key={counter.current}
             />
           );
         } else {
@@ -110,25 +121,38 @@ const ActivityFeedComponent2=()=>{
 
     );
   }
-  
+
   /**
    * Searchbar component
    * pass the username entered as props to its children
-   * @param {} props 
+   * @param {} props
    */
 
   function SearchBar(props) {
     const [username, setUsername] = useState('');
     const handleFilterTextChange = (e) => {
       setUsername(e.target.value);
-    }
+    };
+
+    return(
+      <div>
+        <form>
+          <input
+            type="text"
+            placeholder="filter by username..."
+            
+          />
+        </form>
+        <PostTable username={username} posts={props.roster}/>
+      </div>
+    )
   }
 
   /**
    * FilterablePostsTable component
    * This component fetched the list of Posts fromthe
    * backend and pass it as props to its child
-   * @param {*} props 
+   * @param {*} props
    * @returns FilterablePostsTable elements
    */
 
@@ -142,7 +166,7 @@ const ActivityFeedComponent2=()=>{
       // get the list of posts from the backend
       async function fetchData() {
         const data = await getPosts();
-        setRoster(data);
+        setRoster(data); 
       }
 
       // only load data on the first rendering or
@@ -153,7 +177,11 @@ const ActivityFeedComponent2=()=>{
         fetchData();
       }
 
-    } )
+    });
+
+    return (
+      <SearchBar roster={roster}/>
+    )
   }
 
   function AddPost() {
@@ -168,8 +196,8 @@ const ActivityFeedComponent2=()=>{
     const loadData = useRef(false);
 
     let newUsername;
-    let newComment;
-    let newPostImage;
+    let newPostComment;
+    let newPostImage = "http://loremflickr.com/640/480"; // default to this image for HW2
 
     const handleOnChange = (e) => {
       // update fields inside event handlers
@@ -178,30 +206,28 @@ const ActivityFeedComponent2=()=>{
       }
 
       if (e.target.name === 'comment') {
-        newComment = e.target.value;
+        newPostComment = e.target.value;
       }
       if (e.target.name === 'postImage') {
         newPostImage = e.target.value;
-        newPostImage = "http://loremflickr.com/640/480";
+        newPostImage = `http://loremflickr.com/640/480`;
       }
     }
 
     const handleCreatePost = async (e) => {
       // stop default behavior to avoid reloading the page
       e.preventDefault();
-      const newPost = {username: newUsername, comment: newComment, postImage: newPostImage};
-
+      // create new Post variable
+      const newPost = {username: newUsername, postImage: newPostImage, postComment: newPostComment, publicPrivate:false, postTagOfOtherUsers:null, id:10};
       // clear the form
       const form = document.getElementById('add-post');
       form.reset();
-
       // send POST request to create the Post
       const newStoredPost = await createPost(newPost);
-
       // update LoadData
       loadData.current = true;
       // newStoredPost has an id
-      // then update state to trigger re-rendering and load 
+      // then update state to trigger re-rendering and load
       // the list of Post (FilterablePostTable) from
       // backend
       setNewPost(newStoredPost);
@@ -210,7 +236,8 @@ const ActivityFeedComponent2=()=>{
     return (
       <div>
         {' '}
-        <form id='add-post'>
+        <FilterablePostTable reload={loadData}/>
+        <form id='add-post' onSubmit={handleCreatePost}>
           <input
             type="text"
             name="username"
@@ -235,87 +262,11 @@ const ActivityFeedComponent2=()=>{
     )
   }
 
-
   return (
         <Fragment>
-        <Navbar className='home'>
-        <Card className='card'>
-        <div className = 'logo'>
-            <h>Instaphoto&nbsp;</h>
-            <img src={require('../images/logo.PNG')} alt="logo" />
-        </div>
-        <br></br>
-        <div>
-          <Card.Img
-            src={require('../images/grp3.PNG')}
-            variant='top'
-            className='sig'
-          />
-        <p className = 'username'> grp3foreva</p>
-        </div>
-        <div>
-          <Card.Body>
-            <Card.Text>
-              <div className='space'></div>
-              <ListGroup variant='flush'>
-                <ListGroupItem className='list'>
-                  {/* <span className='link' onClick={() => goToAnchor('section1')}> */}
-                  <span>
-                    Home
-                  </span>
-                </ListGroupItem>
-                <ListGroupItem className='list'>
-                  {/* <span className='link' onClick={() => goToAnchor('section2')}> */}
-                  <span>
-                    Create
-                  </span>
-                </ListGroupItem>
-                <ListGroupItem className='list'>
-                  {/* <span className='link' onClick={() => goToAnchor('section3')}> */}
-                  <span>
-                    Profile
-                  </span>
-                </ListGroupItem>
-              </ListGroup>
-            </Card.Text>
-          </Card.Body>
-          </div>
-          <br></br>
-          {/* <div className = 'suggestions'>
-            <p className="suggestion-text">Suggestions for you</p>
-            <button className="show-all-btn">See all</button>
-            <div className="profile-card">
-                <div>
-                    <img className = 'other-user' src={require('../images/grp3.PNG')} alt=""/>
-                </div>
-                <button className="action-btn" type="button">
-                    <span className="username">akikozzm</span>
-                    <span className="follow">Follow</span>
-                </button>
-            </div>
-            <div className="profile-card">
-                <div>
-                    <img className = 'other-user' src={require('../images/grp3.PNG')} alt=""/>
-                </div>
-                <button className="action-btn" type="button">
-                    <span className="username">akikozzm</span>
-                    <span className="follow">Follow</span>
-                </button>
-            </div>
-            <div className="profile-card">
-                <div>
-                    <img className = 'other-user' src={require('../images/grp3.PNG')} alt=""/>
-                </div>
-                <button className="action-btn" type="button">
-                    <span className="username">akikozzm</span>
-                    <span className="follow">Follow</span>
-                </button>
-            </div>
-          </div> */}
-        </Card>
-      </Navbar>
-
+        
 <header>
+<AddPost />
 <div class="container">
     <div class="profile">
         <div class="profile-image">
@@ -327,7 +278,7 @@ const ActivityFeedComponent2=()=>{
     </div>
 </div>
 
-<AddPost />
+
 
 </header>
 
@@ -340,11 +291,11 @@ const ActivityFeedComponent2=()=>{
 
     </div>
 </div>
-</div>    
+</div>
 </main>
 
 </Fragment>
-)  
+)
 }
 
 export default ActivityFeedComponent2;

@@ -98,6 +98,7 @@ export const createPost = async (PostObject) => {
     const response = await axios.post(
       `${rootURL}/Post`,
       `username=${PostObject.username}&postImage=${PostObject.postImage}
+      &postComment=${PostObject.postComment}
       &publicPrivate=${PostObject.publicPrivate}
       &postTageOfOtherUsers=${PostObject.postTageOfOtherUsers}`
     );

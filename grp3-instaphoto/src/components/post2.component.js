@@ -2,7 +2,7 @@ import '../post.css';
 import React, { useState, Fragment } from "react";
 
 
-const Post = () => {
+const Post2 = (props) => {
 
     return (
         <div className="post"
@@ -30,9 +30,6 @@ const Post = () => {
 
                 <div className="postBottom">
                     <div className="postBottomLeft">
-                        <img className="likeIcon" src= {require("../images/heart.png")} alt="" />
-                        <img className="likeIcon" src= {require("../images/comment.png")} alt="" />
-                        <span className="postLikeCounter"> 32 likes</span>
                     </div>
                     <form id="commentBox">
                     <label></label>
@@ -40,7 +37,7 @@ const Post = () => {
                     </form>
                     <div className="postBottomRight">
 
-                        <span className="postCommentText">9 comments</span>
+                        <span className="postCommentText">{} comments</span>
 
                     </div>
 
@@ -52,4 +49,4 @@ const Post = () => {
     )
 
 }
-export default Post;
+export default Post2;
