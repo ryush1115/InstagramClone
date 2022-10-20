@@ -17,7 +17,7 @@ const FollowingList = (props) => {
     const [FriendSuggestionList, setFriendSuggestionList] = useState([{ name: "Akikos", image: ellipse507, description: "This is a cool person", isfollowed: true }]);
     return (
             <div className="container-0_FriendSuggestion">
-                <span className="text-0_FriendSuggestion">Suggested</span>
+                <span className="text-0_FriendSuggestion">Following</span>
                 {FriendSuggestionList.map(v => {
                     return <FriendSuggestionComponent name={v.name} description={v.description} image={v.image} isfollowed={v.isfollowed} />
                 })}
