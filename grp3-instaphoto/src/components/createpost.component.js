@@ -1,6 +1,5 @@
 import '../createpost.css';
 import React, { useState, Fragment, useRef, useContext} from "react";
-// import Context from '../context';
 // import axios from 'axios';
 import { useDropzone } from "react-dropzone";
 
@@ -59,7 +58,6 @@ const CreatePost = ({profilePost, setProfilePost, onDrop, accept, open}) => {
         </div>
       </div>
       <form id="commentBox">
-        
         <input type="text" className="commentBox" size="20" placeholder="Enter a comment..."/>
       </form>
       

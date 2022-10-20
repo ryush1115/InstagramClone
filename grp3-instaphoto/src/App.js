@@ -6,9 +6,9 @@ import Login from './components/login.component'
 import SignUp from './components/signup.component'
 import Userprofile from './components/userprofile.component'
 import ActivityFeed from './components/activityfeed.component'
-import FriendBar from './components/friendbar.component'
+import CreatePost from './components/createpost.component'
 import FriendSuggestion from './components/FriendSuggestion.component'
-
+import DragDrop from './components/dragdrop.component'
 
 // import Userpic from './components/test'
 import Gallery from './components/gallery.component'
@@ -57,12 +57,17 @@ function App() {
                     Friend Suggestion
                   </Link>
                 </li>
-
-                {/* <li className = "createpost">
+                { <li className = "createpost">
                   <Link className = "nav-link" to={'/createpost'}>
                     Create Post
                   </Link>
-                </li> */}
+                </li>}
+                { <li className = "createpost">
+                  <Link className = "nav-link" to={'/DragDrop'}>
+                    Create Post_2
+                  </Link>
+                </li>}
+
 
               </ul>
             </div>
@@ -78,14 +83,13 @@ function App() {
               <Route path="/sign-up" element={<SignUp />} />
               <Route path="/user-profile" element={<Userprofile />} />
               <Route path="/activity-feed" element={<ActivityFeed />} />
-              <Route path = "/friendbar" element = {<FriendBar />}/>
               <Route path = "/FriendSuggestion" element = {<FriendSuggestion />}/>
-
               {/* <Route path="/user-pic" element={<Userpic />} />                */}
               <Route path="/gallery" element={<Gallery />} />
               <Route path="/sidebar" element={<Sidebar />} />
               <Route path="/userprofile" element={<Userprofile />} />
               <Route path="/createpost" element={<Createpost />} />
+              <Route path="/dragdrop" element={<DragDrop />} />
 
             </Routes>
           </div>

@@ -44,6 +44,11 @@ const SignupComponent=()=>{
 
   }
 
+  const handleSubmitClickAndCreateUser = (e) => {
+    handleSubmitClick(e);
+  
+  }
+
   const handleSubmitClick = (e) => {
     e.preventDefault();
     console.log("test output!!");
@@ -72,10 +77,10 @@ const SignupComponent=()=>{
     
 
     if (validateEmail(email) && password.length >= 8) {
-      
       // if all validated, then add user to the json database
       // Post a User object to the database with email and password
       // call createUser
+      handleCreateNewStudent(e);
 
       // navigate to the home page
       navigate('/userprofile');
@@ -110,15 +115,18 @@ const SignupComponent=()=>{
      */
   }  
 
-  // how to call a synchronous (handle creation) and asynchronous function (create new student), based on the same click event?
-  // onChange={e => setEmail(e.target.value)}
+  const navigateToUserProfile = () => {
+    navigate('/userprofile');
+  };
 
   const navigateToLogin = () => {
     navigate('/sign-in');
   };
 
+  // onClick={handleCreateNewStudent}
+  // onSubmit={handleCreateNewStudent}
     return (
-      <form className = "auth-inner">
+      <form className = "auth-inner" onSubmit={handleSubmitClick}>
         <div className="header">
             <h3>Welcome to Instaphoto&nbsp;</h3>
             <img src={require('../images/logo.PNG')} alt="logo" />
@@ -134,7 +142,7 @@ const SignupComponent=()=>{
             className="form-control"
             placeholder="Username"
             name="username"
-            value={username}
+            //value={username}
             onChange={handleOnChange}
           />
         </div>
@@ -145,7 +153,7 @@ const SignupComponent=()=>{
             className="form-control" 
             placeholder="Email" 
             name="email"
-            value={email}
+            //value={email}
             onChange={handleOnChange}
             />
         </div>
@@ -156,7 +164,7 @@ const SignupComponent=()=>{
             className="form-control"
             name="password"
             placeholder="Password (more than 8 characters)"
-            value={password}
+            //value={password}
             onChange={handleOnChange}
           />
         </div>
@@ -167,13 +175,13 @@ const SignupComponent=()=>{
             className="form-control"
             placeholder="Re-enter password"
             name="confirmPassword"
-            value={confirmPassword}
+            //value={confirmPassword}
             onChange={handleOnChange}
           />
         </div>
         <br></br>
         <div className="d-grid">
-          <button type="submit" className="btn btn-primary" onClick={handleCreateNewStudent}>
+          <button type="submit" className="btn btn-primary">
             Finish
           </button>
         </div>
