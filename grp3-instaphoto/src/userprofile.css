@@ -103,6 +103,10 @@
     color: #000;
 }
 
+.create-hover {
+  cursor: pointer;
+}
+
 .sub-text{
     color: rgba(0, 0, 0, 0.5);
     font-size:12px;

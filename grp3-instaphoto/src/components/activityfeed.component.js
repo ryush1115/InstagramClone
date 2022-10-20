@@ -2,26 +2,7 @@ import React, { useState, Fragment, useEffect, useRef} from "react";
 import '../activityfeed.css';
 import '../userprofile.css';
 import { Navbar, Card, ListGroup, ListGroupItem } from 'react-bootstrap';
-import Post from './post.component';
-import Post2 from './post2.component';
-import CreatePost from './createpost.component';
 import { getUsers, getUser, createUser, getTimelinePosts, getPosts, createPost } from '../api/mock_api';
-
-// TO DO: JC
-// use map data to render multiple iterations of my Post component
-// 1. import the json file (just import it).
-// 2. pass the parameters to the post compoennt
-// 3. use a map.
-
-
-// at row # 117, pass in the data from the above json file, before creating each post
-
-
-// Qn.
-// How to pass props into Post Component?
-// How to use Map to create multiple Posts/ infinity scroll?
-
-
 
 const ActivityFeedComponent=()=>{
 
@@ -160,11 +141,11 @@ const ActivityFeedComponent=()=>{
     const [roster, setRoster] = useState([]);
     // ref to indicate if this is the first rendering
     const firstRendering = useRef(true);
-    // get the list of posts from the backend
+    // get the list of Timeline Posts from the backend
     useEffect(()=>{
-      // get the list of posts from the backend
+      // get the list of Timeline Posts from the backend
       async function fetchData() {
-        const data = await getPosts();
+        const data = await getTimelinePosts();
         setRoster(data); 
       }
 
@@ -232,15 +213,9 @@ const ActivityFeedComponent=()=>{
       setNewPost(newStoredPost);
     };
 
-    return (
-      <div>
-        {' '}
-        <FilterablePostTable reload={loadData}/>
-        <div>
-          <label> Create a post here!! </label>
-          
-        </div>
-        <form id='add-post' onSubmit={handleCreatePost}>
+
+    /**
+     * <form id='add-post' onSubmit={handleCreatePost}>
           <input
             type="text"
             name="username"
@@ -261,6 +236,14 @@ const ActivityFeedComponent=()=>{
           />
           <button type="submit">Create Post</button>
         </form>
+     */
+
+    return (
+      <div>
+        {' '}
+        <FilterablePostTable reload={loadData}/>
+        <div>
+        </div>
       </div>
     )
   }

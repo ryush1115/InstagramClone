@@ -11,6 +11,10 @@ const UserprofileComponent=()=>{
         navigate('/FriendSuggestion');
       };
 
+    const navigateToCreatePost = () => {
+        navigate('/dragdrop');
+      };
+      
     return (
         <Fragment>
         <Navbar className='home'>
@@ -42,9 +46,11 @@ const UserprofileComponent=()=>{
                 </ListGroupItem>
                 <ListGroupItem className='list'>
                   {/* <span className='link' onClick={() => goToAnchor('section2')}> */}
-                  <span>
+                  <div className='create-hover'>
+                    <span  onClick = {navigateToCreatePost}>
                     Create
-                  </span>
+                    </span>
+                  </div>
                 </ListGroupItem>
                 <ListGroupItem className='list'>
                   {/* <span className='link' onClick={() => goToAnchor('section3')}> */}

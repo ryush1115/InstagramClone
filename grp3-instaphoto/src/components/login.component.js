@@ -16,7 +16,7 @@ const LoginComponent=()=>{
   const navigateToSignup = () => {
     navigate('/sign-up');
   };
-  //const [error, setError] = useState('');
+
 
   // 1. *** Don't do this for HW2 *** read the json database first
   // 2. Check whether the email values are in the database by calling API with specific ID

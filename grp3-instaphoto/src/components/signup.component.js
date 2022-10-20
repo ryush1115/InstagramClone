@@ -15,8 +15,16 @@ const SignupComponent=()=>{
   // new User fields input in the form
   let newUsername;
   let newEmail;
-  let newPassword;
-  let newConfirmPassword;
+  let newPassword = '';
+  let newConfirmPassword = '';
+
+  const navigateToUserProfile = () => {
+    navigate('/userprofile');
+  };
+
+  const navigateToLogin = () => {
+    navigate('/sign-in');
+  };
 
   const handleOnChange = (e) => {
     // update the fields inside event handlers
@@ -39,48 +47,41 @@ const SignupComponent=()=>{
       newConfirmPassword = e.target.value;
       //setConfirmPassword(e.target.value)
     }
-    //setUsername(e.target.value)
-    //setEmail(e.target.value)
 
-  }
-
-  const handleSubmitClickAndCreateUser = (e) => {
-    handleSubmitClick(e);
-  
+    console.log(newUsername, newEmail, newPassword, newConfirmPassword);
   }
 
   const handleSubmitClick = (e) => {
     e.preventDefault();
-    console.log("test output!!");
-    console.log("password length: " + password.length);
-    console.log(username, email, password, confirmPassword);
+    console.log("Printing test output: ");
+    console.log("password: " + newPassword);
+    console.log(newUsername, newEmail, newPassword, newConfirmPassword);
 
     // validate email format
-    if (!validateEmail(email)) {
+    if (!validateEmail(newEmail)) {
       console.log('Invalid Email');
     }
 
-    // check if password
-    if (password.length < 8) {
+    // check if password is the right length
+    if (newPassword.length < 8) {
       console.log('Password must be at least 8 chars long');
     }
 
     // check of password and confirm password are identical
-    if (confirmPassword !== password) {
+    if (newConfirmPassword !== newPassword) {
       console.log('Passwords entered do not match!');
     }
 
     //TO DO: check if email is not in the database
     //TO DO: check if username is not in the database
     // if no error, then navigate to userProfile
-    console.log(username, email, password, confirmPassword);
+    // console.log(username, email, password, confirmPassword);
     
-
-    if (validateEmail(email) && password.length >= 8) {
+    if (validateEmail(newEmail) && newPassword.length >= 8 && newConfirmPassword === newPassword) {
       // if all validated, then add user to the json database
       // Post a User object to the database with email and password
       // call createUser
-      handleCreateNewStudent(e);
+      //handleCreateNewStudent(e);
 
       // navigate to the home page
       navigate('/userprofile');
@@ -96,35 +97,14 @@ const SignupComponent=()=>{
   const handleCreateNewStudent = async(e) => {
     // stop default behavior to avoid reloading the page
     e.preventDefault();
-  
     // create new User variable
     const newUser = {username: newUsername, email: newEmail, password: newPassword, profilePicture:"",follow:[]};
 
     // send POST request to create new User
     const newStoredUser = await createUser(newUser);
-
     console.log("New Student Created");
-
-    /*
-    "email": "Webster2@hotmail.com",
-        "username": "Elmer.Weissnat10",
-        "password": "F2KC9R__6fRb8xI",
-        "profilePicture": "http://loremflickr.com/640/480",
-        "follow": ["Frederic.Strosin5"],
-        "id": "1"
-     */
   }  
 
-  const navigateToUserProfile = () => {
-    navigate('/userprofile');
-  };
-
-  const navigateToLogin = () => {
-    navigate('/sign-in');
-  };
-
-  // onClick={handleCreateNewStudent}
-  // onSubmit={handleCreateNewStudent}
     return (
       <form className = "auth-inner" onSubmit={handleSubmitClick}>
         <div className="header">
@@ -142,7 +122,6 @@ const SignupComponent=()=>{
             className="form-control"
             placeholder="Username"
             name="username"
-            //value={username}
             onChange={handleOnChange}
           />
         </div>
@@ -153,7 +132,6 @@ const SignupComponent=()=>{
             className="form-control" 
             placeholder="Email" 
             name="email"
-            //value={email}
             onChange={handleOnChange}
             />
         </div>
@@ -164,7 +142,6 @@ const SignupComponent=()=>{
             className="form-control"
             name="password"
             placeholder="Password (more than 8 characters)"
-            //value={password}
             onChange={handleOnChange}
           />
         </div>
@@ -175,7 +152,6 @@ const SignupComponent=()=>{
             className="form-control"
             placeholder="Re-enter password"
             name="confirmPassword"
-            //value={confirmPassword}
             onChange={handleOnChange}
           />
         </div>

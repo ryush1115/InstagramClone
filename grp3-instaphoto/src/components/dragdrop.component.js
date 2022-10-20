@@ -50,7 +50,7 @@ function DragDrop() {
   let newPostComment;
   let newPostImage = "http://loremflickr.com/640/480"; // default to this image for HW2
 
-  const handleChange = function(e) {
+  const handleOnChange = function(e) {
     e.preventDefault();
     
     if (e.target.name==="comment") {
@@ -74,7 +74,7 @@ function DragDrop() {
     const newPost = {username: newUsername, postImage: newPostImage, postComment: newPostComment, publicPrivate:false, postTagOfOtherUsers:null, id:10};
     // clear the form
     const form = document.getElementById('add-post');
-    form.reset();
+    
     // send POST request to create the Post
     const newStoredPost = await createPost(newPost);
     
@@ -84,22 +84,48 @@ function DragDrop() {
     // backend
     setNewPost(newStoredPost);
   };
-
-  // when dragActive is true, add an invisible elemnt to cover the entire state form. 
-  // this listens to the events without interference from any other elements.  
-  return (
+  /**
+   * return (
       <form id="form-file-upload" onDragEnter={handleDrag} onSubmit={(e) => e.preventDefault()}>
-        <input ref={inputRef} type="file" name="postImage" id="input-file-upload" multiple={true} onChange={handleChange}/>
+        <input ref={inputRef} type="file" name="postImage" id="input-file-upload" multiple={true} onChange={handleOnChange}/>
         <label id="label-file-upload" htmlFor="input-file-upload" className={dragActive ? "drag-active": ""}>
           <div>
             <p>Drag and drop your photo here!</p>
             <button className="upload-button" onClick={onButtonClick}>Upload a file</button>
           </div> 
-          <input type="text" name="comment" placeholder="Caption for post..." onChange={handleChange}/>
+          <input type="text" name="comment" placeholder="Caption for post..." onChange={handleOnChange}/>
         </label>
         <button type="submit">Create Post</button>
         {dragActive && <div id="drag-file-element" onDragEnter={handleDrag} onDragLeave={handleDrag} onDragOver={handleDrag} onDrop={handleDrop}></div> }
       </form>
+    );
+   */
+
+  // when dragActive is true, add an invisible elemnt to cover the entire state form. 
+  // this listens to the events without interference from any other elements.  
+  return (
+      <div className="create-post_">
+      <div className="create-post-content_">
+        <div className="create-post_title_">Create a new post!</div>
+        <form id="form-file-upload" onSubmit={handleCreatePost}>
+        <p>Create a Post Here!! </p>    
+            <input
+              type="text"
+              name="comment"
+              placeholder="Enter a comment..."
+              onChange={handleOnChange}
+            />
+            <input
+              type="file"
+              name="postImage"
+              id="postImage"
+              onChange={handleOnChange}
+            />
+            <button type="submit">Create Post</button>
+        </form>
+          
+      </div>
+      </div>
     );
   };
 

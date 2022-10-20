@@ -58,13 +58,8 @@ function App() {
                   </Link>
                 </li>
                 { <li className = "createpost">
-                  <Link className = "nav-link" to={'/createpost'}>
+                  <Link className = "nav-link" to={'/dragdrop'}>
                     Create Post
-                  </Link>
-                </li>}
-                { <li className = "createpost">
-                  <Link className = "nav-link" to={'/DragDrop'}>
-                    Create Post_2
                   </Link>
                 </li>}
 
