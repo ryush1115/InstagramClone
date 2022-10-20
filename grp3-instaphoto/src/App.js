@@ -8,6 +8,7 @@ import Userprofile from './components/userprofile.component'
 import ActivityFeed from './components/activityfeed.component'
 import FriendBar from './components/friendbar.component'
 import FriendSuggestion from './components/FriendSuggestion.component'
+import FollowingList from './components/FollowingList'
 
 
 // import Userpic from './components/test'
@@ -86,6 +87,8 @@ function App() {
               <Route path="/sidebar" element={<Sidebar />} />
               <Route path="/userprofile" element={<Userprofile />} />
               <Route path="/createpost" element={<Createpost />} />
+              <Route path="/FollowingList" element={<FollowingList />} />
+
 
             </Routes>
           </div>

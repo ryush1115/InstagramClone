@@ -43,6 +43,14 @@
       "id": "5"
     },
     {
+      "email": "grp3forevera@gmail.com",
+      "username": "grp3-forevera",
+      "password": "12345678",
+      "profilePicture": "\n",
+      "follow": [],
+      "id": "6"
+    },
+    {
       "email": "undefined",
       "username": "undefined\n        ",
       "password": "undefined",
@@ -133,6 +141,14 @@
       "id": "xuKqSvJ"
     }
   ],
+  "User1":[    {
+      "email": "grp3forevera@gmail.com",
+      "username": "grp3-forevera",
+      "password": "12345678",
+      "profilePicture": "\n",
+      "follow": ["akikozzm"],
+      "id": "7"
+    }],
   "Comment": [
     {
       "username": "Heath_Buckridge",
