@@ -1,4 +1,4 @@
-# Please navigate to Wiki for detailed instructions on running the App
+# Instruction to TAs: Please navigate to Wiki for detailed instructions on running the App
 
 # Getting Started with Create React App
 
