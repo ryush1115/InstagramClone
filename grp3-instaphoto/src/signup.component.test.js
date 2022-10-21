@@ -51,3 +51,16 @@ test("sign up form should be in the component", () => {
     const labelNode = component.getByText("Password");
     expect(labelNode).toBeInTheDocument();
 });
+
+test("sign up form should be in the component", () => {
+    const history = createMemoryHistory();
+    const component = render(
+        <Router location={history.location} navigator={history}>
+            <SignUp />,
+        </Router>,
+
+    );
+    const labelNode = component.getByText("Re-enter Password");
+    expect(labelNode).toBeInTheDocument();
+});
+

@@ -109,7 +109,7 @@ const SignupComponent=()=>{
       <form className = "auth-inner" onSubmit={handleSubmitClick}>
         <div className="header">
             <h3>Welcome to Instaphoto&nbsp;</h3>
-            <img src={require('../images/logo.PNG')} alt="logo" />
+            {/* <img src={require('../images/logo.PNG')} alt="logo" /> */}
         </div>
         <br></br>
         <div className = "login-and-password">

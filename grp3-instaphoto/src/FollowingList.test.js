@@ -47,17 +47,17 @@ import FollowingList from './components/FollowingList';
 // });
 //for create post
 //https://medium.com/expedia-group-tech/ui-testing-with-react-testing-library-and-jest-f3bd9d4ec2ea
-describe('Expand body button', async () => {
-    it('should render OrderModuleBody when clicked', () => {
-        // render your component
-        render(<YourComponent />) 
-        // access your button
-        const button = screen.getByTestId('orderModuleHeaderButton') 
-        // simulate button click
-        userEvent.click(button); 
+// describe('Expand body button', async () => {
+//     it('should render OrderModuleBody when clicked', () => {
+//         // render your component
+//         render(<YourComponent />) 
+//         // access your button
+//         const button = screen.getByTestId('orderModuleHeaderButton') 
+//         // simulate button click
+//         userEvent.click(button); 
 
-        // expect result
-        await waitFor(() =>  
-            expect(screen.getByText("Some content")).toBeInTheDocument());
-       });
-});
+//         // expect result
+//         await waitFor(() =>  
+//             expect(screen.getByText("Some content")).toBeInTheDocument());
+//        });
+// });

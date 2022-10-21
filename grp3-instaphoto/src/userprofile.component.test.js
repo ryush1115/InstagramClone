@@ -32,7 +32,7 @@ test("login form should be in the component",() =>{
     const history = createMemoryHistory();
     const component = render(
         <Router location={history.location} navigator={history}>
-            <Login />,
+            <Userprofile />,
         </Router>,
 
     );

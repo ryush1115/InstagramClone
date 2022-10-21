@@ -1,0 +1,173 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Weather app matches snapshot 1`] = `
+<div
+  className="App"
+>
+  <nav
+    className="navbar navbar-expand-lg navbar-light fixed-top"
+  >
+    <div
+      className="container"
+    >
+      <a
+        className="navbar-brand"
+        href="/sign-in"
+        onClick={[Function]}
+      >
+        Instaphoto
+      </a>
+      <div
+        className="collapse navbar-collapse"
+        id="navbarTogglerDemo02"
+      >
+        <ul
+          className="navbar-nav ml-auto"
+        >
+          <li
+            className="nav-item"
+          >
+            <a
+              className="nav-link"
+              href="/sign-in"
+              onClick={[Function]}
+            >
+              Login
+            </a>
+          </li>
+          <li
+            className="nav-item"
+          >
+            <a
+              className="nav-link"
+              href="/sign-up"
+              onClick={[Function]}
+            >
+              Sign up
+            </a>
+          </li>
+          <li
+            className="nav-item"
+          >
+            <a
+              className="nav-link"
+              href="/userprofile"
+              onClick={[Function]}
+            >
+              User Profile
+            </a>
+          </li>
+          <li
+            className="nav-item"
+          >
+            <a
+              className="nav-link"
+              href="/activity-feed"
+              onClick={[Function]}
+            >
+              Activity Feed
+            </a>
+          </li>
+          <li
+            className="nav-item"
+          >
+            <a
+              className="nav-link"
+              href="/FriendSuggestion"
+              onClick={[Function]}
+            >
+              Friend Suggestion
+            </a>
+          </li>
+          <li
+            className="createpost"
+          >
+            <a
+              className="nav-link"
+              href="/dragdrop"
+              onClick={[Function]}
+            >
+              Create Post
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div>
+    <div>
+      <div
+        className="auth-wrapper"
+      >
+        <form
+          className="auth-inner"
+        >
+          <div
+            className="header"
+          >
+            <h3>
+              Welcome to Instaphoto 
+            </h3>
+          </div>
+          <br />
+          <div
+            className="login-and-password"
+          >
+            <label>
+              Email
+            </label>
+            <input
+              className="form-control"
+              onChange={[Function]}
+              placeholder="Enter email"
+              type="email"
+              value=""
+            />
+          </div>
+          <div
+            className="login-and-password"
+          >
+            <label>
+              Password
+            </label>
+            <p>
+              Forgot password?
+            </p>
+            <input
+              className="form-control"
+              onChange={[Function]}
+              placeholder="Enter password"
+              type="password"
+              value=""
+            />
+          </div>
+          <br />
+          <div
+            className="d-grid"
+          >
+            <button
+              className="btn btn-primary"
+              onClick={[Function]}
+              type="submit"
+            >
+              Sign in
+            </button>
+          </div>
+          <p
+            className="login-create-account text-right"
+          >
+            Don't have an account? 
+            <br />
+            <a
+              href="#"
+              onClick={[Function]}
+            >
+               Sign up now to join communities across the globe 
+            </a>
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+`;

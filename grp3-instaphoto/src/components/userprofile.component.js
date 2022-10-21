@@ -25,12 +25,14 @@ const UserprofileComponent=()=>{
         <Card className='card'>
         <div className = 'logo'>
             <h>Instaphoto&nbsp;</h>
-            <img src={require('../images/logo.PNG')} alt="logo" />
+            <img alt="logo" />
+            {/* <img src={require('../images/logo.PNG')} alt="logo" /> */}
+
         </div>
         <br></br>
         <div>
           <Card.Img
-            src={require('../images/grp3.PNG')}
+            // src={require('../images/grp3.PNG')}
             variant='top'
             className='sig'
           />
@@ -71,7 +73,9 @@ const UserprofileComponent=()=>{
             <button className="show-all-btn" onClick={navigateToFriendSuggestion}>See all</button>
             <div className="profile-card">
                 <div>
-                    <img className = 'other-user' src={require('../images/grp3.PNG')} alt=""/>
+                    {/* <img className = 'other-user' src={require('../images/grp3.PNG')} alt=""/> */}
+                    <img className = 'other-user' alt=""/>
+
                 </div>
                 <button className="action-btn" type="button">
                     <span className="username">akikozzm</span>
@@ -80,7 +84,9 @@ const UserprofileComponent=()=>{
             </div>
             <div className="profile-card">
                 <div>
-                    <img className = 'other-user' src={require('../images/grp3.PNG')} alt=""/>
+                    <img className = 'other-user' alt=""/>
+                    {/* <img className = 'other-user' src={require('../images/grp3.PNG')} alt=""/> */}
+
                 </div>
                 <button className="action-btn" type="button">
                     <span className="username">akikozzm</span>
@@ -89,7 +95,9 @@ const UserprofileComponent=()=>{
             </div>
             <div className="profile-card">
                 <div>
-                    <img className = 'other-user' src={require('../images/grp3.PNG')} alt=""/>
+                    <img className = 'other-user' alt=""/>
+                    {/* <img className = 'other-user' src={require('../images/grp3.PNG')} alt=""/> */}
+
                 </div>
                 <button className="action-btn" type="button">
                     <span className="username">akikozzm</span>
@@ -105,7 +113,8 @@ const UserprofileComponent=()=>{
 <div class="container">
     <div class="profile">
         <div class="profile-image">
-            <img src={require('../images/grp3.PNG')} alt=""/>
+            <img alt=""/>
+            {/* <img src={require('../images/grp3.PNG')} alt=""/> */}
         </div>
         <div class="profile-user-settings">
             <h1 class="profile-user-name">grp3foreva</h1>
