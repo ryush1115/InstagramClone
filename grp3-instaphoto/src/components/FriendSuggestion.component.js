@@ -2,18 +2,18 @@ import React, { useState, Fragment, useRef, useContext } from "react";
 import { Navbar, Card, Button, ListGroup, ListGroupItem } from 'react-bootstrap';
 import ReactDOM from "react-dom";
 import '../FriendSuggestion.css';
-import ellipse507 from "../images/ellipse507.png";
-import ellipse504 from "../images/ellipse504.png";
-import ellipse505 from "../images/ellipse505.png";
-import ellipse508 from "../images/ellipse508.png";
-import ellipse5041 from "../images/ellipse5041.png";
-import ellipse506 from "../images/ellipse506.png";
+// import ellipse507 from "../images/ellipse507.png";
+// import ellipse504 from "../images/ellipse504.png";
+// import ellipse505 from "../images/ellipse505.png";
+// import ellipse508 from "../images/ellipse508.png";
+// import ellipse5041 from "../images/ellipse5041.png";
+// import ellipse506 from "../images/ellipse506.png";
 import FriendSuggestionComponent from "./FriendSuggestionComponent"
 import {sendFriendSuggestionList, }from '../api/mock_api';
 const FriendSuggestion = () => {
   const [buttonText, setButtonText] = useState('Follow');
   const [Following, setFollowing] = useState(false);
-  const [FriendSuggestionList, setFriendSuggestionList] = useState([{ name: "Akikos", image: ellipse507, description: "This is a cool person", isfollowed: false }]);
+  const [FriendSuggestionList, setFriendSuggestionList] = useState([{ name: "Akikos", image: null, description: "This is a cool person", isfollowed: false }]);
 //pull the list of users from the backend
   // useEffect(()=>{
   //   async function fetchData(){

@@ -18,12 +18,14 @@ const Sidebar =(props)=>{
         <Card className='card'>
         <div className = 'logo'>
             <h>Instaphoto&nbsp;</h>
-            <img src={require('../images/logo.PNG')} alt="logo" />
+            {/* <img src={require('../images/logo.PNG')} alt="logo" /> */}
+            <img alt="logo" />
+
         </div>
         <br></br>
         <div>
           <Card.Img
-            src={require('../images/grp3.PNG')}
+            // src={require('../images/grp3.PNG')}
             variant='top'
             className='sig'
           />
@@ -59,7 +61,9 @@ const Sidebar =(props)=>{
             <button className="show-all-btn">See all</button>
             <div className="profile-card">
                 <div>
-                    <img className = 'other-user' src={require('../images/grp3.PNG')} alt=""/>
+                    {/* <img className = 'other-user' src={require('../images/grp3.PNG')} alt=""/> */}
+                    <img className = 'other-user' alt=""/>
+
                 </div>
                 <button className="action-btn" type="button">
                     <span className="username">akikozzm</span>
@@ -68,7 +72,9 @@ const Sidebar =(props)=>{
             </div>
             <div className="profile-card">
                 <div>
-                    <img className = 'other-user' src={require('../images/grp3.PNG')} alt=""/>
+                    {/* <img className = 'other-user' src={require('../images/grp3.PNG')} alt=""/> */}
+                    <img className = 'other-user' alt=""/>
+
                 </div>
                 <button className="action-btn" type="button">
                     <span className="username">akikozzm</span>
@@ -77,7 +83,9 @@ const Sidebar =(props)=>{
             </div>
             <div className="profile-card">
                 <div>
-                    <img className = 'other-user' src={require('../images/grp3.PNG')} alt=""/>
+                    {/* <img className = 'other-user' src={require('../images/grp3.PNG')} alt=""/> */}
+                    <img className = 'other-user' alt=""/>
+
                 </div>
                 <button className="action-btn" type="button">
                     <span className="username">akikozzm</span>
