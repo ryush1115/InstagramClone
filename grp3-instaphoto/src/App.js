@@ -8,6 +8,7 @@ import Userprofile from './components/userprofile.component'
 import ActivityFeed from './components/activityfeed.component'
 import CreatePost from './components/createpost.component'
 import FriendSuggestion from './components/FriendSuggestion.component'
+import FollowingList from './components/FollowingList'
 import DragDrop from './components/dragdrop.component'
 
 // import Userpic from './components/test'
@@ -85,6 +86,8 @@ function App() {
               <Route path="/userprofile" element={<Userprofile />} />
               <Route path="/createpost" element={<Createpost />} />
               <Route path="/dragdrop" element={<DragDrop />} />
+              <Route path="/FollowingList" element={<FollowingList />} />
+
 
             </Routes>
           </div>

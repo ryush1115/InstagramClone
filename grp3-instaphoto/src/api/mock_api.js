@@ -85,8 +85,16 @@ export const getPassword = async(userEmail) => {
   }
 }
 
-// To do
-// Follow/Unfollow Users
+// Following a user = takes a username as input
+// and sends a POST request to the /User endpoint
+// 
+// export const sendFriendSuggestionList = async(UserObject)=>{
+//   try
+// }
+
+// // Unfollow a user = take a username as input
+// // and delete the user from that user's follow list
+// export const 
 
 
 // Create a Post (without the Id) as input

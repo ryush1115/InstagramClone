@@ -10,6 +10,9 @@ const UserprofileComponent=()=>{
     const navigateToFriendSuggestion = () => {
         navigate('/FriendSuggestion');
       };
+    const navigateToFollowingList = () =>{
+        navigate('/FollowingList')
+    }
 
     const navigateToCreatePost = () => {
         navigate('/dragdrop');
@@ -111,7 +114,7 @@ const UserprofileComponent=()=>{
             <ul>
                 <li><span class="profile-stat-count">39</span> posts</li>
                 <li><span class="profile-stat-count">169</span> followers</li>
-                <li><span class="profile-stat-count">667</span> following</li>
+                <li onClick={navigateToFollowingList}><span class="profile-stat-count">667</span> following</li>
             </ul>
         </div>
     </div>
