@@ -27,7 +27,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "jest --coverage",
+    "test": "jest --coverage --watchAll --collectCoverageFrom='src/components/**/*.{js,jsx}'",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {

@@ -28,49 +28,14 @@ import Createpost from './components/createpost.component'
 import { Router } from "react-router";
 import { createMemoryHistory } from 'history';
 
-// test('renders follow span', ()=>{
-//     const{getByText} =  render(
-//         <FriendSuggestion />
-//     );
-//     const linkElement = getByText("Follow");
-//     expect(linkElement).toBeInTheDocument();
-//   })
-
-test("Create button should be in the sidebar",() =>{
+test("login form should be in the component",() =>{
     const history = createMemoryHistory();
     const component = render(
         <Router location={history.location} navigator={history}>
-            <Sidebar />,
+            <Login />,
         </Router>,
 
     );
-    const labelNode = component.getByText("Create");
+    const labelNode = component.getByText("grp3foreva");
     expect(labelNode).toBeInTheDocument();
-
-});
-
-test("Create button should be in the sidebar",() =>{
-    const history = createMemoryHistory();
-    const component = render(
-        <Router location={history.location} navigator={history}>
-            <Sidebar />,
-        </Router>,
-
-    );
-    const labelNode = component.getByText("Home");
-    expect(labelNode).toBeInTheDocument();
-
-});
-
-test("Create button should be in the sidebar",() =>{
-    const history = createMemoryHistory();
-    const component = render(
-        <Router location={history.location} navigator={history}>
-            <Sidebar />,
-        </Router>,
-
-    );
-    const labelNode = component.getByText("Suggestions for you");
-    expect(labelNode).toBeInTheDocument();
-
 });
