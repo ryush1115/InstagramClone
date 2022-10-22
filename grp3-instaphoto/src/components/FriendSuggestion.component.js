@@ -9,12 +9,12 @@ import '../FriendSuggestion.css';
 // import ellipse5041 from "../images/ellipse5041.png";
 // import ellipse506 from "../images/ellipse506.png";
 import FriendSuggestionComponent from "./FriendSuggestionComponent"
-import {sendFriendSuggestionList, }from '../api/mock_api';
+import { sendFriendSuggestionList, } from '../api/mock_api';
 const FriendSuggestion = () => {
   const [buttonText, setButtonText] = useState('Follow');
   const [Following, setFollowing] = useState(false);
   const [FriendSuggestionList, setFriendSuggestionList] = useState([{ name: "Akikos", image: null, description: "This is a cool person", isfollowed: false }]);
-//pull the list of users from the backend
+  //pull the list of users from the backend
   // useEffect(()=>{
   //   async function fetchData(){
   //     const data = await getList
@@ -126,8 +126,8 @@ const FriendSuggestion = () => {
 
       <div className="container-0_FriendSuggestion">
         <span className="text-0_FriendSuggestion">Suggested</span>
-        {FriendSuggestionList.map(v=>{
-          return <FriendSuggestionComponent name={v.name} description={v.description} image = {v.image} isfollowed={v.isfollowed}/>
+        {FriendSuggestionList.map(v => {
+          return <FriendSuggestionComponent name={v.name} description={v.description} image={v.image} isfollowed={v.isfollowed} />
         })}
       </div>
 
