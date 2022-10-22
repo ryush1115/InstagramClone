@@ -1,57 +1,57 @@
-import React, { useState, Fragment, useEffect, useRef} from "react";
+import React, { useState, Fragment, useEffect, useRef } from "react";
 import '../activityfeed.css';
 import '../userprofile.css';
 import { Navbar, Card, ListGroup, ListGroupItem } from 'react-bootstrap';
-import { getUsers, getUser, createUser, getTimelinePosts, getPosts, createPost } from '../api/mock_api';
+import { getUser, createUser, getTimelinePosts, getPosts, createPost, getPost } from '../api/mock_api';
 
-const ActivityFeedComponent=()=>{
+const ActivityFeedComponent = () => {
 
-   function PostRow(props) {
+  function PostRow(props) {
     return (
       <tr>
-      <div className="post"
-          >
+        <div className="post"
+        >
           {/* {props.post.username} */}
           <div className="postWrapper">
-              <div className="postTop">
-                  <div className="postTopLeft">
-                      {/* <img
+            <div className="postTop">
+              <div className="postTopLeft">
+                {/* <img
                           className="postProfileImg"
                           src={require('../images/test.png')}
                           alt=""
                       /> */}
-                      <span
-                          className="postUsername"> {props.post.username}
-                      </span>
-                  </div>
+                <span
+                  className="postUsername" data-testid = "testing1"> {props.post.username}
+                </span>
               </div>
+            </div>
 
-              <div className="postCenter">
-                  <img
-                  className="postImage"
-                  src={props.post.postImage}
-                  alt="" />
-              </div>
+            <div className="postCenter">
+              <img
+                className="postImage"
+                src={props.post.postImage}
+                alt="" />
+            </div>
 
-              <div className="postBottom">
-                  <div className="postBottomLeft">
-                  </div>
-                  <form id="commentBox">
-                  <label></label>
-                      <input type="text" className="commentBox" size="50" placeholder="Enter a comment..."/>
-                  </form>
-                  <div>
-                    {props.post.postComment}
-                  </div>
-                  <div className="postBottomRight">
-                      <span className="postCommentText"> Click for more comments</span>
-                  </div>
+            <div className="postBottom">
+              <div className="postBottomLeft">
               </div>
+              <form id="commentBox">
+                <label></label>
+                <input type="text" className="commentBox" size="50" placeholder="Enter a comment..." />
+              </form>
+              <div>
+                {props.post.postComment}
+              </div>
+              <div className="postBottomRight">
+                <span className="postCommentText"> Click for more comments</span>
+              </div>
+            </div>
           </div>
-      </div>
+        </div>
       </tr>
     );
-   }
+  }
 
   function PostTable(props) {
     // counter to provide unique key to rows
@@ -65,15 +65,15 @@ const ActivityFeedComponent=()=>{
     }
     postsList = props.posts;
 
-    const makeRows=() => {
+    const makeRows = () => {
       const rows = [];
 
-      postsList.forEach((element) =>{
+      postsList.forEach((element) => {
         // const {post} = element;
-        if(usernameFilter === 'SHOW_ALL') {
+        if (usernameFilter === 'SHOW_ALL') {
           rows.push(
             <PostRow post={element}
-            key={counter.current}
+              key={counter.current}
             />
           );
         } else {
@@ -82,7 +82,7 @@ const ActivityFeedComponent=()=>{
           }
           rows.push(
             <PostRow post={element}
-            key={counter.current}
+              key={counter.current}
             />,
           );
         }
@@ -94,7 +94,7 @@ const ActivityFeedComponent=()=>{
     };
 
     const rows = makeRows();
-    return(
+    return (
       <table>
         <tbody>{rows}</tbody>
 
@@ -115,7 +115,7 @@ const ActivityFeedComponent=()=>{
       setUsername(e.target.value);
     };
 
-    return(
+    return (
       <div>
         {/* <form>
           <input
@@ -123,7 +123,7 @@ const ActivityFeedComponent=()=>{
             placeholder="filter by username..."
           />
         </form> */}
-        <PostTable username={username} posts={props.roster}/>
+        <PostTable username={username} posts={props.roster} />
       </div>
     )
   }
@@ -141,12 +141,12 @@ const ActivityFeedComponent=()=>{
     const [roster, setRoster] = useState([]);
     // ref to indicate if this is the first rendering
     const firstRendering = useRef(true);
-    // get the list of Timeline Posts from the backend
-    useEffect(()=>{
-      // get the list of Timeline Posts from the backend
+    // get the list of [Timeline] Posts from the backend
+    useEffect(() => {
+      // get the list of [Timeline] Posts from the backend
       async function fetchData() {
-        const data = await getTimelinePosts();
-        setRoster(data); 
+        const data = await getPosts();
+        setRoster(data);
       }
 
       // only load data on the first rendering or
@@ -160,7 +160,7 @@ const ActivityFeedComponent=()=>{
     });
 
     return (
-      <SearchBar roster={roster}/>
+      <SearchBar roster={roster} />
     )
   }
 
@@ -198,7 +198,7 @@ const ActivityFeedComponent=()=>{
       // stop default behavior to avoid reloading the page
       e.preventDefault();
       // create new Post variable
-      const newPost = {username: newUsername, postImage: newPostImage, postComment: newPostComment, publicPrivate:false, postTagOfOtherUsers:null, id:10};
+      const newPost = { username: newUsername, postImage: newPostImage, postComment: newPostComment, publicPrivate: false, postTagOfOtherUsers: null, id: 10 };
       // clear the form
       const form = document.getElementById('add-post');
       form.reset();
@@ -241,7 +241,7 @@ const ActivityFeedComponent=()=>{
     return (
       <div>
         {' '}
-        <FilterablePostTable reload={loadData}/>
+        <FilterablePostTable reload={loadData} />
         <div>
         </div>
       </div>
@@ -249,31 +249,33 @@ const ActivityFeedComponent=()=>{
   }
 
   return (
-    <Fragment>        
+    <Fragment>
       <header>
-      <div class="container">
+        <div class="container">
           <div class="profile">
-              <div class="profile-image">
-                  <img src={require('../images/grp3.PNG')} alt=""/>
-              </div>
-              <div class="profile-user-settings">
-                  <h1 class="profile-user-name">grp3foreva</h1>
-              </div>
+            <div class="profile-image">
+              <img alt="" />
+              {/* <img src={require('../images/grp3.PNG')} alt=""/> */}
+
+            </div>
+            <div class="profile-user-settings">
+              <h1 class="profile-user-name">grp3foreva</h1>
+            </div>
           </div>
-      </div>
+        </div>
       </header>
 
-<main>
-  
-<div class="container">
-<div class="feed">
-    <div class="feedWrapper">
-    <AddPost />
-    </div>
-</div>
-</div>
-</main>
-</Fragment>
-)
+      <main>
+
+        <div class="container">
+          <div class="feed">
+            <div class="feedWrapper">
+              <AddPost />
+            </div>
+          </div>
+        </div>
+      </main>
+    </Fragment>
+  )
 }
 export default ActivityFeedComponent;

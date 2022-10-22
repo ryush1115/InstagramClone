@@ -2,16 +2,16 @@ import React, { useState } from "react";
 import {Routes, Route, useNavigate} from 'react-router-dom';
 
 // import API functions
-import { getUsers, getUser, createUser } from '../api/mock_api';
+import { getUser, createUser } from '../api/mock_api';
 
 const LoginComponent=()=>{
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const navigateToProfile = () => {
-    navigate('/userprofile');
-  };
+  // const navigateToProfile = () => {
+  //   navigate('/userprofile');
+  // };
 
   const navigateToSignup = () => {
     navigate('/sign-up');

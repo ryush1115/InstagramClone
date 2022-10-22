@@ -323,16 +323,36 @@
       "publicPrivate": "false\n      ",
       "postTageOfOtherUsers": "undefined",
       "id": "FDMT6Ws"
+    },
+    {
+      "username": "grp3foreva",
+      "postImage": "http://loremflickr.com/640/480\n      ",
+      "postComment": "jhj\n      ",
+      "publicPrivate": "false\n      ",
+      "postTageOfOtherUsers": "undefined",
+      "id": "vgwNAuC"
+    },
+    {
+      "username": "grp3foreva",
+      "postImage": "http://loremflickr.com/640/480\n      ",
+      "postComment": "undefined\n      ",
+      "publicPrivate": "false\n      ",
+      "postTageOfOtherUsers": "undefined",
+      "id": "OMRgFO4"
     }
   ],
-  "User1":[    {
+  "User1": [
+    {
       "email": "grp3forevera@gmail.com",
       "username": "grp3-forevera",
       "password": "12345678",
       "profilePicture": "\n",
-      "follow": ["akikozzm"],
+      "follow": [
+        "akikozzm"
+      ],
       "id": "7"
-    }],
+    }
+  ],
   "Comment": [
     {
       "username": "Heath_Buckridge",

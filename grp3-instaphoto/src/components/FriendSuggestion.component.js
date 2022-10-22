@@ -38,12 +38,14 @@ const FriendSuggestion = () => {
         <Card className='card'>
           <div className='logo'>
             <h>Instaphoto&nbsp;</h>
-            <img src={require('../images/logo.PNG')} alt="logo" />
+            <img alt="logo" />
+            {/* <img src={require('../images/logo.PNG')} alt="logo" /> */}
+
           </div>
           <br></br>
           <div>
             <Card.Img
-              src={require('../images/grp3.PNG')}
+              // src={require('../images/grp3.PNG')}
               variant='top'
               className='sig'
             />
@@ -82,7 +84,9 @@ const FriendSuggestion = () => {
             <button className="show-all-btn">See all</button>
             <div className="profile-card">
               <div>
-                <img className='other-user' src={require('../images/grp3.PNG')} alt="" />
+                <img className='other-user' alt="" />
+                {/* <img className='other-user' src={require('../images/grp3.PNG')} alt="" /> */}
+
               </div>
               <button className="action-btn" type="button">
                 <span className="username">akikozzm</span>
@@ -91,7 +95,9 @@ const FriendSuggestion = () => {
             </div>
             <div className="profile-card">
               <div>
-                <img className='other-user' src={require('../images/grp3.PNG')} alt="" />
+                <img className='other-user' alt="" />
+                {/* <img className='other-user' src={require('../images/grp3.PNG')} alt="" /> */}
+
               </div>
               <button className="action-btn" type="button">
                 <span className="username">akikozzm</span>
@@ -100,7 +106,8 @@ const FriendSuggestion = () => {
             </div>
             <div className="profile-card">
               <div>
-                <img className='other-user' src={require('../images/grp3.PNG')} alt="" />
+                <img className='other-user' alt="" />
+                {/* <img className='other-user' src={require('../images/grp3.PNG')} alt="" /> */}
               </div>
               <button className="action-btn" type="button">
                 <span className="username">akikozzm</span>

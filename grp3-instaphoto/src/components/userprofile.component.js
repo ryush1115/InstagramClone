@@ -85,7 +85,7 @@ const UserprofileComponent=()=>{
             <div className="profile-card">
                 <div>
                     <img className = 'other-user' alt=""/>
-                    {/* <img className = 'other-user' src={require('../images/grp3.PNG')} alt=""/> */}
+                    {/* <img className = 'other-user' src={require('../images/grp3.png')} alt=""/> */}
 
                 </div>
                 <button className="action-btn" type="button">
@@ -96,7 +96,7 @@ const UserprofileComponent=()=>{
             <div className="profile-card">
                 <div>
                     <img className = 'other-user' alt=""/>
-                    {/* <img className = 'other-user' src={require('../images/grp3.PNG')} alt=""/> */}
+                    {/* <img className = 'other-user' src={require('../images/grp3.png')} alt=""/> */}
 
                 </div>
                 <button className="action-btn" type="button">

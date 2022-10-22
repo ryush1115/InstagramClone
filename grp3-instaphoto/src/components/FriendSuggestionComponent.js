@@ -4,7 +4,7 @@
 import React, { useState, Fragment, useRef, useContext } from "react";
 import { Navbar, Card, Button, ListGroup, ListGroupItem } from 'react-bootstrap';
 import ReactDOM from "react-dom";
-import { getUsers, getUser, createUser, getTimelinePosts, getPosts, createPost } from '../api/mock_api';
+import { getUser, createUser, getTimelinePosts, getPosts, createPost } from '../api/mock_api';
 import { nanoid } from "nanoid"
 
 import '../FriendSuggestion.css';

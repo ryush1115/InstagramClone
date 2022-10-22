@@ -23,16 +23,16 @@ const rootURL = 'http://localhost:8000'
 
 // Sends a Get request to the endpoint
 // returns all the Users
-export const getUsers = async () => {
-  try{
-    const response = await axios.get(`${rootURL}/User`);
-    return response.data;
-    // data is stored in the data
-    // field of the response
-  } catch (err) {
-    console.error(err);
-  }
-};
+// export const getUsers = async () => {
+//   try{
+//     const response = await axios.get(`${rootURL}/User`);
+//     return response.data;
+//     // data is stored in the data
+//     // field of the response
+//   } catch (err) {
+//     console.error(err);
+//   }
+// };
 
 // Sends a Get request to the endpoint
 // returns all the Users
@@ -142,26 +142,26 @@ export const createUser = async (UserObject) => {
 
 // Sends a Get request to the endpoint
 // returns all the Timeline Posts
-export const getTimelinePosts = async () => {
-  try {
-    const response = await axios.get(`${rootURL}/TimeLinePost`);
-    return response.data;
-    // data is stored in the data
-    // field of the response
-  } catch (err) {
-    console.error(err);
-  }
-}
+// export const getTimelinePosts = async () => {
+//   try {
+//     const response = await axios.get(`${rootURL}/TimeLinePost`);
+//     return response.data;
+//     // data is stored in the data
+//     // field of the response
+//   } catch (err) {
+//     console.error(err);
+//   }
+// }
 
 // Takes the id of a timeline post as input
 // and sends a Get request to the /TimelinePost: id endpoint
 // return the attributes of the TimelinePost
-export const getTimeLinePost = async (TimeLinePostId) => {
-  try {
-    const response = await axios.get(`${rootURL}/TimeLinePost/${TimeLinePostId}`);
-    return response.data;
-  } catch (err) {
-    console.error(err);
-  }
-}
+// export const getTimeLinePost = async (TimeLinePostId) => {
+//   try {
+//     const response = await axios.get(`${rootURL}/TimeLinePost/${TimeLinePostId}`);
+//     return response.data;
+//   } catch (err) {
+//     console.error(err);
+//   }
+// }
 

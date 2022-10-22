@@ -28,7 +28,9 @@ import Createpost from './components/createpost.component'
 import { Router } from "react-router";
 import { createMemoryHistory } from 'history';
 
+//REFERENCE
 //https://bobbyhadz.com/blog/react-cannot-read-property-pathname-of-undefined
+//https://www.youtube.com/watch?v=hPOS6IRKJm0&t=901s
 
 test('renders Dont have an account', () => {
     const history = createMemoryHistory();
@@ -40,7 +42,7 @@ test('renders Dont have an account', () => {
     );
     expect(history.location.pathname).toBe("/");
 })
-test("login form should be in the component",() =>{
+test("login form should be in the component", () => {
     const history = createMemoryHistory();
     const component = render(
         <Router location={history.location} navigator={history}>
@@ -65,9 +67,9 @@ test("login form should be in the component",() =>{
 //     expect(emailInputNode.getAttribute("type")).toBe("email");
 // });
 
-test("render sign up link",() =>{
+test("render sign up link", () => {
     const history = createMemoryHistory();
-    const {getByText} = render(
+    const { getByText } = render(
         <Router location={history.location} navigator={history}>
             <Login />,
         </Router>,
@@ -77,7 +79,36 @@ test("render sign up link",() =>{
     expect(test).toBeInTheDocument();
 
 });
+//testing line 17
+test('whether sign up links to sign up page', () => {
+    const history = createMemoryHistory();
+    render(
+        <Router location={history.location} navigator={history}>
+            <Login />,
+        // </Router>,
 
+    );
+    const span2 = screen.getByText("Sign up now to join communities across the globe");
+    // expect(span2).toHaveClass("create-hover");
+    fireEvent.click(span2);
+    expect(screen.getByText("Welcome to Instaphoto")).toBeInTheDocument();
+    // const button = screen.getByRole('button', { name: /See All/i });
+});
+
+test('clicking the button Sign in wont navigates to Sign in Page because no user input', () => {
+    const history = createMemoryHistory();
+    render(
+        <Router location={history.location} navigator={history}>
+            <Login />,
+        // </Router>,
+
+    );
+    const span2 = screen.getByText("Sign in");
+    // expect(span2).toHaveClass("create-hover");
+    fireEvent.click(span2);
+    expect(screen.getByText("Welcome to Instaphoto")).toBeInTheDocument();
+    // const button = screen.getByRole('button', { name: /See All/i });
+});
 
 
 // //testing email with '@'
@@ -88,7 +119,46 @@ test("render sign up link",() =>{
 //             <Login />,
 //         </Router>,);
 //     const text = 'text@test.com'
-//     const element = getByLabelText();
-//     await userEvent.type(element, text)
+//     const element = screen.getByLabelText("Email");
+//     // await userEvent.type(element, text)
 //     expect(validateInput(text)).toBe(true);
 // });
+
+test("email input should accept text",() => {
+    const history = createMemoryHistory();
+    const { getByLabelText } = render(
+        <Router location={history.location} navigator={history}>
+            <Login />,
+        </Router>,);
+        // const emailInputNode = getByLabelText("Email");
+        const emailInputNode = screen.getByRole("textbox")
+        expect(emailInputNode.value).toMatch("")
+        fireEvent.change(emailInputNode,{target: {value: 'testing'}})
+        expect(emailInputNode.value).toMatch("testing");
+});
+
+// test("Password input should accept text",() => {
+//     const history = createMemoryHistory();
+//     const { getByLabelText } = render(
+//         <Router location={history.location} navigator={history}>
+//             <Login />,
+//         </Router>,);
+//         // const emailInputNode = getByLabelText("Email");
+//         const emailInputNode = screen.getByRole("textbox", {name: /PassWord /i })
+//         expect(emailInputNode.value).toMatch("")
+//         fireEvent.change(emailInputNode,{target: {value: 'testing'}})
+//         expect(emailInputNode.value).toMatch("testing");
+// });
+
+test("render forgot password?", () => {
+    const history = createMemoryHistory();
+    const { getByText } = render(
+        <Router location={history.location} navigator={history}>
+            <Login />,
+        </Router>,
+
+    );
+    const test = getByText("Forgot password?");
+    expect(test).toBeInTheDocument();
+
+});

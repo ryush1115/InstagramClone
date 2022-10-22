@@ -30,7 +30,18 @@ import { createMemoryHistory } from 'history';
 import FollowingList from './components/FollowingList';
 
 
+test("render Following link",() =>{
+    const history = createMemoryHistory();
+    const {getByText} = render(
+        <Router location={history.location} navigator={history}>
+            <FollowingList />,
+        </Router>,
 
+    );
+    const test = getByText(/Following/);
+    expect(test).toBeInTheDocument();
+
+});
 
 
 // test("Check if following is there",() =>{

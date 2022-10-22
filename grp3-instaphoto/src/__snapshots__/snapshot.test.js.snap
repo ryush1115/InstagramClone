@@ -1,6 +1,60 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Weather app matches snapshot 1`] = `
+exports[`Activity Feed matches snapshot 1`] = `
+Array [
+  <header>
+    <div
+      class="container"
+    >
+      <div
+        class="profile"
+      >
+        <div
+          class="profile-image"
+        >
+          <img
+            alt=""
+          />
+        </div>
+        <div
+          class="profile-user-settings"
+        >
+          <h1
+            class="profile-user-name"
+          >
+            grp3foreva
+          </h1>
+        </div>
+      </div>
+    </div>
+  </header>,
+  <main>
+    <div
+      class="container"
+    >
+      <div
+        class="feed"
+      >
+        <div
+          class="feedWrapper"
+        >
+          <div>
+             
+            <div>
+              <table>
+                <tbody />
+              </table>
+            </div>
+            <div />
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>,
+]
+`;
+
+exports[`App matches snapshot 1`] = `
 <div
   className="App"
 >
@@ -171,3 +225,1105 @@ exports[`Weather app matches snapshot 1`] = `
   </div>
 </div>
 `;
+
+exports[`CreatePost matches snapshot 1`] = `
+Array [
+  <div
+    className="create-post"
+  >
+    <div
+      className="create-post_content"
+    >
+      <div
+        className="create-post_container"
+      >
+        <div
+          className="create-post_title"
+        >
+          Create new post
+        </div>
+        <div
+          className="create-post_close"
+        >
+          <img
+            alt="close"
+            src="https://static.xx.fbcdn.net/rsrc.php/v3/y2/r/__geKiQnSG-.png"
+          />
+        </div>
+        <div>
+          <div
+            className="dropzone"
+            onBlur={[Function]}
+            onClick={[Function]}
+            onDragEnter={[Function]}
+            onDragLeave={[Function]}
+            onDragOver={[Function]}
+            onDrop={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            role="presentation"
+            tabIndex={0}
+          >
+            <input
+              className="input-zone"
+              multiple={true}
+              onChange={[Function]}
+              onClick={[Function]}
+              style={
+                Object {
+                  "display": "none",
+                }
+              }
+              tabIndex={-1}
+              type="file"
+            />
+            <div
+              className="text-center"
+            >
+              <p
+                className="dropzone-content"
+              >
+                Drag’ n’ drop some files here, or click to select files
+              </p>
+              <button
+                className="btn"
+                type="button"
+              >
+                Click to select files
+              </button>
+            </div>
+          </div>
+          <form
+            id="commentBox"
+          >
+            <input
+              className="commentBox"
+              placeholder="Enter a comment..."
+              size="20"
+              type="text"
+            />
+          </form>
+          <aside>
+            <ul />
+          </aside>
+        </div>
+      </div>
+    </div>
+  </div>,
+  ",",
+]
+`;
+
+exports[`Dragdrop matches snapshot 1`] = `
+<div
+  className="create-post_"
+>
+  <div
+    className="create-post-content_"
+  >
+    <div
+      className="create-post_title_"
+    >
+      Create a new post!
+    </div>
+    <form
+      id="form-file-upload"
+      onSubmit={[Function]}
+    >
+      <p>
+        Create a Post Here!! 
+      </p>
+      <input
+        name="comment"
+        onChange={[Function]}
+        placeholder="Enter a comment..."
+        type="text"
+      />
+      <input
+        id="postImage"
+        name="postImage"
+        onChange={[Function]}
+        type="file"
+      />
+      <button
+        type="submit"
+      >
+        Create Post
+      </button>
+    </form>
+  </div>
+</div>
+`;
+
+exports[`FollowingList matches snapshot 1`] = `
+Array [
+  <div
+    className="container-0_FriendSuggestion"
+  >
+    <span
+      className="text-0_FriendSuggestion"
+      data-testid="followbutton"
+    >
+      Following
+    </span>
+    <div
+      className="container-1_FriendSuggestion"
+    >
+      <img
+        className="image-0_FriendSuggestion"
+        src={null}
+      />
+      <div
+        className="container-2_FriendSuggestion"
+      >
+        <div
+          className="container-3_FriendSuggestion"
+        >
+          <span
+            className="text-1_FriendSuggestion"
+          >
+            Akikos
+          </span>
+          <span
+            className="text-2_FriendSuggestion"
+          >
+            This is a cool person
+          </span>
+        </div>
+        <div
+          className="container-4_FriendSuggestion"
+        >
+          <span
+            className="text-3_FriendSuggestion"
+            onClick={[Function]}
+          >
+            Unfollow
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>,
+  ",",
+]
+`;
+
+exports[`FriendSuggestion matches snapshot 1`] = `
+Array [
+  <nav
+    className="home navbar navbar-expand navbar-light"
+  >
+    <div
+      className="card card"
+    >
+      <div
+        className="logo"
+      >
+        <h>
+          Instaphoto 
+        </h>
+        <img
+          alt="logo"
+        />
+      </div>
+      <br />
+      <div>
+        <img
+          className="card-img-top sig"
+        />
+        <p
+          className="username"
+        >
+           grp3foreva
+        </p>
+      </div>
+      <div>
+        <div
+          className="card-body"
+        >
+          <p
+            className="card-text"
+          >
+            <div
+              className="space"
+            />
+            <div
+              className="list-group list-group-flush"
+              onKeyDown={[Function]}
+            >
+              <div
+                className="list list-group-item"
+                data-rr-ui-event-key={null}
+                onClick={[Function]}
+              >
+                <span>
+                  Home
+                </span>
+              </div>
+              <div
+                className="list list-group-item"
+                data-rr-ui-event-key={null}
+                onClick={[Function]}
+              >
+                <span>
+                  Create
+                </span>
+              </div>
+              <div
+                className="list list-group-item"
+                data-rr-ui-event-key={null}
+                onClick={[Function]}
+              >
+                <span>
+                  Profile
+                </span>
+              </div>
+            </div>
+          </p>
+        </div>
+      </div>
+      <br />
+      <div
+        className="suggestions"
+      >
+        <p
+          className="suggestion-text"
+        >
+          Suggestions for you
+        </p>
+        <button
+          className="show-all-btn"
+        >
+          See all
+        </button>
+        <div
+          className="profile-card"
+        >
+          <div>
+            <img
+              alt=""
+              className="other-user"
+            />
+          </div>
+          <button
+            className="action-btn"
+            type="button"
+          >
+            <span
+              className="username"
+            >
+              akikozzm
+            </span>
+            <span
+              className="follow"
+            >
+              Follow
+            </span>
+          </button>
+        </div>
+        <div
+          className="profile-card"
+        >
+          <div>
+            <img
+              alt=""
+              className="other-user"
+            />
+          </div>
+          <button
+            className="action-btn"
+            type="button"
+          >
+            <span
+              className="username"
+            >
+              akikozzm
+            </span>
+            <span
+              className="follow"
+            >
+              Follow
+            </span>
+          </button>
+        </div>
+        <div
+          className="profile-card"
+        >
+          <div>
+            <img
+              alt=""
+              className="other-user"
+            />
+          </div>
+          <button
+            className="action-btn"
+            type="button"
+          >
+            <span
+              className="username"
+            >
+              akikozzm
+            </span>
+            <span
+              className="follow"
+            >
+              Follow
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>,
+  <div />,
+  <div
+    className="container-0_FriendSuggestion"
+  >
+    <span
+      className="text-0_FriendSuggestion"
+    >
+      Suggested
+    </span>
+    <div
+      className="container-1_FriendSuggestion"
+    >
+      <img
+        className="image-0_FriendSuggestion"
+        src={null}
+      />
+      <div
+        className="container-2_FriendSuggestion"
+      >
+        <div
+          className="container-3_FriendSuggestion"
+        >
+          <span
+            className="text-1_FriendSuggestion"
+          >
+            Akikos
+          </span>
+          <span
+            className="text-2_FriendSuggestion"
+          >
+            This is a cool person
+          </span>
+        </div>
+        <div
+          className="container-4_FriendSuggestion"
+        >
+          <span
+            className="text-3_FriendSuggestion"
+            onClick={[Function]}
+          >
+            Follow
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>,
+  ",",
+]
+`;
+
+exports[`Login matches snapshot 1`] = `
+Array [
+  <div
+    className="auth-wrapper"
+  >
+    <form
+      className="auth-inner"
+    >
+      <div
+        className="header"
+      >
+        <h3>
+          Welcome to Instaphoto 
+        </h3>
+      </div>
+      <br />
+      <div
+        className="login-and-password"
+      >
+        <label>
+          Email
+        </label>
+        <input
+          className="form-control"
+          onChange={[Function]}
+          placeholder="Enter email"
+          type="email"
+          value=""
+        />
+      </div>
+      <div
+        className="login-and-password"
+      >
+        <label>
+          Password
+        </label>
+        <p>
+          Forgot password?
+        </p>
+        <input
+          className="form-control"
+          onChange={[Function]}
+          placeholder="Enter password"
+          type="password"
+          value=""
+        />
+      </div>
+      <br />
+      <div
+        className="d-grid"
+      >
+        <button
+          className="btn btn-primary"
+          onClick={[Function]}
+          type="submit"
+        >
+          Sign in
+        </button>
+      </div>
+      <p
+        className="login-create-account text-right"
+      >
+        Don't have an account? 
+        <br />
+        <a
+          href="#"
+          onClick={[Function]}
+        >
+           Sign up now to join communities across the globe 
+        </a>
+      </p>
+    </form>
+  </div>,
+  ",",
+]
+`;
+
+exports[`SideBar matches snapshot 1`] = `
+<nav
+  className="home navbar navbar-expand navbar-light"
+>
+  <div
+    className="card card"
+  >
+    <div
+      className="logo"
+    >
+      <h>
+        Instaphoto 
+      </h>
+      <img
+        alt="logo"
+      />
+    </div>
+    <br />
+    <div>
+      <img
+        className="card-img-top sig"
+      />
+      <p
+        className="username"
+      >
+         grp3foreva
+      </p>
+    </div>
+    <div>
+      <div
+        className="card-body"
+      >
+        <p
+          className="card-text"
+        >
+          <div
+            className="space"
+          />
+          <div
+            className="list-group list-group-flush"
+            onKeyDown={[Function]}
+          >
+            <div
+              className="list list-group-item"
+              data-rr-ui-event-key={null}
+              onClick={[Function]}
+            >
+              <span>
+                Home
+              </span>
+            </div>
+            <div
+              className="list list-group-item"
+              data-rr-ui-event-key={null}
+              onClick={[Function]}
+            >
+              <span
+                onClick={[Function]}
+              >
+                Create
+              </span>
+            </div>
+            <div
+              className="list list-group-item"
+              data-rr-ui-event-key={null}
+              onClick={[Function]}
+            >
+              <span>
+                Profile
+              </span>
+            </div>
+          </div>
+        </p>
+      </div>
+    </div>
+    <br />
+    <div
+      className="suggestions"
+    >
+      <p
+        className="suggestion-text"
+      >
+        Suggestions for you
+      </p>
+      <button
+        className="show-all-btn"
+      >
+        See all
+      </button>
+      <div
+        className="profile-card"
+      >
+        <div>
+          <img
+            alt=""
+            className="other-user"
+          />
+        </div>
+        <button
+          className="action-btn"
+          type="button"
+        >
+          <span
+            className="username"
+          >
+            akikozzm
+          </span>
+          <span
+            className="follow"
+          >
+            Follow
+          </span>
+        </button>
+      </div>
+      <div
+        className="profile-card"
+      >
+        <div>
+          <img
+            alt=""
+            className="other-user"
+          />
+        </div>
+        <button
+          className="action-btn"
+          type="button"
+        >
+          <span
+            className="username"
+          >
+            akikozzm
+          </span>
+          <span
+            className="follow"
+          >
+            Follow
+          </span>
+        </button>
+      </div>
+      <div
+        className="profile-card"
+      >
+        <div>
+          <img
+            alt=""
+            className="other-user"
+          />
+        </div>
+        <button
+          className="action-btn"
+          type="button"
+        >
+          <span
+            className="username"
+          >
+            akikozzm
+          </span>
+          <span
+            className="follow"
+          >
+            Follow
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+`;
+
+exports[`SignUp matches snapshot 1`] = `
+Array [
+  <form
+    className="auth-inner"
+    onSubmit={[Function]}
+  >
+    <div
+      className="header"
+    >
+      <h3>
+        Welcome to Instaphoto 
+      </h3>
+    </div>
+    <br />
+    <div
+      className="login-and-password"
+    >
+      <h3>
+         Signup
+      </h3>
+    </div>
+    <div
+      className="login-and-password"
+    >
+      <label>
+        Username
+      </label>
+      <input
+        className="form-control"
+        name="username"
+        onChange={[Function]}
+        placeholder="Username"
+        type="text"
+      />
+    </div>
+    <div
+      className="login-and-password"
+    >
+      <label>
+        Email
+      </label>
+      <input
+        className="form-control"
+        name="email"
+        onChange={[Function]}
+        placeholder="Email"
+        type="email"
+      />
+    </div>
+    <div
+      className="login-and-password"
+    >
+      <label>
+        Password
+      </label>
+      <input
+        className="form-control"
+        name="password"
+        onChange={[Function]}
+        placeholder="Password (more than 8 characters)"
+        type="password"
+      />
+    </div>
+    <div
+      className="login-and-password"
+    >
+      <label>
+        Re-enter Password
+      </label>
+      <input
+        className="form-control"
+        name="confirmPassword"
+        onChange={[Function]}
+        placeholder="Re-enter password"
+        type="password"
+      />
+    </div>
+    <br />
+    <div
+      className="d-grid"
+    >
+      <button
+        className="btn btn-primary"
+        type="submit"
+      >
+        Finish
+      </button>
+    </div>
+    <p
+      className="forgot-password text-right"
+    >
+      Already registered 
+      <a
+        href="/sign-in"
+        onClick={[Function]}
+      >
+        sign in?
+      </a>
+    </p>
+  </form>,
+  ",",
+]
+`;
+
+exports[`UserProfile matches snapshot 1`] = `
+Array [
+  <nav
+    className="home navbar navbar-expand navbar-light"
+  >
+    <div
+      className="card card"
+    >
+      <div
+        className="logo"
+      >
+        <h>
+          Instaphoto 
+        </h>
+        <img
+          alt="logo"
+        />
+      </div>
+      <br />
+      <div>
+        <img
+          className="card-img-top sig"
+        />
+        <p
+          className="username"
+        >
+           grp3foreva
+        </p>
+      </div>
+      <div>
+        <div
+          className="card-body"
+        >
+          <p
+            className="card-text"
+          >
+            <div
+              className="space"
+            />
+            <div
+              className="list-group list-group-flush"
+              onKeyDown={[Function]}
+            >
+              <div
+                className="list list-group-item"
+                data-rr-ui-event-key={null}
+                onClick={[Function]}
+              >
+                <span>
+                  Home
+                </span>
+              </div>
+              <div
+                className="list list-group-item"
+                data-rr-ui-event-key={null}
+                onClick={[Function]}
+              >
+                <div
+                  className="create-hover"
+                >
+                  <span
+                    onClick={[Function]}
+                  >
+                    Create
+                  </span>
+                </div>
+              </div>
+              <div
+                className="list list-group-item"
+                data-rr-ui-event-key={null}
+                onClick={[Function]}
+              >
+                <span>
+                  Profile
+                </span>
+              </div>
+            </div>
+          </p>
+        </div>
+      </div>
+      <br />
+      <div
+        className="suggestions"
+      >
+        <p
+          className="suggestion-text"
+        >
+          Suggestions for you
+        </p>
+        <button
+          className="show-all-btn"
+          onClick={[Function]}
+        >
+          See all
+        </button>
+        <div
+          className="profile-card"
+        >
+          <div>
+            <img
+              alt=""
+              className="other-user"
+            />
+          </div>
+          <button
+            className="action-btn"
+            type="button"
+          >
+            <span
+              className="username"
+            >
+              akikozzm
+            </span>
+            <span
+              className="follow"
+            >
+              Follow
+            </span>
+          </button>
+        </div>
+        <div
+          className="profile-card"
+        >
+          <div>
+            <img
+              alt=""
+              className="other-user"
+            />
+          </div>
+          <button
+            className="action-btn"
+            type="button"
+          >
+            <span
+              className="username"
+            >
+              akikozzm
+            </span>
+            <span
+              className="follow"
+            >
+              Follow
+            </span>
+          </button>
+        </div>
+        <div
+          className="profile-card"
+        >
+          <div>
+            <img
+              alt=""
+              className="other-user"
+            />
+          </div>
+          <button
+            className="action-btn"
+            type="button"
+          >
+            <span
+              className="username"
+            >
+              akikozzm
+            </span>
+            <span
+              className="follow"
+            >
+              Follow
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>,
+  <header>
+    <div
+      class="container"
+    >
+      <div
+        class="profile"
+      >
+        <div
+          class="profile-image"
+        >
+          <img
+            alt=""
+          />
+        </div>
+        <div
+          class="profile-user-settings"
+        >
+          <h1
+            class="profile-user-name"
+          >
+            grp3foreva
+          </h1>
+        </div>
+        <div
+          class="profile-stats"
+        >
+          <ul>
+            <li>
+              <span
+                class="profile-stat-count"
+              >
+                39
+              </span>
+               posts
+            </li>
+            <li>
+              <span
+                class="profile-stat-count"
+              >
+                169
+              </span>
+               followers
+            </li>
+            <li
+              onClick={[Function]}
+            >
+              <span
+                class="profile-stat-count"
+              >
+                667
+              </span>
+               following
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>,
+  <main>
+    <div
+      class="container"
+    >
+      <div
+        class="gallery"
+      >
+        <div
+          class="gallery-item"
+        >
+          <img
+            alt=""
+            class="gallery-image"
+            src="https://images.unsplash.com/photo-1511765224389-37f0e77cf0eb?w=500&h=500&fit=crop"
+          />
+        </div>
+        <div
+          class="gallery-item"
+        >
+          <img
+            alt=""
+            class="gallery-image"
+            src="https://images.unsplash.com/photo-1497445462247-4330a224fdb1?w=500&h=500&fit=crop"
+          />
+        </div>
+        <div
+          class="gallery-item"
+        >
+          <img
+            alt=""
+            class="gallery-image"
+            src="https://images.unsplash.com/photo-1426604966848-d7adac402bff?w=500&h=500&fit=crop"
+          />
+        </div>
+        <div
+          class="gallery-item"
+        >
+          <img
+            alt=""
+            class="gallery-image"
+            src="https://images.unsplash.com/photo-1502630859934-b3b41d18206c?w=500&h=500&fit=crop"
+          />
+        </div>
+        <div
+          class="gallery-item"
+        >
+          <img
+            alt=""
+            class="gallery-image"
+            src="https://images.unsplash.com/photo-1498471731312-b6d2b8280c61?w=500&h=500&fit=crop"
+          />
+        </div>
+        <div
+          class="gallery-item"
+        >
+          <img
+            alt=""
+            class="gallery-image"
+            src="https://images.unsplash.com/photo-1515023115689-589c33041d3c?w=500&h=500&fit=crop"
+          />
+        </div>
+        <div
+          class="gallery-item"
+        >
+          <img
+            alt=""
+            class="gallery-image"
+            src="https://images.unsplash.com/photo-1504214208698-ea1916a2195a?w=500&h=500&fit=crop"
+          />
+        </div>
+        <div
+          class="gallery-item"
+        >
+          <img
+            alt=""
+            class="gallery-image"
+            src="https://images.unsplash.com/photo-1515814472071-4d632dbc5d4a?w=500&h=500&fit=crop"
+          />
+        </div>
+        <div
+          class="gallery-item"
+        >
+          <img
+            alt=""
+            class="gallery-image"
+            src="https://images.unsplash.com/photo-1511407397940-d57f68e81203?w=500&h=500&fit=crop"
+          />
+        </div>
+        <div
+          class="gallery-item"
+        >
+          <img
+            alt=""
+            class="gallery-image"
+            src="https://images.unsplash.com/photo-1518481612222-68bbe828ecd1?w=500&h=500&fit=crop"
+          />
+        </div>
+        <div
+          class="gallery-item"
+        >
+          <img
+            alt=""
+            class="gallery-image"
+            src="https://images.unsplash.com/photo-1505058707965-09a4469a87e4?w=500&h=500&fit=crop"
+          />
+        </div>
+        <div
+          class="gallery-item"
+        >
+          <img
+            alt=""
+            class="gallery-image"
+            src="https://images.unsplash.com/photo-1423012373122-fff0a5d28cc9?w=500&h=500&fit=crop"
+          />
+        </div>
+      </div>
+    </div>
+  </main>,
+  ",",
+]
+`;
+
+exports[`gallery matches snapshot 1`] = `<gallery />`;
