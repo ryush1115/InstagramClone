@@ -60,6 +60,17 @@ export const getPost = async(PostId) => {
   }
 }
 
+export const getUsers = async () => {
+  try{
+    const response = await axios.get(`${rootURL}/User`);
+    return response.data;
+    // data is stored in the data 
+    // field of the response
+  }catch (err) {
+    console.error(err);
+  }
+}
+
 
 // Takes the id of a User as input
 // and sends a Get request to the /User: id endpoint
@@ -140,6 +151,114 @@ export const createUser = async (UserObject) => {
   }
 };
 
+export const getMyFollowings = async () => {
+  try {
+    const response = await axios.get(`${rootURL}/User1`);
+    const me = response.data[0];
+    console.log(me.follow);
+    return me.follow;
+    // the data is stored in the mockData
+    // field of the response
+  } catch (err) {
+    console.error(err);
+  } 
+};
+
+export const following = async (followingName) => {
+  try {
+    const user1 = await axios.get(`${rootURL}/User1`);
+    const me = user1.data[0];
+    me.follow.push(followingName);
+    const response = await axios.put(
+      `${rootURL}/User1/0`,
+      me
+      // update the user1
+    );
+    return response.data;
+    
+  } catch (err) {
+    console.error(err);
+  } 
+};
+
+export const cancelFollowing = async (followingName) => {
+  try {
+    let user1 = await axios.get(`${rootURL}/User1`);
+    const me = user1.data[0];
+    const myFollowings = me.follow;
+    for(let i = 0; i < myFollowings.length; i++){
+      if(myFollowings[i] === followingName){
+        myFollowings.splice(i,1);
+        const response = await axios.put(
+          `${rootURL}/User1/0`,
+           me
+           // update the user1
+        );
+        return response.data;
+      }
+    }
+    return -1;
+    
+  } catch (err) {
+    console.error(err);
+  } 
+};
+
+export const isMyFollowing = async (username) => {
+  try {
+    let user1 = await axios.get(`${rootURL}/User1`);
+    const me = user1.data[0];
+    const myFollowings = me.follow;
+    for(let j = 0; j < myFollowings.length; j++){
+        if(myFollowings[j] === username){
+          return true;
+        }
+    }
+    return false;
+    // the data is stored in the mockData
+    // field of the response
+  } catch (err) {
+    console.error(err);
+  } 
+};
+
+
+export const getSuggestionList= async () => {
+  try {
+   
+    const users = await getUsers();
+    const suggestionList = [];
+    
+    for(let i = 0; i < users.length; i++){
+      const isAlreadyFollow = await isMyFollowing(users[i].username);
+      if(!isAlreadyFollow && hasCommonFollowings(users[i])){
+          suggestionList.push(users[i].username);
+      }
+    }
+    
+    return suggestionList;
+  } catch (err) {
+    console.error(err);
+  } 
+};
+
+export const hasCommonFollowings = (user) => {
+     
+  const userFollowList = user.follow;
+    let commonCount = 0;
+    for(let i = 0; i < userFollowList.length; i++){
+      let isFollowedByMe = isMyFollowing(userFollowList[i]);
+      if(isFollowedByMe)
+          commonCount++;
+    }
+    if(commonCount >= 3){
+        console.log(commonCount);
+        return true;
+    }
+    else{
+      return false;
+    }
+}
 // Sends a Get request to the endpoint
 // returns all the Timeline Posts
 // export const getTimelinePosts = async () => {

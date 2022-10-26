@@ -6,11 +6,22 @@ import { Navbar, Card, Button, ListGroup, ListGroupItem } from 'react-bootstrap'
 import ReactDOM from "react-dom";
 import { getUser, createUser, getTimelinePosts, getPosts, createPost } from '../api/mock_api';
 import { nanoid } from "nanoid"
-
+import {cancelFollowing, following} from '../api/mock_api';
 import '../FriendSuggestion.css';
 
 const FriendSuggestionComponent = (props) => {
     const [isfollowed, setisfollowed] = useState(props.isfollowed);
+
+    function handleClick(){
+        if(isfollowed){
+            setisfollowed(false);
+            cancelFollowing(props.name);
+        }else{
+            setisfollowed(true);
+            following(props.name);
+        }
+    }
+
     return (
         <div className="container-1_FriendSuggestion">
             <img className="image-0_FriendSuggestion" src={props.image} />
@@ -22,7 +33,8 @@ const FriendSuggestionComponent = (props) => {
                 <div className="container-4_FriendSuggestion">
 
                     <span className="text-3_FriendSuggestion" onClick={()=>{
-                        setisfollowed(!isfollowed)
+                        handleClick();
+                        //setisfollowed(!isfollowed)
                     }} >{isfollowed? "Unfollow":"Follow"}</span>
 
                 </div>

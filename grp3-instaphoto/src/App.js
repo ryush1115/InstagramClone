@@ -63,6 +63,11 @@ function App() {
                     Create Post
                   </Link>
                 </li>}
+                <li className = "nav-item">
+                  <Link className = "nav-link" to={'/FollowingList'}>
+                    Following List
+                  </Link>
+                </li>
 
 
               </ul>

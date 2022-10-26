@@ -1,4 +1,4 @@
-import React, { useState, Fragment, useRef, useContext } from "react";
+import React, { useState, Fragment, useEffect, useContext } from "react";
 import { Navbar, Card, Button, ListGroup, ListGroupItem } from 'react-bootstrap';
 import ReactDOM from "react-dom";
 import '../FriendSuggestion.css';
@@ -8,12 +8,31 @@ import '../FriendSuggestion.css';
 // import ellipse508 from "../images/ellipse508.png";
 // import ellipse5041 from "../images/ellipse5041.png";
 // import ellipse506 from "../images/ellipse506.png";
-import FriendSuggestionComponent from "./FriendSuggestionComponent"
+import SingleLineUserInfo from "./SingleLineUserInfo"
 import { sendFriendSuggestionList, } from '../api/mock_api';
+import { getSuggestionList } from '../api/mock_api';
+
 const FriendSuggestion = () => {
   const [buttonText, setButtonText] = useState('Follow');
   const [Following, setFollowing] = useState(false);
-  const [FriendSuggestionList, setFriendSuggestionList] = useState([{ name: "Akikos", image: null, description: "This is a cool person", isfollowed: false }]);
+  const [FriendSuggestionList, setFriendSuggestionList] = useState([]);
+  
+  let data;
+  const someFetch = async () => {
+      //using JS fetch API
+      data = await getSuggestionList();
+      // assuming the state is in the form of an array
+      console.log(data);
+      setFriendSuggestionList(data);
+  }
+  
+
+  useEffect(() => {
+
+      someFetch();
+      console.log(FriendSuggestionList);
+
+  },[]);
   //pull the list of users from the backend
   // useEffect(()=>{
   //   async function fetchData(){
@@ -127,7 +146,7 @@ const FriendSuggestion = () => {
       <div className="container-0_FriendSuggestion">
         <span className="text-0_FriendSuggestion">Suggested</span>
         {FriendSuggestionList.map(v => {
-          return <FriendSuggestionComponent name={v.name} description={v.description} image={v.image} isfollowed={v.isfollowed} />
+          return <SingleLineUserInfo name={v} description={"This is a cool person"} image={null} isfollowed={false} />
         })}
       </div>
 
