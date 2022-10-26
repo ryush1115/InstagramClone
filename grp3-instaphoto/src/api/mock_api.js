@@ -140,6 +140,30 @@ export const createUser = async (UserObject) => {
   }
 };
 
+// Create a Comment (without the Id) as input
+// and sends a POST request to the /Comment endpoint
+// returns the attributes of the Comment with the id
+
+/**
+ * {
+      "username": "Heath_Buckridge",
+      "message": "message 1",
+      "tagOfOtherUsers": [],
+      "id": "1"
+    },
+ */
+export const createComment = async (CommentObject) => {
+  try {
+    const response = await axios.post (
+      `${rootURL}/Comment`,
+      `username=${CommentObject.username}&message=${CommentObject.message}
+      &tagOfOtherUsers=${CommentObject.postTageOfOtherUsers}`
+    )
+  } catch (err) {
+    console.error(err);
+  }
+};
+
 // Sends a Get request to the endpoint
 // returns all the Timeline Posts
 // export const getTimelinePosts = async () => {

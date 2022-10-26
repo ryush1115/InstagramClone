@@ -84,6 +84,7 @@ function DragDrop() {
     // backend
     setNewPost(newStoredPost);
   };
+  
   /**
    * return (
       <form id="form-file-upload" onDragEnter={handleDrag} onSubmit={(e) => e.preventDefault()}>
