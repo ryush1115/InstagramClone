@@ -22,7 +22,7 @@ const FriendSuggestion = () => {
       //using JS fetch API
       data = await getSuggestionList();
       // assuming the state is in the form of an array
-      console.log(data);
+      //console.log(data);
       setFriendSuggestionList(data);
   }
   

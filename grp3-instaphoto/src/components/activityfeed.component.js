@@ -179,6 +179,7 @@ const ActivityFeedComponent = () => {
     let newPostComment;
     let newPostImage = "http://loremflickr.com/640/480"; // default to this image for HW2
 
+    /*
     const handleOnChange = (e) => {
       // update fields inside event handlers
       if (e.target.name === 'username') {
@@ -212,6 +213,7 @@ const ActivityFeedComponent = () => {
       // backend
       setNewPost(newStoredPost);
     };
+    */
 
 
     /**

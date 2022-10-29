@@ -23,7 +23,7 @@ const FollowingList = (props) => {
         //using JS fetch API
         data = await getMyFollowings();
         // assuming the state is in the form of an array
-        console.log(data);
+        // console.log(data);
         setFollowings(data);
     }
    

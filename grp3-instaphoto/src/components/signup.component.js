@@ -93,7 +93,8 @@ const SignupComponent = () => {
       /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
     return regex.test(String(email).toLowerCase());
   };
-
+ 
+  /*
   const handleCreateNewStudent = async (e) => {
     // stop default behavior to avoid reloading the page
     e.preventDefault();
@@ -103,7 +104,8 @@ const SignupComponent = () => {
     // send POST request to create new User
     const newStoredUser = await createUser(newUser);
     console.log("New Student Created");
-  }
+  } 
+  */
 
   return (
     <form className="auth-inner" onSubmit={handleSubmitClick}>

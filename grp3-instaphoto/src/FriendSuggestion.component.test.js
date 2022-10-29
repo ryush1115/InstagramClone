@@ -18,7 +18,7 @@ import SignUp from './components/signup.component'
 import Userprofile from './components/userprofile.component'
 import ActivityFeed from './components/activityfeed.component'
 import FriendSuggestion from './components/FriendSuggestion.component'
-import FriendSuggestionComponent from './components/FriendSuggestionComponent';
+
 
 
 // import Userpic from './components/test'

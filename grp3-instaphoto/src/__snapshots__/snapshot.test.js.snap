@@ -144,6 +144,17 @@ exports[`App matches snapshot 1`] = `
               Create Post
             </a>
           </li>
+          <li
+            className="nav-item"
+          >
+            <a
+              className="nav-link"
+              href="/FollowingList"
+              onClick={[Function]}
+            >
+              Following List
+            </a>
+          </li>
         </ul>
       </div>
     </div>
@@ -366,42 +377,6 @@ Array [
     >
       Following
     </span>
-    <div
-      className="container-1_FriendSuggestion"
-    >
-      <img
-        className="image-0_FriendSuggestion"
-        src={null}
-      />
-      <div
-        className="container-2_FriendSuggestion"
-      >
-        <div
-          className="container-3_FriendSuggestion"
-        >
-          <span
-            className="text-1_FriendSuggestion"
-          >
-            Akikos
-          </span>
-          <span
-            className="text-2_FriendSuggestion"
-          >
-            This is a cool person
-          </span>
-        </div>
-        <div
-          className="container-4_FriendSuggestion"
-        >
-          <span
-            className="text-3_FriendSuggestion"
-            onClick={[Function]}
-          >
-            Unfollow
-          </span>
-        </div>
-      </div>
-    </div>
   </div>,
   ",",
 ]
@@ -582,42 +557,6 @@ Array [
     >
       Suggested
     </span>
-    <div
-      className="container-1_FriendSuggestion"
-    >
-      <img
-        className="image-0_FriendSuggestion"
-        src={null}
-      />
-      <div
-        className="container-2_FriendSuggestion"
-      >
-        <div
-          className="container-3_FriendSuggestion"
-        >
-          <span
-            className="text-1_FriendSuggestion"
-          >
-            Akikos
-          </span>
-          <span
-            className="text-2_FriendSuggestion"
-          >
-            This is a cool person
-          </span>
-        </div>
-        <div
-          className="container-4_FriendSuggestion"
-        >
-          <span
-            className="text-3_FriendSuggestion"
-            onClick={[Function]}
-          >
-            Follow
-          </span>
-        </div>
-      </div>
-    </div>
   </div>,
   ",",
 ]
@@ -1325,5 +1264,3 @@ Array [
   ",",
 ]
 `;
-
-exports[`gallery matches snapshot 1`] = `<gallery />`;

@@ -22,28 +22,29 @@ function DragDrop() {
   const [, setNewPost] = useState(null);
 
   // handle drag events
-  const handleDrag = function(e) {
-    e.preventDefault();
-    e.stopPropagation();
+  
+  // const handleDrag = function(e) {
+  //   e.preventDefault();
+  //   e.stopPropagation();
 
-    // also handles 'dragover' and 'dragleave'
-    if (e.type === "dragenter" || e.type === "dragover") {
-      setDragActive(true);
-    } else if (e.type === "dragleave") {
-      setDragActive(false);
-    }
-  };
+  //   // also handles 'dragover' and 'dragleave'
+  //   if (e.type === "dragenter" || e.type === "dragover") {
+  //     setDragActive(true);
+  //   } else if (e.type === "dragleave") {
+  //     setDragActive(false);
+  //   }
+  // };
 
-  const handleDrop = function(e) {
-    e.preventDefault();
-    e.stopPropagation();
-    setDragActive(false);
+  // const handleDrop = function(e) {
+  //   e.preventDefault();
+  //   e.stopPropagation();
+  //   setDragActive(false);
 
-    if (e.dataTransfer.files && e.dataTransfer.files[0]) {
-      // at least one file has been dropped so do something
+  //   if (e.dataTransfer.files && e.dataTransfer.files[0]) {
+  //     // at least one file has been dropped so do something
 
-    }
-  }
+  //   }
+  // }
 
   // create variables for post creation
   let newUsername = "grp3foreva";
