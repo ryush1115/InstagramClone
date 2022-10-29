@@ -1,9 +1,9 @@
-import React, { useState, Fragment} from "react";
+import React, { useState, useEffect, Fragment} from "react";
 import {Routes, Route, useNavigate} from 'react-router-dom';
 import '../userprofile.css';
 import { Navbar, Card, ListGroup, ListGroupItem } from 'react-bootstrap';
 // import { goToAnchor, configureAnchors } from 'react-scrollable-anchor';
-
+import { getSuggestionList } from '../api/mock_api';
 
 const UserprofileComponent=()=>{
     const navigate = useNavigate();
@@ -17,7 +17,26 @@ const UserprofileComponent=()=>{
     const navigateToCreatePost = () => {
         navigate('/dragdrop');
       };
-      
+    
+    const [FriendSuggestionList, setFriendSuggestionList] = useState([]);
+
+    let data;
+    const someFetch = async () => {
+        //using JS fetch API
+        data = await getSuggestionList();
+        // assuming the state is in the form of an array
+        //console.log(data);
+        setFriendSuggestionList(data);
+    }
+
+
+    useEffect(() => {
+
+        someFetch();
+        console.log(FriendSuggestionList);
+
+    },[]);
+
     return (
         <Fragment>
         <Navbar className='home'>
@@ -78,7 +97,7 @@ const UserprofileComponent=()=>{
 
                 </div>
                 <button className="action-btn" type="button">
-                    <span className="username">akikozzm</span>
+                    <span className="username">{FriendSuggestionList[0]}</span>
                     <span className="follow">Follow</span>
                 </button>
             </div>
@@ -89,7 +108,7 @@ const UserprofileComponent=()=>{
 
                 </div>
                 <button className="action-btn" type="button">
-                    <span className="username">akikozzm</span>
+                    <span className="username">{FriendSuggestionList[1]}</span>
                     <span className="follow">Follow</span>
                 </button>
             </div>
@@ -100,7 +119,7 @@ const UserprofileComponent=()=>{
 
                 </div>
                 <button className="action-btn" type="button">
-                    <span className="username">akikozzm</span>
+                    <span className="username">{FriendSuggestionList[2]}</span>
                     <span className="follow">Follow</span>
                 </button>
             </div>

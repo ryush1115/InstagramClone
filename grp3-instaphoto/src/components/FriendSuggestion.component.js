@@ -108,7 +108,7 @@ const FriendSuggestion = () => {
 
               </div>
               <button className="action-btn" type="button">
-                <span className="username">akikozzm</span>
+                <span className="username">{FriendSuggestionList[0]}</span>
                 <span className="follow">Follow</span>
               </button>
             </div>
@@ -119,7 +119,7 @@ const FriendSuggestion = () => {
 
               </div>
               <button className="action-btn" type="button">
-                <span className="username">akikozzm</span>
+                <span className="username">{FriendSuggestionList[1]}</span>
                 <span className="follow">Follow</span>
               </button>
             </div>
@@ -129,7 +129,7 @@ const FriendSuggestion = () => {
                 {/* <img className='other-user' src={require('../images/grp3.PNG')} alt="" /> */}
               </div>
               <button className="action-btn" type="button">
-                <span className="username">akikozzm</span>
+                <span className="username">{FriendSuggestionList[2]}</span>
                 <span className="follow">Follow</span>
               </button>
             </div>

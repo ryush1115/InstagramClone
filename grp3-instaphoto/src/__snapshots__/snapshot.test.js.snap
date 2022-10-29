@@ -485,9 +485,7 @@ Array [
           >
             <span
               className="username"
-            >
-              akikozzm
-            </span>
+            />
             <span
               className="follow"
             >
@@ -510,9 +508,7 @@ Array [
           >
             <span
               className="username"
-            >
-              akikozzm
-            </span>
+            />
             <span
               className="follow"
             >
@@ -535,9 +531,7 @@ Array [
           >
             <span
               className="username"
-            >
-              akikozzm
-            </span>
+            />
             <span
               className="follow"
             >
@@ -743,9 +737,7 @@ exports[`SideBar matches snapshot 1`] = `
         >
           <span
             className="username"
-          >
-            akikozzm
-          </span>
+          />
           <span
             className="follow"
           >
@@ -768,9 +760,7 @@ exports[`SideBar matches snapshot 1`] = `
         >
           <span
             className="username"
-          >
-            akikozzm
-          </span>
+          />
           <span
             className="follow"
           >
@@ -793,9 +783,7 @@ exports[`SideBar matches snapshot 1`] = `
         >
           <span
             className="username"
-          >
-            akikozzm
-          </span>
+          />
           <span
             className="follow"
           >
@@ -1022,9 +1010,7 @@ Array [
           >
             <span
               className="username"
-            >
-              akikozzm
-            </span>
+            />
             <span
               className="follow"
             >
@@ -1047,9 +1033,7 @@ Array [
           >
             <span
               className="username"
-            >
-              akikozzm
-            </span>
+            />
             <span
               className="follow"
             >
@@ -1072,9 +1056,7 @@ Array [
           >
             <span
               className="username"
-            >
-              akikozzm
-            </span>
+            />
             <span
               className="follow"
             >
