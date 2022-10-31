@@ -2,13 +2,14 @@ import React, { useState, Fragment, useEffect, useRef } from "react";
 import '../activityfeed.css';
 import '../userprofile.css';
 import { Navbar, Card, ListGroup, ListGroupItem } from 'react-bootstrap';
-import { getUser, createUser, getTimelinePosts, getPosts, createPost, createComment, getPost } from '../api/mock_api';
+import { getUser, createUser, getTimelinePosts, getPosts, createPost, createComment, getPost, deletePost } from '../api/mock_api';
 
 const ActivityFeedComponent = () => {
 
   function PostRow(props) {
 
     const[, setNewComment] = useState(null);
+    const[, setDeletedPost] = useState(null);
 
     // Ref variable 
     const loadData = useRef(false);
@@ -23,15 +24,19 @@ const ActivityFeedComponent = () => {
       "id": "1"
      */
 
+
+    // stores user input for the comment
     const handleOnChangeComment = (e) => {
       if (e.target.name==='commentBox_')  {
         newPostComment_ = e.target.value;
       }
     }
 
+    // handle create comment
     const handleCreateComment = async (e) => {
       // stop default behavior to avoid reloading the page
       e.preventDefault();
+      // use a dummy ID for now
       const newComment = {username:"grp3foreva", message:newPostComment_, tagOfOtherUsers:null,id:10};
       
       console.log(newComment);
@@ -43,6 +48,18 @@ const ActivityFeedComponent = () => {
       loadData.current = true;
       setNewComment(newStoredComment);
     }
+
+    // handle delete Post
+    const handleDeletePost = async(e) => {
+      
+      //e.preventDefault();
+      console.log("Delete post");
+      const newDeletedPost = await deletePost(props.post.id);
+      //update load data
+      loadData.current = true;
+      setDeletedPost(newDeletedPost);
+    }
+
 
     return (
       <tr>
@@ -100,8 +117,8 @@ const ActivityFeedComponent = () => {
                 <span class="slider">Like</span>
               </label>
 
-              {/* <button type="remove">Delete</button>
-              <button type="remove">Edit</button> */}
+              <button type="remove" onClick={handleDeletePost}>Delete</button>
+              {/* <button type="remove">Edit</button> */}
 
               <div className="postBottomRight">
                 <span className="postCommentText"> More comments</span>

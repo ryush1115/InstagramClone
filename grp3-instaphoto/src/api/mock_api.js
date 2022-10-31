@@ -97,6 +97,10 @@ export const getPassword = async(userEmail) => {
 // export const 
 
 
+
+
+
+
 // Create a Post (without the Id) as input
 // and sends a POST request to the /Post endpoint
 // returns the attributes of the Post with the id
@@ -164,6 +168,17 @@ export const createComment = async (CommentObject) => {
   }
 };
 
+
+// Delete a Post
+export const deletePost = async(PostId) => {
+  try {
+    const response = await axios.delete(`${rootURL}/Post/${PostId}`);
+    return response.data;
+  } catch (err) {
+    console.error(err);
+  }
+}
+
 // Sends a Get request to the endpoint
 // returns all the Timeline Posts
 // export const getTimelinePosts = async () => {
@@ -188,4 +203,6 @@ export const createComment = async (CommentObject) => {
 //     console.error(err);
 //   }
 // }
+
+
 
