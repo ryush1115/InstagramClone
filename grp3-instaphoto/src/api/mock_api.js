@@ -47,7 +47,6 @@ export const getPosts = async () => {
   }
 }
 
-
 // Takes the id of a Post as input
 // and sends a Get request to the /Post: id endpoint
 // returns the attributes of the Post
@@ -60,7 +59,6 @@ export const getPost = async(PostId) => {
   }
 }
 
-
 // Takes the id of a User as input
 // and sends a Get request to the /User: id endpoint
 // returns the attributes of the User
@@ -72,8 +70,6 @@ export const getUser = async(userId) => {
     console.error(err);
   }
 };
-
-
 
 
 // takes id of a post, and gets 
