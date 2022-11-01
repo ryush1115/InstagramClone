@@ -73,6 +73,9 @@ export const getUser = async(userId) => {
   }
 };
 
+
+
+
 // takes id of a post, and gets 
 // the postCommentsArray attached to it
 export const getCommentsArray = async(PostId) => {

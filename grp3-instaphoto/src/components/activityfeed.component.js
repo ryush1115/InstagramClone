@@ -7,7 +7,6 @@ import { getUser, createUser, getTimelinePosts, getPosts, createPost, createComm
 const ActivityFeedComponent = () => {
 
   function PostRow(props) {
-
     const[, setNewComment] = useState(null);
     const[, setDeletedPost] = useState(null);
     const[, setIncrementLike] = useState(null);
@@ -68,7 +67,6 @@ const ActivityFeedComponent = () => {
 
     const handleGetPost = async(e) => {
       const newComment = await getCommentMessage(props.postCommentsArray[0]);
-
     }
 
     return (
