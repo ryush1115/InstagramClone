@@ -2,11 +2,73 @@ import React, { useState, Fragment, useEffect, useRef } from "react";
 import '../activityfeed.css';
 import '../userprofile.css';
 import { Navbar, Card, ListGroup, ListGroupItem } from 'react-bootstrap';
-import { getUser, createUser, getTimelinePosts, getPosts, createPost, getPost } from '../api/mock_api';
+import { getUser, createUser, getTimelinePosts, getPosts, createPost, createComment, getPost, deletePost, incrementPostLike, getCommentMessage} from '../api/mock_api';
 
 const ActivityFeedComponent = () => {
 
   function PostRow(props) {
+    const[, setNewComment] = useState(null);
+    const[, setDeletedPost] = useState(null);
+    const[, setIncrementLike] = useState(null);
+
+    // Ref variable 
+    const loadData = useRef(false);
+
+    let newPostComment_;
+    let tagOfOtherUsers;
+
+    // stores user input for the comment
+    const handleOnChangeComment = (e) => {
+      if (e.target.name==='commentBox_')  {
+        newPostComment_ = e.target.value;
+      }
+    }
+
+    // handle create comment
+    const handleCreateComment = async (e) => {
+      // stop default behavior to avoid reloading the page
+      e.preventDefault();
+      // use a dummy ID for now
+      const newComment = {username:"grp3foreva", message:newPostComment_, tagOfOtherUsers:null,id:10};
+      
+      console.log(newComment);
+      // clear the form
+      const form = document.getElementById('commentBox');
+      form.reset();
+      const newStoredComment = await createComment(newComment); 
+      // update LoadData
+      loadData.current = true;
+      setNewComment(newStoredComment);
+    }
+
+    // useEffect(()=>{
+
+    // });
+    // handle delete Post
+    const handleDeletePost = async(e) => {
+      
+      //e.preventDefault();
+      console.log("Delete post");
+      const newDeletedPost = await deletePost(props.post.id);
+      //update load data
+      
+      setDeletedPost(newDeletedPost);
+      loadData.current = true;
+    }
+
+    // handle increment Like
+    const handleIncrementLike = async(e) => {
+      //console.log("Increment Like");
+      const newIncrementLike = await incrementPostLike(props.post.id);
+      
+      setIncrementLike(newIncrementLike);
+      loadData.current = true;
+    }
+
+    const handleGetPost = async(e) => {
+      const newComment = await getCommentMessage(props.postCommentsArray[0]);
+    }
+
     return (
       <tr>
         <div className="post"
@@ -20,8 +82,11 @@ const ActivityFeedComponent = () => {
                           src={require('../images/test.png')}
                           alt=""
                       /> */}
-                <span
-                  className="postUsername" data-testid = "testing1"> {props.post.username}
+                <span className="postUsername" data-testid = "testing1"> 
+                  {props.post.username}
+                </span>
+                <span className="PostId" data-testid = "testing2" > 
+                <p>Post Id: {props.post.id}</p>
                 </span>
               </div>
             </div>
@@ -35,17 +100,40 @@ const ActivityFeedComponent = () => {
 
             <div className="postBottom">
               <div className="postBottomLeft">
+                {props.post.postCaption}
               </div>
-              <form id="commentBox">
+
+              <label class="switch">
+                <span>
+                  <button onClick={handleIncrementLike}>Like 
+                </button> <p>{props.post.likeCounter}</p>
+                </span>
+                {/* <span class="slider">Like</span> */}
+              </label>
+
+              <button type="remove" onClick={handleDeletePost}>Delete</button>
+              {/* <button type="remove">Edit</button> */}
+              
+            </div>
+            <div className="postBottom">
+              {/* <p> Testing </p> */}
+              <form id="commentBox" onSubmit={handleCreateComment}>
                 <label></label>
-                <input type="text" className="commentBox" size="50" placeholder="Enter a comment..." />
+                <input type="text" 
+                name="commentBox_" 
+                className="commentBox" 
+                size="15" 
+                placeholder="Enter a comment..." 
+                onChange={handleOnChangeComment}
+                />
+                <button type="submit">Post!</button>
               </form>
-              <div>
-                {props.post.postComment}
-              </div>
               <div className="postBottomRight">
-                <span className="postCommentText"> Click for more comments</span>
+                
+                <span className="postCommentText"> Comments Array: {props.post.postCommentsArray} </span>
+
               </div>
+
             </div>
           </div>
         </div>
@@ -71,7 +159,7 @@ const ActivityFeedComponent = () => {
       postsList.forEach((element) => {
         // const {post} = element;
         if (usernameFilter === 'SHOW_ALL') {
-          rows.push(
+          rows.unshift(
             <PostRow post={element}
               key={counter.current}
             />
@@ -80,7 +168,7 @@ const ActivityFeedComponent = () => {
           if (!element.username.startsWith(usernameFilter)) {
             return;
           }
-          rows.push(
+          rows.unshift(
             <PostRow post={element}
               key={counter.current}
             />,
@@ -162,6 +250,38 @@ const ActivityFeedComponent = () => {
     return (
       <SearchBar roster={roster} />
     )
+  }
+
+  function AddComment() {
+    // local state new Comment
+    
+    const[, setNewComment] = useState(null);
+
+    // Ref variable 
+    const loadData = useRef(false);
+
+    let newPostComment_;
+    let tagOfOtherUsers;
+
+    const handleOnChangeComment = (e) => {
+      if (e.target.name==='commentBox_')  {
+        newPostComment_ = e.target.value;
+      }
+    }
+
+    const handleCreateComment = async (e) => {
+      // stop default behavior to avoid reloading the page
+      e.preventDefault();
+      const newComment = {username:"grp3foreva", message:"my first comment", tagOfOtherUsers:null};
+      
+      // clear the form
+      const form = document.getElementByIdById('commentBox');
+      form.reset();
+      const newStoredComment = await createComment(newComment); 
+      // update LoadData
+      loadData.current = true;
+      setNewComment(newStoredComment);
+    }
   }
 
   function AddPost() {
