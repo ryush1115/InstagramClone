@@ -73,6 +73,30 @@ export const getUser = async(userId) => {
   }
 };
 
+// takes id of a post, and gets 
+// the postCommentsArray attached to it
+export const getCommentsArray = async(PostId) => {
+  try {
+    const response = await axios.get (`${rootURL}/Post/${PostId}`);
+    return response.data.postCommentsArray;
+
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+// Takes id of a post, and 
+// returns the message of the comment
+export const getCommentMessage = async(CommentId) => {
+  try {
+    const response = await axios.get(`${rootURL}/Comment/${CommentId}`);
+    return response.data.message;
+  } catch (err) {
+    console.error(err)
+  }
+}
+
+
 // Takes a user email address as input
 // and sends a Get request to the /User endpoint
 // returns the password of the User with the email address
@@ -84,6 +108,7 @@ export const getPassword = async(userEmail) => {
     console.error(err);
   }
 }
+
 
 // Following a user = takes a username as input
 // and sends a POST request to the /User endpoint

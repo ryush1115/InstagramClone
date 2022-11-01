@@ -2,7 +2,7 @@ import React, { useState, Fragment, useEffect, useRef } from "react";
 import '../activityfeed.css';
 import '../userprofile.css';
 import { Navbar, Card, ListGroup, ListGroupItem } from 'react-bootstrap';
-import { getUser, createUser, getTimelinePosts, getPosts, createPost, createComment, getPost, deletePost, incrementPostLike} from '../api/mock_api';
+import { getUser, createUser, getTimelinePosts, getPosts, createPost, createComment, getPost, deletePost, incrementPostLike, getCommentMessage} from '../api/mock_api';
 
 const ActivityFeedComponent = () => {
 
@@ -66,6 +66,10 @@ const ActivityFeedComponent = () => {
       loadData.current = true;
     }
 
+    const handleGetPost = async(e) => {
+      const newComment = await getCommentMessage(props.postCommentsArray[0]);
+
+    }
 
     return (
       <tr>
@@ -101,8 +105,6 @@ const ActivityFeedComponent = () => {
                 {props.post.postCaption}
               </div>
 
-              
-              
               <label class="switch">
                 <span>
                   <button onClick={handleIncrementLike}>Like 
@@ -129,7 +131,9 @@ const ActivityFeedComponent = () => {
                 <button type="submit">Post!</button>
               </form>
               <div className="postBottomRight">
-                <span className="postCommentText">More comments</span>
+                
+                <span className="postCommentText"> Comments Array: {props.post.postCommentsArray} </span>
+
               </div>
 
             </div>

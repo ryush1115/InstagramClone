@@ -130,7 +130,7 @@
       "postCaption": "Cute cat!!!!",
       "publicPrivate": false,
       "postTagOfOtherUsers": [],
-      "postCommentsArray": [],
+      "postCommentsArray": [1],
       "likeCounter": 0,
       "id": "1"
     },
@@ -140,7 +140,10 @@
       "postCaption": "Adorable cat!!!",
       "publicPrivate": false,
       "postTagOfOtherUsers": [],
-      "postCommentsArray": [],
+      "postCommentsArray": [
+        2,
+        3
+      ],
       "likeCounter": 0,
       "id": "2"
     },
@@ -150,7 +153,9 @@
       "postCaption": "Are you in paris??",
       "publicPrivate": false,
       "postTagOfOtherUsers": [],
-      "postCommentsArray": [],
+      "postCommentsArray": [
+        1
+      ],
       "likeCounter": 0,
       "id": "3"
     },
@@ -160,7 +165,9 @@
       "postCaption": "Cool photo",
       "publicPrivate": false,
       "postTagOfOtherUsers": [],
-      "postCommentsArray": [],
+      "postCommentsArray": [
+        2
+      ],
       "likeCounter": 0,
       "id": "4"
     },
@@ -170,7 +177,9 @@
       "postCaption": "Woof woof!!",
       "publicPrivate": false,
       "postTagOfOtherUsers": [],
-      "postCommentsArray": [],
+      "postCommentsArray": [
+        1
+      ],
       "likeCounter": 0,
       "id": "5"
     },
@@ -201,7 +210,7 @@
       "publicPrivate": "false\n      ",
       "postTagOfOtherUsers": [],
       "postCommentsArray": [],
-      "likeCounter": "0",
+      "likeCounter": 1,
       "id": "xcybrOs"
     },
     {
@@ -218,31 +227,31 @@
   "Comment": [
     {
       "username": "Heath_Buckridge",
-      "message": "message 1",
+      "message": "comment message 1",
       "tagOfOtherUsers": [],
       "id": "1"
     },
     {
       "username": "Sigmund.Roberts",
-      "message": "message 2",
+      "message": "comment message 2",
       "tagOfOtherUsers": [],
       "id": "2"
     },
     {
       "username": "Kale73",
-      "message": "message 3",
+      "message": "comment message 3",
       "tagOfOtherUsers": [],
       "id": "3"
     },
     {
       "username": "Carissa_Hartmann84",
-      "message": "message 4",
+      "message": "comment message 4",
       "tagOfOtherUsers": [],
       "id": "4"
     },
     {
       "username": "Beverly.Thiel1",
-      "message": "message 5",
+      "message": "comment message 5",
       "tagOfOtherUsers": [],
       "id": "5"
     },
