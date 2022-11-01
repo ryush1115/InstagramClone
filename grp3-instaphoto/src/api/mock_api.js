@@ -97,10 +97,6 @@ export const getPassword = async(userEmail) => {
 // export const 
 
 
-
-
-
-
 // Create a Post (without the Id) as input
 // and sends a POST request to the /Post endpoint
 // returns the attributes of the Post with the id
@@ -110,13 +106,21 @@ export const createPost = async (PostObject) => {
     const response = await axios.post(
       `${rootURL}/Post`,
       `username=${PostObject.username}&postImage=${PostObject.postImage}
-      &postComment=${PostObject.postComment}
+      &postCaption=${PostObject.postCaption}
       &publicPrivate=${PostObject.publicPrivate}
-      &postTageOfOtherUsers=${PostObject.postTageOfOtherUsers}`
+      &postTagOfOtherUsers=${PostObject.postTagOfOtherUsers}
+      &postCommentsArray=${PostObject.postCommentsArray}
+      &likeCounter=${PostObject.likeCounter}`
+
     );
     console.log(`username=${PostObject.username}&postImage=${PostObject.postImage}
+    &postCaption=${PostObject.postCaption}
     &publicPrivate=${PostObject.publicPrivate}
-    &postTageOfOtherUsers=${PostObject.postTageOfOtherUsers}`);
+    &postTagOfOtherUsers=${PostObject.postTagOfOtherUsers}
+    &postCommentsArray=${PostObject.postCommentsArray}
+    &likeCounter=${PostObject.likeCounter}`
+    
+    );
     return response.data;
   } catch (err) {
     console.error(err);
@@ -148,20 +152,12 @@ export const createUser = async (UserObject) => {
 // and sends a POST request to the /Comment endpoint
 // returns the attributes of the Comment with the id
 
-/**
- * {
-      "username": "Heath_Buckridge",
-      "message": "message 1",
-      "tagOfOtherUsers": [],
-      "id": "1"
-    },
- */
 export const createComment = async (CommentObject) => {
   try {
     const response = await axios.post (
       `${rootURL}/Comment`,
       `username=${CommentObject.username}&message=${CommentObject.message}
-      &tagOfOtherUsers=${CommentObject.postTageOfOtherUsers}`
+      &tagOfOtherUsers=${CommentObject.postTagOfOtherUsers}`
     )
   } catch (err) {
     console.error(err);
@@ -176,6 +172,16 @@ export const deletePost = async(PostId) => {
     return response.data;
   } catch (err) {
     console.error(err);
+  }
+}
+
+// Increment a Like
+export const incrementPostLike = async(PostId) => {
+  try {
+    const pre_response = await axios.get(`${rootURL}/Post/${PostId}`);  
+    const response = await axios.patch(`${rootURL}/Post/${PostId}/`,{likeCounter:1});
+  } catch (err) {
+    console.error(err)
   }
 }
 

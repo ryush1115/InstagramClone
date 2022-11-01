@@ -2,7 +2,7 @@ import React, { useState, Fragment, useEffect, useRef } from "react";
 import '../activityfeed.css';
 import '../userprofile.css';
 import { Navbar, Card, ListGroup, ListGroupItem } from 'react-bootstrap';
-import { getUser, createUser, getTimelinePosts, getPosts, createPost, createComment, getPost, deletePost } from '../api/mock_api';
+import { getUser, createUser, getTimelinePosts, getPosts, createPost, createComment, getPost, deletePost, incrementPostLike} from '../api/mock_api';
 
 const ActivityFeedComponent = () => {
 
@@ -10,20 +10,13 @@ const ActivityFeedComponent = () => {
 
     const[, setNewComment] = useState(null);
     const[, setDeletedPost] = useState(null);
+    const[, setIncrementLike] = useState(null);
 
     // Ref variable 
     const loadData = useRef(false);
 
     let newPostComment_;
     let tagOfOtherUsers;
-
-    /**
-     * "username": "Heath_Buckridge",
-      "message": "message 1",
-      "tagOfOtherUsers": [],
-      "id": "1"
-     */
-
 
     // stores user input for the comment
     const handleOnChangeComment = (e) => {
@@ -49,6 +42,9 @@ const ActivityFeedComponent = () => {
       setNewComment(newStoredComment);
     }
 
+    // useEffect(()=>{
+
+    // });
     // handle delete Post
     const handleDeletePost = async(e) => {
       
@@ -56,8 +52,18 @@ const ActivityFeedComponent = () => {
       console.log("Delete post");
       const newDeletedPost = await deletePost(props.post.id);
       //update load data
-      loadData.current = true;
+      
       setDeletedPost(newDeletedPost);
+      loadData.current = true;
+    }
+
+    // handle increment Like
+    const handleIncrementLike = async(e) => {
+      //console.log("Increment Like");
+      const newIncrementLike = await incrementPostLike(props.post.id);
+      
+      setIncrementLike(newIncrementLike);
+      loadData.current = true;
     }
 
 
@@ -78,7 +84,7 @@ const ActivityFeedComponent = () => {
                   {props.post.username}
                 </span>
                 <span className="PostId" data-testid = "testing2" > 
-                  {props.post.id}
+                <p>Post Id: {props.post.id}</p>
                 </span>
               </div>
             </div>
@@ -92,12 +98,25 @@ const ActivityFeedComponent = () => {
 
             <div className="postBottom">
               <div className="postBottomLeft">
+                {props.post.postCaption}
               </div>
 
-              <div>
-                {props.post.postComment}
-              </div>
               
+              
+              <label class="switch">
+                <span>
+                  <button onClick={handleIncrementLike}>Like 
+                </button> <p>{props.post.likeCounter}</p>
+                </span>
+                {/* <span class="slider">Like</span> */}
+              </label>
+
+              <button type="remove" onClick={handleDeletePost}>Delete</button>
+              {/* <button type="remove">Edit</button> */}
+              
+            </div>
+            <div className="postBottom">
+              {/* <p> Testing </p> */}
               <form id="commentBox" onSubmit={handleCreateComment}>
                 <label></label>
                 <input type="text" 
@@ -109,21 +128,10 @@ const ActivityFeedComponent = () => {
                 />
                 <button type="submit">Post!</button>
               </form>
-              
-              
-
-              <label class="switch">
-                <input type="checkbox"/>
-                <span class="slider">Like</span>
-              </label>
-
-              <button type="remove" onClick={handleDeletePost}>Delete</button>
-              {/* <button type="remove">Edit</button> */}
-
               <div className="postBottomRight">
-                <span className="postCommentText"> More comments</span>
+                <span className="postCommentText">More comments</span>
               </div>
-              
+
             </div>
           </div>
         </div>
@@ -253,13 +261,6 @@ const ActivityFeedComponent = () => {
     let newPostComment_;
     let tagOfOtherUsers;
 
-    /**
-     * "username": "Heath_Buckridge",
-      "message": "message 1",
-      "tagOfOtherUsers": [],
-      "id": "1"
-     */
-
     const handleOnChangeComment = (e) => {
       if (e.target.name==='commentBox_')  {
         newPostComment_ = e.target.value;
@@ -279,10 +280,7 @@ const ActivityFeedComponent = () => {
       loadData.current = true;
       setNewComment(newStoredComment);
     }
-
   }
-
-
 
   function AddPost() {
     // local state new Post

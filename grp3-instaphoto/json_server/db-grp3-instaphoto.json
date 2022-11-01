@@ -127,50 +127,94 @@
     {
       "username": "Augusta_Breitenberg76",
       "postImage": "http://loremflickr.com/640/480/?lock=1",
-      "postComment": "Cute cat!!!!",
+      "postCaption": "Cute cat!!!!",
       "publicPrivate": false,
       "postTagOfOtherUsers": [],
-      "likeCounter":0,
+      "postCommentsArray": [],
+      "likeCounter": 0,
       "id": "1"
     },
     {
       "username": "Gerda.Ziemann",
       "postImage": "http://loremflickr.com/640/480/?lock=2  ",
-      "postComment": "Adorable cat!!!",
+      "postCaption": "Adorable cat!!!",
       "publicPrivate": false,
       "postTagOfOtherUsers": [],
-      "likeCounter":0,
+      "postCommentsArray": [],
+      "likeCounter": 0,
       "id": "2"
     },
     {
       "username": "Hans53",
       "postImage": "http://loremflickr.com/640/480/paris?lock=1",
-      "postComment": "Are you in paris??",
+      "postCaption": "Are you in paris??",
       "publicPrivate": false,
       "postTagOfOtherUsers": [],
-      "likeCounter":0,
+      "postCommentsArray": [],
+      "likeCounter": 0,
       "id": "3"
     },
     {
       "username": "Kendra96",
       "postImage": "https://loremflickr.com/g/320/240/paris?lock=2",
-      "postComment": "Cool photo",
+      "postCaption": "Cool photo",
       "publicPrivate": false,
       "postTagOfOtherUsers": [],
-      "likeCounter":0,
+      "postCommentsArray": [],
+      "likeCounter": 0,
       "id": "4"
     },
     {
       "username": "Mason_Satterfield",
       "postImage": "http://loremflickr.com/640/480/dog?lock=1",
-      "postComment": "Woof woof!!",
+      "postCaption": "Woof woof!!",
       "publicPrivate": false,
       "postTagOfOtherUsers": [],
-      "likeCounter":0,
+      "postCommentsArray": [],
+      "likeCounter": 0,
       "id": "5"
+    },
+    {
+      "username": "grp3foreva",
+      "postImage": "http://loremflickr.com/640/480\n      ",
+      "postCaption": "JC test caption 1\n      ",
+      "publicPrivate": "false\n      ",
+      "postTagOfOtherUsers": [],
+      "postCommentsArray": [],
+      "likeCounter": 1,
+      "id": "IOKaXlm"
+    },
+    {
+      "username": "grp3foreva",
+      "postImage": "http://loremflickr.com/640/480\n      ",
+      "postCaption": "test caption 2\n      ",
+      "publicPrivate": "false\n      ",
+      "postTagOfOtherUsers": [],
+      "postCommentsArray": [],
+      "likeCounter": "0",
+      "id": "-6KIcu9"
+    },
+    {
+      "username": "grp3foreva",
+      "postImage": "http://loremflickr.com/640/480\n      ",
+      "postCaption": "undefined\n      ",
+      "publicPrivate": "false\n      ",
+      "postTagOfOtherUsers": [],
+      "postCommentsArray": [],
+      "likeCounter": "0",
+      "id": "xcybrOs"
+    },
+    {
+      "username": "grp3foreva",
+      "postImage": "http://loremflickr.com/640/480\n      ",
+      "postCaption": "test caption 3\n      ",
+      "publicPrivate": "false\n      ",
+      "postTagOfOtherUsers": [],
+      "postCommentsArray": [],
+      "likeCounter": "0",
+      "id": "iUR-DTt"
     }
   ],
-
   "Comment": [
     {
       "username": "Heath_Buckridge",
@@ -207,6 +251,42 @@
       "message": "my fourth comment\n      ",
       "tagOfOtherUsers": "undefined",
       "id": "xaRbPWN"
+    },
+    {
+      "username": "grp3foreva",
+      "message": "my first comment\n      ",
+      "tagOfOtherUsers": "undefined",
+      "id": "_JOl7Nx"
+    },
+    {
+      "username": "grp3foreva",
+      "message": "my first comment\n      ",
+      "tagOfOtherUsers": "undefined",
+      "id": "JOWa0h5"
+    },
+    {
+      "username": "grp3foreva",
+      "message": "this is a comment\n      ",
+      "tagOfOtherUsers": "undefined",
+      "id": "Mb6k7hf"
+    },
+    {
+      "username": "grp3foreva",
+      "message": "this is a second comment\n      ",
+      "tagOfOtherUsers": "undefined",
+      "id": "jNtCTIz"
+    },
+    {
+      "username": "grp3foreva",
+      "message": "test comment\n      ",
+      "tagOfOtherUsers": "undefined",
+      "id": "_Qi3E3a"
+    },
+    {
+      "username": "grp3foreva",
+      "message": "undefined\n      ",
+      "tagOfOtherUsers": "undefined",
+      "id": "4BYV01y"
     }
   ],
   "Like": [

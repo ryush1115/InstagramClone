@@ -47,14 +47,17 @@ function DragDrop() {
 
   // create variables for post creation
   let newUsername = "grp3foreva";
-  let newPostComment;
+  let newPostCaption;
   let newPostImage = "http://loremflickr.com/640/480"; // default to this image for HW2
+  let null_ = null;
+  let false_ = false;
+  let initZero = 0;
 
   const handleOnChange = function(e) {
     e.preventDefault();
     
-    if (e.target.name==="comment") {
-     newPostComment = e.target.value; 
+    if (e.target.name==="caption") {
+     newPostCaption = e.target.value; 
     }
     if(e.target.target==="postImage" && e.target.files[0]) {
       // at least one file has been selected so do something
@@ -71,7 +74,10 @@ function DragDrop() {
     // stop default behavior to avoid reloading the page
     e.preventDefault();
     // create new Post variable
-    const newPost = {username: newUsername, postImage: newPostImage, postComment: newPostComment, publicPrivate:false, postTagOfOtherUsers:null, id:10};
+    
+
+    const newPost = {username: newUsername, postImage: newPostImage, postCaption: newPostCaption, publicPrivate:false, postTagOfOtherUsers:null,postCommentsArray:null, likeCounter:0, id:10};
+
     // clear the form
     const form = document.getElementById('add-post');
     
@@ -112,8 +118,8 @@ function DragDrop() {
         <p>Create a Post Here!! </p>    
             <input
               type="text"
-              name="comment"
-              placeholder="Enter a comment..."
+              name="caption"
+              placeholder="Enter a caption..."
               onChange={handleOnChange}
             />
             <input
