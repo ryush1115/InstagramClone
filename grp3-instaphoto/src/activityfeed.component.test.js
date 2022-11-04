@@ -17,7 +17,7 @@ import App from './App';
 import Login from './components/login.component'
 import SignUp from './components/signup.component'
 import Userprofile from './components/userprofile.component'
-import ActivityFeed from './components/activityfeed.component'
+import ActivityFeedComponent from './components/activityfeed.component'
 import FriendSuggestion from './components/FriendSuggestion.component'
 
 
@@ -32,7 +32,7 @@ test("click for more comments should be in the component", () => {
     const history = createMemoryHistory();
     const component = render(
         <Router location={history.location} navigator={history}>
-            <ActivityFeed />,
+            <ActivityFeedComponent />,
         </Router>,
 
     );

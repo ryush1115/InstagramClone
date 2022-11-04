@@ -337,9 +337,7 @@
       "publicPrivate": "false\n      ",
       "postTageOfOtherUsers": "undefined",
       "id": "d9s8P8b",
-      "like": [
-        "0"
-      ]
+      "like": []
     },
     {
       "username": "grp3foreva",
@@ -348,7 +346,9 @@
       "publicPrivate": "false\n      ",
       "postTageOfOtherUsers": "undefined",
       "id": "n4MprFH",
-      "like": []
+      "like": [
+        "0"
+      ]
     },
     {
       "username": "grp3foreva",
@@ -357,7 +357,9 @@
       "publicPrivate": "false\n      ",
       "postTageOfOtherUsers": "undefined",
       "id": "CREL3Vi",
-      "like": []
+      "like": [
+        "0"
+      ]
     },
     {
       "username": "grp3foreva",
@@ -366,9 +368,7 @@
       "publicPrivate": "false\n      ",
       "postTageOfOtherUsers": "undefined",
       "id": "FDMT6Ws",
-      "like": [
-        "0"
-      ]
+      "like": []
     }
   ],
   "User1": [
