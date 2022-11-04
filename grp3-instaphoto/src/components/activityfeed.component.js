@@ -2,7 +2,7 @@ import React, { useState, Fragment, useEffect, useRef } from "react";
 import '../activityfeed.css';
 import '../userprofile.css';
 import { Navbar, Card, ListGroup, ListGroupItem } from 'react-bootstrap';
-import { getUser, createUser, getTimelinePosts, getPosts, createPost, createComment, getPost, deletePost, incrementPostLike, getCommentMessage} from '../api/mock_api';
+import {  getPosts,  createComment, deletePost, isMyLikePost,incrementPostLike, cancelPostLike, getCommentMessage} from '../api/mock_api';
 
 const ActivityFeedComponent = () => {
 
@@ -10,6 +10,22 @@ const ActivityFeedComponent = () => {
     const[, setNewComment] = useState(null);
     const[, setDeletedPost] = useState(null);
     const[, setIncrementLike] = useState(null);
+
+    const [isLiked, setIsLiked] = useState();
+    const [likeCounter, setLikeCounter] = useState(props.post.like.length);
+    
+    const someFetch = async () => {
+      //using JS fetch API
+      const data = await isMyLikePost(props.post.id)
+      setIsLiked(data);
+  }
+ 
+
+    useEffect(() => {
+
+        someFetch();
+
+    },[]);
 
     // Ref variable 
     const loadData = useRef(false);
@@ -57,12 +73,17 @@ const ActivityFeedComponent = () => {
     }
 
     // handle increment Like
-    const handleIncrementLike = async(e) => {
+    const handleLikeClick = async(e) => {
       //console.log("Increment Like");
-      const newIncrementLike = await incrementPostLike(props.post.id);
-      
-      setIncrementLike(newIncrementLike);
-      loadData.current = true;
+      if(isLiked){
+        setIsLiked(false);
+        cancelPostLike(props.post.id);
+        setLikeCounter(likeCounter - 1);
+      }else{
+        setIsLiked(true);
+        incrementPostLike(props.post.id);
+        setLikeCounter(likeCounter + 1);
+      }
     }
 
     const handleGetPost = async(e) => {
@@ -104,10 +125,14 @@ const ActivityFeedComponent = () => {
               </div>
 
               <label class="switch">
-                <span>
-                  <button onClick={handleIncrementLike}>Like 
-                </button> <p>{props.post.likeCounter}</p>
-                </span>
+              {/* <div className="container-4_FriendSuggestion"> */}
+                <button onClick={()=>{
+                          handleLikeClick();
+                          //setisfollowed(!isfollowed)
+                }} >{isLiked? "unLike":"Like"}
+                </button>
+              {/* </div> */}
+              <p>{likeCounter}</p>
                 {/* <span class="slider">Like</span> */}
               </label>
 

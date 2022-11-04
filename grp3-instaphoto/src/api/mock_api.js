@@ -322,13 +322,61 @@ export const deletePost = async(PostId) => {
 // Increment a Like
 export const incrementPostLike = async(PostId) => {
   try {
-    const pre_response = await axios.get(`${rootURL}/Post/${PostId}`);  
-    const response = await axios.patch(`${rootURL}/Post/${PostId}/`,{likeCounter:1});
+    const post = await getPost(PostId);
+
+    const user1 = await axios.get(`${rootURL}/User1`);
+    const me = user1.data[0];
+
+    post.like.push(me.id);
+    
+    const response = await axios.put(`${rootURL}/Post/${PostId}`,post);
+    return response.data;
+
   } catch (err) {
     console.error(err)
   }
 }
 
+// Increment a Like
+export const cancelPostLike = async(PostId) => {
+  try {
+    const post = await getPost(PostId);
+
+    const user1 = await axios.get(`${rootURL}/User1`);
+    const me = user1.data[0];
+
+    for(let i = 0; i < post.like.length; i++){
+      if(post.like[i] === me.id){
+        post.like.splice(i,1);
+        const response = await axios.put(`${rootURL}/Post/${PostId}`,post);
+        return response.data;
+      }
+    }
+    return -1;
+
+  } catch (err) {
+    console.error(err)
+  }
+}
+
+export const isMyLikePost = async(PostId) => {
+  try {
+    const post = await getPost(PostId);
+
+    const user1 = await axios.get(`${rootURL}/User1`);
+    const me = user1.data[0];
+
+    for(let j = 0; j < post.like.length; j++){
+      if(post.like[j] === me.id){
+        return true;
+      }
+    }
+    return false;
+
+  } catch (err) {
+    console.error(err)
+  }
+}
 // Sends a Get request to the endpoint
 // returns all the Timeline Posts
 // export const getTimelinePosts = async () => {

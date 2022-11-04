@@ -144,467 +144,277 @@
     {
       "username": "Augusta_Breitenberg76",
       "postImage": "http://loremflickr.com/640/480/?lock=1",
-      "postCaption": "Cute cat!!!!",
+      "postComment": "Cute cat!!!!",
       "publicPrivate": false,
       "postTagOfOtherUsers": [],
-      "postCommentsArray": [
-        1
-      ],
-      "CommentsArray":[
-        {
-          "username": "Heath_Buckridge",
-          "message": "comment message 1",
-          "tagOfOtherUsers": [],
-          "id": "1"
-        },
-        {
-          "username": "Sigmund.Roberts",
-          "message": "comment message 2",
-          "tagOfOtherUsers": [],
-          "id": "2"
-        },
-        {
-          "username": "Kale73",
-          "message": "comment message 3",
-          "tagOfOtherUsers": [],
-          "id": "3"
-        }
-      ],
-      "likeCounter": 0,
-      "id": "1"
+      "id": "1",
+      "like": []
     },
     {
       "username": "Gerda.Ziemann",
       "postImage": "http://loremflickr.com/640/480/?lock=2  ",
-      "postCaption": "Adorable cat!!!",
+      "postComment": "Adorable cat!!!",
       "publicPrivate": false,
       "postTagOfOtherUsers": [],
-      "postCommentsArray": [
-        2,
-        3
-      ],
-      "CommentsArray":[
-        {
-          "username": "Heath_Buckridge",
-          "message": "comment message 1",
-          "tagOfOtherUsers": [],
-          "id": "1"
-        },
-        {
-          "username": "Sigmund.Roberts",
-          "message": "comment message 2",
-          "tagOfOtherUsers": [],
-          "id": "2"
-        },
-        {
-          "username": "Kale73",
-          "message": "comment message 3",
-          "tagOfOtherUsers": [],
-          "id": "3"
-        }
-      ],
-      "likeCounter": 0,
-      "id": "2"
+      "id": "2",
+      "like": []
     },
     {
       "username": "Hans53",
       "postImage": "http://loremflickr.com/640/480/paris?lock=1",
-      "postCaption": "Are you in paris??",
+      "postComment": "Are you in paris??",
       "publicPrivate": false,
       "postTagOfOtherUsers": [],
-      "postCommentsArray": [
-        1
-      ],
-      "CommentsArray":[
-        {
-          "username": "Heath_Buckridge",
-          "message": "comment message 1",
-          "tagOfOtherUsers": [],
-          "id": "1"
-        },
-        {
-          "username": "Sigmund.Roberts",
-          "message": "comment message 2",
-          "tagOfOtherUsers": [],
-          "id": "2"
-        },
-        {
-          "username": "Kale73",
-          "message": "comment message 3",
-          "tagOfOtherUsers": [],
-          "id": "3"
-        }
-      ],
-      "likeCounter": 0,
-      "id": "3"
+      "id": "3",
+      "like": []
     },
     {
       "username": "Kendra96",
       "postImage": "https://loremflickr.com/g/320/240/paris?lock=2",
-      "postCaption": "Cool photo",
+      "postComment": "Cool photo",
       "publicPrivate": false,
       "postTagOfOtherUsers": [],
-      "postCommentsArray": [
-        2
-      ],
-      "CommentsArray":[
-        {
-          "username": "Heath_Buckridge",
-          "message": "comment message 1",
-          "tagOfOtherUsers": [],
-          "id": "1"
-        },
-        {
-          "username": "Sigmund.Roberts",
-          "message": "comment message 2",
-          "tagOfOtherUsers": [],
-          "id": "2"
-        },
-        {
-          "username": "Kale73",
-          "message": "comment message 3",
-          "tagOfOtherUsers": [],
-          "id": "3"
-        }
-      ],
-      "likeCounter": 0,
-      "id": "4"
+      "id": "4",
+      "like": []
     },
     {
       "username": "Mason_Satterfield",
       "postImage": "http://loremflickr.com/640/480/dog?lock=1",
-      "postCaption": "Woof woof!!",
+      "postComment": "Woof woof!!",
       "publicPrivate": false,
       "postTagOfOtherUsers": [],
-      "postCommentsArray": [
-        1
-      ],
-      "CommentsArray":[
-        {
-          "username": "Heath_Buckridge",
-          "message": "comment message 1",
-          "tagOfOtherUsers": [],
-          "id": "1"
-        },
-        {
-          "username": "Sigmund.Roberts",
-          "message": "comment message 2",
-          "tagOfOtherUsers": [],
-          "id": "2"
-        },
-        {
-          "username": "Kale73",
-          "message": "comment message 3",
-          "tagOfOtherUsers": [],
-          "id": "3"
-        }
-      ],
-      "likeCounter": 0,
-      "id": "5"
+      "id": "5",
+      "like": []
+    },
+    {
+      "username": "helllooo",
+      "postImage": "http://loremflickr.com/640/480?lock=8\n      ",
+      "postComment": "my first comment!\n      ",
+      "publicPrivate": "false\n      ",
+      "postTageOfOtherUsers": "undefined",
+      "id": "CmsW4ln",
+      "like": []
+    },
+    {
+      "username": "helllooo",
+      "postImage": "http://loremflickr.com/640/480\n      ",
+      "postComment": "my second comment\n      ",
+      "publicPrivate": "false\n      ",
+      "postTageOfOtherUsers": "undefined",
+      "id": "xuKqSvJ",
+      "like": []
     },
     {
       "username": "grp3foreva",
       "postImage": "http://loremflickr.com/640/480\n      ",
-      "postCaption": "JC test caption 1\n      ",
+      "postComment": "My third post\n      ",
       "publicPrivate": "false\n      ",
-      "postTagOfOtherUsers": [],
-      "postCommentsArray": [],
-      "CommentsArray":[
-        {
-          "username": "Heath_Buckridge",
-          "message": "comment message 1",
-          "tagOfOtherUsers": [],
-          "id": "1"
-        },
-        {
-          "username": "Sigmund.Roberts",
-          "message": "comment message 2",
-          "tagOfOtherUsers": [],
-          "id": "2"
-        },
-        {
-          "username": "Kale73",
-          "message": "comment message 3",
-          "tagOfOtherUsers": [],
-          "id": "3"
-        }
-      ],
-      "likeCounter": 1,
-      "id": "IOKaXlm"
+      "postTageOfOtherUsers": "undefined",
+      "id": "LkbJQgi",
+      "like": []
     },
     {
       "username": "grp3foreva",
       "postImage": "http://loremflickr.com/640/480\n      ",
-      "postCaption": "test caption 2\n      ",
+      "postComment": "my omment \n      ",
       "publicPrivate": "false\n      ",
-      "postTagOfOtherUsers": [],
-      "postCommentsArray": [
-        1
-      ],
-      "CommentsArray":[
-        {
-          "username": "Heath_Buckridge",
-          "message": "comment message 1",
-          "tagOfOtherUsers": [],
-          "id": "1"
-        },
-        {
-          "username": "Sigmund.Roberts",
-          "message": "comment message 2",
-          "tagOfOtherUsers": [],
-          "id": "2"
-        },
-        {
-          "username": "Kale73",
-          "message": "comment message 3",
-          "tagOfOtherUsers": [],
-          "id": "3"
-        }
-      ],
-      "likeCounter": 1,
-      "id": "-6KIcu9"
+      "postTageOfOtherUsers": "undefined",
+      "id": "55m0W75",
+      "like": []
     },
     {
       "username": "grp3foreva",
       "postImage": "http://loremflickr.com/640/480\n      ",
-      "postCaption": "My second post\n      ",
+      "postComment": "undefined\n      ",
       "publicPrivate": "false\n      ",
-      "postTagOfOtherUsers": "null\n      ",
-      "postCommentsArray": "null\n      ",
-      "CommentsArray":[
-        {
-          "username": "Heath_Buckridge",
-          "message": "comment message 1",
-          "tagOfOtherUsers": [],
-          "id": "1"
-        },
-        {
-          "username": "Sigmund.Roberts",
-          "message": "comment message 2",
-          "tagOfOtherUsers": [],
-          "id": "2"
-        },
-        {
-          "username": "Kale73",
-          "message": "comment message 3",
-          "tagOfOtherUsers": [],
-          "id": "3"
-        }
-      ],
-      "likeCounter": "0",
-      "id": "ESmxn49"
+      "postTageOfOtherUsers": "undefined",
+      "id": "cxCcLfj",
+      "like": []
     },
     {
       "username": "grp3foreva",
       "postImage": "http://loremflickr.com/640/480\n      ",
-      "postCaption": "undefined\n      ",
+      "postComment": "undefined\n      ",
       "publicPrivate": "false\n      ",
-      "postTagOfOtherUsers": "null\n      ",
-      "postCommentsArray": "null\n      ",
-      "CommentsArray":[
-        {
-          "username": "Heath_Buckridge",
-          "message": "comment message 1",
-          "tagOfOtherUsers": [],
-          "id": "1"
-        },
-        {
-          "username": "Sigmund.Roberts",
-          "message": "comment message 2",
-          "tagOfOtherUsers": [],
-          "id": "2"
-        },
-        {
-          "username": "Kale73",
-          "message": "comment message 3",
-          "tagOfOtherUsers": [],
-          "id": "3"
-        }
-      ],
-      "likeCounter": "0",
-      "id": "GJqOtdp"
+      "postTageOfOtherUsers": "undefined",
+      "id": "J0gvDbK",
+      "like": []
     },
     {
       "username": "grp3foreva",
       "postImage": "http://loremflickr.com/640/480\n      ",
-      "postCaption": "undefined\n      ",
+      "postComment": "undefined\n      ",
       "publicPrivate": "false\n      ",
-      "postTagOfOtherUsers": "null\n      ",
-      "postCommentsArray": "null\n      ",
-      "CommentsArray":[
-        {
-          "username": "Heath_Buckridge",
-          "message": "comment message 1",
-          "tagOfOtherUsers": [],
-          "id": "1"
-        },
-        {
-          "username": "Sigmund.Roberts",
-          "message": "comment message 2",
-          "tagOfOtherUsers": [],
-          "id": "2"
-        },
-        {
-          "username": "Kale73",
-          "message": "comment message 3",
-          "tagOfOtherUsers": [],
-          "id": "3"
-        }
-      ],
-      "likeCounter": "0",
-      "id": "jcLskkg"
+      "postTageOfOtherUsers": "undefined",
+      "id": "oN8b5x-",
+      "like": []
     },
     {
       "username": "grp3foreva",
       "postImage": "http://loremflickr.com/640/480\n      ",
-      "postCaption": "My third post\n      ",
+      "postComment": "undefined\n      ",
       "publicPrivate": "false\n      ",
-      "postTagOfOtherUsers": "null\n      ",
-      "postCommentsArray": "null\n      ",
-      "CommentsArray":[
-        {
-          "username": "Heath_Buckridge",
-          "message": "comment message 1",
-          "tagOfOtherUsers": [],
-          "id": "1"
-        },
-        {
-          "username": "Sigmund.Roberts",
-          "message": "comment message 2",
-          "tagOfOtherUsers": [],
-          "id": "2"
-        },
-        {
-          "username": "Kale73",
-          "message": "comment message 3",
-          "tagOfOtherUsers": [],
-          "id": "3"
-        }
-      ],
-      "likeCounter": "0",
-      "id": "oq5izWt"
+      "postTageOfOtherUsers": "undefined",
+      "id": "2kLQ6uj",
+      "like": []
     },
     {
       "username": "grp3foreva",
       "postImage": "http://loremflickr.com/640/480\n      ",
-      "postCaption": "My fourth post\n      ",
+      "postComment": "hellooooo\n      ",
       "publicPrivate": "false\n      ",
-      "postTagOfOtherUsers": "null\n      ",
-      "postCommentsArray": "null\n      ",
-      "CommentsArray":[
-        {
-          "username": "Heath_Buckridge",
-          "message": "comment message 1",
-          "tagOfOtherUsers": [],
-          "id": "1"
-        },
-        {
-          "username": "Sigmund.Roberts",
-          "message": "comment message 2",
-          "tagOfOtherUsers": [],
-          "id": "2"
-        },
-        {
-          "username": "Kale73",
-          "message": "comment message 3",
-          "tagOfOtherUsers": [],
-          "id": "3"
-        }
+      "postTageOfOtherUsers": "undefined",
+      "id": "o8t3aji",
+      "like": []
+    },
+    {
+      "username": "grp3foreva",
+      "postImage": "http://loremflickr.com/640/480\n      ",
+      "postComment": "undefined\n      ",
+      "publicPrivate": "false\n      ",
+      "postTageOfOtherUsers": "undefined",
+      "id": "hFI7qDW",
+      "like": []
+    },
+    {
+      "username": "grp3foreva",
+      "postImage": "http://loremflickr.com/640/480\n      ",
+      "postComment": "undefined\n      ",
+      "publicPrivate": "false\n      ",
+      "postTageOfOtherUsers": "undefined",
+      "id": "zYypmHG",
+      "like": []
+    },
+    {
+      "username": "grp3foreva",
+      "postImage": "http://loremflickr.com/640/480\n      ",
+      "postComment": "undefined\n      ",
+      "publicPrivate": "false\n      ",
+      "postTageOfOtherUsers": "undefined",
+      "id": "bpZSGWW",
+      "like": []
+    },
+    {
+      "username": "grp3foreva",
+      "postImage": "http://loremflickr.com/640/480\n      ",
+      "postComment": "undefined\n      ",
+      "publicPrivate": "false\n      ",
+      "postTageOfOtherUsers": "undefined",
+      "id": "SoLckEZ",
+      "like": []
+    },
+    {
+      "username": "grp3foreva",
+      "postImage": "http://loremflickr.com/640/480\n      ",
+      "postComment": "undefined\n      ",
+      "publicPrivate": "false\n      ",
+      "postTageOfOtherUsers": "undefined",
+      "id": "ou3uSu-",
+      "like": []
+    },
+    {
+      "username": "grp3foreva",
+      "postImage": "http://loremflickr.com/640/480\n      ",
+      "postComment": "undefined\n      ",
+      "publicPrivate": "false\n      ",
+      "postTageOfOtherUsers": "undefined",
+      "id": "O4-n6oU",
+      "like": []
+    },
+    {
+      "username": "grp3foreva",
+      "postImage": "http://loremflickr.com/640/480\n      ",
+      "postComment": "undefined\n      ",
+      "publicPrivate": "false\n      ",
+      "postTageOfOtherUsers": "undefined",
+      "id": "59KfIYB",
+      "like": []
+    },
+    {
+      "username": "grp3foreva",
+      "postImage": "http://loremflickr.com/640/480\n      ",
+      "postComment": "undefined\n      ",
+      "publicPrivate": "false\n      ",
+      "postTageOfOtherUsers": "undefined",
+      "id": "d9s8P8b",
+      "like": [
+        "0"
+      ]
+    },
+    {
+      "username": "grp3foreva",
+      "postImage": "http://loremflickr.com/640/480\n      ",
+      "postComment": "this is my comment\n      ",
+      "publicPrivate": "false\n      ",
+      "postTageOfOtherUsers": "undefined",
+      "id": "n4MprFH",
+      "like": []
+    },
+    {
+      "username": "grp3foreva",
+      "postImage": "http://loremflickr.com/640/480\n      ",
+      "postComment": "undefined\n      ",
+      "publicPrivate": "false\n      ",
+      "postTageOfOtherUsers": "undefined",
+      "id": "CREL3Vi",
+      "like": []
+    },
+    {
+      "username": "grp3foreva",
+      "postImage": "http://loremflickr.com/640/480\n      ",
+      "postComment": "undefined\n      ",
+      "publicPrivate": "false\n      ",
+      "postTageOfOtherUsers": "undefined",
+      "id": "FDMT6Ws",
+      "like": [
+        "0"
+      ]
+    }
+  ],
+  "User1": [
+    {
+      "email": "grp3forevera@gmail.com",
+      "username": "grp3-forevera",
+      "password": "12345678",
+      "profilePicture": "\n",
+      "follow": [
+        "Elmer.Weissnat10",
+        "Frederic.Strosin5",
+        "Xavier.Vandervort"
       ],
-      "likeCounter": "0",
-      "id": "DbAje5u"
+      "id": "0"
     }
   ],
   "Comment": [
     {
       "username": "Heath_Buckridge",
-      "message": "comment message 1",
+      "message": "message 1",
       "tagOfOtherUsers": [],
       "id": "1"
     },
     {
       "username": "Sigmund.Roberts",
-      "message": "comment message 2",
+      "message": "message 2",
       "tagOfOtherUsers": [],
       "id": "2"
     },
     {
       "username": "Kale73",
-      "message": "comment message 3",
+      "message": "message 3",
       "tagOfOtherUsers": [],
       "id": "3"
     },
     {
       "username": "Carissa_Hartmann84",
-      "message": "comment message 4",
+      "message": "message 4",
       "tagOfOtherUsers": [],
       "id": "4"
     },
     {
       "username": "Beverly.Thiel1",
-      "message": "comment message 5",
+      "message": "message 5",
       "tagOfOtherUsers": [],
       "id": "5"
-    },
-    {
-      "username": "grp3foreva",
-      "message": "my fourth comment\n      ",
-      "tagOfOtherUsers": "undefined",
-      "id": "xaRbPWN"
-    },
-    {
-      "username": "grp3foreva",
-      "message": "my first comment\n      ",
-      "tagOfOtherUsers": "undefined",
-      "id": "_JOl7Nx"
-    },
-    {
-      "username": "grp3foreva",
-      "message": "my first comment\n      ",
-      "tagOfOtherUsers": "undefined",
-      "id": "JOWa0h5"
-    },
-    {
-      "username": "grp3foreva",
-      "message": "this is a comment\n      ",
-      "tagOfOtherUsers": "undefined",
-      "id": "Mb6k7hf"
-    },
-    {
-      "username": "grp3foreva",
-      "message": "this is a second comment\n      ",
-      "tagOfOtherUsers": "undefined",
-      "id": "jNtCTIz"
-    },
-    {
-      "username": "grp3foreva",
-      "message": "test comment\n      ",
-      "tagOfOtherUsers": "undefined",
-      "id": "_Qi3E3a"
-    },
-    {
-      "username": "grp3foreva",
-      "message": "undefined\n      ",
-      "tagOfOtherUsers": "undefined",
-      "id": "4BYV01y"
-    },
-    {
-      "username": "grp3foreva",
-      "message": "this is a comment\n      ",
-      "tagOfOtherUsers": "undefined",
-      "id": "lUzjIxU"
-    },
-    {
-      "username": "grp3foreva",
-      "message": "undefined\n      ",
-      "tagOfOtherUsers": "undefined",
-      "id": "YkwYSgm"
-    },
-    {
-      "username": "grp3foreva",
-      "message": "My first comment\n      ",
-      "tagOfOtherUsers": "undefined",
-      "id": "IyXIl93"
     }
   ],
   "Like": [
