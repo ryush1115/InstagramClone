@@ -28,14 +28,19 @@ import Createpost from './components/createpost.component'
 import { Router } from "react-router";
 import { createMemoryHistory } from 'history';
 
-test("click for more comments should be in the component", () => {
-    const history = createMemoryHistory();
-    const component = render(
-        <Router location={history.location} navigator={history}>
-            <ActivityFeed />,
-        </Router>,
+// test("should be in the component", () => {
+//     const history = createMemoryHistory();
+//     const component = render(
+//         <Router location={history.location} navigator={history}>
+//             <ActivityFeed />,
+//         </Router>,
+//     );
+//     const labelNode = component.getByText("grp3foreva");
+//     expect(labelNode).toBeInTheDocument();
+// });
 
-    );
-    const labelNode = component.getByText("grp3foreva");
-    expect(labelNode).toBeInTheDocument();
+test("test the single-line user information",async () =>{
+    render(<ActivityFeed />)
+    const inputNode = screen.getByAltText('alt-image');
+    expect(inputNode).toBeInTheDocument();
 });

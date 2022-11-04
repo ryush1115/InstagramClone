@@ -317,15 +317,15 @@ const ActivityFeedComponent = () => {
   return (
     <Fragment>
       <header>
-        <div class="container">
-          <div class="profile">
-            <div class="profile-image">
-              <img alt="" />
+        <div className="container">
+          <div className="profile">
+            <div className="profile-image">
+              <img alt="alt-image" />
               {/* <img src={require('../images/grp3.PNG')} alt=""/> */}
 
             </div>
-            <div class="profile-user-settings">
-              <h1 class="profile-user-name">grp3foreva</h1>
+            <div className="profile-user-settings">
+              <h1 className="profile-user-name">grp3foreva</h1>
             </div>
           </div>
         </div>
@@ -333,9 +333,9 @@ const ActivityFeedComponent = () => {
 
       <main>
 
-        <div class="container">
-          <div class="feed">
-            <div class="feedWrapper">
+        <div className="container">
+          <div className="feed">
+            <div className="feedWrapper">
               <AddPost />
             </div>
           </div>
