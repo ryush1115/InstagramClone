@@ -10,7 +10,7 @@ import {createPost } from '../api/mock_api';
 // drag drop file component
 
 // only accept certain file formats (jpeg, jpg, png)
-function DragDrop() {
+function DragDrop(props) {
   
   // ref to the input using the 'useRef' hook
   const inputRef = React.useRef(null);
@@ -49,19 +49,17 @@ function DragDrop() {
   // create variables for post creation
   let newUsername = "grp3foreva";
   let newPostComment;
-  let newPostImage = "http://loremflickr.com/640/480"; // default to this image for HW2
+  let newPostImage = "http://loremflickr.com/640/481"; // default to this image for HW2
 
   const handleOnChange = function(e) {
     e.preventDefault();
     
     if (e.target.name==="comment") {
-     newPostComment = e.target.value; 
+     newPostComment = e.target.value;
     }
-    if(e.target.target==="postImage" && e.target.files[0]) {
-      // at least one file has been selected so do something
-      newPostImage = e.target.value;
-      newPostImage = "http://loremflickr.com/640/480";
-    }  
+    if (e.target.name==="postImage") {
+      newPostImage = e.target.value; 
+     }
   }
 
   const onButtonClick =() => {
@@ -84,23 +82,8 @@ function DragDrop() {
     // the list of Post (FilterablePostTable) from
     // backend
     setNewPost(newStoredPost);
+    props.setCreate('default');
   };
-  /**
-   * return (
-      <form id="form-file-upload" onDragEnter={handleDrag} onSubmit={(e) => e.preventDefault()}>
-        <input ref={inputRef} type="file" name="postImage" id="input-file-upload" multiple={true} onChange={handleOnChange}/>
-        <label id="label-file-upload" htmlFor="input-file-upload" className={dragActive ? "drag-active": ""}>
-          <div>
-            <p>Drag and drop your photo here!</p>
-            <button className="upload-button" onClick={onButtonClick}>Upload a file</button>
-          </div> 
-          <input type="text" name="comment" placeholder="Caption for post..." onChange={handleOnChange}/>
-        </label>
-        <button type="submit">Create Post</button>
-        {dragActive && <div id="drag-file-element" onDragEnter={handleDrag} onDragLeave={handleDrag} onDragOver={handleDrag} onDrop={handleDrop}></div> }
-      </form>
-    );
-   */
 
   // when dragActive is true, add an invisible elemnt to cover the entire state form. 
   // this listens to the events without interference from any other elements.  
@@ -117,9 +100,9 @@ function DragDrop() {
               onChange={handleOnChange}
             />
             <input
-              type="file"
+              type="text"
               name="postImage"
-              id="postImage"
+              placeholder="Add a url"
               onChange={handleOnChange}
             />
             <button type="submit">Create Post</button>

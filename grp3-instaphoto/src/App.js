@@ -4,17 +4,15 @@ import './App.css'
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
 import Login from './components/login.component'
 import SignUp from './components/signup.component'
-import Userprofile from './components/userprofile.component'
 import ActivityFeed from './components/activityfeed.component'
-import CreatePost from './components/createpost.component'
 import FriendSuggestion from './components/FriendSuggestion.component'
 import FollowingList from './components/FollowingList'
 import DragDrop from './components/dragdrop.component'
+import Userprofile from './components/userprofile'
 
 // import Userpic from './components/test'
 import Gallery from './components/gallery.component'
 import Sidebar from './components/sidebar.component'
-import Createpost from './components/createpost.component'
 
 
 function App() {
@@ -39,20 +37,15 @@ function App() {
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to={'/userprofile'}>
-                    User Profile
-                  </Link>
-                </li>
-                <li className="nav-item">
                   <Link className="nav-link" to={'/activity-feed'}>
                     Activity Feed
                   </Link>
                 </li>
-                {/* <li className="nav-item">
-                  <Link className="nav-link" to={'/friendbar'}>
-                    FriendBar
+                <li className="nav-item">
+                  <Link className="nav-link" to={'/Userprofile'}>
+                    User Profile
                   </Link>
-                </li> */}
+                </li>
                 <li className = "nav-item">
                   <Link className = "nav-link" to={'/FriendSuggestion'}>
                     Friend Suggestion
@@ -82,14 +75,12 @@ function App() {
               <Route exact path="/" element={<Login />} />
               <Route path="/sign-in" element={<Login />} />
               <Route path="/sign-up" element={<SignUp />} />
-              <Route path="/user-profile" element={<Userprofile />} />
               <Route path="/activity-feed" element={<ActivityFeed />} />
               <Route path = "/FriendSuggestion" element = {<FriendSuggestion />}/>
               {/* <Route path="/user-pic" element={<Userpic />} />                */}
               <Route path="/gallery" element={<Gallery />} />
               <Route path="/sidebar" element={<Sidebar />} />
               <Route path="/userprofile" element={<Userprofile />} />
-              <Route path="/createpost" element={<Createpost />} />
               <Route path="/dragdrop" element={<DragDrop />} />
               <Route path="/FollowingList" element={<FollowingList />} />
 

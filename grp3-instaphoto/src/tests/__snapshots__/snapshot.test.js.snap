@@ -4,23 +4,23 @@ exports[`Activity Feed matches snapshot 1`] = `
 Array [
   <header>
     <div
-      class="container"
+      className="container"
     >
       <div
-        class="profile"
+        className="profile"
       >
         <div
-          class="profile-image"
+          className="profile-image"
         >
           <img
             alt=""
           />
         </div>
         <div
-          class="profile-user-settings"
+          className="profile-user-settings"
         >
           <h1
-            class="profile-user-name"
+            className="profile-user-name"
           >
             grp3foreva
           </h1>
@@ -30,13 +30,13 @@ Array [
   </header>,
   <main>
     <div
-      class="container"
+      className="container"
     >
       <div
-        class="feed"
+        className="feed"
       >
         <div
-          class="feedWrapper"
+          className="feedWrapper"
         >
           <div>
              
@@ -105,10 +105,10 @@ exports[`App matches snapshot 1`] = `
           >
             <a
               className="nav-link"
-              href="/userprofile"
+              href="/activity-feed"
               onClick={[Function]}
             >
-              User Profile
+              Activity Feed
             </a>
           </li>
           <li
@@ -116,10 +116,10 @@ exports[`App matches snapshot 1`] = `
           >
             <a
               className="nav-link"
-              href="/activity-feed"
+              href="/Userprofile"
               onClick={[Function]}
             >
-              Activity Feed
+              User Profile
             </a>
           </li>
           <li
@@ -237,94 +237,6 @@ exports[`App matches snapshot 1`] = `
 </div>
 `;
 
-exports[`CreatePost matches snapshot 1`] = `
-Array [
-  <div
-    className="create-post"
-  >
-    <div
-      className="create-post_content"
-    >
-      <div
-        className="create-post_container"
-      >
-        <div
-          className="create-post_title"
-        >
-          Create new post
-        </div>
-        <div
-          className="create-post_close"
-        >
-          <img
-            alt="close"
-            src="https://static.xx.fbcdn.net/rsrc.php/v3/y2/r/__geKiQnSG-.png"
-          />
-        </div>
-        <div>
-          <div
-            className="dropzone"
-            onBlur={[Function]}
-            onClick={[Function]}
-            onDragEnter={[Function]}
-            onDragLeave={[Function]}
-            onDragOver={[Function]}
-            onDrop={[Function]}
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            role="presentation"
-            tabIndex={0}
-          >
-            <input
-              className="input-zone"
-              multiple={true}
-              onChange={[Function]}
-              onClick={[Function]}
-              style={
-                Object {
-                  "display": "none",
-                }
-              }
-              tabIndex={-1}
-              type="file"
-            />
-            <div
-              className="text-center"
-            >
-              <p
-                className="dropzone-content"
-              >
-                Drag’ n’ drop some files here, or click to select files
-              </p>
-              <button
-                className="btn"
-                type="button"
-              >
-                Click to select files
-              </button>
-            </div>
-          </div>
-          <form
-            id="commentBox"
-          >
-            <input
-              className="commentBox"
-              placeholder="Enter a comment..."
-              size="20"
-              type="text"
-            />
-          </form>
-          <aside>
-            <ul />
-          </aside>
-        </div>
-      </div>
-    </div>
-  </div>,
-  ",",
-]
-`;
-
 exports[`Dragdrop matches snapshot 1`] = `
 <div
   className="create-post_"
@@ -351,10 +263,10 @@ exports[`Dragdrop matches snapshot 1`] = `
         type="text"
       />
       <input
-        id="postImage"
         name="postImage"
         onChange={[Function]}
-        type="file"
+        placeholder="Add a url"
+        type="text"
       />
       <button
         type="submit"
@@ -366,23 +278,226 @@ exports[`Dragdrop matches snapshot 1`] = `
 </div>
 `;
 
-exports[`FollowingList matches snapshot 1`] = `
+exports[`FriendSuggestion matches snapshot 1`] = `
 Array [
+  <nav
+    className="home navbar navbar-expand navbar-light"
+  >
+    <div
+      className="card card"
+    >
+      <div
+        className="logo"
+      >
+        <h>
+          Instaphoto 
+        </h>
+        <img
+          alt="logo"
+        />
+      </div>
+      <br />
+      <div>
+        <img
+          className="card-img-top sig"
+        />
+        <p
+          className="username"
+        >
+           grp3foreva
+        </p>
+      </div>
+      <div>
+        <div
+          className="card-body"
+        >
+          <p
+            className="card-text"
+          >
+            <div
+              className="space"
+            />
+            <div
+              className="list-group list-group-flush"
+              onKeyDown={[Function]}
+            >
+              <div
+                className="list list-group-item"
+                data-rr-ui-event-key={null}
+                onClick={[Function]}
+              >
+                <span>
+                  Home
+                </span>
+              </div>
+              <div
+                className="list list-group-item"
+                data-rr-ui-event-key={null}
+                onClick={[Function]}
+              >
+                <span>
+                  Create
+                </span>
+              </div>
+              <div
+                className="list list-group-item"
+                data-rr-ui-event-key={null}
+                onClick={[Function]}
+              >
+                <span>
+                  Profile
+                </span>
+              </div>
+            </div>
+          </p>
+        </div>
+      </div>
+      <br />
+      <div
+        className="suggestions"
+      >
+        <p
+          className="suggestion-text"
+        >
+          Suggestions for you
+        </p>
+        <button
+          className="show-all-btn"
+        >
+          See all
+        </button>
+        <div
+          className="profile-card"
+        >
+          <div>
+            <img
+              alt=""
+              className="other-user"
+            />
+          </div>
+          <button
+            className="action-btn"
+            type="button"
+          >
+            <span
+              className="username"
+            >
+              akikozzm
+            </span>
+            <span
+              className="follow"
+            >
+              Follow
+            </span>
+          </button>
+        </div>
+        <div
+          className="profile-card"
+        >
+          <div>
+            <img
+              alt=""
+              className="other-user"
+            />
+          </div>
+          <button
+            className="action-btn"
+            type="button"
+          >
+            <span
+              className="username"
+            >
+              akikozzm
+            </span>
+            <span
+              className="follow"
+            >
+              Follow
+            </span>
+          </button>
+        </div>
+        <div
+          className="profile-card"
+        >
+          <div>
+            <img
+              alt=""
+              className="other-user"
+            />
+          </div>
+          <button
+            className="action-btn"
+            type="button"
+          >
+            <span
+              className="username"
+            >
+              akikozzm
+            </span>
+            <span
+              className="follow"
+            >
+              Follow
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>,
+  <div />,
   <div
     className="container-0_FriendSuggestion"
   >
     <span
       className="text-0_FriendSuggestion"
-      data-testid="followbutton"
     >
-      Following
+      Suggested
     </span>
+<<<<<<< HEAD:grp3-instaphoto/src/__snapshots__/snapshot.test.js.snap
+=======
+    <div
+      className="container-1_FriendSuggestion"
+    >
+      <img
+        className="image-0_FriendSuggestion"
+        src={null}
+      />
+      <div
+        className="container-2_FriendSuggestion"
+      >
+        <div
+          className="container-3_FriendSuggestion"
+        >
+          <span
+            className="text-1_FriendSuggestion"
+          >
+            Akikos
+          </span>
+          <span
+            className="text-2_FriendSuggestion"
+          >
+            This is a cool person
+          </span>
+        </div>
+        <div
+          className="container-4_FriendSuggestion"
+        >
+          <span
+            className="text-3_FriendSuggestion"
+            onClick={[Function]}
+          >
+            Follow
+          </span>
+        </div>
+      </div>
+    </div>
+>>>>>>> ar_1026_usergallery:grp3-instaphoto/src/tests/__snapshots__/snapshot.test.js.snap
   </div>,
   ",",
 ]
 `;
 
-exports[`FriendSuggestion matches snapshot 1`] = `
+exports[`FriendSuggestion matches snapshot 2`] = `
 Array [
   <nav
     className="home navbar navbar-expand navbar-light"
@@ -633,6 +748,7 @@ Array [
 ]
 `;
 
+<<<<<<< HEAD:grp3-instaphoto/src/__snapshots__/snapshot.test.js.snap
 exports[`SideBar matches snapshot 1`] = `
 <nav
   className="home navbar navbar-expand navbar-light"
@@ -796,6 +912,8 @@ exports[`SideBar matches snapshot 1`] = `
 </nav>
 `;
 
+=======
+>>>>>>> ar_1026_usergallery:grp3-instaphoto/src/tests/__snapshots__/snapshot.test.js.snap
 exports[`SignUp matches snapshot 1`] = `
 Array [
   <form
@@ -808,6 +926,10 @@ Array [
       <h3>
         Welcome to Instaphoto 
       </h3>
+      <img
+        alt="logo"
+        src="https://i.ibb.co/VV3Xdf1/logo.png"
+      />
     </div>
     <br />
     <div
@@ -916,12 +1038,14 @@ Array [
         </h>
         <img
           alt="logo"
+          src="https://i.ibb.co/VV3Xdf1/logo.png"
         />
       </div>
       <br />
       <div>
         <img
           className="card-img-top sig"
+          src="https://i.ibb.co/bgWdsVT/grp3.png"
         />
         <p
           className="username"
@@ -948,7 +1072,9 @@ Array [
                 data-rr-ui-event-key={null}
                 onClick={[Function]}
               >
-                <span>
+                <span
+                  onClick={[Function]}
+                >
                   Home
                 </span>
               </div>
@@ -957,22 +1083,20 @@ Array [
                 data-rr-ui-event-key={null}
                 onClick={[Function]}
               >
-                <div
-                  className="create-hover"
+                <span
+                  onClick={[Function]}
                 >
-                  <span
-                    onClick={[Function]}
-                  >
-                    Create
-                  </span>
-                </div>
+                  Create
+                </span>
               </div>
               <div
                 className="list list-group-item"
                 data-rr-ui-event-key={null}
                 onClick={[Function]}
               >
-                <span>
+                <span
+                  onClick={[Function]}
+                >
                   Profile
                 </span>
               </div>
@@ -1002,26 +1126,8 @@ Array [
             <img
               alt=""
               className="other-user"
+              src="https://i.ibb.co/hDvzykn/ellipse504.jpg"
             />
-          </div>
-          <button
-            className="action-btn"
-            type="button"
-          >
-            <span
-              className="username"
-            />
-            <span
-              className="follow"
-            >
-              Follow
-            </span>
-          </button>
-        </div>
-        <div
-          className="profile-card"
-        >
-          <div>
             <img
               alt=""
               className="other-user"
@@ -1045,6 +1151,39 @@ Array [
           className="profile-card"
         >
           <div>
+            <img
+              alt=""
+              className="other-user"
+              src="https://i.ibb.co/hDvzykn/ellipse504.jpg"
+            />
+            <img
+              alt=""
+              className="other-user"
+            />
+          </div>
+          <button
+            className="action-btn"
+            type="button"
+          >
+            <span
+              className="username"
+            />
+            <span
+              className="follow"
+            >
+              Follow
+            </span>
+          </button>
+        </div>
+        <div
+          className="profile-card"
+        >
+          <div>
+            <img
+              alt=""
+              className="other-user"
+              src="https://i.ibb.co/hDvzykn/ellipse504.jpg"
+            />
             <img
               alt=""
               className="other-user"
@@ -1069,52 +1208,51 @@ Array [
   </nav>,
   <header>
     <div
-      class="container"
+      className="container"
     >
       <div
-        class="profile"
+        className="profile"
       >
         <div
-          class="profile-image"
+          className="profile-image"
         >
           <img
             alt=""
+            src="https://i.ibb.co/bgWdsVT/grp3.png"
           />
         </div>
         <div
-          class="profile-user-settings"
+          className="profile-user-settings"
         >
           <h1
-            class="profile-user-name"
+            className="profile-user-name"
           >
             grp3foreva
           </h1>
         </div>
         <div
-          class="profile-stats"
+          className="profile-stats"
         >
           <ul>
             <li>
               <span
-                class="profile-stat-count"
+                className="profile-stat-count"
               >
-                39
+                0
               </span>
                posts
             </li>
             <li>
               <span
-                class="profile-stat-count"
+                className="profile-stat-count"
               >
                 169
               </span>
                followers
             </li>
-            <li
-              onClick={[Function]}
-            >
+            <li>
               <span
-                class="profile-stat-count"
+                className="profile-stat-count"
               >
                 667
               </span>
@@ -1126,122 +1264,17 @@ Array [
     </div>
   </header>,
   <main>
-    <div
-      class="container"
-    >
+    <main>
       <div
-        class="gallery"
+        className="gallery"
       >
-        <div
-          class="gallery-item"
-        >
-          <img
-            alt=""
-            class="gallery-image"
-            src="https://images.unsplash.com/photo-1511765224389-37f0e77cf0eb?w=500&h=500&fit=crop"
-          />
-        </div>
-        <div
-          class="gallery-item"
-        >
-          <img
-            alt=""
-            class="gallery-image"
-            src="https://images.unsplash.com/photo-1497445462247-4330a224fdb1?w=500&h=500&fit=crop"
-          />
-        </div>
-        <div
-          class="gallery-item"
-        >
-          <img
-            alt=""
-            class="gallery-image"
-            src="https://images.unsplash.com/photo-1426604966848-d7adac402bff?w=500&h=500&fit=crop"
-          />
-        </div>
-        <div
-          class="gallery-item"
-        >
-          <img
-            alt=""
-            class="gallery-image"
-            src="https://images.unsplash.com/photo-1502630859934-b3b41d18206c?w=500&h=500&fit=crop"
-          />
-        </div>
-        <div
-          class="gallery-item"
-        >
-          <img
-            alt=""
-            class="gallery-image"
-            src="https://images.unsplash.com/photo-1498471731312-b6d2b8280c61?w=500&h=500&fit=crop"
-          />
-        </div>
-        <div
-          class="gallery-item"
-        >
-          <img
-            alt=""
-            class="gallery-image"
-            src="https://images.unsplash.com/photo-1515023115689-589c33041d3c?w=500&h=500&fit=crop"
-          />
-        </div>
-        <div
-          class="gallery-item"
-        >
-          <img
-            alt=""
-            class="gallery-image"
-            src="https://images.unsplash.com/photo-1504214208698-ea1916a2195a?w=500&h=500&fit=crop"
-          />
-        </div>
-        <div
-          class="gallery-item"
-        >
-          <img
-            alt=""
-            class="gallery-image"
-            src="https://images.unsplash.com/photo-1515814472071-4d632dbc5d4a?w=500&h=500&fit=crop"
-          />
-        </div>
-        <div
-          class="gallery-item"
-        >
-          <img
-            alt=""
-            class="gallery-image"
-            src="https://images.unsplash.com/photo-1511407397940-d57f68e81203?w=500&h=500&fit=crop"
-          />
-        </div>
-        <div
-          class="gallery-item"
-        >
-          <img
-            alt=""
-            class="gallery-image"
-            src="https://images.unsplash.com/photo-1518481612222-68bbe828ecd1?w=500&h=500&fit=crop"
-          />
-        </div>
-        <div
-          class="gallery-item"
-        >
-          <img
-            alt=""
-            class="gallery-image"
-            src="https://images.unsplash.com/photo-1505058707965-09a4469a87e4?w=500&h=500&fit=crop"
-          />
-        </div>
-        <div
-          class="gallery-item"
-        >
-          <img
-            alt=""
-            class="gallery-image"
-            src="https://images.unsplash.com/photo-1423012373122-fff0a5d28cc9?w=500&h=500&fit=crop"
-          />
+        <div>
+           
+          <div />
+          <div />
         </div>
       </div>
-    </div>
+    </main>
   </main>,
   ",",
 ]

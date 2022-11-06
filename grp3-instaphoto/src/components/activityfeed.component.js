@@ -233,15 +233,15 @@ const ActivityFeedComponent = () => {
     // we don't need the state variable since we are not passing it as a prop
     // Its child will get the list of Posts from the backend
 
-    const [, setNewPost] = useState(null);
+    // const [, setNewPost] = useState(null);
 
     // Ref variable to tell the FilterablePostTable
     // to load data or not
     const loadData = useRef(false);
 
-    let newUsername;
-    let newPostComment;
-    let newPostImage = "http://loremflickr.com/640/480"; // default to this image for HW2
+    // let newUsername;
+    // let newPostComment;
+    // let newPostImage = "http://loremflickr.com/640/480"; // default to this image for HW2
 
     /*
     const handleOnChange = (e) => {
@@ -250,34 +250,33 @@ const ActivityFeedComponent = () => {
         newUsername = e.target.value;
       }
 
-      if (e.target.name === 'comment') {
-        newPostComment = e.target.value;
-      }
-      if (e.target.name === 'postImage') {
-        newPostImage = e.target.value;
-        newPostImage = `http://loremflickr.com/640/480`;
-      }
-    }
+    //   if (e.target.name === 'comment') {
+    //     newPostComment = e.target.value;
+    //   }
+    //   if (e.target.name === 'postImage') {
+    //     newPostImage = e.target.value;
+    //     newPostImage = `http://loremflickr.com/640/480`;
+    //   }
+    // }
 
-    const handleCreatePost = async (e) => {
-      // stop default behavior to avoid reloading the page
-      e.preventDefault();
-      // create new Post variable
-      const newPost = { username: newUsername, postImage: newPostImage, postComment: newPostComment, publicPrivate: false, postTagOfOtherUsers: null, id: 10 };
-      // clear the form
-      const form = document.getElementById('add-post');
-      form.reset();
-      // send POST request to create the Post
-      const newStoredPost = await createPost(newPost);
-      // update LoadData
-      loadData.current = true;
-      // newStoredPost has an id
-      // then update state to trigger re-rendering and load
-      // the list of Post (FilterablePostTable) from
-      // backend
-      setNewPost(newStoredPost);
-    };
-    */
+    // const handleCreatePost = async (e) => {
+    //   // stop default behavior to avoid reloading the page
+    //   e.preventDefault();
+    //   // create new Post variable
+    //   const newPost = { username: newUsername, postImage: newPostImage, postComment: newPostComment, publicPrivate: false, postTagOfOtherUsers: null, id: 10 };
+    //   // clear the form
+    //   const form = document.getElementById('add-post');
+    //   form.reset();
+    //   // send POST request to create the Post
+    //   const newStoredPost = await createPost(newPost);
+    //   // update LoadData
+    //   loadData.current = true;
+    //   // newStoredPost has an id
+    //   // then update state to trigger re-rendering and load
+    //   // the list of Post (FilterablePostTable) from
+    //   // backend
+    //   setNewPost(newStoredPost);
+    // };
 
 
     /**
@@ -317,15 +316,15 @@ const ActivityFeedComponent = () => {
   return (
     <Fragment>
       <header>
-        <div class="container">
-          <div class="profile">
-            <div class="profile-image">
+        <div className="container">
+          <div className="profile">
+            <div className="profile-image">
               <img alt="" />
               {/* <img src={require('../images/grp3.PNG')} alt=""/> */}
 
             </div>
-            <div class="profile-user-settings">
-              <h1 class="profile-user-name">grp3foreva</h1>
+            <div className="profile-user-settings">
+              <h1 className="profile-user-name">grp3foreva</h1>
             </div>
           </div>
         </div>
@@ -333,9 +332,9 @@ const ActivityFeedComponent = () => {
 
       <main>
 
-        <div class="container">
-          <div class="feed">
-            <div class="feedWrapper">
+        <div className="container">
+          <div className="feed">
+            <div className="feedWrapper">
               <AddPost />
             </div>
           </div>
