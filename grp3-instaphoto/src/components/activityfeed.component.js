@@ -1,6 +1,6 @@
 import React, { useState, Fragment, useEffect, useRef } from "react";
 import '../activityfeed.css';
-import '../userprofile.css';
+import './userprofile.css';
 import { Navbar, Card, ListGroup, ListGroupItem } from 'react-bootstrap';
 import { getUser, createUser, getTimelinePosts, getPosts, createPost, createComment, getPost, deletePost, incrementPostLike, getCommentMessage} from '../api/mock_api';
 

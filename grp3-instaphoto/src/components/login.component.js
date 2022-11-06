@@ -79,7 +79,7 @@ const LoginComponent=()=>{
         <form className = "auth-inner">
         <div className="header">
             <h3>Welcome to Instaphoto&nbsp;</h3>
-            {/* <img src={require('../images/logo.PNG')} alt="logo" /> */}
+            <img src="https://i.ibb.co/VV3Xdf1/logo.png" alt="logo" />
         </div>
         <br></br>
         <div className="login-and-password">

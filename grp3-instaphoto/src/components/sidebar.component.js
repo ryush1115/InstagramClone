@@ -1,11 +1,10 @@
-<<<<<<< HEAD
-import React, { useState, useEffect,Fragment, useRef} from "react";
-import '../userprofile.css';
+import React, { useState, useEffect} from "react";
+import './userprofile.css';
 import { Navbar, Card, ListGroup, ListGroupItem } from 'react-bootstrap';
+import {useNavigate} from 'react-router-dom';
 import { getSuggestionList } from '../api/mock_api';
 
 const Sidebar =(props)=>{
-  console.log("printing create outside of function " + props.create)
   const [FriendSuggestionList, setFriendSuggestionList] = useState([]);
   let data;
   const someFetch = async () => {
@@ -24,16 +23,8 @@ const Sidebar =(props)=>{
 
   },[]);
 
-=======
-import React, { useState, Fragment, useRef} from "react";
-import './userprofile.css';
-import { Navbar, Card, ListGroup, ListGroupItem } from 'react-bootstrap';
-import {useNavigate} from 'react-router-dom';
-
-const Sidebar =(props)=>{
   const navigate = useNavigate();
   
->>>>>>> ar_1026_usergallery
   const handleCreate = () => {
     props.setCreate(1);
   };
