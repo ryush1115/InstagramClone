@@ -178,7 +178,7 @@ export const getMyFollowings = async () => {
   try {
     const response = await axios.get(`${rootURL}/User1`);
     const me = response.data[0];
-    console.log(me.follow);
+    // console.log(me.follow);
     return me.follow;
     // the data is stored in the mockData
     // field of the response

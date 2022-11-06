@@ -173,6 +173,10 @@ exports[`App matches snapshot 1`] = `
             <h3>
               Welcome to Instaphoto 
             </h3>
+            <img
+              alt="logo"
+              src="https://i.ibb.co/VV3Xdf1/logo.png"
+            />
           </div>
           <br />
           <div
@@ -381,9 +385,7 @@ Array [
           >
             <span
               className="username"
-            >
-              akikozzm
-            </span>
+            />
             <span
               className="follow"
             >
@@ -406,9 +408,7 @@ Array [
           >
             <span
               className="username"
-            >
-              akikozzm
-            </span>
+            />
             <span
               className="follow"
             >
@@ -431,9 +431,7 @@ Array [
           >
             <span
               className="username"
-            >
-              akikozzm
-            </span>
+            />
             <span
               className="follow"
             >
@@ -453,45 +451,6 @@ Array [
     >
       Suggested
     </span>
-<<<<<<< HEAD:grp3-instaphoto/src/__snapshots__/snapshot.test.js.snap
-=======
-    <div
-      className="container-1_FriendSuggestion"
-    >
-      <img
-        className="image-0_FriendSuggestion"
-        src={null}
-      />
-      <div
-        className="container-2_FriendSuggestion"
-      >
-        <div
-          className="container-3_FriendSuggestion"
-        >
-          <span
-            className="text-1_FriendSuggestion"
-          >
-            Akikos
-          </span>
-          <span
-            className="text-2_FriendSuggestion"
-          >
-            This is a cool person
-          </span>
-        </div>
-        <div
-          className="container-4_FriendSuggestion"
-        >
-          <span
-            className="text-3_FriendSuggestion"
-            onClick={[Function]}
-          >
-            Follow
-          </span>
-        </div>
-      </div>
-    </div>
->>>>>>> ar_1026_usergallery:grp3-instaphoto/src/tests/__snapshots__/snapshot.test.js.snap
   </div>,
   ",",
 ]
@@ -685,6 +644,10 @@ Array [
         <h3>
           Welcome to Instaphoto 
         </h3>
+        <img
+          alt="logo"
+          src="https://i.ibb.co/VV3Xdf1/logo.png"
+        />
       </div>
       <br />
       <div
@@ -748,172 +711,6 @@ Array [
 ]
 `;
 
-<<<<<<< HEAD:grp3-instaphoto/src/__snapshots__/snapshot.test.js.snap
-exports[`SideBar matches snapshot 1`] = `
-<nav
-  className="home navbar navbar-expand navbar-light"
->
-  <div
-    className="card card"
-  >
-    <div
-      className="logo"
-    >
-      <h>
-        Instaphoto 
-      </h>
-      <img
-        alt="logo"
-      />
-    </div>
-    <br />
-    <div>
-      <img
-        className="card-img-top sig"
-      />
-      <p
-        className="username"
-      >
-         grp3foreva
-      </p>
-    </div>
-    <div>
-      <div
-        className="card-body"
-      >
-        <p
-          className="card-text"
-        >
-          <div
-            className="space"
-          />
-          <div
-            className="list-group list-group-flush"
-            onKeyDown={[Function]}
-          >
-            <div
-              className="list list-group-item"
-              data-rr-ui-event-key={null}
-              onClick={[Function]}
-            >
-              <span>
-                Home
-              </span>
-            </div>
-            <div
-              className="list list-group-item"
-              data-rr-ui-event-key={null}
-              onClick={[Function]}
-            >
-              <span
-                onClick={[Function]}
-              >
-                Create
-              </span>
-            </div>
-            <div
-              className="list list-group-item"
-              data-rr-ui-event-key={null}
-              onClick={[Function]}
-            >
-              <span>
-                Profile
-              </span>
-            </div>
-          </div>
-        </p>
-      </div>
-    </div>
-    <br />
-    <div
-      className="suggestions"
-    >
-      <p
-        className="suggestion-text"
-      >
-        Suggestions for you
-      </p>
-      <button
-        className="show-all-btn"
-      >
-        See all
-      </button>
-      <div
-        className="profile-card"
-      >
-        <div>
-          <img
-            alt=""
-            className="other-user"
-          />
-        </div>
-        <button
-          className="action-btn"
-          type="button"
-        >
-          <span
-            className="username"
-          />
-          <span
-            className="follow"
-          >
-            Follow
-          </span>
-        </button>
-      </div>
-      <div
-        className="profile-card"
-      >
-        <div>
-          <img
-            alt=""
-            className="other-user"
-          />
-        </div>
-        <button
-          className="action-btn"
-          type="button"
-        >
-          <span
-            className="username"
-          />
-          <span
-            className="follow"
-          >
-            Follow
-          </span>
-        </button>
-      </div>
-      <div
-        className="profile-card"
-      >
-        <div>
-          <img
-            alt=""
-            className="other-user"
-          />
-        </div>
-        <button
-          className="action-btn"
-          type="button"
-        >
-          <span
-            className="username"
-          />
-          <span
-            className="follow"
-          >
-            Follow
-          </span>
-        </button>
-      </div>
-    </div>
-  </div>
-</nav>
-`;
-
-=======
->>>>>>> ar_1026_usergallery:grp3-instaphoto/src/tests/__snapshots__/snapshot.test.js.snap
 exports[`SignUp matches snapshot 1`] = `
 Array [
   <form
