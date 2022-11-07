@@ -52,51 +52,34 @@
     },
     {
       "email": "undefined",
-      "username": "test1 ",
+      "username": "undefined\n        ",
       "password": "undefined",
       "profilePicture": "\n        ",
-      "follow": [
-        "Elmer.Weissnat10",
-        "Frederic.Strosin5",
-        "Xavier.Vandervort"
-      ],
+      "follow": "",
       "id": "Gr3r1dL"
     },
     {
       "email": "undefined",
-      "username": "test2",
+      "username": "undefined\n        ",
       "password": "undefined",
       "profilePicture": "\n        ",
-      "follow": [
-        "Elmer.Weissnat10",
-        "Frederic.Strosin5",
-        "Xavier.Vandervort",
-        "ssss"
-      ],
+      "follow": "",
       "id": "DaNYYMJ"
     },
     {
       "email": "undefined",
-      "username": "test3",
+      "username": "undefined\n        ",
       "password": "undefined",
       "profilePicture": "\n        ",
-      "follow": [
-        "Elmer.Weissnat10",
-        "Frederic.Strosin5",
-        "KKK",
-        "Xavier.Vandervort"
-      ],
+      "follow": "",
       "id": "XIxWHsG"
     },
     {
       "email": "undefined",
-      "username": "test4",
+      "username": "undefined\n        ",
       "password": "undefined",
       "profilePicture": "\n        ",
-      "follow": [
-        "Elmer.Weissnat10",
-        "Frederic.Strosin5"
-      ],
+      "follow": "",
       "id": "AM0SMGC"
     },
     {
@@ -138,6 +121,46 @@
       "profilePicture": "\n        ",
       "follow": "",
       "id": "d51TGck"
+    },
+    {
+      "email": "newEmail@com",
+      "username": "newUsername\n        ",
+      "password": "newPassword",
+      "profilePicture": "\n        ",
+      "follow": "",
+      "id": "CyACwvW"
+    },
+    {
+      "email": "newEmail@com",
+      "username": "newUsername\n        ",
+      "password": "newPassword",
+      "profilePicture": "\n        ",
+      "follow": "",
+      "id": "sAO6hMd"
+    },
+    {
+      "email": "newEmail@com",
+      "username": "newUsername\n        ",
+      "password": "newPassword",
+      "profilePicture": "\n        ",
+      "follow": "",
+      "id": "LSVaP6g"
+    },
+    {
+      "email": "newEmail@com",
+      "username": "newUsername\n        ",
+      "password": "newPassword",
+      "profilePicture": "\n        ",
+      "follow": "",
+      "id": "G_M7Vpb"
+    },
+    {
+      "email": "newEmail@com",
+      "username": "newUsername\n        ",
+      "password": "newPassword",
+      "profilePicture": "\n        ",
+      "follow": "",
+      "id": "9PiBviC"
     }
   ],
   "Post": [
@@ -340,8 +363,6 @@
       "publicPrivate": "false\n      ",
       "postTageOfOtherUsers": "undefined",
       "id": "FDMT6Ws"
-<<<<<<< HEAD
-=======
     },
     {
       "username": "grp3foreva",
@@ -510,7 +531,14 @@
       "publicPrivate": "false\n      ",
       "postTageOfOtherUsers": "undefined",
       "id": "nhIwEEW"
->>>>>>> ar_1026_usergallery
+    },
+    {
+      "username": "newUsername",
+      "postImage": "newPostImage\n      ",
+      "postComment": "newPostComment\n      ",
+      "publicPrivate": "false\n      ",
+      "postTageOfOtherUsers": "undefined",
+      "id": "ROiKRIh"
     }
   ],
   "User1": [
@@ -520,11 +548,9 @@
       "password": "12345678",
       "profilePicture": "\n",
       "follow": [
-        "Elmer.Weissnat10",
-        "Frederic.Strosin5",
-        "Xavier.Vandervort"
+        "akikozzm"
       ],
-      "id": "0"
+      "id": "7"
     }
   ],
   "Comment": [
@@ -557,6 +583,18 @@
       "message": "message 5",
       "tagOfOtherUsers": [],
       "id": "5"
+    },
+    {
+      "username": "grp3foreva",
+      "message": "test\n      ",
+      "tagOfOtherUsers": "undefined",
+      "id": "-PdZqGN"
+    },
+    {
+      "username": "grp3foreva",
+      "message": "test\n      ",
+      "tagOfOtherUsers": "undefined",
+      "id": "-AaV9N6"
     }
   ],
   "Like": [

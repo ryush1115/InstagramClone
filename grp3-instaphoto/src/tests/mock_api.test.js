@@ -11,7 +11,8 @@ import React from 'react';
 
 // import { enableFetchMocks } from 'jest-fetch-mock';
 import {getUser, getPosts, getPost, getPassword,
-  getCommentMessage, getMyFollowings, getSuggestionList} from '.././api/mock_api';
+  getCommentMessage, getMyFollowings, getSuggestionList,
+createPost, createUser} from '.././api/mock_api';
 
 test('#getUser() using async/await', async () => {
   const data = await getUser(1)
@@ -44,9 +45,19 @@ test('#getSuggestionList() using async/await', async () => {
 })
 
 
-// this one fails
-// test('#getPassword() using async/await', async () => {
-//   const data = await getPassword('Webster2@hotmail.com')
-//   expect(data).toBeDefined()
-// })
+test('#createNewUser() using async/await', async () => {
+  // create new User variable
+  const newUser = { username: "newUsername", email: "newEmail@com", password: "newPassword", profilePicture: "", follow: [] };
+  // send POST request to create new User
+  const newStoredUser = await createUser(newUser);
+  expect(newStoredUser).toBeDefined()
+})
+
+test('#createNewUser() using async/await', async () => {
+  const newPost = { username: "newUsername", postImage: "newPostImage", postComment: "newPostComment", publicPrivate: false, postTagOfOtherUsers: null, id: 10 };
+  // send POST request to create new User
+  const newStoredPost = await createPost(newPost);
+  // console.log(newStoredPost)
+  expect(newStoredPost).toBeDefined()
+})
 
