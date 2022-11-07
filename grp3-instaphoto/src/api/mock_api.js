@@ -52,7 +52,7 @@ export const getPosts = async () => {
 // and sends a Get request to the /Post: id endpoint
 // returns the attributes of the Post
 export const getPost = async(PostId) => {
-  try{
+  try {
     const response = await axios.get(`${rootURL}/Post/${PostId}`);
     return response.data;
   } catch (err) {
@@ -298,6 +298,27 @@ export const createComment = async (CommentObject) => {
     console.error(err);
   }
 };
+
+
+export const getUserPosts = async (username) => {
+  console.log(username);
+  try {
+    const response = await axios.get(`${rootURL}/Post`);
+    const posts = response.data;
+    console.log(posts);
+    const userPosts = [];
+    for (let i = 0; i < posts.length; i++){
+      if (posts[i].username === username){
+        userPosts.push(posts[i]);
+      }
+    }
+    console.log("mock userposts");
+    console.log(userPosts);
+    return userPosts;
+  } catch (err) {
+    console.error(err);
+  }
+}
 
 
 // Delete a Post
