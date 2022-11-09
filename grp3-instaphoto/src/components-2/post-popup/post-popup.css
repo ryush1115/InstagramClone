@@ -1,0 +1,217 @@
+.post-popup-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    z-index: 999;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+}
+
+.post-popup-wrapper1 {
+    background-color: rgba(0, 0, 0, 0.15);
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 998;
+}
+
+
+.post-popup {
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    width: 45vw;
+    height: 80vh;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    opacity: 100%;
+    cursor: default;
+}
+
+.post-popup-header {
+    margin-bottom: 8%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    color: black;
+    width: 90%;
+    height: 12%;
+    vertical-align: top;
+    position: sticky;
+    align-items: center;
+    background-color: #F6F7FE;
+    border-style: solid;
+    border-color: grey;
+    border-width: 0.5px;
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: 30px;
+}
+
+.profile-pic {
+    background-color: black;
+    border-radius: 50%;
+    min-height: 100%;
+    min-width: 100%;
+    margin-right: 50%;
+    cursor: pointer;
+}
+
+.post-popup-header-left {
+    height: 100%;
+    width: 10%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.post-header-username {
+    font-weight: 500;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.post-popup-header-right {
+    height: 100%;
+    width: 10%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.post-popup-header-right-ellipsis {
+    font-size: 30px;
+    cursor: pointer;
+    border: none;
+    background: none;
+}
+
+.post-popup-body {
+    margin-bottom: 8%;
+    border-radius: 5%;
+    border-color: grey;
+    border-width: 0.5px;
+    border-style: solid;
+    color: black;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+    height: 60%;
+    overflow: auto;
+    background-color: #F6F7FE;
+}
+
+.post-popup-body-image {
+    width: 100%;
+}
+
+.post-popup-body-image-box {
+    display: flex;
+    flex-direction: column;
+    padding-left: 3%;
+}
+
+.post-popup-body-right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 30%;
+    height: 100%;
+    padding-top: 10%;
+}
+
+.post-popup-likes {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    position: sticky;
+    vertical-align: top;
+    width: 60%;
+    height: 10%;
+    margin-bottom: 5%;
+}
+
+.post-popup-body-right button {
+    background: none;
+    border: none;
+    font-size: 15px;
+}
+
+.post-popup-like-button-icon {
+    font-size: 20px;
+    color: red;
+    cursor: pointer;
+}
+
+.post-popup-comments-button-icon {
+    font-size: 20px;
+    color: grey;
+    cursor: pointer;
+}
+
+.post-popup-comments {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 60%;
+    overflow: auto;
+}
+
+.post-popup-comments-button {
+    position: sticky;
+    vertical-align: top;
+}
+
+.post-popup-comments-section {
+    height: 100%;
+    padding-top: 5%;
+}
+
+.post-popup-add-comment {
+    position: sticky;
+    vertical-align: bottom;
+}
+
+.post-popup-settings-dropdown {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    right: 0;
+    min-height: 5rem;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.post-popup-settings-dropdown-edit {
+    border: none;
+    background: none;
+    font-size: 22px;
+}
+
+.post-popup-settings-dropdown-edit:hover, .post-popup-settings-dropdown-delete:hover {
+    background-color: #F6F7FE;
+}
+
+.post-popup-settings-dropdown-delete {
+    border: none;
+    background: none;
+    color: red;
+    font-size: 22px;
+}
