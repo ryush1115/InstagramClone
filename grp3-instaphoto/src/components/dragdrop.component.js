@@ -70,7 +70,7 @@ function DragDrop(props) {
     // stop default behavior to avoid reloading the page
     e.preventDefault();
     // create new Post variable
-    const newPost = {username: newUsername, postImage: newPostImage, postComment: newPostComment, publicPrivate:false, postTagOfOtherUsers:null, id:10};
+    const newPost = {username: newUsername, postImage: newPostImage, postComment: newPostComment, publicPrivate:false, postTagOfOtherUsers:null, postCommentArray:[], id:null};
     // clear the form
     const form = document.getElementById('add-post');
     

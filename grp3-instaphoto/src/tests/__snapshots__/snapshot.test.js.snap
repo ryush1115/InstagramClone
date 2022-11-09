@@ -13,7 +13,7 @@ Array [
           className="profile-image"
         >
           <img
-            alt=""
+            alt="alt-image"
           />
         </div>
         <div
@@ -58,7 +58,7 @@ exports[`App matches snapshot 1`] = `
 <div
   className="App"
 >
-  <nav
+  <header
     className="navbar navbar-expand-lg navbar-light fixed-top"
   >
     <div
@@ -105,10 +105,10 @@ exports[`App matches snapshot 1`] = `
           >
             <a
               className="nav-link"
-              href="/activity-feed"
+              href="/userprofile"
               onClick={[Function]}
             >
-              Activity Feed
+              User Profile
             </a>
           </li>
           <li
@@ -116,10 +116,10 @@ exports[`App matches snapshot 1`] = `
           >
             <a
               className="nav-link"
-              href="/Userprofile"
+              href="/activity-feed"
               onClick={[Function]}
             >
-              User Profile
+              Activity Feed
             </a>
           </li>
           <li
@@ -158,85 +158,81 @@ exports[`App matches snapshot 1`] = `
         </ul>
       </div>
     </div>
-  </nav>
-  <div>
-    <div>
+  </header>
+  <div
+    className="auth-wrapper"
+  >
+    <form
+      className="auth-inner"
+    >
       <div
-        className="auth-wrapper"
+        className="header"
       >
-        <form
-          className="auth-inner"
-        >
-          <div
-            className="header"
-          >
-            <h3>
-              Welcome to Instaphoto 
-            </h3>
-            <img
-              alt="logo"
-              src="https://i.ibb.co/VV3Xdf1/logo.png"
-            />
-          </div>
-          <br />
-          <div
-            className="login-and-password"
-          >
-            <label>
-              Email
-            </label>
-            <input
-              className="form-control"
-              onChange={[Function]}
-              placeholder="Enter email"
-              type="email"
-              value=""
-            />
-          </div>
-          <div
-            className="login-and-password"
-          >
-            <label>
-              Password
-            </label>
-            <p>
-              Forgot password?
-            </p>
-            <input
-              className="form-control"
-              onChange={[Function]}
-              placeholder="Enter password"
-              type="password"
-              value=""
-            />
-          </div>
-          <br />
-          <div
-            className="d-grid"
-          >
-            <button
-              className="btn btn-primary"
-              onClick={[Function]}
-              type="submit"
-            >
-              Sign in
-            </button>
-          </div>
-          <p
-            className="login-create-account text-right"
-          >
-            Don't have an account? 
-            <br />
-            <a
-              href="#"
-              onClick={[Function]}
-            >
-               Sign up now to join communities across the globe 
-            </a>
-          </p>
-        </form>
+        <h3>
+          Welcome to Instaphoto 
+        </h3>
+        <img
+          alt="logo"
+          src="https://i.ibb.co/VV3Xdf1/logo.png"
+        />
       </div>
-    </div>
+      <br />
+      <div
+        className="login-and-password"
+      >
+        <label>
+          Email
+        </label>
+        <input
+          className="form-control"
+          onChange={[Function]}
+          placeholder="Enter email"
+          type="email"
+          value=""
+        />
+      </div>
+      <div
+        className="login-and-password"
+      >
+        <label>
+          Password
+        </label>
+        <p>
+          Forgot password?
+        </p>
+        <input
+          className="form-control"
+          onChange={[Function]}
+          placeholder="Enter password"
+          type="password"
+          value=""
+        />
+      </div>
+      <br />
+      <div
+        className="d-grid"
+      >
+        <button
+          className="btn btn-primary"
+          onClick={[Function]}
+          type="submit"
+        >
+          Sign in
+        </button>
+      </div>
+      <p
+        className="login-create-account text-right"
+      >
+        Don't have an account? 
+        <br />
+        <a
+          href="#"
+          onClick={[Function]}
+        >
+           Sign up now to join communities across the globe 
+        </a>
+      </p>
+    </form>
   </div>
 </div>
 `;

@@ -2,24 +2,13 @@
 
 import axios from 'axios';
 
-// mockAPI URL
-// const rootURL = 'https://634749ccdb76843976a974a6.mockapi.io/'
-//'https://634749ccdb76843976a974a6.mockapi.io/endpoint'
-// https://634749ccdb76843976a974a6.mockapi.io/User
-// https://634749ccdb76843976a974a6.mockapi.io/Post
-// https://634749ccdb76843976a974a6.mockapi.io/Like
-// https://634749ccdb76843976a974a6.mockapi.io/Comment
 
 // JSON-server URL
 // To run the server, enter into command line/terminal: 
 // json-server db-grp3-instaphoto.json --port 8000
 
 const rootURL = 'http://localhost:8000'
-//const rootURLUser = 'http://localhost:8000/User'
-//const rootURLPost = 'http://localhost:8000/Post'
-//const rootURLLike = 'http://localhost:8000/Like'
-//const rootURLComment = 'http://localhost:8000/Comment'
-//const rootURLTimeLinePost = 'http://localhost:8000/TimelinePost'
+
 
 // Sends a Get request to the endpoint
 // returns all the Users
@@ -119,17 +108,6 @@ export const getPassword = async(userEmail) => {
   }
 }
 
-// Following a user = takes a username as input
-// and sends a POST request to the /User endpoint
-// 
-// export const sendFriendSuggestionList = async(UserObject)=>{
-//   try
-// }
-
-// // Unfollow a user = take a username as input
-// // and delete the user from that user's follow list
-// export const 
-
 
 // Create a Post (without the Id) as input
 // and sends a POST request to the /Post endpoint
@@ -142,11 +120,13 @@ export const createPost = async (PostObject) => {
       `username=${PostObject.username}&postImage=${PostObject.postImage}
       &postComment=${PostObject.postComment}
       &publicPrivate=${PostObject.publicPrivate}
-      &postTageOfOtherUsers=${PostObject.postTageOfOtherUsers}`
+      &postTagOfOtherUsers=${PostObject.postTagOfOtherUsers}
+      &postCommentArray=${PostObject.postCommentArray}`
     );
     console.log(`username=${PostObject.username}&postImage=${PostObject.postImage}
     &publicPrivate=${PostObject.publicPrivate}
-    &postTageOfOtherUsers=${PostObject.postTageOfOtherUsers}`);
+    &postTagOfOtherUsers=${PostObject.postTagOfOtherUsers}
+    &postCommentArray=${PostObject.postCommentArray}`);
     return response.data;
   } catch (err) {
     console.error(err);
@@ -299,6 +279,26 @@ export const createComment = async (CommentObject) => {
   }
 };
 
+// Delete a Post
+export const deletePost = async(PostId) => {
+  try {
+    const response = await axios.delete(`${rootURL}/Post/${PostId}`);
+    return response.data;
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+// Increment a Like
+export const incrementPostLike = async(PostId) => {
+  try {
+    const pre_response = await axios.get(`${rootURL}/Post/${PostId}`);  
+    const response = await axios.patch(`${rootURL}/Post/${PostId}/`,{likeCounter:1});
+  } catch (err) {
+    console.error(err)
+  }
+}
+
 
 export const getUserPosts = async (username) => {
   console.log(username);
@@ -320,26 +320,6 @@ export const getUserPosts = async (username) => {
   }
 }
 
-
-// Delete a Post
-export const deletePost = async(PostId) => {
-  try {
-    const response = await axios.delete(`${rootURL}/Post/${PostId}`);
-    return response.data;
-  } catch (err) {
-    console.error(err);
-  }
-}
-
-// Increment a Like
-export const incrementPostLike = async(PostId) => {
-  try {
-    const pre_response = await axios.get(`${rootURL}/Post/${PostId}`);  
-    const response = await axios.patch(`${rootURL}/Post/${PostId}/`,{likeCounter:1});
-  } catch (err) {
-    console.error(err)
-  }
-}
 
 
 
