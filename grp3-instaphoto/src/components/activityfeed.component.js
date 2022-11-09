@@ -5,12 +5,12 @@ import { Navbar, Card, ListGroup, ListGroupItem } from 'react-bootstrap';
 import { getUser, createUser, getTimelinePosts, getPosts, createPost, createComment, getPost, deletePost, incrementPostLike, getCommentMessage} from '../api/mock_api';
 
 const ActivityFeedComponent = () => {
+  const[, setNewComment] = useState(null);
+  const[, setDeletedPost] = useState(null);
+  const[, setIncrementLike] = useState(null);
+  const [roster, setRoster] = useState([]);
 
   function PostRow(props) {
-
-    const[, setNewComment] = useState(null);
-    const[, setDeletedPost] = useState(null);
-    const[, setIncrementLike] = useState(null);
 
     // Ref variable 
     const loadData = useRef(false);
@@ -20,7 +20,7 @@ const ActivityFeedComponent = () => {
 
     // stores user input for the comment
     const handleOnChangeComment = (e) => {
-      if (e.target.name==='commentBox_')  {
+      if (e.target.name==='commentBox')  {
         newPostComment_ = e.target.value;
       }
     }
@@ -64,7 +64,34 @@ const ActivityFeedComponent = () => {
       loadData.current = true;
     }
 
+    const commentArray = [
+      {
+        "username": 'Heather_Buckridge',
+        "message": "Comment #1",
+        "tagOfOtherUsers": [],
+        "id": 0,
+      },
+      {
 
+        "username": 'Sigmund.Roberts',
+        "message": "Comment #2",
+        "tagOfOtherUsers": [],
+        "id": 1,
+      },
+    ];
+
+    const List = props =>
+      props.list.map(item => (
+        <div key={item.id}>
+          {/* <span>
+            <a href={item.url}>{item.title}</a>
+          </span> */}
+          <span>{item.username}: </span>
+          <span>{item.message} </span>
+          {/* <span>{item.num_comments}</span> */}
+          {/* <span>{item.points}</span> */}
+        </div>
+    ));
 
     return (
       <tr>
@@ -101,14 +128,19 @@ const ActivityFeedComponent = () => {
                 {props.post.postComment}
               </div>
               <div className="postBottomRight">
-                <span className="postCommentText">More comments</span>
+                <span> 
+
+                  <List list={commentArray}/>
+                
+                </span>
               </div>
               <button type="remove" onClick={handleDeletePost}>Delete</button>
             </div>
             <div className="postBottom">
             <form id="commentBox">
-                <label></label>
-                <input type="text" className="commentBox" size="20" placeholder="Enter a comment..." />
+                
+                <input type="text" className="commentBox" name="commentBox" size="20" onChange={handleOnChangeComment} placeholder="Enter a comment..." />
+                <button type="submitComment" onClick={handleCreateComment}>Enter</button>
               </form>
             </div>
           </div>

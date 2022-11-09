@@ -12,7 +12,8 @@ import React from 'react';
 // import { enableFetchMocks } from 'jest-fetch-mock';
 import {getUser, getPosts, getPost, getPassword,
   getCommentMessage, getMyFollowings, getSuggestionList,
-createPost, createUser} from '.././api/mock_api';
+createPost, createUser, getCommentsArray, isMyFollowing, 
+cancelFollowing, following, deletePost} from '.././api/mock_api';
 
 test('#getUser() using async/await', async () => {
   const data = await getUser(1)
@@ -44,7 +45,6 @@ test('#getSuggestionList() using async/await', async () => {
   expect(data).toBeDefined()
 })
 
-
 test('#createNewUser() using async/await', async () => {
   // create new User variable
   const newUser = { username: "newUsername", email: "newEmail@com", password: "newPassword", profilePicture: "", follow: [] };
@@ -59,5 +59,59 @@ test('#createNewUser() using async/await', async () => {
   const newStoredPost = await createPost(newPost);
   // console.log(newStoredPost)
   expect(newStoredPost).toBeDefined()
+})
+
+// test Get Password
+test("Should return null when pw not found", async()=> {
+  const result = await getPassword(-99);
+  expect(result).toBeUndefined();
+})
+
+// test Get CommentsArray
+test("Should return null when comments array not found", async()=> {
+  const result = await getCommentsArray(-99);
+  expect(result).toBeUndefined();
+})
+
+// test Get comments message
+test("Should return null when comments message not found", async()=> {
+  const result = await getCommentMessage(-99);
+  expect(result).toBeUndefined();
+})
+
+// test Get my followings 
+test("Should return null when get my followings not found", async()=> {
+  const result = await getMyFollowings(-99);
+  expect(result).toBeUndefined();
+})
+
+// test following
+test("Should return null when followings not found", async()=> {
+  const result = await following(-99);
+  expect(result).toBeUndefined();
+})
+
+// test  cancel following
+test("Should return null when cancel following not found", async()=> {
+  const result = await cancelFollowing(-99);
+  expect(result).toBeUndefined();
+})
+
+// test is my following
+test("Should return null when is my following not found", async()=> {
+  const result = await isMyFollowing(-99);
+  expect(result).toBeUndefined();
+})
+
+// test is my following
+test("Should return null when getSuggestoinList not found", async()=> {
+  const result = await getSuggestionList(-99);
+  expect(result).toBeUndefined();
+})
+
+// test delete post
+test("Should return null when delete post id not found", async()=> {
+  const result = await deletePost(-99);
+  expect(result).toBeUndefined();
 })
 
