@@ -120,11 +120,13 @@ export const createPost = async (PostObject) => {
       `username=${PostObject.username}&postImage=${PostObject.postImage}
       &postComment=${PostObject.postComment}
       &publicPrivate=${PostObject.publicPrivate}
-      &postTageOfOtherUsers=${PostObject.postTageOfOtherUsers}`
+      &postTagOfOtherUsers=${PostObject.postTagOfOtherUsers}
+      &postCommentArray=${PostObject.postCommentArray}`
     );
     console.log(`username=${PostObject.username}&postImage=${PostObject.postImage}
     &publicPrivate=${PostObject.publicPrivate}
-    &postTageOfOtherUsers=${PostObject.postTageOfOtherUsers}`);
+    &postTagOfOtherUsers=${PostObject.postTagOfOtherUsers}
+    &postCommentArray=${PostObject.postCommentArray}`);
     return response.data;
   } catch (err) {
     console.error(err);
