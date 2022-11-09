@@ -1,5 +1,5 @@
 import React, { useState, Fragment} from "react";
-import '../userprofile.css';
+import './userprofile.css';
 import Sidebar from './sidebar.component'
 import GalleryItem from "../components-2/galleryItem";
 
