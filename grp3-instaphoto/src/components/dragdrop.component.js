@@ -48,8 +48,9 @@ function DragDrop(props) {
 
   // create variables for post creation
   let newUsername = "grp3foreva";
-  let newPostComment;
-  let newPostImage = "http://loremflickr.com/640/481"; // default to this image for HW2
+  let newPostCaption;
+  let newPostImage = "http://loremflickr.com/640/480"; // default to this image for HW2
+ 
 
   const handleOnChange = function(e) {
     e.preventDefault();
@@ -95,8 +96,8 @@ function DragDrop(props) {
         <p>Create a Post Here!! </p>    
             <input
               type="text"
-              name="comment"
-              placeholder="Enter a comment..."
+              name="caption"
+              placeholder="Enter a caption..."
               onChange={handleOnChange}
             />
             <input

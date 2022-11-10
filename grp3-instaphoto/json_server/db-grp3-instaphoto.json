@@ -52,34 +52,51 @@
     },
     {
       "email": "undefined",
-      "username": "undefined\n        ",
+      "username":"test1",
       "password": "undefined",
       "profilePicture": "\n        ",
-      "follow": "",
+      "follow": [
+        "Elmer.Weissnat10",
+        "Frederic.Strosin5",
+        "Xavier.Vandervort"
+      ],
       "id": "Gr3r1dL"
     },
     {
       "email": "undefined",
-      "username": "undefined\n        ",
+      "username": "test2",
       "password": "undefined",
       "profilePicture": "\n        ",
-      "follow": "",
+      "follow": [
+        "Elmer.Weissnat10",
+        "Frederic.Strosin5",
+        "Xavier.Vandervort",
+        "ssss"
+      ],
       "id": "DaNYYMJ"
     },
     {
       "email": "undefined",
-      "username": "undefined\n        ",
+      "username": "test3",
       "password": "undefined",
       "profilePicture": "\n        ",
-      "follow": "",
+      "follow": [
+        "Elmer.Weissnat10",
+        "Frederic.Strosin5",
+        "KKK",
+        "Xavier.Vandervort"
+      ],
       "id": "XIxWHsG"
     },
     {
       "email": "undefined",
-      "username": "undefined\n        ",
+      "username": "test4",
       "password": "undefined",
       "profilePicture": "\n        ",
-      "follow": "",
+      "follow": [
+        "Elmer.Weissnat10",
+        "Frederic.Strosin5"
+      ],
       "id": "AM0SMGC"
     },
     {
@@ -314,6 +331,7 @@
       "postComment": "Cute cat!!!!",
       "publicPrivate": false,
       "postTagOfOtherUsers": [],
+
       "postCommentArray": [
         {
           "username": "Heath_Buckridge",
@@ -328,7 +346,8 @@
           "id": "2"
         }
       ],
-      "id": "1"
+      "id": "1",
+      "like": []
     },
     {
       "username": "Gerda.Ziemann",
@@ -336,6 +355,7 @@
       "postComment": "Adorable cat!!!",
       "publicPrivate": false,
       "postTagOfOtherUsers": [],
+
       "postCommentArray": [
         {
           "username": "Heath_Buckridge",
@@ -350,7 +370,9 @@
           "id": "2"
         }
       ],
-      "id": "2"
+      "id": "2",
+      "like": []
+
     },
     {
       "username": "Hans53",
@@ -372,7 +394,8 @@
           "id": "2"
         }
       ],
-      "id": "3"
+      "id": "3",
+      "like": []
     },
     {
       "username": "Kendra96",
@@ -380,6 +403,7 @@
       "postComment": "Cool photo",
       "publicPrivate": false,
       "postTagOfOtherUsers": [],
+
       "postCommentArray": [
         {
           "username": "Heath_Buckridge",
@@ -394,7 +418,9 @@
           "id": "2"
         }
       ],
-      "id": "4"
+      "id": "4",
+      "like": []
+
     },
     {
       "username": "Mason_Satterfield",
@@ -402,6 +428,7 @@
       "postComment": "Woof woof!!",
       "publicPrivate": false,
       "postTagOfOtherUsers": [],
+
       "postCommentArray": [
         {
           "username": "Heath_Buckridge",
@@ -416,7 +443,9 @@
           "id": "2"
         }
       ],
-      "id": "5"
+      "id": "5",
+      "like": []
+
     },
     {
       "username": "grp3foreva",
@@ -438,7 +467,8 @@
           "id": "2"
         }
       ],
-      "id": "h6o2_XK"
+      "id": "h6o2_XK",
+      "like":[]
     },
     {
       "username": "grp3foreva",
@@ -460,7 +490,46 @@
           "id": "2"
         }
       ],
-      "id": "GJazPaW"
+
+      "id": "CmsW4ln",
+      "like": []
+    },
+    {
+      "username": "helllooo",
+      "postImage": "http://loremflickr.com/640/480\n      ",
+      "postComment": "my second comment\n      ",
+      "publicPrivate": "false\n      ",
+      "postTageOfOtherUsers": "undefined",
+      "id": "xuKqSvJ",
+      "like": []
+    },
+    {
+      "username": "grp3foreva",
+      "postImage": "http://loremflickr.com/640/480\n      ",
+      "postComment": "My third post\n      ",
+      "publicPrivate": "false\n      ",
+      "postTageOfOtherUsers": "undefined",
+      "id": "LkbJQgi",
+      "like": []
+    },
+    {
+      "username": "grp3foreva",
+      "postImage": "http://loremflickr.com/640/480\n      ",
+      "postComment": "my omment \n      ",
+      "publicPrivate": "false\n      ",
+      "postTageOfOtherUsers": "undefined",
+      "id": "55m0W75",
+      "like": []
+    },
+    {
+      "username": "grp3foreva",
+      "postImage": "http://loremflickr.com/640/480\n      ",
+      "postComment": "undefined\n      ",
+      "publicPrivate": "false\n      ",
+      "postTageOfOtherUsers": "undefined",
+      "id": "cxCcLfj",
+      "like": []
+
     },
     {
       "username": "grp3foreva",
@@ -482,7 +551,8 @@
           "id": "2"
         }
       ],
-      "id": "TbN_o6E"
+      "id": "TbN_o6E",
+      "like":[]
     },
     {
       "username": "grp3foreva",
@@ -533,9 +603,145 @@
       "postImage": "http://loremflickr.com/640/481\n      ",
       "postComment": "undefined\n      ",
       "publicPrivate": "false\n      ",
+
       "postTagOfOtherUsers": "null\n      ",
       "postCommentArray": "",
-      "id": "1lcWnoN"
+     =
+
+      "postTageOfOtherUsers": "undefined",
+      "id": "J0gvDbK",
+      "like": []
+    },
+    {
+      "username": "grp3foreva",
+      "postImage": "http://loremflickr.com/640/480\n      ",
+      "postComment": "undefined\n      ",
+      "publicPrivate": "false\n      ",
+      "postTageOfOtherUsers": "undefined",
+      "id": "oN8b5x-",
+      "like": []
+    },
+    {
+      "username": "grp3foreva",
+      "postImage": "http://loremflickr.com/640/480\n      ",
+      "postComment": "undefined\n      ",
+      "publicPrivate": "false\n      ",
+      "postTageOfOtherUsers": "undefined",
+      "id": "2kLQ6uj",
+      "like": []
+    },
+    {
+      "username": "grp3foreva",
+      "postImage": "http://loremflickr.com/640/480\n      ",
+      "postComment": "hellooooo\n      ",
+      "publicPrivate": "false\n      ",
+      "postTageOfOtherUsers": "undefined",
+      "id": "o8t3aji",
+      "like": []
+    },
+    {
+      "username": "grp3foreva",
+      "postImage": "http://loremflickr.com/640/480\n      ",
+      "postComment": "undefined\n      ",
+      "publicPrivate": "false\n      ",
+      "postTageOfOtherUsers": "undefined",
+      "id": "hFI7qDW",
+      "like": []
+    },
+    {
+      "username": "grp3foreva",
+      "postImage": "http://loremflickr.com/640/480\n      ",
+      "postComment": "undefined\n      ",
+      "publicPrivate": "false\n      ",
+      "postTageOfOtherUsers": "undefined",
+      "id": "zYypmHG",
+      "like": []
+    },
+    {
+      "username": "grp3foreva",
+      "postImage": "http://loremflickr.com/640/480\n      ",
+      "postComment": "undefined\n      ",
+      "publicPrivate": "false\n      ",
+      "postTageOfOtherUsers": "undefined",
+      "id": "bpZSGWW",
+      "like": []
+    },
+    {
+      "username": "grp3foreva",
+      "postImage": "http://loremflickr.com/640/480\n      ",
+      "postComment": "undefined\n      ",
+      "publicPrivate": "false\n      ",
+      "postTageOfOtherUsers": "undefined",
+      "id": "SoLckEZ",
+      "like": []
+    },
+    {
+      "username": "grp3foreva",
+      "postImage": "http://loremflickr.com/640/480\n      ",
+      "postComment": "undefined\n      ",
+      "publicPrivate": "false\n      ",
+      "postTageOfOtherUsers": "undefined",
+      "id": "ou3uSu-",
+      "like": []
+    },
+    {
+      "username": "grp3foreva",
+      "postImage": "http://loremflickr.com/640/480\n      ",
+      "postComment": "undefined\n      ",
+      "publicPrivate": "false\n      ",
+      "postTageOfOtherUsers": "undefined",
+      "id": "O4-n6oU",
+      "like": []
+    },
+    {
+      "username": "grp3foreva",
+      "postImage": "http://loremflickr.com/640/480\n      ",
+      "postComment": "undefined\n      ",
+      "publicPrivate": "false\n      ",
+      "postTageOfOtherUsers": "undefined",
+      "id": "59KfIYB",
+      "like": []
+    },
+    {
+      "username": "grp3foreva",
+      "postImage": "http://loremflickr.com/640/480\n      ",
+      "postComment": "undefined\n      ",
+      "publicPrivate": "false\n      ",
+      "postTageOfOtherUsers": "undefined",
+      "id": "d9s8P8b",
+      "like": []
+    },
+    {
+      "username": "grp3foreva",
+      "postImage": "http://loremflickr.com/640/480\n      ",
+      "postComment": "this is my comment\n      ",
+      "publicPrivate": "false\n      ",
+      "postTageOfOtherUsers": "undefined",
+      "id": "n4MprFH",
+      "like": [
+        "0"
+      ]
+    },
+    {
+      "username": "grp3foreva",
+      "postImage": "http://loremflickr.com/640/480\n      ",
+      "postComment": "undefined\n      ",
+      "publicPrivate": "false\n      ",
+      "postTageOfOtherUsers": "undefined",
+      "id": "CREL3Vi",
+      "like": [
+        "0"
+      ]
+    },
+    {
+      "username": "grp3foreva",
+      "postImage": "http://loremflickr.com/640/480\n      ",
+      "postComment": "undefined\n      ",
+      "publicPrivate": "false\n      ",
+      "postTageOfOtherUsers": "undefined",
+      "id": "FDMT6Ws",
+      "like": []
+
     }
   ],
   "User1": [
@@ -550,7 +756,7 @@
         "Xavier.Vandervort",
         "Frederic.Strosin5"
       ],
-      "id": "7"
+      "id": "0"
     }
   ],
   "Comment": [

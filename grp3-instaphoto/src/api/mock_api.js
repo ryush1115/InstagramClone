@@ -36,7 +36,6 @@ export const getPosts = async () => {
   }
 }
 
-
 // Takes the id of a Post as input
 // and sends a Get request to the /Post: id endpoint
 // returns the attributes of the Post
@@ -109,6 +108,18 @@ export const getPassword = async(userEmail) => {
 }
 
 
+// Following a user = takes a username as input
+// and sends a POST request to the /User endpoint
+// 
+// export const sendFriendSuggestionList = async(UserObject)=>{
+//   try
+// }
+
+// // Unfollow a user = take a username as input
+// // and delete the user from that user's follow list
+// export const 
+
+
 // Create a Post (without the Id) as input
 // and sends a POST request to the /Post endpoint
 // returns the attributes of the Post with the id
@@ -118,12 +129,13 @@ export const createPost = async (PostObject) => {
     const response = await axios.post(
       `${rootURL}/Post`,
       `username=${PostObject.username}&postImage=${PostObject.postImage}
-      &postComment=${PostObject.postComment}
+      &postCaption=${PostObject.postCaption}
       &publicPrivate=${PostObject.publicPrivate}
       &postTagOfOtherUsers=${PostObject.postTagOfOtherUsers}
       &postCommentArray=${PostObject.postCommentArray}`
     );
     console.log(`username=${PostObject.username}&postImage=${PostObject.postImage}
+    &postCaption=${PostObject.postCaption}
     &publicPrivate=${PostObject.publicPrivate}
     &postTagOfOtherUsers=${PostObject.postTagOfOtherUsers}
     &postCommentArray=${PostObject.postCommentArray}`);
@@ -262,7 +274,6 @@ export const hasCommonFollowings = (user) => {
       return false;
     }
 }
-
 // Create a Comment (without the Id) as input
 // and sends a POST request to the /Comment endpoint
 // returns the attributes of the Comment with the id
@@ -292,8 +303,16 @@ export const deletePost = async(PostId) => {
 // Increment a Like
 export const incrementPostLike = async(PostId) => {
   try {
-    const pre_response = await axios.get(`${rootURL}/Post/${PostId}`);  
-    const response = await axios.patch(`${rootURL}/Post/${PostId}/`,{likeCounter:1});
+    const post = await getPost(PostId);
+
+    const user1 = await axios.get(`${rootURL}/User1`);
+    const me = user1.data[0];
+
+    post.like.push(me.id);
+    
+    const response = await axios.put(`${rootURL}/Post/${PostId}`,post);
+    return response.data;
+
   } catch (err) {
     console.error(err)
   }
@@ -324,6 +343,46 @@ export const getUserPosts = async (username) => {
 
 
 
+// Increment a Like
+export const cancelPostLike = async(PostId) => {
+  try {
+    const post = await getPost(PostId);
+
+    const user1 = await axios.get(`${rootURL}/User1`);
+    const me = user1.data[0];
+
+    for(let i = 0; i < post.like.length; i++){
+      if(post.like[i] === me.id){
+        post.like.splice(i,1);
+        const response = await axios.put(`${rootURL}/Post/${PostId}`,post);
+        return response.data;
+      }
+    }
+    return -1;
+
+  } catch (err) {
+    console.error(err)
+  }
+}
+
+export const isMyLikePost = async(PostId) => {
+  try {
+    const post = await getPost(PostId);
+
+    const user1 = await axios.get(`${rootURL}/User1`);
+    const me = user1.data[0];
+
+    for(let j = 0; j < post.like.length; j++){
+      if(post.like[j] === me.id){
+        return true;
+      }
+    }
+    return false;
+
+  } catch (err) {
+    console.error(err)
+  }
+}
 // Sends a Get request to the endpoint
 // returns all the Timeline Posts
 // export const getTimelinePosts = async () => {
@@ -348,4 +407,6 @@ export const getUserPosts = async (username) => {
 //     console.error(err);
 //   }
 // }
+
+
 

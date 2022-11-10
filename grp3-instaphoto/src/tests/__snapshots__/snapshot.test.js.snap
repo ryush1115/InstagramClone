@@ -257,9 +257,9 @@ exports[`Dragdrop matches snapshot 1`] = `
         Create a Post Here!! 
       </p>
       <input
-        name="comment"
+        name="caption"
         onChange={[Function]}
-        placeholder="Enter a comment..."
+        placeholder="Enter a caption..."
         type="text"
       />
       <input

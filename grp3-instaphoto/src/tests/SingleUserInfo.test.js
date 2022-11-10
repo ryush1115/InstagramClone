@@ -16,6 +16,8 @@ import SingleLineUserInfo from '.././components/SingleLineUserInfo'
 test("test the single-line user information",async () =>{
     render(<SingleLineUserInfo name={"Williams"} description={"This is a cool person"} image={null} isfollowed={true} />)
 
+   
+
     const name = screen.getByText("Williams");
     expect(name).toBeInTheDocument();
 

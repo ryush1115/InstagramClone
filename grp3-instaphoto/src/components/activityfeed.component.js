@@ -1,8 +1,9 @@
+/* eslint-disable no-template-curly-in-string */
 import React, { useState, Fragment, useEffect, useRef } from "react";
 import '../activityfeed.css';
-import './userprofile.css';
-import { Navbar, Card, ListGroup, ListGroupItem } from 'react-bootstrap';
-import { getUser, createUser, getTimelinePosts, getPosts, createPost, createComment, getPost, deletePost, incrementPostLike, getCommentMessage} from '../api/mock_api';
+import '../userprofile.css';
+import PostRow from './PostRow'
+import {  getPosts,  createComment} from '../api/mock_api';
 
 const ActivityFeedComponent = () => {
   const[, setNewComment] = useState(null);
@@ -10,144 +11,6 @@ const ActivityFeedComponent = () => {
   const[, setIncrementLike] = useState(null);
   const [roster, setRoster] = useState([]);
 
-  function PostRow(props) {
-
-    // Ref variable 
-    const loadData = useRef(false);
-
-    let newPostComment_;
-    let tagOfOtherUsers;
-
-    // stores user input for the comment
-    const handleOnChangeComment = (e) => {
-      if (e.target.name==='commentBox')  {
-        newPostComment_ = e.target.value;
-      }
-    }
-
-    // handle create comment
-    const handleCreateComment = async (e) => {
-      // stop default behavior to avoid reloading the page
-      e.preventDefault();
-      // use a dummy ID for now
-      const newComment = {username:"grp3foreva", message:newPostComment_, tagOfOtherUsers:null,id:10};
-      
-      console.log(newComment);
-      // clear the form
-      const form = document.getElementById('commentBox');
-      form.reset();
-      const newStoredComment = await createComment(newComment); 
-      // update LoadData
-      loadData.current = true;
-      setNewComment(newStoredComment);
-    }
-
-    // });
-    // handle delete Post
-    const handleDeletePost = async(e) => {
-      
-      //e.preventDefault();
-      console.log("Delete post");
-      const newDeletedPost = await deletePost(props.post.id);
-      //update load data
-      
-      setDeletedPost(newDeletedPost);
-      loadData.current = true;
-    }
-
-    // handle increment Like
-    const handleIncrementLike = async(e) => {
-      //console.log("Increment Like");
-      const newIncrementLike = await incrementPostLike(props.post.id);
-      
-      setIncrementLike(newIncrementLike);
-      loadData.current = true;
-    }
-
-    const commentArray = [
-      {
-        "username": 'Heather_Buckridge',
-        "message": "Comment #1",
-        "tagOfOtherUsers": [],
-        "id": 0,
-      },
-      {
-
-        "username": 'Sigmund.Roberts',
-        "message": "Comment #2",
-        "tagOfOtherUsers": [],
-        "id": 1,
-      },
-    ];
-
-    const List = props =>
-      props.list.map(item => (
-        <div key={item.id}>
-          {/* <span>
-            <a href={item.url}>{item.title}</a>
-          </span> */}
-          <span>{item.username}: </span>
-          <span>{item.message} </span>
-          {/* <span>{item.num_comments}</span> */}
-          {/* <span>{item.points}</span> */}
-        </div>
-    ));
-
-    return (
-      <tr>
-        <div className="post"
-        >
-          {/* {props.post.username} */}
-          <div className="postWrapper">
-            <div className="postTop">
-              <div className="postTopLeft">
-                {/* <img
-                          className="postProfileImg"
-                          src={require('../images/test.png')}
-                          alt=""
-                      /> */}
-                <span
-                  className="postUsername" data-testid = "testing1"> {props.post.username}
-                  <p>Post Id: {props.post.id}</p>
-                </span>
-              </div>
-            </div>
-
-            <div className="postCenter">
-              <img
-                className="postImage"
-                src={props.post.postImage}
-                alt="" />
-            </div>
-
-            <div className="postBottom">
-              <div className="postBottomLeft">
-              </div>
-              
-              <div>
-                {props.post.postComment}
-              </div>
-              <div className="postBottomRight">
-                <span> 
-
-                  <List list={commentArray}/>
-                
-                </span>
-              </div>
-              <button type="remove" onClick={handleDeletePost}>Delete</button>
-            </div>
-            <div className="postBottom">
-            <form id="commentBox">
-                
-                <input type="text" className="commentBox" name="commentBox" size="20" onChange={handleOnChangeComment} placeholder="Enter a comment..." />
-                <button type="submitComment" onClick={handleCreateComment}>Enter</button>
-              </form>
-            </div>
-          </div>
-        </div>
-      </tr>
-    );
-  }
 
   function PostTable(props) {
     // counter to provide unique key to rows
@@ -260,6 +123,38 @@ const ActivityFeedComponent = () => {
     )
   }
 
+  function AddComment() {
+    // local state new Comment
+    
+    const[, setNewComment] = useState(null);
+
+    // Ref variable 
+    const loadData = useRef(false);
+
+    let newPostComment_;
+    let tagOfOtherUsers;
+
+    const handleOnChangeComment = (e) => {
+      if (e.target.name==='commentBox_')  {
+        newPostComment_ = e.target.value;
+      }
+    }
+
+    const handleCreateComment = async (e) => {
+      // stop default behavior to avoid reloading the page
+      e.preventDefault();
+      const newComment = {username:"grp3foreva", message:"my first comment", tagOfOtherUsers:null};
+      
+      // clear the form
+      const form = document.getElementByIdById('commentBox');
+      form.reset();
+      const newStoredComment = await createComment(newComment); 
+      // update LoadData
+      loadData.current = true;
+      setNewComment(newStoredComment);
+    }
+  }
+
   function AddPost() {
     // local state new Post
     // we don't need the state variable since we are not passing it as a prop
@@ -349,10 +244,10 @@ const ActivityFeedComponent = () => {
   return (
     <Fragment>
       <header>
-        <div className="container">
-          <div className="profile">
-            <div className="profile-image">
-              <img alt="alt-image" />
+        <div class="container" data-testid = "testcc">
+          <div class="profile">
+            <div class="profile-image">
+              <img alt="" />
               {/* <img src={require('../images/grp3.PNG')} alt=""/> */}
 
             </div>
