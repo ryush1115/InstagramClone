@@ -38,8 +38,8 @@ const Comments = (list_, id_, props) => {
 
       return(  
         <div> 
-         <div className="comment-form-title">Enter comment</div>
-         <CommentForm submitLabel="Write" handleSubmit={addComment}/>
+         {/* <div className="comment-form-title">Enter comment</div> */}
+         {/* <CommentForm submitLabel="Write" handleSubmit={addComment}/> */}
          <div>
             {/* {id_.id} */}
          {list_.list.map(item => (
