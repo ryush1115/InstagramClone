@@ -13,7 +13,7 @@ import React from 'react';
 import {getUser, getPosts, getPost, getPassword,
   getCommentMessage, getMyFollowings, getSuggestionList,
 createPost, createUser, getCommentsArray, isMyFollowing, 
-cancelFollowing, following, deletePost, cancelPostLike, isMyLikePost} from '.././api/mock_api';
+cancelFollowing, following, deletePost, cancelPostLike, isMyLikePost, createCommentInPost, hasCommonFollowings} from '.././api/mock_api';
 
 test('#getUser() using async/await', async () => {
   const data = await getUser(1)
@@ -67,6 +67,12 @@ test("Should return null when pw not found", async()=> {
   expect(result).toBeUndefined();
 })
 
+// test Get Password
+test("Should return null when pw not found", async()=> {
+  const result = await createCommentInPost(-99);
+  expect(result).toBeUndefined();
+})
+
 // test Get CommentsArray
 test("Should return null when comments array not found", async()=> {
   const result = await getCommentsArray(-99);
@@ -79,6 +85,11 @@ test("Should return null when comments message not found", async()=> {
   expect(result).toBeUndefined();
 })
 
+// test has common followings 
+test("Should return null when get my followings not found", async()=> {
+  const result = await hasCommonFollowings(-99);
+  expect(result).toBeUndefined();
+})
 // test Get my followings 
 test("Should return null when get my followings not found", async()=> {
   const result = await getMyFollowings(-99);
@@ -100,13 +111,13 @@ test("Should return null when cancel following not found", async()=> {
 // test is my following
 test("Should return null when is my following not found", async()=> {
   const result = await isMyFollowing(-99);
-  expect(result).toBeUndefined();
+  expect(result).toBe(false);
 })
 
 // test is my following
 test("Should return null when getSuggestoinList not found", async()=> {
   const result = await getSuggestionList(-99);
-  expect(result).toBeUndefined();
+  expect(result).toBe(["test1", "test2", "test3"]);
 })
 
 // test delete post
