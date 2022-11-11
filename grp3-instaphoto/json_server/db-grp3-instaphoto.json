@@ -482,6 +482,14 @@
       "profilePicture": "\n        ",
       "follow": "",
       "id": "Depjghj"
+    },
+    {
+      "email": "newEmail@com",
+      "username": "newUsername\n        ",
+      "password": "newPassword",
+      "profilePicture": "\n        ",
+      "follow": "",
+      "id": "HQU6xzd"
     }
   ],
   "Post": [
@@ -1101,6 +1109,16 @@
       "postCommentArray": "undefined\n      ",
       "like": "",
       "id": "38FFHOi"
+    },
+    {
+      "username": "newUsername",
+      "postImage": "newPostImage\n      ",
+      "postCaption": "undefined\n      ",
+      "publicPrivate": "false\n      ",
+      "postTagOfOtherUsers": "null\n      ",
+      "postCommentArray": "undefined\n      ",
+      "like": "",
+      "id": "bGjds5l"
     }
   ],
   "User1": [
