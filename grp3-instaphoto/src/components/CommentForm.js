@@ -5,9 +5,11 @@ import {useState, useEffect} from "react";
 const CommentForm = ({handleSubmit, submitLabel}) => {
     
     const [text, setText] = useState("");
+    const isTextareaDisabled = text.length === 0;
     const onSubmit = event => {
-        event.preventDefault()
-        handleSubmit(text)
+        event.preventDefault();
+        handleSubmit(text);
+        setText("");
     }
 
     return (
@@ -17,7 +19,7 @@ const CommentForm = ({handleSubmit, submitLabel}) => {
                 value={text} 
                 onChange={(e)=> setText(e.target.value)}
             />
-            <button className="comment-form-button">{submitLabel}</button>
+            <button className="comment-form-button" disabled={isTextareaDisabled}>{submitLabel}</button>
         </form>
     );
 
