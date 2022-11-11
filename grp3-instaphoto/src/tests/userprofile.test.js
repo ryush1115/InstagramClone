@@ -8,7 +8,7 @@ import { render, screen, fireEvent } from '@testing-library/react';
 // import FormTest from "./Form-Test"
 // import renderer from 'react-test-renderer';
 import React from 'react';
-import Userprofile from '.././components/userprofile.component'
+import Userprofile from '../components/userprofile'
 
 
 // import Userpic from './components/test'
