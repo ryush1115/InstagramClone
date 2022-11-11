@@ -292,6 +292,22 @@ export const createComment = async (CommentObject) => {
   }
 };
 
+// create a comment within the Post schema
+export const createCommentInPost = async(PostId, CommentObject) => {
+  try {
+    // get said post
+    const post = await getPost(PostId);
+    post.postCommentArray.push(CommentObject);
+
+    const response = await axios.put(`${rootURL}/Post/${PostId}`, post);
+    return response.data;
+
+  } catch(err) {
+    console.error(err);
+  }
+}
+
+
 // Delete a Post
 export const deletePost = async(PostId) => {
   try {

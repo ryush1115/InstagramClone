@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import '../activityfeed.css';
 import '../userprofile.css';
-import {  createComment, deletePost, isMyLikePost,incrementPostLike, cancelPostLike, getCommentMessage} from '../api/mock_api';
+import {  createComment, deletePost, isMyLikePost,incrementPostLike, cancelPostLike, getCommentMessage, createCommentInPost} from '../api/mock_api';
 
 export default function PostRow(props) {
     const[, setNewComment] = useState(null);
@@ -56,7 +56,7 @@ export default function PostRow(props) {
       // stop default behavior to avoid reloading the page
       e.preventDefault();
       // use a dummy ID for now
-      const newComment = {username:"grp3foreva", message:newPostComment_, tagOfOtherUsers:null,id:10};
+      const newComment = {username:"grp3foreva", message:newPostComment_, tagOfOtherUsers:null,id:null};
       
       console.log(newComment);
       // clear the form
@@ -67,6 +67,26 @@ export default function PostRow(props) {
       loadData.current = true;
       setNewComment(newStoredComment);
     }
+
+    // handle create comment in post
+    const handleCreateCommentInPost = async(e) => {
+      e.preventDefault();
+      
+      const newComment = {username:"grp3foreva", message:newPostComment_, tagOfOtherUsers:null,id:null};
+
+      console.log(newComment);
+
+      const form = document.getElementById('commentBox');
+      form.reset();
+      const newStoredComment = await createCommentInPost(props.post.id, newComment);
+
+      // update loadData
+      loadData.current = true;
+      setNewComment(newStoredComment);
+
+    }
+
+
 
     // });
     // handle delete Post
