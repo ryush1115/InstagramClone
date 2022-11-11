@@ -546,7 +546,8 @@
           "message": "message 2",
           "tagOfOtherUsers": [],
           "id": "2"
-        }],
+        }
+      ],
       "id": "55m0W75",
       "like": []
     },
@@ -634,8 +635,6 @@
       "postComment": "undefined\n      ",
       "publicPrivate": "false\n      ",
       "postTagOfOtherUsers": "null\n      ",
-      "postCommentArray": "",
-      "postTageOfOtherUsers": "undefined",
       "postCommentArray": [
         {
           "username": "Heath_Buckridge",
@@ -648,7 +647,9 @@
           "message": "message 2",
           "tagOfOtherUsers": [],
           "id": "2"
-        }],
+        }
+      ],
+      "postTageOfOtherUsers": "undefined",
       "id": "J0gvDbK",
       "like": []
     },
@@ -670,7 +671,8 @@
           "message": "message 2",
           "tagOfOtherUsers": [],
           "id": "2"
-        }],
+        }
+      ],
       "id": "oN8b5x-",
       "like": []
     },
@@ -692,7 +694,8 @@
           "message": "message 2",
           "tagOfOtherUsers": [],
           "id": "2"
-        }],
+        }
+      ],
       "id": "2kLQ6uj",
       "like": []
     },
@@ -714,7 +717,8 @@
           "message": "message 2",
           "tagOfOtherUsers": [],
           "id": "2"
-        }],
+        }
+      ],
       "id": "o8t3aji",
       "like": []
     },
@@ -736,7 +740,8 @@
           "message": "message 2",
           "tagOfOtherUsers": [],
           "id": "2"
-        }],
+        }
+      ],
       "id": "hFI7qDW",
       "like": []
     },
@@ -758,7 +763,8 @@
           "message": "message 2",
           "tagOfOtherUsers": [],
           "id": "2"
-        }],
+        }
+      ],
       "id": "zYypmHG",
       "like": []
     },
@@ -780,7 +786,8 @@
           "message": "message 2",
           "tagOfOtherUsers": [],
           "id": "2"
-        }],
+        }
+      ],
       "id": "bpZSGWW",
       "like": []
     },
@@ -802,7 +809,8 @@
           "message": "message 2",
           "tagOfOtherUsers": [],
           "id": "2"
-        }],
+        }
+      ],
       "id": "SoLckEZ",
       "like": []
     },
@@ -824,7 +832,8 @@
           "message": "message 2",
           "tagOfOtherUsers": [],
           "id": "2"
-        }],
+        }
+      ],
       "id": "ou3uSu-",
       "like": []
     },
@@ -846,7 +855,8 @@
           "message": "message 2",
           "tagOfOtherUsers": [],
           "id": "2"
-        }],
+        }
+      ],
       "id": "d9s8P8b",
       "like": [
         "0"
@@ -870,7 +880,14 @@
           "message": "message 2",
           "tagOfOtherUsers": [],
           "id": "2"
-        }],
+        },
+        {
+          "username": "grp3foreva",
+          "message": "test comment",
+          "tagOfOtherUsers": null,
+          "id": null
+        }
+      ],
       "id": "CREL3Vi",
       "like": [
         "0"

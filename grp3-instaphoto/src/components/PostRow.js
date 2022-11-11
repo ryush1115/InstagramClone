@@ -217,7 +217,7 @@ export default function PostRow(props) {
             	<form id="commentBox">
                 
                 <input type="text" className="commentBox" name="commentBox" size="20" onChange={handleOnChangeComment} placeholder="Enter a comment..." />
-                <button type="submitComment" onClick={handleCreateComment}>Enter</button>
+                <button type="submitComment" onClick={handleCreateCommentInPost}>Enter</button>
               </form>
             </div>
           </div>
