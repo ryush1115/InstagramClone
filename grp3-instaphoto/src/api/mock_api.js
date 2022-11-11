@@ -305,6 +305,27 @@ export const createCommentInPost = async(PostId, CommentObject) => {
   }
 }
 
+// update a comment within the Post schema
+export const updateComment = async(PostId, CommentObject) => {
+  try {
+    // get said post
+    const post = await getPost(PostId);
+    //post.postCommentArray.push(CommentObject);
+    const commentArrayTemp = post.postCommentArray.map((element) => {
+      if (element.id === CommentObject.CommentId) {
+          
+      }
+    });
+
+    const response = await axios.put(`${rootURL}/Post/${PostId}`, post);
+    return response.data;
+
+  } catch(err) {
+    console.error(err);
+  }
+}
+
+
 
 // Delete a Post
 export const deletePost = async(PostId) => {
