@@ -1011,6 +1011,12 @@
           "message": "TA - this is my new comment!",
           "tagOfOtherUsers": null,
           "id": null
+        },
+        {
+          "username": "grp3foreva",
+          "message": "Good\nGood",
+          "tagOfOtherUsers": null,
+          "id": null
         }
       ],
       "id": "CREL3Vi",
