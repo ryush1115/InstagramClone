@@ -1,5 +1,4 @@
 //Comments.js
-
 import {useState, useEffect} from "react";
 import Comment from './Comment';
 import CommentForm from './CommentForm';
@@ -41,7 +40,6 @@ const Comments = (list_, id_, props) => {
     //   ))}
     //   </div>
     //   </div>
-      
     //   )
 
       return(  
@@ -57,7 +55,6 @@ const Comments = (list_, id_, props) => {
        ))}
        </div>
        </div>
-       
        )
 
 }
