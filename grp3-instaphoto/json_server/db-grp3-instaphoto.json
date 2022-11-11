@@ -384,7 +384,7 @@
     {
       "username": "Augusta_Breitenberg76",
       "postImage": "http://loremflickr.com/640/480/?lock=1",
-      "postComment": "Cute cat!!!!",
+      "postCaption": "Cute cat!!!!",
       "publicPrivate": false,
       "postTagOfOtherUsers": [],
       "postCommentArray": [
@@ -407,7 +407,7 @@
     {
       "username": "Gerda.Ziemann",
       "postImage": "http://loremflickr.com/640/480/?lock=2  ",
-      "postComment": "Adorable cat!!!",
+      "postCaption": "Adorable cat!!!",
       "publicPrivate": false,
       "postTagOfOtherUsers": [],
       "postCommentArray": [
@@ -430,7 +430,7 @@
     {
       "username": "Hans53",
       "postImage": "http://loremflickr.com/640/480/paris?lock=1",
-      "postComment": "Are you in paris??",
+      "postCaption": "Are you in paris??",
       "publicPrivate": false,
       "postTagOfOtherUsers": [],
       "postCommentArray": [
@@ -453,7 +453,7 @@
     {
       "username": "Kendra96",
       "postImage": "https://loremflickr.com/g/320/240/paris?lock=2",
-      "postComment": "Cool photo",
+      "postCaption": "Cool photo",
       "publicPrivate": false,
       "postTagOfOtherUsers": [],
       "postCommentArray": [
@@ -476,7 +476,7 @@
     {
       "username": "Mason_Satterfield",
       "postImage": "http://loremflickr.com/640/480/dog?lock=1",
-      "postComment": "Woof woof!!",
+      "postCaption": "Woof woof!!",
       "publicPrivate": false,
       "postTagOfOtherUsers": [],
       "postCommentArray": [
@@ -499,7 +499,7 @@
     {
       "username": "grp3foreva",
       "postImage": "http://loremflickr.com/640/481\n      ",
-      "postComment": "amy221\n      ",
+      "postCaption": "amy221\n      ",
       "publicPrivate": "false\n      ",
       "postTagOfOtherUsers": "undefined",
       "postCommentArray": [
@@ -522,16 +522,30 @@
     {
       "username": "helllooo",
       "postImage": "http://loremflickr.com/640/480\n      ",
-      "postComment": "my second comment\n      ",
+      "postCaption": "my second comment\n      ",
       "publicPrivate": "false\n      ",
       "postTagOfOtherUsers": "undefined",
+      "postCommentArray": [
+        {
+          "username": "Heath_Buckridge",
+          "message": "message 1",
+          "tagOfOtherUsers": [],
+          "id": "1"
+        },
+        {
+          "username": "Sigmund.Roberts",
+          "message": "message 2",
+          "tagOfOtherUsers": [],
+          "id": "2"
+        }
+      ],
       "id": "xuKqSvJ",
       "like": []
     },
     {
       "username": "grp3foreva",
       "postImage": "http://loremflickr.com/640/480\n      ",
-      "postComment": "my omment \n      ",
+      "postCaption": "my omment \n      ",
       "publicPrivate": "false\n      ",
       "postTagOfOtherUsers": "undefined",
       "postCommentArray": [
@@ -554,16 +568,30 @@
     {
       "username": "grp3foreva",
       "postImage": "http://loremflickr.com/640/480\n      ",
-      "postComment": "undefined\n      ",
+      "postCaption": "undefined\n      ",
       "publicPrivate": "false\n      ",
       "postTagOfOtherUsers": "undefined",
+      "postCommentArray": [
+        {
+          "username": "Heath_Buckridge",
+          "message": "message 1",
+          "tagOfOtherUsers": [],
+          "id": "1"
+        },
+        {
+          "username": "Sigmund.Roberts",
+          "message": "message 2",
+          "tagOfOtherUsers": [],
+          "id": "2"
+        }
+      ],
       "id": "cxCcLfj",
       "like": []
     },
     {
       "username": "grp3foreva",
       "postImage": "http://loremflickr.com/640/482\n      ",
-      "postComment": "amy1102\n      ",
+      "postCaption": "amy1102\n      ",
       "publicPrivate": "false\n      ",
       "postTagOfOtherUsers": "undefined",
       "postCommentArray": [
@@ -586,7 +614,7 @@
     {
       "username": "grp3foreva",
       "postImage": "http://loremflickr.com/640/482\n      ",
-      "postComment": "amy0844\n      ",
+      "postCaption": "amy0844\n      ",
       "publicPrivate": "false\n      ",
       "postTagOfOtherUsers": "undefined",
       "postCommentArray": [
@@ -609,7 +637,7 @@
     {
       "username": "grp3foreva",
       "postImage": "http://loremflickr.com/640/481\n      ",
-      "postComment": "test post\n      ",
+      "postCaption": "test post\n      ",
       "publicPrivate": "false\n      ",
       "postTagOfOtherUsers": "null",
       "postCommentArray": [
@@ -632,7 +660,7 @@
     {
       "username": "grp3foreva",
       "postImage": "http://loremflickr.com/640/481\n      ",
-      "postComment": "undefined\n      ",
+      "postCaption": "undefined\n      ",
       "publicPrivate": "false\n      ",
       "postTagOfOtherUsers": "null\n      ",
       "postCommentArray": [
@@ -656,7 +684,7 @@
     {
       "username": "grp3foreva",
       "postImage": "http://loremflickr.com/640/480\n      ",
-      "postComment": "undefined\n      ",
+      "postCaption": "undefined\n      ",
       "publicPrivate": "false\n      ",
       "postTagOfOtherUsers": "undefined",
       "postCommentArray": [
@@ -679,7 +707,7 @@
     {
       "username": "grp3foreva",
       "postImage": "http://loremflickr.com/640/480\n      ",
-      "postComment": "undefined\n      ",
+      "postCaption": "undefined\n      ",
       "publicPrivate": "false\n      ",
       "postTagOfOtherUsers": "undefined",
       "postCommentArray": [
@@ -702,7 +730,7 @@
     {
       "username": "grp3foreva",
       "postImage": "http://loremflickr.com/640/480\n      ",
-      "postComment": "hellooooo\n      ",
+      "postCaption": "hellooooo\n      ",
       "publicPrivate": "false\n      ",
       "postTagOfOtherUsers": "undefined",
       "postCommentArray": [
@@ -725,7 +753,7 @@
     {
       "username": "grp3foreva",
       "postImage": "http://loremflickr.com/640/480\n      ",
-      "postComment": "undefined\n      ",
+      "postCaption": "undefined\n      ",
       "publicPrivate": "false\n      ",
       "postTagOfOtherUsers": "undefined",
       "postCommentArray": [
@@ -748,7 +776,7 @@
     {
       "username": "grp3foreva",
       "postImage": "http://loremflickr.com/640/480\n      ",
-      "postComment": "undefined\n      ",
+      "postCaption": "undefined\n      ",
       "publicPrivate": "false\n      ",
       "postTagOfOtherUsers": "undefined",
       "postCommentArray": [
@@ -771,7 +799,7 @@
     {
       "username": "grp3foreva",
       "postImage": "http://loremflickr.com/640/480\n      ",
-      "postComment": "undefined\n      ",
+      "postCaption": "undefined\n      ",
       "publicPrivate": "false\n      ",
       "postTagOfOtherUsers": "undefined",
       "postCommentArray": [
@@ -794,7 +822,7 @@
     {
       "username": "grp3foreva",
       "postImage": "http://loremflickr.com/640/480\n      ",
-      "postComment": "undefined\n      ",
+      "postCaption": "undefined\n      ",
       "publicPrivate": "false\n      ",
       "postTagOfOtherUsers": "undefined",
       "postCommentArray": [
@@ -817,7 +845,7 @@
     {
       "username": "grp3foreva",
       "postImage": "http://loremflickr.com/640/480\n      ",
-      "postComment": "undefined\n      ",
+      "postCaption": "undefined\n      ",
       "publicPrivate": "false\n      ",
       "postTagOfOtherUsers": "undefined",
       "postCommentArray": [
@@ -840,7 +868,7 @@
     {
       "username": "grp3foreva",
       "postImage": "http://loremflickr.com/640/480\n      ",
-      "postComment": "undefined\n      ",
+      "postCaption": "undefined\n      ",
       "publicPrivate": "false\n      ",
       "postTagOfOtherUsers": "undefined",
       "postCommentArray": [
@@ -865,7 +893,7 @@
     {
       "username": "grp3foreva",
       "postImage": "http://loremflickr.com/640/480\n      ",
-      "postComment": "undefined\n      ",
+      "postCaption": "undefined\n      ",
       "publicPrivate": "false\n      ",
       "postTagOfOtherUsers": "undefined",
       "postCommentArray": [

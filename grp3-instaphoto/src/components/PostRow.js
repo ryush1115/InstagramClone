@@ -194,7 +194,7 @@ export default function PostRow(props) {
               </div>
               
               <div>
-                {props.post.postComment}
+                {/* {props.post.postComment} */}
               </div>
               <div className="postBottomRight">
                 <span> 
