@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import '../activityfeed.css';
-import './userprofile.css';
+import '../userprofile.css';
 import {  createComment, deletePost, isMyLikePost,incrementPostLike, cancelPostLike, getCommentMessage} from '../api/mock_api';
 
 export default function PostRow(props) {
