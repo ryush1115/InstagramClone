@@ -1,8 +1,6 @@
 // API functions
 
 import axios from 'axios';
-
-
 // JSON-server URL
 // To run the server, enter into command line/terminal: 
 // json-server db-grp3-instaphoto.json --port 8000
