@@ -24,7 +24,6 @@ const Comments = (list_, id_, props) => {
         const PostIdTemp = "CREL3Vi";
         console.log(PostIdTemp);
 
-
         const newStoredComment = await createCommentInPost(PostIdTemp, newComment);
         // const newStoredComment = await createCommentInPost(props.post.id, newComment);
 
