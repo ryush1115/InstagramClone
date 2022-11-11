@@ -20,7 +20,6 @@ export default function PostRow(props) {
  
     useEffect(() => {
         someFetch();
-
     },[]);
 
 
@@ -199,12 +198,8 @@ export default function PostRow(props) {
                 {/* {props.post.postComment} */}
               </div>
               <div className="postBottomRight">
-                <span> 
-
                   {/* <List list={commentArray}/> */}
                   <ListOfComments list={props.post.postCommentArray}/>
-                
-                </span>
               </div>
 							<div style ={{'margin-top' : '2.3em'}}>	
 									<button data-testid="button-0" onClick={()=>{
