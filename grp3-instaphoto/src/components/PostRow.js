@@ -96,22 +96,6 @@ export default function PostRow(props) {
       loadData.current = true;
     }
 
-    const commentArray = [
-      {
-        "username": 'Heather_Buckridge',
-        "message": "Comment #1",
-        "tagOfOtherUsers": [],
-        "id": 0,
-      },
-      {
-
-        "username": 'Sigmund.Roberts',
-        "message": "Comment #2",
-        "tagOfOtherUsers": [],
-        "id": 1,
-      },
-    ];
-
     const List = props =>
       props.list.map(item => (
         <div key={item.id}>
