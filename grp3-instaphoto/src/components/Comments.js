@@ -2,11 +2,12 @@
 import {useState, useEffect} from "react";
 import Comment from './Comment';
 import CommentForm from './CommentForm';
-import {createCommentInPost} from '../api/mock_api';
+import {createCommentInPost, updateComment} from '../api/mock_api';
 
 const Comments = (list_, id_, props) => {
     
     const [backendComments, setBackendComments] = useState([]);
+    const [activeComment, setActiveComment] = useState(null);
     
     //useEffect(()=>{}, []); // triggered once after mounting
     // const relevantComment = listComment.filter();
@@ -50,7 +51,14 @@ const Comments = (list_, id_, props) => {
             {/* {id_.id} */}
          {list_.list.map(item => (
            <div key={item.id}>
-             <Comment key={item.id} comment={item}></Comment>
+             <Comment 
+                key={item.id} 
+                comment={item}
+                activeComment={activeComment}
+                setActiveComment={setActiveComment}
+                updateComment={updateComment}
+                >
+             </Comment>
            </div>
        ))}
        </div>

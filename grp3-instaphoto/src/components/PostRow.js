@@ -178,7 +178,11 @@ export default function PostRow(props) {
 
               <div className="postBottomLeft">
                 
-                <Comments list={props.post.postCommentArray} id={props.post.id} props={props}/>
+                <Comments 
+                  list={props.post.postCommentArray} 
+                  id={props.post.id} 
+                  props={props}
+                  />
               </div>
               
               <div>
