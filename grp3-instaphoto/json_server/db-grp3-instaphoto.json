@@ -1011,22 +1011,18 @@
           "message": "TA - this is my new comment!",
           "tagOfOtherUsers": null,
           "id": null
+        },
+        {
+          "username": "grp3foreva",
+          "message": "Good\nGood",
+          "tagOfOtherUsers": null,
+          "id": null
         }
       ],
       "id": "CREL3Vi",
       "like": [
         "0"
       ]
-    },
-    {
-      "username": "newUsername",
-      "postImage": "newPostImage\n      ",
-      "postCaption": "undefined\n      ",
-      "publicPrivate": "false\n      ",
-      "postTagOfOtherUsers": "null\n      ",
-      "postCommentArray": "undefined\n      ",
-      "like": "",
-      "id": "m5rI1Bl"
     }
   ],
   "User1": [
