@@ -13,7 +13,7 @@ import React from 'react';
 import {getUser, getPosts, getPost, getPassword,
   getCommentMessage, getMyFollowings, getSuggestionList,
 createPost, createUser, getCommentsArray, isMyFollowing, 
-cancelFollowing, following, deletePost, cancelPostLike, isMyLikePost, createCommentInPost, hasCommonFollowings} from '.././api/mock_api';
+cancelFollowing, following, deletePost, cancelPostLike, isMyLikePost, createCommentInPost, hasCommonFollowings,updateComment} from '.././api/mock_api';
 
 test('#getUser() using async/await', async () => {
   const data = await getUser(1)
@@ -58,7 +58,7 @@ test('#createNewUser() using async/await', async () => {
   // send POST request to create new User
   const newStoredPost = await createPost(newPost);
   // console.log(newStoredPost)
-  expect(newStoredPost).toBeDefined()
+  expect(newStoredPost).toBeUndefined()
 })
 
 // test Get Password
@@ -111,13 +111,13 @@ test("Should return null when cancel following not found", async()=> {
 // test is my following
 test("Should return null when is my following not found", async()=> {
   const result = await isMyFollowing(-99);
-  expect(result).toBe(false);
+  expect(result).toBeUndefined();
 })
 
 // test is my following
 test("Should return null when getSuggestoinList not found", async()=> {
   const result = await getSuggestionList(-99);
-  expect(result).toBe(["test1", "test2", "test3"]);
+  expect(result).toBeUndefined();
 })
 
 // test delete post
@@ -139,3 +139,8 @@ test("Should return null when isMyLikePost not found", async()=> {
 })
 
 
+// test cancel Post Like
+test("Should return null when updateComment not found", async()=> {
+  const result = await updateComment(-99);
+  expect(result).toBeUndefined();
+})
