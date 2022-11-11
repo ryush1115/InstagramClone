@@ -163,8 +163,32 @@ export default function PostRow(props) {
               <div className="postBottomLeft">
                 {props.post.postCaption}
               </div>
+							
+							
+              {/* <button type="remove" onClick={handleDeletePost}>Delete</button> */}
+              {/* <button type="remove">Edit</button> */}
+              
             </div>
+            {/* <div className="postBottom">
+             
+              <form id="commentBox" onSubmit={handleCreateComment}>
+                <label></label>
+                <input type="text" 
+                name="commentBox_" 
+                className="commentBox" 
+                size="15" 
+                placeholder="Enter a comment..." 
+                onChange={handleOnChangeComment}
+                />
+                <button type="submit">Post!</button>
+              </form>
+              <div className="postBottomRight">
+                
+                <span className="postCommentText"> Comments Array: {props.post.postCommentsArray} </span>
 
+              </div>
+
+            </div> */}
 						<div className="postBottom">
               <div className="postBottomLeft">
               </div>

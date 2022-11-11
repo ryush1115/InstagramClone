@@ -355,10 +355,6 @@ export const getUserPosts = async (username) => {
   }
 }
 
-
-
-
-
 // Increment a Like
 export const cancelPostLike = async(PostId) => {
   try {
