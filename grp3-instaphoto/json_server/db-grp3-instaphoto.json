@@ -839,29 +839,6 @@
           "id": "2"
         }
       ],
-      "id": "SoLckEZ",
-      "like": []
-    },
-    {
-      "username": "grp3foreva",
-      "postImage": "http://loremflickr.com/640/480\n      ",
-      "postCaption": "undefined\n      ",
-      "publicPrivate": "false\n      ",
-      "postTagOfOtherUsers": "undefined",
-      "postCommentArray": [
-        {
-          "username": "Heath_Buckridge",
-          "message": "message 1",
-          "tagOfOtherUsers": [],
-          "id": "1"
-        },
-        {
-          "username": "Sigmund.Roberts",
-          "message": "message 2",
-          "tagOfOtherUsers": [],
-          "id": "2"
-        }
-      ],
       "id": "ou3uSu-",
       "like": []
     },

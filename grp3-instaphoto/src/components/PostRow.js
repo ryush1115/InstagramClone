@@ -2,14 +2,15 @@ import React, { useState, useEffect, useRef } from "react";
 import '../activityfeed.css';
 import '../userprofile.css';
 import {  createComment, deletePost, isMyLikePost,incrementPostLike, cancelPostLike, getCommentMessage, createCommentInPost} from '../api/mock_api';
+import Comment from './Comment';
 
 export default function PostRow(props) {
     const[, setNewComment] = useState(null);
     const[, setDeletedPost] = useState(null);
     const[, setIncrementLike] = useState(null);
-
     const [isLiked, setIsLiked] = useState();
     const [likeCounter, setLikeCounter] = useState(props.post.like.length);
+
     
     const someFetch = async () => {
       //using JS fetch API
@@ -17,9 +18,7 @@ export default function PostRow(props) {
       setIsLiked(data);
   }
  
-
     useEffect(() => {
-
         someFetch();
 
     },[]);
@@ -86,8 +85,6 @@ export default function PostRow(props) {
 
     }
 
-
-
     // });
     // handle delete Post
     const handleDeletePost = async(e) => {
@@ -120,15 +117,20 @@ export default function PostRow(props) {
     const List = props =>
       props.list.map(item => (
         <div key={item.id}>
-          {/* <span>
-            <a href={item.url}>{item.title}</a>
-          </span> */}
           <span>{item.username}: </span>
           <span>{item.message} </span>
-          {/* <span>{item.num_comments}</span> */}
-          {/* <span>{item.points}</span> */}
         </div>
     ));
+
+    const ListOfComments = (props) => {
+      return(  
+        props.list.map(item => (
+          <div key={item.id}>
+            <Comment key={item.id} comment={item}></Comment>
+          </div>
+      ))
+      )
+    }
 
     return (
       <tr>
@@ -199,7 +201,8 @@ export default function PostRow(props) {
               <div className="postBottomRight">
                 <span> 
 
-                  <List list={commentArray}/>
+                  {/* <List list={commentArray}/> */}
+                  <ListOfComments list={props.post.postCommentArray}/>
                 
                 </span>
               </div>
