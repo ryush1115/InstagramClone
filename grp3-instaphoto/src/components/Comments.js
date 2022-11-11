@@ -17,7 +17,16 @@ const Comments = (list_, id_, props) => {
         console.log(text);
         console.log(newComment);
         
-        const newStoredComment = await createCommentInPost(props.post.id, newComment);
+        // toggle comments
+        // const PostIdTemp = id_.valueOf();
+
+        // toggle comments with PostIdTemp
+        const PostIdTemp = "CREL3Vi";
+        console.log(PostIdTemp);
+
+
+        const newStoredComment = await createCommentInPost(PostIdTemp, newComment);
+        // const newStoredComment = await createCommentInPost(props.post.id, newComment);
 
     }
 
@@ -38,8 +47,8 @@ const Comments = (list_, id_, props) => {
 
       return(  
         <div> 
-         {/* <div className="comment-form-title">Enter comment</div> */}
-         {/* <CommentForm submitLabel="Write" handleSubmit={addComment}/> */}
+         <div className="comment-form-title">Enter comment</div>
+         <CommentForm submitLabel="Write" handleSubmit={addComment}/>
          <div>
             {/* {id_.id} */}
          {list_.list.map(item => (

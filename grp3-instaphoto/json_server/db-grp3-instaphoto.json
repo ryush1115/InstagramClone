@@ -988,21 +988,9 @@
       "postCommentArray": [
         {
           "username": "Heath_Buckridge",
-          "message": "message 1",
+          "message": "Cute cat!!!",
           "tagOfOtherUsers": [],
           "id": "1"
-        },
-        {
-          "username": "Sigmund.Roberts",
-          "message": "message 2",
-          "tagOfOtherUsers": [],
-          "id": "2"
-        },
-        {
-          "username": "grp3foreva",
-          "message": "test comment",
-          "tagOfOtherUsers": null,
-          "id": null
         }
       ],
       "id": "CREL3Vi",

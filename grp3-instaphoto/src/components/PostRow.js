@@ -175,7 +175,10 @@ export default function PostRow(props) {
 
             </div> */}
 						<div className="postBottom">
+
               <div className="postBottomLeft">
+                
+                <Comments list={props.post.postCommentArray} id={props.post.id} props={props}/>
               </div>
               
               <div>
@@ -184,9 +187,8 @@ export default function PostRow(props) {
               <div className="postBottomRight">
                   {/* <List list={commentArray}/> */}
                   {/* <ListOfComments list={props.post.postCommentArray}/> */}
-
                   {/* <Comments list={props.post}/> */}
-                  <Comments list={props.post.postCommentArray} id={props.post.id} props={props}/>
+                  
 
               </div>
 							<div style ={{'margin-top' : '2.3em'}}>	
@@ -197,14 +199,15 @@ export default function PostRow(props) {
 									</button>
 									<p data-testid = "likeCounter">{likeCounter}</p>
 							</div>
-              <button type="remove" onClick={handleDeletePost}>Delete</button>
+              
             </div>
-            <div className="postBottom" style ={{'margin-top' : '-1em'}}>
+            <div className="postBottom-Lower" >
             	<form id="commentBox">
                 
-                <input type="text" className="commentBox" name="commentBox" size="20" onChange={handleOnChangeComment} placeholder="Enter a comment..." />
-                <button type="submitComment" onClick={handleCreateCommentInPost}>Enter</button>
+                {/* <input type="text" className="commentBox" name="commentBox" size="20" onChange={handleOnChangeComment} placeholder="Enter a comment..." />
+                <button type="submitComment" onClick={handleCreateCommentInPost}>Enter</button> */}
               </form>
+              <button type="remove" onClick={handleDeletePost}>Delete</button>
             </div>
           </div>
         </div>
