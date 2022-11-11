@@ -1,7 +1,7 @@
 /* eslint-disable no-template-curly-in-string */
 import React, { useState, Fragment, useEffect, useRef } from "react";
 import '../activityfeed.css';
-import '../userprofile.css';
+import './userprofile.css';
 import PostRow from './PostRow'
 import {  getPosts,  createComment} from '../api/mock_api';
 
