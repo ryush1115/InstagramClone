@@ -11,6 +11,7 @@ const Comments = (props) => {
     // const relevantComment = listComment.filter();
 
     return(  
+        
         props.list.map(item => (
           <div key={item.id}>
             <Comment key={item.id} comment={item}></Comment>
