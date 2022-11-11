@@ -1,4 +1,4 @@
-// CommentForm.test.js
+// Comments.test.js
 
 /**
 * @jest-environment jsdom
@@ -11,32 +11,21 @@ import { render, screen, fireEvent } from '@testing-library/react';
 // import renderer from 'react-test-renderer';
 import React from 'react';
 
-
-import CommentForm from '.././components/CommentForm';
+import Comment from '.././components/Comment';
 
 // import Userpic from './components/test'
 import { Router } from "react-router";
 import { createMemoryHistory } from 'history';
 import { Cancel } from '@material-ui/icons';
 
-//testing 
-test('renders text', ()=>{
-    // const{getByText} =  render(
-    //     <CommentForm />
-    // );
-    const test = "Cancel";
-    expect(test).toBe("Cancel");
-   })
-
 test("Text should be in the component", () => {
     const history = createMemoryHistory();
     const component = render(
         <Router location={history.location} navigator={history}>
-            <CommentForm />,
+            <Comment />,
         </Router>,
 
     );
-    
-    const labelNode = component.getByText("Cancel");
+    const labelNode = component.getByText("Edit");
     expect(labelNode).toBeInTheDocument();
 });
