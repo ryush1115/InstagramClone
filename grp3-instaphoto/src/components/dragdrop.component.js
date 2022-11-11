@@ -50,7 +50,7 @@ function DragDrop(props) {
   let newUsername = "grp3foreva";
   let newPostCaption;
   let newPostImage = "http://loremflickr.com/640/480"; // default to this image for HW2
- 
+  let newPostComment;
 
   const handleOnChange = function(e) {
     e.preventDefault();
