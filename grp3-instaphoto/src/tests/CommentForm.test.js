@@ -21,9 +21,9 @@ import { Cancel } from '@material-ui/icons';
 
 //testing 
 test('renders text', ()=>{
-    // const{getByText} =  render(
-    //     <CommentForm />
-    // );
+    const{getByText} =  render(
+        <CommentForm />
+    );
     const test = "Cancel";
     expect(test).toBe("Cancel");
    })
