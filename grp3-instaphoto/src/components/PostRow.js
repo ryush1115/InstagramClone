@@ -3,6 +3,7 @@ import '../activityfeed.css';
 import '../userprofile.css';
 import {  createComment, deletePost, isMyLikePost,incrementPostLike, cancelPostLike, getCommentMessage, createCommentInPost} from '../api/mock_api';
 import Comment from './Comment';
+import Comments from './Comments';
 
 export default function PostRow(props) {
     const[, setNewComment] = useState(null);
@@ -96,13 +97,13 @@ export default function PostRow(props) {
       loadData.current = true;
     }
 
-    const List = props =>
-      props.list.map(item => (
-        <div key={item.id}>
-          <span>{item.username}: </span>
-          <span>{item.message} </span>
-        </div>
-    ));
+    // const List = props =>
+    //   props.list.map(item => (
+    //     <div key={item.id}>
+    //       <span>{item.username}: </span>
+    //       <span>{item.message} </span>
+    //     </div>
+    // ));
 
     const ListOfComments = (props) => {
       return(  
@@ -182,7 +183,8 @@ export default function PostRow(props) {
               </div>
               <div className="postBottomRight">
                   {/* <List list={commentArray}/> */}
-                  <ListOfComments list={props.post.postCommentArray}/>
+                  {/* <ListOfComments list={props.post.postCommentArray}/> */}
+                  <Comments list={props.post.postCommentArray}/>
               </div>
 							<div style ={{'margin-top' : '2.3em'}}>	
 									<button data-testid="button-0" onClick={()=>{

@@ -1,28 +1,22 @@
 //Comments.js
 
 import {useState, useEffect} from "react";
-import { NavItem } from "react-bootstrap";
+import Comment from './Comment';
 
-const Comments = ({currentUserId, listComment}) => {
+const Comments = (props) => {
     
     const [backendComments, setBackendComments] = useState([]);
     
     //useEffect(()=>{}, []); // triggered once after mounting
-    const relevantComment = listComment.filter();
+    // const relevantComment = listComment.filter();
 
-    return (
-        <div className="comments">
-            {/* <h1 className="comments-title">Comments!</h1> */}
-            <div className="comments-container">
-                {listComment.map(item => (
-                    <div key = {item.id}>
-                        </div>  
-
-                ))}
-
-            </div>
-        </div>
-    );
+    return(  
+        props.list.map(item => (
+          <div key={item.id}>
+            <Comment key={item.id} comment={item}></Comment>
+          </div>
+      ))
+      )
 }
 
 export default Comments;
