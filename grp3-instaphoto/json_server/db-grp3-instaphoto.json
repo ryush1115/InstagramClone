@@ -52,7 +52,7 @@
     },
     {
       "email": "undefined",
-      "username":"test1",
+      "username": "test1",
       "password": "undefined",
       "profilePicture": "\n        ",
       "follow": [
@@ -104,7 +104,7 @@
       "username": "f\n        ",
       "password": "undefined",
       "profilePicture": "\n        ",
-      "follow": "",
+      "follow": [],
       "id": "SJoGZdf"
     },
     {
@@ -112,7 +112,7 @@
       "username": "grp3foreva\n        ",
       "password": "123456789",
       "profilePicture": "\n        ",
-      "follow": "",
+      "follow": [],
       "id": "Z0x_2iT"
     },
     {
@@ -120,7 +120,7 @@
       "username": "grp3foreva\n        ",
       "password": "123456789",
       "profilePicture": "\n        ",
-      "follow": "",
+      "follow": [],
       "id": "tgMSQrc"
     },
     {
@@ -128,7 +128,7 @@
       "username": "grp3foreva\n        ",
       "password": "123456789",
       "profilePicture": "\n        ",
-      "follow": "",
+      "follow": [],
       "id": "cWP_LRD"
     },
     {
@@ -136,7 +136,7 @@
       "username": "aaa\n        ",
       "password": "1",
       "profilePicture": "\n        ",
-      "follow": "",
+      "follow": [],
       "id": "d51TGck"
     },
     {
@@ -144,7 +144,7 @@
       "username": "newUsername\n        ",
       "password": "newPassword",
       "profilePicture": "\n        ",
-      "follow": "",
+      "follow": [],
       "id": "CyACwvW"
     },
     {
@@ -152,7 +152,7 @@
       "username": "newUsername\n        ",
       "password": "newPassword",
       "profilePicture": "\n        ",
-      "follow": "",
+      "follow": [],
       "id": "sAO6hMd"
     },
     {
@@ -160,7 +160,7 @@
       "username": "newUsername\n        ",
       "password": "newPassword",
       "profilePicture": "\n        ",
-      "follow": "",
+      "follow": [],
       "id": "LSVaP6g"
     },
     {
@@ -168,7 +168,7 @@
       "username": "newUsername\n        ",
       "password": "newPassword",
       "profilePicture": "\n        ",
-      "follow": "",
+      "follow": [],
       "id": "G_M7Vpb"
     },
     {
@@ -176,7 +176,7 @@
       "username": "newUsername\n        ",
       "password": "newPassword",
       "profilePicture": "\n        ",
-      "follow": "",
+      "follow": [],
       "id": "9PiBviC"
     },
     {
@@ -184,7 +184,7 @@
       "username": "newUsername\n        ",
       "password": "newPassword",
       "profilePicture": "\n        ",
-      "follow": "",
+      "follow": [],
       "id": "yhym73k"
     },
     {
@@ -192,7 +192,7 @@
       "username": "newUsername\n        ",
       "password": "newPassword",
       "profilePicture": "\n        ",
-      "follow": "",
+      "follow": [],
       "id": "HZHAsxm"
     },
     {
@@ -200,7 +200,7 @@
       "username": "newUsername\n        ",
       "password": "newPassword",
       "profilePicture": "\n        ",
-      "follow": "",
+      "follow": [],
       "id": "ZToJbr8"
     },
     {
@@ -208,7 +208,7 @@
       "username": "undefined\n        ",
       "password": "undefined",
       "profilePicture": "undefined\n        ",
-      "follow": "undefined",
+      "follow": [],
       "id": "8cZAwbM"
     },
     {
@@ -216,7 +216,7 @@
       "username": "newUsername\n        ",
       "password": "newPassword",
       "profilePicture": "\n        ",
-      "follow": "",
+      "follow": [],
       "id": "aqgZ-_B"
     },
     {
@@ -224,7 +224,7 @@
       "username": "undefined\n        ",
       "password": "undefined",
       "profilePicture": "undefined\n        ",
-      "follow": "undefined",
+      "follow": [],
       "id": "cCWwVtb"
     },
     {
@@ -232,7 +232,7 @@
       "username": "newUsername\n        ",
       "password": "newPassword",
       "profilePicture": "\n        ",
-      "follow": "",
+      "follow": [],
       "id": "iZzqui1"
     },
     {
@@ -240,7 +240,7 @@
       "username": "undefined\n        ",
       "password": "undefined",
       "profilePicture": "undefined\n        ",
-      "follow": "undefined",
+      "follow": [],
       "id": "Z6z0rAd"
     },
     {
@@ -248,7 +248,7 @@
       "username": "newUsername\n        ",
       "password": "newPassword",
       "profilePicture": "\n        ",
-      "follow": "",
+      "follow": [],
       "id": "53oTASs"
     },
     {
@@ -256,7 +256,7 @@
       "username": "newUsername\n        ",
       "password": "newPassword",
       "profilePicture": "\n        ",
-      "follow": "",
+      "follow": [],
       "id": "2CeDa9m"
     },
     {
@@ -264,7 +264,7 @@
       "username": "newUsername\n        ",
       "password": "newPassword",
       "profilePicture": "\n        ",
-      "follow": "",
+      "follow": [],
       "id": "qm1KehM"
     },
     {
@@ -272,7 +272,7 @@
       "username": "newUsername\n        ",
       "password": "newPassword",
       "profilePicture": "\n        ",
-      "follow": "",
+      "follow": [],
       "id": "gtNsqxO"
     },
     {
@@ -280,7 +280,7 @@
       "username": "newUsername\n        ",
       "password": "newPassword",
       "profilePicture": "\n        ",
-      "follow": "",
+      "follow": [],
       "id": "9wmEgIK"
     },
     {
@@ -288,7 +288,7 @@
       "username": "newUsername\n        ",
       "password": "newPassword",
       "profilePicture": "\n        ",
-      "follow": "",
+      "follow": [],
       "id": "SKOpoDG"
     },
     {
@@ -296,7 +296,7 @@
       "username": "newUsername\n        ",
       "password": "newPassword",
       "profilePicture": "\n        ",
-      "follow": "",
+      "follow": [],
       "id": "t1CikOO"
     },
     {
@@ -304,7 +304,7 @@
       "username": "newUsername\n        ",
       "password": "newPassword",
       "profilePicture": "\n        ",
-      "follow": "",
+      "follow": [],
       "id": "RuJ6co5"
     },
     {
@@ -312,7 +312,7 @@
       "username": "newUsername\n        ",
       "password": "newPassword",
       "profilePicture": "\n        ",
-      "follow": "",
+      "follow": [],
       "id": "_irwRKC"
     },
     {
@@ -320,8 +320,64 @@
       "username": "newUsername\n        ",
       "password": "newPassword",
       "profilePicture": "\n        ",
-      "follow": "",
+      "follow": [],
       "id": "5JVrB_Z"
+    },
+    {
+      "email": "newEmail@com",
+      "username": "newUsername\n        ",
+      "password": "newPassword",
+      "profilePicture": "\n        ",
+      "follow": "",
+      "id": "h1xi9K-"
+    },
+    {
+      "email": "newEmail@com",
+      "username": "newUsername\n        ",
+      "password": "newPassword",
+      "profilePicture": "\n        ",
+      "follow": "",
+      "id": "1XdqZmu"
+    },
+    {
+      "email": "newEmail@com",
+      "username": "newUsername\n        ",
+      "password": "newPassword",
+      "profilePicture": "\n        ",
+      "follow": "",
+      "id": "tvl_dP9"
+    },
+    {
+      "email": "newEmail@com",
+      "username": "newUsername\n        ",
+      "password": "newPassword",
+      "profilePicture": "\n        ",
+      "follow": "",
+      "id": "JKwWiyx"
+    },
+    {
+      "email": "newEmail@com",
+      "username": "newUsername\n        ",
+      "password": "newPassword",
+      "profilePicture": "\n        ",
+      "follow": "",
+      "id": "mh1sk40"
+    },
+    {
+      "email": "newEmail@com",
+      "username": "newUsername\n        ",
+      "password": "newPassword",
+      "profilePicture": "\n        ",
+      "follow": "",
+      "id": "QWWctnG"
+    },
+    {
+      "email": "newEmail@com",
+      "username": "newUsername\n        ",
+      "password": "newPassword",
+      "profilePicture": "\n        ",
+      "follow": "",
+      "id": "lfYYgh1"
     }
   ],
   "Post": [
@@ -331,7 +387,6 @@
       "postComment": "Cute cat!!!!",
       "publicPrivate": false,
       "postTagOfOtherUsers": [],
-
       "postCommentArray": [
         {
           "username": "Heath_Buckridge",
@@ -355,7 +410,6 @@
       "postComment": "Adorable cat!!!",
       "publicPrivate": false,
       "postTagOfOtherUsers": [],
-
       "postCommentArray": [
         {
           "username": "Heath_Buckridge",
@@ -372,7 +426,6 @@
       ],
       "id": "2",
       "like": []
-
     },
     {
       "username": "Hans53",
@@ -403,7 +456,6 @@
       "postComment": "Cool photo",
       "publicPrivate": false,
       "postTagOfOtherUsers": [],
-
       "postCommentArray": [
         {
           "username": "Heath_Buckridge",
@@ -420,7 +472,6 @@
       ],
       "id": "4",
       "like": []
-
     },
     {
       "username": "Mason_Satterfield",
@@ -428,7 +479,6 @@
       "postComment": "Woof woof!!",
       "publicPrivate": false,
       "postTagOfOtherUsers": [],
-
       "postCommentArray": [
         {
           "username": "Heath_Buckridge",
@@ -445,7 +495,6 @@
       ],
       "id": "5",
       "like": []
-
     },
     {
       "username": "grp3foreva",
@@ -468,30 +517,6 @@
         }
       ],
       "id": "h6o2_XK",
-      "like":[]
-    },
-    {
-      "username": "grp3foreva",
-      "postImage": "http://loremflickr.com/640/482\n      ",
-      "postComment": "undefined\n      ",
-      "publicPrivate": "false\n      ",
-      "postTageOfOtherUsers": "undefined",
-      "postCommentArray": [
-        {
-          "username": "Heath_Buckridge",
-          "message": "message 1",
-          "tagOfOtherUsers": [],
-          "id": "1"
-        },
-        {
-          "username": "Sigmund.Roberts",
-          "message": "message 2",
-          "tagOfOtherUsers": [],
-          "id": "2"
-        }
-      ],
-
-      "id": "CmsW4ln",
       "like": []
     },
     {
@@ -501,15 +526,6 @@
       "publicPrivate": "false\n      ",
       "postTageOfOtherUsers": "undefined",
       "id": "xuKqSvJ",
-      "like": []
-    },
-    {
-      "username": "grp3foreva",
-      "postImage": "http://loremflickr.com/640/480\n      ",
-      "postComment": "My third post\n      ",
-      "publicPrivate": "false\n      ",
-      "postTageOfOtherUsers": "undefined",
-      "id": "LkbJQgi",
       "like": []
     },
     {
@@ -529,7 +545,6 @@
       "postTageOfOtherUsers": "undefined",
       "id": "cxCcLfj",
       "like": []
-
     },
     {
       "username": "grp3foreva",
@@ -552,7 +567,7 @@
         }
       ],
       "id": "TbN_o6E",
-      "like":[]
+      "like": []
     },
     {
       "username": "grp3foreva",
@@ -574,7 +589,8 @@
           "id": "2"
         }
       ],
-      "id": "Q39XVvw"
+      "id": "Q39XVvw",
+      "like": []
     },
     {
       "username": "grp3foreva",
@@ -596,18 +612,16 @@
           "id": "2"
         }
       ],
-      "id": "i55-hzV"
+      "id": "i55-hzV",
+      "like": []
     },
     {
       "username": "grp3foreva",
       "postImage": "http://loremflickr.com/640/481\n      ",
       "postComment": "undefined\n      ",
       "publicPrivate": "false\n      ",
-
       "postTagOfOtherUsers": "null\n      ",
       "postCommentArray": "",
-     =
-
       "postTageOfOtherUsers": "undefined",
       "id": "J0gvDbK",
       "like": []
@@ -690,34 +704,7 @@
       "postComment": "undefined\n      ",
       "publicPrivate": "false\n      ",
       "postTageOfOtherUsers": "undefined",
-      "id": "O4-n6oU",
-      "like": []
-    },
-    {
-      "username": "grp3foreva",
-      "postImage": "http://loremflickr.com/640/480\n      ",
-      "postComment": "undefined\n      ",
-      "publicPrivate": "false\n      ",
-      "postTageOfOtherUsers": "undefined",
-      "id": "59KfIYB",
-      "like": []
-    },
-    {
-      "username": "grp3foreva",
-      "postImage": "http://loremflickr.com/640/480\n      ",
-      "postComment": "undefined\n      ",
-      "publicPrivate": "false\n      ",
-      "postTageOfOtherUsers": "undefined",
       "id": "d9s8P8b",
-      "like": []
-    },
-    {
-      "username": "grp3foreva",
-      "postImage": "http://loremflickr.com/640/480\n      ",
-      "postComment": "this is my comment\n      ",
-      "publicPrivate": "false\n      ",
-      "postTageOfOtherUsers": "undefined",
-      "id": "n4MprFH",
       "like": [
         "0"
       ]
@@ -732,16 +719,6 @@
       "like": [
         "0"
       ]
-    },
-    {
-      "username": "grp3foreva",
-      "postImage": "http://loremflickr.com/640/480\n      ",
-      "postComment": "undefined\n      ",
-      "publicPrivate": "false\n      ",
-      "postTageOfOtherUsers": "undefined",
-      "id": "FDMT6Ws",
-      "like": []
-
     }
   ],
   "User1": [
@@ -813,6 +790,162 @@
       "message": "asdf\n      ",
       "tagOfOtherUsers": "undefined",
       "id": "DYOLKq4"
+    },
+    {
+      "username": "grp3foreva",
+      "message": "ss\n      ",
+      "tagOfOtherUsers": "undefined",
+      "id": "IChiwb8"
+    },
+    {
+      "username": "grp3foreva",
+      "message": "undefined\n      ",
+      "tagOfOtherUsers": "undefined",
+      "id": "XTffeQE"
+    },
+    {
+      "username": "grp3foreva",
+      "message": "undefined\n      ",
+      "tagOfOtherUsers": "undefined",
+      "id": "ZcvYOpY"
+    },
+    {
+      "username": "grp3foreva",
+      "message": "sssss\n      ",
+      "tagOfOtherUsers": "undefined",
+      "id": "l1U3uNq"
+    },
+    {
+      "username": "grp3foreva",
+      "message": "sss\n      ",
+      "tagOfOtherUsers": "undefined",
+      "id": "caumLrz"
+    },
+    {
+      "username": "grp3foreva",
+      "message": "ss\n      ",
+      "tagOfOtherUsers": "undefined",
+      "id": "A1D3v60"
+    },
+    {
+      "username": "grp3foreva",
+      "message": "undefined\n      ",
+      "tagOfOtherUsers": "undefined",
+      "id": "xrMtLsN"
+    },
+    {
+      "username": "grp3foreva",
+      "message": "undefined\n      ",
+      "tagOfOtherUsers": "undefined",
+      "id": "ZG2V_aZ"
+    },
+    {
+      "username": "grp3foreva",
+      "message": "undefined\n      ",
+      "tagOfOtherUsers": "undefined",
+      "id": "8wWQU5R"
+    },
+    {
+      "username": "grp3foreva",
+      "message": "ssss\n      ",
+      "tagOfOtherUsers": "undefined",
+      "id": "TBMT-cc"
+    },
+    {
+      "username": "grp3foreva",
+      "message": "sss\n      ",
+      "tagOfOtherUsers": "undefined",
+      "id": "fuC0Aba"
+    },
+    {
+      "username": "grp3foreva",
+      "message": "undefined\n      ",
+      "tagOfOtherUsers": "undefined",
+      "id": "7fNwQtX"
+    },
+    {
+      "username": "grp3foreva",
+      "message": "undefined\n      ",
+      "tagOfOtherUsers": "undefined",
+      "id": "NBApGnb"
+    },
+    {
+      "username": "grp3foreva",
+      "message": "ddd\n      ",
+      "tagOfOtherUsers": "undefined",
+      "id": "dw_XjeV"
+    },
+    {
+      "username": "grp3foreva",
+      "message": "undefined\n      ",
+      "tagOfOtherUsers": "undefined",
+      "id": "6RgyfxC"
+    },
+    {
+      "username": "grp3foreva",
+      "message": "sssssss\n      ",
+      "tagOfOtherUsers": "undefined",
+      "id": "YgAZtnG"
+    },
+    {
+      "username": "grp3foreva",
+      "message": "undefined\n      ",
+      "tagOfOtherUsers": "undefined",
+      "id": "BbmhUnT"
+    },
+    {
+      "username": "grp3foreva",
+      "message": "undefined\n      ",
+      "tagOfOtherUsers": "undefined",
+      "id": "tqeaCr9"
+    },
+    {
+      "username": "grp3foreva",
+      "message": "undefined\n      ",
+      "tagOfOtherUsers": "undefined",
+      "id": "n5UZk81"
+    },
+    {
+      "username": "grp3foreva",
+      "message": "undefined\n      ",
+      "tagOfOtherUsers": "undefined",
+      "id": "3svCS8g"
+    },
+    {
+      "username": "grp3foreva",
+      "message": "undefined\n      ",
+      "tagOfOtherUsers": "undefined",
+      "id": "T8dA43D"
+    },
+    {
+      "username": "grp3foreva",
+      "message": "ssss\n      ",
+      "tagOfOtherUsers": "undefined",
+      "id": "utH9aJ3"
+    },
+    {
+      "username": "grp3foreva",
+      "message": "ssssssss\n      ",
+      "tagOfOtherUsers": "undefined",
+      "id": "NpDko6c"
+    },
+    {
+      "username": "grp3foreva",
+      "message": "ssssssss\n      ",
+      "tagOfOtherUsers": "undefined",
+      "id": "fBJ6Jgb"
+    },
+    {
+      "username": "grp3foreva",
+      "message": "gffffff\n      ",
+      "tagOfOtherUsers": "undefined",
+      "id": "0wFYRoS"
+    },
+    {
+      "username": "grp3foreva",
+      "message": "sss\n      ",
+      "tagOfOtherUsers": "undefined",
+      "id": "fVn7XfF"
     }
   ],
   "Like": [

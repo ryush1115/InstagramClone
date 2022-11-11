@@ -1,5 +1,5 @@
 import React, { useState, Fragment, useEffect, useRef } from "react";
-import './userprofile.css';
+import '../userprofile.css';
 import {getPosts} from '../api/mock_api';
 import Gallery from './gallery.component';
 

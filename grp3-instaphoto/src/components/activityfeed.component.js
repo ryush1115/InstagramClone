@@ -244,9 +244,9 @@ const ActivityFeedComponent = () => {
   return (
     <Fragment>
       <header>
-        <div class="container" data-testid = "testcc">
-          <div class="profile">
-            <div class="profile-image">
+        <div className="container" data-testid = "testcc">
+          <div className="profile">
+            <div className="profile-image">
               <img alt="" />
               {/* <img src={require('../images/grp3.PNG')} alt=""/> */}
 

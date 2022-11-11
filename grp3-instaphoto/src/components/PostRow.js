@@ -24,7 +24,21 @@ export default function PostRow(props) {
 
     },[]);
 
-    // Ref variable 
+
+    // handle increment Like
+    const handleLikeClick = async(e) => {
+      //console.log("Increment Like");
+      if(isLiked){
+        setIsLiked(false);
+        cancelPostLike(props.post.id);
+        setLikeCounter(likeCounter - 1);
+      }else{
+        setIsLiked(true);
+        incrementPostLike(props.post.id);
+        setLikeCounter(likeCounter + 1);
+      }
+    }
+
     const loadData = useRef(false);
 
     let newPostComment_;
@@ -32,7 +46,7 @@ export default function PostRow(props) {
 
     // stores user input for the comment
     const handleOnChangeComment = (e) => {
-      if (e.target.name==='commentBox_')  {
+      if (e.target.name==='commentBox')  {
         newPostComment_ = e.target.value;
       }
     }
@@ -54,8 +68,6 @@ export default function PostRow(props) {
       setNewComment(newStoredComment);
     }
 
-    // useEffect(()=>{
-
     // });
     // handle delete Post
     const handleDeletePost = async(e) => {
@@ -69,23 +81,34 @@ export default function PostRow(props) {
       loadData.current = true;
     }
 
-    // handle increment Like
-    const handleLikeClick = async(e) => {
-      //console.log("Increment Like");
-      if(isLiked){
-        setIsLiked(false);
-        cancelPostLike(props.post.id);
-        setLikeCounter(likeCounter - 1);
-      }else{
-        setIsLiked(true);
-        incrementPostLike(props.post.id);
-        setLikeCounter(likeCounter + 1);
-      }
-    }
+    const commentArray = [
+      {
+        "username": 'Heather_Buckridge',
+        "message": "Comment #1",
+        "tagOfOtherUsers": [],
+        "id": 0,
+      },
+      {
 
-    const handleGetPost = async(e) => {
-      const newComment = await getCommentMessage(props.postCommentsArray[0]);
-    }
+        "username": 'Sigmund.Roberts',
+        "message": "Comment #2",
+        "tagOfOtherUsers": [],
+        "id": 1,
+      },
+    ];
+
+    const List = props =>
+      props.list.map(item => (
+        <div key={item.id}>
+          {/* <span>
+            <a href={item.url}>{item.title}</a>
+          </span> */}
+          <span>{item.username}: </span>
+          <span>{item.message} </span>
+          {/* <span>{item.num_comments}</span> */}
+          {/* <span>{item.points}</span> */}
+        </div>
+    ));
 
     return (
       <tr>
@@ -120,25 +143,14 @@ export default function PostRow(props) {
               <div className="postBottomLeft">
                 {props.post.postCaption}
               </div>
-
-              <label class="switch">
-              {/* <div className="container-4_FriendSuggestion"> */}
-                <button data-testid="button-0" onClick={()=>{
-                          handleLikeClick();
-                          //setisfollowed(!isfollowed)
-                }} >{isLiked? "unLike":"Like"}
-                </button>
-              {/* </div> */}
-              <p data-testid = "likeCounter">{likeCounter}</p>
-                {/* <span class="slider">Like</span> */}
-              </label>
-
-              <button type="remove" onClick={handleDeletePost}>Delete</button>
+							
+							
+              {/* <button type="remove" onClick={handleDeletePost}>Delete</button> */}
               {/* <button type="remove">Edit</button> */}
               
             </div>
-            <div className="postBottom">
-              {/* <p> Testing </p> */}
+            {/* <div className="postBottom">
+             
               <form id="commentBox" onSubmit={handleCreateComment}>
                 <label></label>
                 <input type="text" 
@@ -156,6 +168,37 @@ export default function PostRow(props) {
 
               </div>
 
+            </div> */}
+						<div className="postBottom">
+              <div className="postBottomLeft">
+              </div>
+              
+              <div>
+                {props.post.postComment}
+              </div>
+              <div className="postBottomRight">
+                <span> 
+
+                  <List list={commentArray}/>
+                
+                </span>
+              </div>
+							<div style ={{'margin-top' : '2.3em'}}>	
+									<button data-testid="button-0" onClick={()=>{
+														handleLikeClick();
+														//setisfollowed(!isfollowed)
+									}} >{isLiked? "unLike":"Like"}
+									</button>
+									<p data-testid = "likeCounter">{likeCounter}</p>
+							</div>
+              <button type="remove" onClick={handleDeletePost}>Delete</button>
+            </div>
+            <div className="postBottom" style ={{'margin-top' : '-1em'}}>
+            	<form id="commentBox">
+                
+                <input type="text" className="commentBox" name="commentBox" size="20" onChange={handleOnChangeComment} placeholder="Enter a comment..." />
+                <button type="submitComment" onClick={handleCreateComment}>Enter</button>
+              </form>
             </div>
           </div>
         </div>

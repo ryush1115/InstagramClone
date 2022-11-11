@@ -54,7 +54,7 @@ test('#createNewUser() using async/await', async () => {
 })
 
 test('#createNewUser() using async/await', async () => {
-  const newPost = { username: "newUsername", postImage: "newPostImage", postComment: "newPostComment", publicPrivate: false, postTagOfOtherUsers: null, id: 10 };
+  const newPost = { username: "newUsername", postImage: "newPostImage", postComment: "newPostComment", publicPrivate: false, postTagOfOtherUsers: null, id: 10, like :[] };
   // send POST request to create new User
   const newStoredPost = await createPost(newPost);
   // console.log(newStoredPost)

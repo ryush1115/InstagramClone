@@ -48,7 +48,7 @@ function DragDrop(props) {
 
   // create variables for post creation
   let newUsername = "grp3foreva";
-  let newPostCaption;
+  let newPostComment;
   let newPostImage = "http://loremflickr.com/640/480"; // default to this image for HW2
  
 
@@ -71,7 +71,7 @@ function DragDrop(props) {
     // stop default behavior to avoid reloading the page
     e.preventDefault();
     // create new Post variable
-    const newPost = {username: newUsername, postImage: newPostImage, postComment: newPostComment, publicPrivate:false, postTagOfOtherUsers:null, postCommentArray:[], id:null};
+    const newPost = {username: newUsername, postImage: newPostImage, postComment: newPostComment, publicPrivate:false, postTagOfOtherUsers:null, postCommentArray:[], id:null, like: []};
     // clear the form
     const form = document.getElementById('add-post');
     

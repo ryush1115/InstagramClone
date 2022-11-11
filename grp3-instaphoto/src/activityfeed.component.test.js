@@ -24,7 +24,7 @@ import FriendSuggestion from './components/FriendSuggestion.component'
 // import Userpic from './components/test'
 import Gallery from './components/gallery.component'
 import Sidebar from './components/sidebar.component'
-import Createpost from './components/createpost.component'
+//import Createpost from './components/createpost.component'
 import { Router } from "react-router";
 import { createMemoryHistory } from 'history';
 

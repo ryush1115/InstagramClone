@@ -132,13 +132,15 @@ export const createPost = async (PostObject) => {
       &postCaption=${PostObject.postCaption}
       &publicPrivate=${PostObject.publicPrivate}
       &postTagOfOtherUsers=${PostObject.postTagOfOtherUsers}
-      &postCommentArray=${PostObject.postCommentArray}`
+      &postCommentArray=${PostObject.postCommentArray}
+      &like=${PostObject.like}`
     );
     console.log(`username=${PostObject.username}&postImage=${PostObject.postImage}
     &postCaption=${PostObject.postCaption}
     &publicPrivate=${PostObject.publicPrivate}
     &postTagOfOtherUsers=${PostObject.postTagOfOtherUsers}
-    &postCommentArray=${PostObject.postCommentArray}`);
+    &postCommentArray=${PostObject.postCommentArray}
+    &like=${[]}`);
     return response.data;
   } catch (err) {
     console.error(err);
@@ -185,7 +187,7 @@ export const following = async (followingName) => {
     const me = user1.data[0];
     me.follow.push(followingName);
     const response = await axios.put(
-      `${rootURL}/User1/0`,
+      `${rootURL}/User1/${me.id}`,
       me
       // update the user1
     );
@@ -205,7 +207,7 @@ export const cancelFollowing = async (followingName) => {
       if(myFollowings[i] === followingName){
         myFollowings.splice(i,1);
         const response = await axios.put(
-          `${rootURL}/User1/0`,
+          `${rootURL}/User1/${me.id}`,
            me
            // update the user1
         );
