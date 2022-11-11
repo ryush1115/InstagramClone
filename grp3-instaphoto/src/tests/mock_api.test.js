@@ -13,7 +13,7 @@ import React from 'react';
 import {getUser, getPosts, getPost, getPassword,
   getCommentMessage, getMyFollowings, getSuggestionList,
 createPost, createUser, getCommentsArray, isMyFollowing, 
-cancelFollowing, following, deletePost} from '.././api/mock_api';
+cancelFollowing, following, deletePost, cancelPostLike, isMyLikePost} from '.././api/mock_api';
 
 test('#getUser() using async/await', async () => {
   const data = await getUser(1)
@@ -114,4 +114,17 @@ test("Should return null when delete post id not found", async()=> {
   const result = await deletePost(-99);
   expect(result).toBeUndefined();
 })
+
+// test cancel Post Like
+test("Should return null when cancel post like not found", async()=> {
+  const result = await cancelPostLike(-99);
+  expect(result).toBeUndefined();
+})
+
+// test cancel Post Like
+test("Should return null when isMyLikePost not found", async()=> {
+  const result = await isMyLikePost(-99);
+  expect(result).toBeUndefined();
+})
+
 
