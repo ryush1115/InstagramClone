@@ -17,10 +17,9 @@ const Comments = (list_, id_, props) => {
         console.log(text);
         console.log(newComment);
         
-        // toggle comments
+        // Toggle comments with PostIdTemp
         // const PostIdTemp = id_.valueOf();
 
-        // toggle comments with PostIdTemp
         const PostIdTemp = "CREL3Vi";
         console.log(PostIdTemp);
 

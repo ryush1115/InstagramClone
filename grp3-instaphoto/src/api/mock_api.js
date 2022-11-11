@@ -310,22 +310,23 @@ export const updateComment = async(PostId, CommentObject) => {
   try {
     // get said post
     const post = await getPost(PostId);
-    //post.postCommentArray.push(CommentObject);
-    const commentArrayTemp = post.postCommentArray.map((element) => {
-      if (element.id === CommentObject.CommentId) {
-          
-      }
-    });
 
-    const response = await axios.put(`${rootURL}/Post/${PostId}`, post);
-    return response.data;
+    // loop through the post comment array
+    for (let i = 0; i<post.postCommentArray.length; i++) {
+      if(post.postCommentArray[i].id === CommentObject.CommentId) {
+        // update the message
+        post.postCommentArray[i].message = CommentObject.message
+
+        // axios put call
+        const response = await axios.put(`${rootURL}/Post/${PostId}`,post);
+        return response.data
+      }
+    }
 
   } catch(err) {
     console.error(err);
   }
 }
-
-
 
 // Delete a Post
 export const deletePost = async(PostId) => {
@@ -376,7 +377,7 @@ export const getUserPosts = async (username) => {
   }
 }
 
-// Increment a Like
+// Cancel post like
 export const cancelPostLike = async(PostId) => {
   try {
     const post = await getPost(PostId);
