@@ -184,7 +184,10 @@ export default function PostRow(props) {
               <div className="postBottomRight">
                   {/* <List list={commentArray}/> */}
                   {/* <ListOfComments list={props.post.postCommentArray}/> */}
-                  <Comments list={props.post.postCommentArray}/>
+
+                  {/* <Comments list={props.post}/> */}
+                  <Comments list={props.post.postCommentArray} id={props.post.id} props={props}/>
+
               </div>
 							<div style ={{'margin-top' : '2.3em'}}>	
 									<button data-testid="button-0" onClick={()=>{
