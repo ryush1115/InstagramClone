@@ -306,19 +306,20 @@ export const createCommentInPost = async(PostId, CommentObject) => {
 }
 
 // update a comment within the Post schema
-export const updateComment = async(PostId, CommentObject) => {
+export const updateComment = async(text, CommentId) => {
   try {
+    const PostIdTemp = "CREL3Vi";
     // get said post
-    const post = await getPost(PostId);
+    const post = await getPost(PostIdTemp);
 
     // loop through the post comment array
     for (let i = 0; i<post.postCommentArray.length; i++) {
-      if(post.postCommentArray[i].id === CommentObject.CommentId) {
+      if(post.postCommentArray[i].id === CommentId) {
         // update the message
-        post.postCommentArray[i].message = CommentObject.message
+        post.postCommentArray[i].message = text
 
         // axios put call
-        const response = await axios.put(`${rootURL}/Post/${PostId}`,post);
+        const response = await axios.put(`${rootURL}/Post/${PostIdTemp}`,post);
         return response.data
       }
     }

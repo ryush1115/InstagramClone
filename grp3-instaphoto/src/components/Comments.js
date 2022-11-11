@@ -51,7 +51,7 @@ const Comments = (list_, id_, props) => {
          {list_.list.map(item => (
            <div key={item.id}>
              <Comment 
-                key={item.id} 
+                key={item.id}
                 comment={item}
                 activeComment={activeComment}
                 setActiveComment={setActiveComment}

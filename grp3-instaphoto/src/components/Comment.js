@@ -14,7 +14,7 @@ const Comment = ({
     const fiveMinutes = 300000; // equivalent to five minutes
     const isEditing = 
         activeComment &&
-        activeComment.type === "replying" &&
+        activeComment.type === "editing" &&
         activeComment.id === comment.id;
     
     return (
