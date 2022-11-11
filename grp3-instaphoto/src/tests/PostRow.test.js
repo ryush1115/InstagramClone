@@ -12,6 +12,7 @@ import { getByLabelText, within } from '@testing-library/dom'
 import React from 'react';
 
 import ActivityFeed from '.././components/activityfeed.component'
+import PostRow from '.././components/PostRow.component'
 
 // import Userpic from './components/test'
 import { Router } from "react-router";
@@ -28,8 +29,8 @@ import { createMemoryHistory } from 'history';
 //     expect(labelNode).toBeInTheDocument();
 // });
 
-test("test the single-line user information",async () =>{
-    render(<ActivityFeed />)
+test("test alt text",async () =>{
+    render(<PostRow />)
     const inputNode = screen.getByAltText("");
     expect(inputNode).toBeInTheDocument();
 });
