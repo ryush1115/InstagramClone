@@ -610,6 +610,14 @@
       "profilePicture": "\n        ",
       "follow": "",
       "id": "LEmf_wc"
+    },
+    {
+      "email": "newEmail@com",
+      "username": "newUsername\n        ",
+      "password": "newPassword",
+      "profilePicture": "\n        ",
+      "follow": "",
+      "id": "b0pTfKb"
     }
   ],
   "Post": [
@@ -1309,6 +1317,16 @@
       "postCommentArray": "undefined\n      ",
       "like": "",
       "id": "2Zuazss"
+    },
+    {
+      "username": "newUsername",
+      "postImage": "newPostImage\n      ",
+      "postCaption": "undefined\n      ",
+      "publicPrivate": "false\n      ",
+      "postTagOfOtherUsers": "null\n      ",
+      "postCommentArray": "undefined\n      ",
+      "like": "",
+      "id": "df_Y_ru"
     }
   ],
   "User1": [

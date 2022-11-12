@@ -253,8 +253,7 @@ export const getSuggestionList= async () => {
     
     return suggestionList;
   } catch (err) {
-    console.error(err);
-  } 
+  }
 };
 
 export const hasCommonFollowings = (user) => {
@@ -417,6 +416,18 @@ export const isMyLikePost = async(PostId) => {
   } catch (err) {
     console.error(err)
   }
+}
+
+export const updatePost = async (postID, post) => {
+    console.log(postID);
+    console.log("updatePost123");
+    console.log(post);
+    try {
+        const response = await axios.put(`${rootURL}/Post/${postID}`, post);
+        return response.data;
+    } catch (err) {
+        console.error(err);
+    }
 }
 // Sends a Get request to the endpoint
 // returns all the Timeline Posts
