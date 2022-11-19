@@ -2,20 +2,12 @@
 //return that component
 //https://www.youtube.com/watch?v=iRORiaLAgaE
 import React, { useState, useEffect, useRef, useContext } from "react";
-import { getMyFollowings } from '../api/mock_api';
-import { Navbar, Card, Button, ListGroup, ListGroupItem } from 'react-bootstrap';
-import ReactDOM from "react-dom";
-import { getUsers, getUser, createUser, getTimelinePosts, getPosts, createPost } from '../api/mock_api';
-import { nanoid } from "nanoid"
-// import ellipse507 from "../images/ellipse507.png";
-import SingleLineUserInfo from "./SingleLineUserInfo"
+import { getMyFollowings } from '../../api/mock_api';
+import SingleLineUserInfo from "./SubComponents/SingleLineUserInfo"
 
-import '../FriendSuggestion.css';
+import '../FriendSuggestion-page/FriendSuggestion.css';
 
-const FollowingList = (props) => {
-    // const [isfollowed, setisfollowed] = useState(props.isfollowed);
-    
-    //const [FriendSuggestionList, setFriendSuggestionList] = useState([{ name: "Akikos", image: null, description: "This is a cool person", isfollowed: true }]);
+const FollowingList = () => {
     
     const [followings, setFollowings] = useState([]);
     let data;

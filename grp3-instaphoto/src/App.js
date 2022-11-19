@@ -6,8 +6,8 @@ import Login from './components/login.component'
 import SignUp from './components/signup.component'
 import Userprofile from './components/userprofile.component'
 import ActivityFeed from './components/activityfeed.component'
-import FriendSuggestion from './components/FriendSuggestion.component'
-import FollowingList from './components/FollowingList'
+import FriendSuggestion from './components/FriendSuggestion-page/FriendSuggestion.component'
+import FollowingList from './components/FollowingList-page/FollowingList'
 import DragDrop from './components/dragdrop.component'
 import HomeNavbar from "./components-2/navbar/homenavbar";
 import EditPost from "./components-2/edit-post/edit-post";

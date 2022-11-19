@@ -11,7 +11,7 @@ import { getByLabelText, within } from '@testing-library/dom'
 // import renderer from 'react-test-renderer';
 import React from 'react';
 
-import SingleLineUserInfo from '.././components/SingleLineUserInfo'
+import SingleLineUserInfo from '../components/FollowingList-page/SubComponents/SingleLineUserInfo'
 
 test("test the single-line user information",async () =>{
     render(<SingleLineUserInfo name={"Williams"} description={"This is a cool person"} image={null} isfollowed={true} />)

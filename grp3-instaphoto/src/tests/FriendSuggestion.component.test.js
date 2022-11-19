@@ -9,7 +9,7 @@ import { render, screen, fireEvent } from '@testing-library/react';
 // import renderer from 'react-test-renderer';
 import React from 'react';
 
-import FriendSuggestion from '.././components/FriendSuggestion.component'
+import FriendSuggestion from '../components/FriendSuggestion-page/FriendSuggestion.component'
 import { createMemoryHistory } from 'history';
 
 // test("should be in the component",() =>{
