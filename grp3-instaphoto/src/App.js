@@ -16,7 +16,6 @@ import EditPost from "./components-2/edit-post/edit-post";
 // import Userpic from './components/test'
 import Gallery from './components/gallery.component'
 import Sidebar from './components/sidebar.component'
-import Postpage from "./components-2/postpage/postpage";
 
 
 function App() {
@@ -39,7 +38,6 @@ function App() {
           <Route path="/userprofile" element={<Userprofile userName={"grp3foreva"} />} />
           <Route path="/dragdrop" element={<DragDrop />} />
           <Route path="/followinglist" element={<FollowingList />} />
-          <Route path={"/post/:id"} element={<Postpage />} />
           <Route path={"/edit-post/:id"} element={<EditPost />} />
         </Routes>
       </div>

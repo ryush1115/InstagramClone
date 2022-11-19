@@ -38,7 +38,7 @@ export default function PostPopup(props) {
                                 <img className={"post-popup-body-image"} src={post.postImage} alt={"post"}/>
                                 {/*Are we not going to have captions for posts?*/}
                                 <div className={"post-popup-body-image-caption"}>
-                                    {post.postBio}
+                                    {post.postCaption}
                                 </div>
                             </div>
                             <div className={"post-popup-body-right"}>
