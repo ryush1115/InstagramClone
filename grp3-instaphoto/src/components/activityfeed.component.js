@@ -4,6 +4,7 @@ import '../activityfeed.css';
 import '../userprofile.css';
 import PostRow from './PostRow'
 import {  getPosts,  createComment} from '../api/mock_api';
+import ActivityFeedUsername from "./activity-feed-components/activity-feed-username";
 
 const ActivityFeedComponent = () => {
   const[, setNewComment] = useState(null);
@@ -251,9 +252,7 @@ const ActivityFeedComponent = () => {
               {/* <img src={require('../images/grp3.PNG')} alt=""/> */}
 
             </div>
-            <div className="profile-user-settings">
-              <h1 className="profile-user-name">grp3foreva</h1>
-            </div>
+            <ActivityFeedUsername username={"grp3foreva"}/>
           </div>
         </div>
       </header>
