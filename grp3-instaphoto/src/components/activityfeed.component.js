@@ -1,7 +1,6 @@
 /* eslint-disable no-template-curly-in-string */
 import React, { useState, Fragment, useEffect, useRef } from "react";
 import '../activityfeed.css';
-import '../userprofile.css';
 import PostRow from './PostRow'
 import {  getPosts,  createComment} from '../api/mock_api';
 import ActivityFeedUsername from "./activity-feed-components/activity-feed-username";
@@ -248,8 +247,7 @@ const ActivityFeedComponent = () => {
         <div className="container" data-testid = "testcc">
           <div className="profile">
             <div className="profile-image">
-              <img alt="" />
-              {/* <img src={require('../images/grp3.PNG')} alt=""/> */}
+              <img src = "https://i.ibb.co/bgWdsVT/grp3.png" alt="" />
 
             </div>
             <ActivityFeedUsername username={"grp3foreva"}/>

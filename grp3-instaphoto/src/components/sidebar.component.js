@@ -1,5 +1,5 @@
 import React, { useState, useEffect} from "react";
-import '../userprofile.css';
+import './UserProfile/userprofile.css';
 import { Navbar, Card, ListGroup, ListGroupItem } from 'react-bootstrap';
 import {useNavigate} from 'react-router-dom';
 import { getSuggestionList } from '../api/mock_api';

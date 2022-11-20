@@ -2,9 +2,9 @@ import React from 'react'
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import './App.css'
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
-import Login from './components/login.component'
-import SignUp from './components/signup.component'
-import Userprofile from './components/userprofile.component'
+import Login from './components/Login_Signup/login.component'
+import SignUp from './components/Login_Signup/signup.component'
+import Userprofile from './components/UserProfile/userprofile'
 import ActivityFeed from './components/activityfeed.component'
 import FriendSuggestion from './components/FriendSuggestion-page/FriendSuggestion.component'
 import FollowingList from './components/FollowingList-page/FollowingList'
@@ -14,7 +14,7 @@ import EditPost from "./components-2/edit-post/edit-post";
 
 
 // import Userpic from './components/test'
-import Gallery from './components/gallery.component'
+import Gallery from './components/UserProfile/user-profile-components/userprofile-gallery.component'
 import Sidebar from './components/sidebar.component'
 
 

@@ -70,9 +70,8 @@ body, html, .App, #root, .auth-wrapper {
   top: 3px;
 }
 
-.login {
-  padding-top: 5px;
-  padding-bottom: 5px;
+.login-and-password {
+  padding-bottom: 10px;
 }
 
 .login-and-password label {
@@ -93,5 +92,4 @@ body, html, .App, #root, .auth-wrapper {
 .login-and-password input {
   display: block;
 }
-
 
