@@ -1,5 +1,5 @@
 // Comment.js
-import '../comments.css';
+import './comments.css';
 import CommentForm from './CommentForm';
 
 const Comment = ({

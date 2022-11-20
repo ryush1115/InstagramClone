@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
-import '../activityfeed.css';
-import '../userprofile.css';
-import {  createComment, deletePost, isMyLikePost,incrementPostLike, cancelPostLike, getCommentMessage, createCommentInPost} from '../api/mock_api';
+import '../../activityfeed.css';
+import '../../userprofile.css';
+import {  createComment, deletePost, isMyLikePost,incrementPostLike, cancelPostLike, getCommentMessage, createCommentInPost} from '../../api/mock_api';
 import Comment from './Comment';
 import Comments from './Comments';
 
@@ -96,14 +96,6 @@ export default function PostRow(props) {
       setDeletedPost(newDeletedPost);
       loadData.current = true;
     }
-
-    // const List = props =>
-    //   props.list.map(item => (
-    //     <div key={item.id}>
-    //       <span>{item.username}: </span>
-    //       <span>{item.message} </span>
-    //     </div>
-    // ));
 
     const ListOfComments = (props) => {
       return(  
