@@ -4,7 +4,7 @@ import './App.css'
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
 import Login from './components/login.component'
 import SignUp from './components/signup.component'
-import Userprofile from './components/userprofile.component'
+import Userprofile from './components/UserProfile/userprofile'
 import ActivityFeed from './components/activityfeed.component'
 import FriendSuggestion from './components/FriendSuggestion.component'
 import FollowingList from './components/FollowingList'
@@ -14,7 +14,7 @@ import EditPost from "./components-2/edit-post/edit-post";
 
 
 // import Userpic from './components/test'
-import Gallery from './components/gallery.component'
+import Gallery from './components/UserProfile/user-profile-components/userprofile-gallery.component'
 import Sidebar from './components/sidebar.component'
 
 

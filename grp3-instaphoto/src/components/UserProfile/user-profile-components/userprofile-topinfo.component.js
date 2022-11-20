@@ -1,9 +1,9 @@
 import React, { useState, Fragment, useEffect, useRef } from "react";
 import '../userprofile.css';
-import {getPosts} from '../api/mock_api';
+// import {getPosts} from '../api/mock_api';
 import Gallery from './gallery.component';
 
-const GalleryWrapper = () => {
+const UserProfile_TopInfo = () => {
   const[postCount, setPostCount] = useState(0);
 
   return (
@@ -27,10 +27,7 @@ const GalleryWrapper = () => {
     </div>
 </div>
 </header>
-      <main>
-<Gallery postCount = {postCount} setPostCount = {setPostCount}/>
-      </main>
     </Fragment>
   )
 }
-export default GalleryWrapper;
+export default UserProfile_TopInfo;

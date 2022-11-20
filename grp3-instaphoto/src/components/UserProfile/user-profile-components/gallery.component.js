@@ -1,7 +1,6 @@
 import React, { useState, Fragment} from "react";
 import '../userprofile.css';
-import Sidebar from './sidebar.component'
-import GalleryItem from "../components-2/galleryItem";
+// import Sidebar from './sidebar.component'
 
 const Gallery =({imageSrc, postCount})=>{
 
@@ -27,7 +26,7 @@ const Gallery =({imageSrc, postCount})=>{
 <div className="container">
     <div className="profile">
         <div className="profile-image">
-            <img src={require('../images/grp3.PNG')} alt=""/>
+            {/* <img src={require('../images/grp3.PNG')} alt=""/> */}
         </div>
         <div className="profile-user-settings">
             <h1 className="profile-user-name">grp3foreva</h1>
@@ -46,7 +45,6 @@ const Gallery =({imageSrc, postCount})=>{
 <main>
 
 <div className="gallery" id = "gallery">
-    <GalleryItem/>
     <div className="gallery-item">
         <img src="https://images.unsplash.com/photo-1511765224389-37f0e77cf0eb?w=500&h=500&fit=crop" className="gallery-image" alt=""/>
     </div>
