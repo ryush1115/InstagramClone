@@ -11,7 +11,7 @@ import React from 'react';
 
 import { Router } from "react-router";
 import { createMemoryHistory } from 'history';
-import FollowingList from '.././components/FollowingList';
+import FollowingList from '../components/FollowingList-page/FollowingList';
 
 
 test("render Following link",() =>{

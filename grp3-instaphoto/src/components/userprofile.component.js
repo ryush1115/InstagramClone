@@ -10,7 +10,7 @@ export default function UserprofileComponent(props) {
 
     // TODO: Clean up the way we handle navigation
     const navigate = useNavigate();
-    const navigateToFriendSuggestion = () => navigate('/friend-suggestion');
+    const navigateToFriendSuggestion = () => navigate('/FriendSuggestion');
     const navigateToFollowingList = () => navigate('/following-list');
     const navigateToCreatePost = () => navigate('/dragdrop');
 
