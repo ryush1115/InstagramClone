@@ -6,6 +6,7 @@ import '../../userprofile.css';
 import AddPost from "./AddPost";
 
 import ActivityFeedUsername from "./Activity-Feed-Username";
+import Sidebar from './../sidebar.component'
 
 // import {  createComment} from '../../api/mock_api';
 // import FilterablePostTable from "./FilterablePostTable";
@@ -15,6 +16,7 @@ const ActivityFeedComponent = () => {
   const[, setDeletedPost] = useState(null);
   const[, setIncrementLike] = useState(null);
   const [roster, setRoster] = useState([]);
+  const [create, setCreate] = useState('default');
 
 
   // function PostTable(props) {
@@ -187,6 +189,7 @@ const ActivityFeedComponent = () => {
 
   return (
     <Fragment>
+      <Sidebar create = {create} setCreate = {setCreate}/>
       <header>
         <div className="container" data-testid = "testcc">
           <div className="profile">
