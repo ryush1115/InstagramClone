@@ -1,18 +1,15 @@
 import React, { useState } from "react";
-import {Routes, Route, useNavigate} from 'react-router-dom';
-
-// import API functions
-import { getUser, createUser } from '../../api/mock_api';
+import {useNavigate} from 'react-router-dom';
+import './login_signup.css';
+import Form from './login_signup-components/form.component'
+import Form_Submit from './login_signup-components/form-submit.component'
+import Form_Welcome from './login_signup-components/form-welcome.component'
 
 const LoginComponent=()=>{
-  const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  // const navigateToProfile = () => {
-  //   navigate('/userprofile');
-  // };
-
+  const navigate = useNavigate();
   const navigateToSignup = () => {
     navigate('/sign-up');
   };
@@ -45,6 +42,7 @@ const LoginComponent=()=>{
     
     if (!validateEmail(email)) {
       //setError('Invalid Email'); 
+      console.log(email);
       console.log('Invalid Email');
       
     }
@@ -75,46 +73,17 @@ const LoginComponent=()=>{
     // to transition from 1 page to another, use a hook called useNavigate
 
     return (
-    <div className = "auth-wrapper">
-        <form className = "auth-inner">
-        <div className="header">
-            <h3>Welcome to Instaphoto&nbsp;</h3>
-            <img src="https://i.ibb.co/VV3Xdf1/logo.png" alt="logo" />
-        </div>
-        <br></br>
-        <div className="login-and-password">
-          <label>Email</label>
-          <input
-            type="email"
-            className="form-control"
-            placeholder="Enter email"
-            value={email}
-            onChange={e => setEmail(e.target.value)}
-          />
-        </div>
-        <div className="login-and-password">
-          <label>Password</label>
-          <p>Forgot password?</p>
-          <input
-            type="password"
-            className="form-control"
-            placeholder="Enter password"
-            value={password}
-            onChange={e => setPassword(e.target.value)}
-          />
-        </div>
-        <br></br>
-        <div className="d-grid">
-          <button type="submit" className="btn btn-primary" onClick={(e) => handleSubmitClick(e)}>
-            Sign in
-          </button>
-        </div>
+      <form className = "auth-inner">
+        <Form_Welcome/>
+        <Form label = "Email" type = "email" placeholder = "Enter email" value={email} onChange={e => setEmail(e.target.value)}/>
+        <Form label = "Password" type="password" placeholder = "Enter password" value={password} onChange={e => setPassword(e.target.value)}/>
+        <Form_Submit label = "Sign in" onClick={(e) => handleSubmitClick(e)}/>
+
         <p className="login-create-account text-right">
           Don't have an account? <br></br>
           <a href="#" onClick={navigateToSignup}> Sign up now to join communities across the globe </a>
         </p>
       </form>
-    </div>
 
     )
 }
