@@ -1,6 +1,5 @@
 import React from 'react';
 import '../../activityfeed.css';
-import '../../userprofile.css';
 
 export default function ActivityFeedUsername(props) {
 
