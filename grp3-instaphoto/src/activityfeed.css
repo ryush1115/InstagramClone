@@ -1,9 +1,16 @@
+.container{
+    flex: 5;
+    margin-left: 350px;
+}
+
+
 .feed{
-    flex: 5.5;
+    flex: 5;
 }
 
 .feedWrapper{
     padding: 10x;
+    margin-left: auto;
 }
 
 .post {
