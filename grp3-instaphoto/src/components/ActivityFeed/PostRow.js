@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
-import '../../activityfeed.css';
-import '../../userprofile.css';
+import './activityfeed.css';
+import '../UserProfile/userprofile.css';
 import {  createComment, deletePost, isMyLikePost,incrementPostLike, cancelPostLike, getCommentMessage, createCommentInPost} from '../../api/mock_api';
 import Comment from './Comment';
 import Comments from './Comments';

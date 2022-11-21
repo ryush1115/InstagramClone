@@ -1,6 +1,6 @@
 import React, { useState, Fragment, useEffect, useRef } from "react";
-import '../../activityfeed.css';
-import '../../userprofile.css';
+import './activityfeed.css';
+import '../UserProfile/userprofile.css';
 import PostTable from './PostTable'
 
   /**
