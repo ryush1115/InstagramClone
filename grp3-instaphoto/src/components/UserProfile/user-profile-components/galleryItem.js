@@ -1,5 +1,5 @@
 import React from 'react';
-import PostPopup from "./post-popup/post-popup";
+import PostPopup from "../post-popup/post-popup";
 
 export default function GalleryItem(props) {
 

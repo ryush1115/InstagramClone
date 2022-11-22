@@ -4,8 +4,10 @@ import Comment from './Comment';
 import CommentForm from './CommentForm';
 import {createCommentInPost, updateComment} from '../../api/mock_api';
 
-const Comments = (list_, id_, props) => {
-    
+export default function Comments(props) {
+
+    console.log(props.list);
+
     const [backendComments, setBackendComments] = useState([]);
     const [activeComment, setActiveComment] = useState(null);
     
@@ -48,7 +50,7 @@ const Comments = (list_, id_, props) => {
          <CommentForm submitLabel="Write" handleSubmit={addComment}/>
          <div>
             {/* {id_.id} */}
-         {list_.list.map(item => (
+         {props.list.map(item => (
            <div key={item.id}>
              <Comment 
                 key={item.id}
@@ -64,6 +66,4 @@ const Comments = (list_, id_, props) => {
        </div>
        )
 
-}
-
-export default Comments;
+};

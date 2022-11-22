@@ -1,15 +1,14 @@
-.container{
+.container {
     flex: 5;
-    margin-left: 350px;
+    margin: auto;
 }
-
 
 .feed{
     flex: 5;
 }
 
 .feedWrapper{
-    padding: 10x;
+    padding: 10px;
     margin-left: auto;
 }
 

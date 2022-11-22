@@ -1,6 +1,6 @@
 import React from 'react';
 import {useNavigate} from "react-router-dom";
-import {deletePost} from "../../api/mock_api";
+import {deletePost} from "../../../api/mock_api";
 
 export default function PostSettingsDropdown(props) {
 

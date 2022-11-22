@@ -4,7 +4,7 @@ import { Navbar, Card, ListGroup, ListGroupItem } from 'react-bootstrap';
 import {useNavigate} from 'react-router-dom';
 import { getSuggestionList } from '../api/mock_api';
 
-const Sidebar =(props)=>{
+export default function Sidebar(props) {
   const [FriendSuggestionList, setFriendSuggestionList] = useState([]);
   let data;
   const someFetch = async () => {
@@ -126,6 +126,4 @@ const Sidebar =(props)=>{
       </Navbar>
 
 )  
-}
-
-export default Sidebar;
+};

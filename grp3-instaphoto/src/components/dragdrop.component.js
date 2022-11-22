@@ -10,7 +10,7 @@ import {createPost } from '../api/mock_api';
 // drag drop file component
 
 // only accept certain file formats (jpeg, jpg, png)
-function DragDrop(props) {
+export default function DragDrop(props) {
   
   // ref to the input using the 'useRef' hook
   const inputRef = React.useRef(null);
@@ -62,7 +62,7 @@ function DragDrop(props) {
   };
 
   // when dragActive is true, add an invisible elemnt to cover the entire state form. 
-  // this listens to the events without interference from any other elements.  
+  // this listens to the events without interference from any other elements.
   return (
       <div className="create-post_">
       <div className="create-post-content_">
@@ -87,6 +87,4 @@ function DragDrop(props) {
       </div>
       </div>
     );
-  };
-
-  export default DragDrop;
+};
