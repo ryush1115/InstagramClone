@@ -170,6 +170,25 @@ webapp.post('/activity-feed/:id/comment', async (req, res) => {
   }
 });
 
+
+// implement the PUT /comments/id endpoint
+webapp.put('/comments/:id', async (req, res) => {
+  console.log('UPDATE a comment');
+  // parse the body of the request
+  if (!req.body.message) {
+    res.status(404).json({ message: 'missing message' });
+    return;
+  }
+  try {
+    const result = await dbLib.updateComment(req.body.message, req.params.id);
+    // send the response with the appropriate status code
+    res.status(200).json({ message: result });
+  } catch (err) {
+    res.status(404).json({ message: 'there was error' });
+  }
+});
+
+
 // catch all endpoint
 webapp.use((req, resp) => {
   resp.status(404).json({ error: 'invalid endpoint' });

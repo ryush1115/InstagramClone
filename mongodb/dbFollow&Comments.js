@@ -167,6 +167,20 @@ const createCommentInPost = async (PostId, CommentObject) => {
   }
 };
 
+const updateComment = async (text, commentId) => {
+  try {
+    // get the db
+    const db = await getDB();
+    const result = await db.collection('Comment').updateOne(
+      { _id: ObjectId(commentId) },
+      { $set: { message: text } },
+    );
+    return result;
+  } catch (err) {
+    console.log(`error: ${err.message}`);
+  }
+};
+
 // Test part: use main function to test
 /*
 // main function to execute our code
@@ -207,4 +221,5 @@ module.exports = {
   getCommentMessage,
   createComment,
   createCommentInPost,
+  updateComment
 };
