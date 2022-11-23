@@ -9,24 +9,47 @@ const { ObjectId } = require('mongodb');
 // the mongodb server URL
 const dbURL = 'mongodb+srv://Junwei:cis557group3@cluster0.p2tpbsw.mongodb.net/SocialNetwork?retryWrites=true&w=majority';
 
+let MongoConnection;
 // connection to the db
 const connect = async () => {
   // always use try/catch to handle any exception
   try {
-    const con = (await MongoClient.connect(
+    MongoConnection = (await MongoClient.connect(
       dbURL,
       { useNewUrlParser: true, useUnifiedTopology: true },
-    )).db();
+    ));// we return the entire connection, not just the DB
     // check that we are connected to the db
-    console.log(`connected to db: ${con.databaseName}`);
-    return con;
+    console.log(`connected to db: ${MongoConnection.db().databaseName}`);
+    return MongoConnection;
   } catch (err) {
     console.log(err.message);
   }
 };
 
-const getMyFollowing = async (db) => {
+/**
+ *
+ * @returns the database attached to this MongoDB connection
+ */
+const getDB = async () => {
+  // test if there is an active connection
+  if (!MongoConnection) {
+    await connect();
+  }
+  return MongoConnection.db();
+};
+
+/**
+ *
+ * Close the mongodb connection
+ */
+ const closeMongoDBConnection = async () => {
+  await MongoConnection.close();
+};
+
+const getMyFollowing = async () => {
   try {
+    // get the db
+    const db = await getDB();
     const me = await db.collection('User1').findOne({});
     const result = me.follow;
     console.log(`My following: ${JSON.stringify(result)}`);
@@ -36,8 +59,10 @@ const getMyFollowing = async (db) => {
   }
 };
 
-const followUser = async (db, followingName) => {
+const followUser = async (followingName) => {
   try {
+    // get the db
+    const db = await getDB();
     const result = await db.collection('User1').updateOne(
       {},
       {
@@ -56,8 +81,10 @@ const followUser = async (db, followingName) => {
   }
 };
 
-const unfollowUser = async (db, followingName) => {
+const unfollowUser = async ( followingName) => {
   try {
+    // get the db
+    const db = await getDB();
     const result = await db.collection('User1').updateOne(
       {},
       { $pull: { follow: followingName } },
@@ -69,8 +96,10 @@ const unfollowUser = async (db, followingName) => {
   }
 };
 
-const isMyFollowing = async (db, followingName) => {
+const isMyFollowing = async (followingName) => {
   try {
+    // get the db
+    const db = await getDB();
     const count = await db.collection('User1').find({ follow: followingName }).count();
     const ans = (count > 0);
     console.log(`Is this user my followng: ${ans}`);
@@ -80,8 +109,10 @@ const isMyFollowing = async (db, followingName) => {
   }
 };
 
-const getCommentsArray = async (db, PostId) => {
+const getCommentsArray = async (PostId) => {
   try {
+    // get the db
+    const db = await getDB();
     const result = await db.collection('Post').findOne({ _id: ObjectId(PostId) });
     console.log(`CommentArray: ${JSON.stringify(result.postCommentArray)}`);
     return result.postCommentArray;
@@ -90,8 +121,10 @@ const getCommentsArray = async (db, PostId) => {
   }
 };
 
-const getCommentMessage = async (db, CommentId) => {
+const getCommentMessage = async (CommentId) => {
   try {
+    // get the db
+    const db = await getDB();
     const result = await db.collection('Comment').findOne({ _id: ObjectId(CommentId) });
     console.log(`CommentMessage: ${JSON.stringify(result.message)}`);
     return result.message;
@@ -100,8 +133,10 @@ const getCommentMessage = async (db, CommentId) => {
   }
 };
 
-const createComment = async (db, CommentObject) => {
+const createComment = async (CommentObject) => {
   try {
+    // get the db
+    const db = await getDB();
     const result = await db.collection('Comment').insertOne(CommentObject);
     console.log(`New comment created with id: ${JSON.stringify(result.insertedId)}`);
     return result.insertedId;
@@ -110,8 +145,10 @@ const createComment = async (db, CommentObject) => {
   }
 };
 
-const createCommentInPost = async (db, PostId, CommentObject) => {
+const createCommentInPost = async (PostId, CommentObject) => {
   try {
+    // get the db
+    const db = await getDB();
     const result = await db.collection('Post').updateOne(
       { _id: ObjectId(PostId) },
       {
@@ -159,6 +196,8 @@ main();
 // export the functions
 // export the functions
 module.exports = {
+  closeMongoDBConnection,
+  getDB,
   connect,
   getMyFollowing,
   unfollowUser,

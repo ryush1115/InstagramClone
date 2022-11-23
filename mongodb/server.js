@@ -14,23 +14,19 @@ const webapp = express();
 // (4) enable cors
 webapp.use(cors());
 
-// (5) define the port
-const port = 8080;
-
 // (6) configure express to parse bodies
 webapp.use(express.urlencoded({ extended: true }));
 
 // (7) import the db interactions module
 const dbLib = require('./dbFollow&Comments');
 
-// (8) declare a db reference variable
-let db;
-
+/*
 // start the server and connect to the DB
 webapp.listen(port, async () => {
   db = await dbLib.connect();
   console.log(`Server running on port: ${port}`);
 });
+*/
 
 // root endpoint / route
 webapp.get('/', (req, resp) => {
@@ -42,7 +38,7 @@ webapp.get('/followinglist', async (req, res) => {
   console.log('READ all followings');
   try {
     // get the data from the db
-    const results = await dbLib.getMyFollowing(db);
+    const results = await dbLib.getMyFollowing();
     // send the response with the appropriate status code
     res.status(200).json({ data: results });
   } catch (err) {
@@ -59,12 +55,12 @@ webapp.put('/followinglist', async (req, res) => {
     return;
   }
   try {
-    const isAlreadyFollow = await dbLib.isMyFollowing(db, req.body.followingName);
+    const isAlreadyFollow = await dbLib.isMyFollowing(req.body.followingName);
     let result;
     if (!isAlreadyFollow) {
-      result = await dbLib.followUser(db, req.body.followingName);
+      result = await dbLib.followUser(req.body.followingName);
     } else {
-      result = await dbLib.unfollowUser(db, req.body.followingName);
+      result = await dbLib.unfollowUser(req.body.followingName);
     }
     // send the response with the appropriate status code
     res.status(200).json({ message: result });
@@ -82,12 +78,12 @@ webapp.put('/friendsuggestion', async (req, res) => {
     return;
   }
   try {
-    const isAlreadyFollow = await dbLib.isMyFollowing(db, req.body.followingName);
+    const isAlreadyFollow = await dbLib.isMyFollowing(req.body.followingName);
     let result;
     if (!isAlreadyFollow) {
-      result = await dbLib.followUser(db, req.body.followingName);
+      result = await dbLib.followUser(req.body.followingName);
     } else {
-      result = await dbLib.unfollowUser(db, req.body.followingName);
+      result = await dbLib.unfollowUser(req.body.followingName);
     }
     // send the response with the appropriate status code
     res.status(200).json({ message: result });
@@ -101,7 +97,7 @@ webapp.get('/activity-feed/:id/comment', async (req, res) => {
   console.log('READ the comments of one post bt postId');
   try {
     // get the data from the db
-    const results = await dbLib.getCommentsArray(db, req.params.id);
+    const results = await dbLib.getCommentsArray(req.params.id);
     // send the response with the appropriate status code
     res.status(200).json({ data: results });
   } catch (err) {
@@ -114,8 +110,12 @@ webapp.get('/comments/:id', async (req, res) => {
   console.log('READ the comment by commentId');
   try {
     // get the data from the db
-    const results = await dbLib.getCommentMessage(db, req.params.id);
+    const results = await dbLib.getCommentMessage(req.params.id);
     // send the response with the appropriate status code
+    if (results === undefined) {
+      res.status(404).json({ error: 'unknown student' });
+      return;
+    }
     res.status(200).json({ data: results });
   } catch (err) {
     res.status(404).json({ message: 'there was error' });
@@ -138,7 +138,7 @@ webapp.post('/comments', async (req, res) => {
       tagOfOtherUsers: req.body.tagOfOtherUsers,
       id: req.body.id,
     };
-    const result = await dbLib.createComment(db, newComment);
+    const result = await dbLib.createComment(newComment);
     // send the response with the appropriate status code
     res.status(201).json({ data: { id: result, ...newComment } });
   } catch (err) {
@@ -162,7 +162,7 @@ webapp.post('/activity-feed/:id/comment', async (req, res) => {
       tagOfOtherUsers: req.body.tagOfOtherUsers,
       id: req.body.id,
     };
-    const result = await dbLib.createCommentInPost(db, req.params.id, newComment);
+    const result = await dbLib.createCommentInPost(req.params.id, newComment);
     // send the response with the appropriate status code
     res.status(201).json({ data: { id: result, ...newComment } });
   } catch (err) {
@@ -174,3 +174,6 @@ webapp.post('/activity-feed/:id/comment', async (req, res) => {
 webapp.use((req, resp) => {
   resp.status(404).json({ error: 'invalid endpoint' });
 });
+
+// do not forget to export the express server
+module.exports = webapp;
