@@ -2,7 +2,7 @@
 import {useState, useEffect} from "react";
 import Comment from './Comment';
 import CommentForm from './CommentForm';
-import {createCommentInPost, updateComment} from '../../api/mock_api';
+import {createCommentInPost, updateComment} from '../../../api/mock_api';
 
 export default function Comments(props) {
 

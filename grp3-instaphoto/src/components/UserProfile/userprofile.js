@@ -11,20 +11,20 @@ export default function Userprofile(props) {
     
     if (create === 1){
         return (
-            <Fragment>
+            <>
                 <Sidebar create = {create} setCreate = {setCreate}/>
                 <UserProfile_TopInfo/>
                 <UserProfile_Gallery userName = {"grp3foreva"}/>
                 <Dragdrop create = {create} setCreate = {setCreate}/>
-            </Fragment>
+            </>
         )
     } else {
         return (
-            <Fragment>
+            <>
                 <Sidebar create = {create} setCreate = {setCreate}/>
                 <UserProfile_TopInfo/>
                 <UserProfile_Gallery userName = {"grp3foreva"}/>
-            </Fragment>
+            </>
         )
     }
 };

@@ -1,6 +1,6 @@
 import React, { useState, Fragment, useEffect, useRef } from "react";
 import './activityfeed.css';
-import '../UserProfile/userprofile.css';
+import '../../UserProfile/userprofile.css';
 import PostTable from './PostTable'
 
   /**
@@ -16,12 +16,6 @@ export default function SearchBar (props) {
     }
     return (
         <div>
-          {/* <form>
-            <input
-              type="text"
-              placeholder="filter by username..."
-            />
-          </form> */}
           <PostTable username={username} posts={props.roster} />
         </div>
       )

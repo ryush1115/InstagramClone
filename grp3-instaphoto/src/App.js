@@ -18,7 +18,7 @@ import Gallery from './components/UserProfile/user-profile-components/userprofil
 import Sidebar from './components/sidebar.component'
 
 
-function App() {
+export default function App() {
   return (
     <Router>
       <div className="App">
@@ -43,5 +43,4 @@ function App() {
       </div>
     </Router>
   )
-}
-export default App
+};

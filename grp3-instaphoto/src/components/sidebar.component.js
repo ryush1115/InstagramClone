@@ -44,8 +44,7 @@ export default function Sidebar(props) {
 
     return (
         <Navbar className='home'>
-            
-        <Card className='card'>
+            <Card className='card'>
         <div className = 'logo'>
             <h>Instaphoto&nbsp;</h>
             <img src="https://i.ibb.co/VV3Xdf1/logo.png" alt="logo"/>
@@ -123,7 +122,6 @@ export default function Sidebar(props) {
             </div>
           </div>
         </Card>
-      </Navbar>
-
-)  
+        </Navbar>
+    )
 };
