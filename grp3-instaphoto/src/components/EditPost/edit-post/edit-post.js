@@ -3,9 +3,8 @@ import {useNavigate, useParams} from "react-router-dom";
 import "./edit-post.css";
 import { faUserTag } from "@fortawesome/free-solid-svg-icons";
 import {Card, ListGroup, ListGroupItem, Navbar} from "react-bootstrap";
-import {getPost} from "../../api/mock_api";
+import {getPost, updatePost} from "../../../api/mock_api";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {updatePost} from "../../api/mock_api";
 
 export default function EditPost(props) {
 

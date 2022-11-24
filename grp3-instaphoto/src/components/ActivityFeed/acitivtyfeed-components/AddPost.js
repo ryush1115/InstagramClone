@@ -13,16 +13,9 @@ export default function AddPost() {
     // to load data or not
     const loadData = useRef(false);
 
-    // let newUsername;
-    // let newPostComment;
-    // let newPostImage = "http://loremflickr.com/640/480"; // default to this image for HW2
-
     return (
       <div>
-        {' '}
         <FilterablePostTable reload={loadData} />
-        <div>
-        </div>
       </div>
     )
 

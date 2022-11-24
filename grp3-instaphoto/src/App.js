@@ -9,8 +9,8 @@ import ActivityFeed from './components/ActivityFeed/activityfeed.component'
 import FriendSuggestion from './components/FriendSuggestion-page/FriendSuggestion.component'
 import FollowingList from './components/FollowingList-page/FollowingList'
 import DragDrop from './components/dragdrop.component'
-import HomeNavbar from "./components-2/navbar/homenavbar";
-import EditPost from "./components-2/edit-post/edit-post";
+import HomeNavbar from "./components/navbar/homenavbar";
+import EditPost from "./components/EditPost/edit-post/edit-post";
 
 
 // import Userpic from './components/test'
@@ -18,7 +18,7 @@ import Gallery from './components/UserProfile/user-profile-components/userprofil
 import Sidebar from './components/sidebar.component'
 
 
-function App() {
+export default function App() {
   return (
     <Router>
       <div className="App">
@@ -43,5 +43,4 @@ function App() {
       </div>
     </Router>
   )
-}
-export default App
+};

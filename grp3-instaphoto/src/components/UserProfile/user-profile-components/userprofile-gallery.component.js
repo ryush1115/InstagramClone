@@ -4,16 +4,10 @@ import '../userprofile.css';
 import { Navbar, Card, ListGroup, ListGroupItem } from 'react-bootstrap';
 // import { goToAnchor, configureAnchors } from 'react-scrollable-anchor';
 import { getSuggestionList, getUserPosts } from '../../../api/mock_api';
-import GalleryItem from "../../../components-2/galleryItem";
+import GalleryItem from "./galleryItem";
 // import Sidebar from '../../sidebar.component'
 
 export default function UserprofileComponent(props) {
-
-    // TODO: Clean up the way we handle navigation
-    const navigate = useNavigate();
-    const navigateToFriendSuggestion = () => navigate('/friend-suggestion');
-    const navigateToFollowingList = () => navigate('/following-list');
-    const navigateToCreatePost = () => navigate('/dragdrop');
 
     const [FriendSuggestionList, setFriendSuggestionList] = useState([]);
     const [userPosts, setUserPosts] = useState([]);
@@ -42,7 +36,7 @@ export default function UserprofileComponent(props) {
     });
 
     return (
-        <Fragment>
+        <>
             <main>
                 <div className="container">
                     <div className="gallery">
@@ -50,7 +44,6 @@ export default function UserprofileComponent(props) {
                     </div>
                 </div>
             </main>
-
-        </Fragment>
+        </>
     )
 }

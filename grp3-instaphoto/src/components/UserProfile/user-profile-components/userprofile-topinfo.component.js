@@ -6,27 +6,23 @@ const UserProfile_TopInfo = () => {
   const[postCount, setPostCount] = useState(0);
 
   return (
-    <Fragment>
-            <header>
-                <div className="container">
-                    <div className="profile">
-                        <div className="profile-image">
-                            <img src="https://i.ibb.co/bgWdsVT/grp3.png" alt=""/>
-                        </div>
-                        <div className="profile-user-settings">
-                            <h1 className="profile-user-name">grp3foreva</h1>
-                        </div>
-                        <div className="profile-stats">
-                            <ul>
-                                <li><span className="profile-stat-count">{postCount}</span> posts</li>
-                                <li><span className="profile-stat-count">169</span> followers</li>
-                                <li><span className="profile-stat-count">667</span> following</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </header>
-    </Fragment>
+    <>
+        <div className="user-profile-header">
+            <div className="user-profile-header-image">
+                <img className={"user-profile-header-image"} src="https://i.ibb.co/bgWdsVT/grp3.png" alt=""/>
+            </div>
+            <div className="user-profile-header-name">
+                <h1 className="user-profile-header-name">grp3foreva</h1>
+            </div>
+            <div className="profile-stats">
+                <ul>
+                    <li><span className="profile-stat-count">{postCount}</span> posts</li>
+                    <li><span className="profile-stat-count">169</span> followers</li>
+                    <li><span className="profile-stat-count">667</span> following</li>
+                </ul>
+            </div>
+        </div>
+    </>
   )
 }
 export default UserProfile_TopInfo;

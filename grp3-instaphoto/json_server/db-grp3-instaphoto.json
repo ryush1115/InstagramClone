@@ -634,6 +634,14 @@
       "profilePicture": "\n        ",
       "follow": "",
       "id": "m1H8cTw"
+    },
+    {
+      "email": "newEmail@com",
+      "username": "newUsername\n        ",
+      "password": "newPassword",
+      "profilePicture": "\n        ",
+      "follow": "",
+      "id": "wT6es1R"
     }
   ],
   "Post": [
@@ -1168,25 +1176,25 @@
           "username": "grp3foreva",
           "message": "TA - this is my new comment!",
           "tagOfOtherUsers": null,
-          "id": null
+          "id": "3"
         },
         {
           "username": "grp3foreva",
           "message": "Good\nGood",
           "tagOfOtherUsers": null,
-          "id": null
+          "id": "4"
         },
         {
           "username": "grp3foreva",
           "message": "asd",
           "tagOfOtherUsers": null,
-          "id": null
+          "id": "5"
         },
         {
           "username": "grp3foreva",
           "message": "123",
           "tagOfOtherUsers": null,
-          "id": null
+          "id": "6"
         }
       ],
       "id": "CREL3Vi",
@@ -1194,7 +1202,6 @@
         "0"
       ]
     }
-   
   ],
   "User1": [
     {

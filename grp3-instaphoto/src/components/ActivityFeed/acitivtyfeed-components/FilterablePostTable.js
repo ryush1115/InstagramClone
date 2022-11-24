@@ -1,7 +1,6 @@
-
 import React, { useState,  useEffect, useRef } from "react";
 import SearchBar from './SearchBar';
-import {  getPosts} from '../../api/mock_api';
+import {  getPosts} from '../../../api/mock_api';
 
 export default function FilterablePostTable(props) {
     // Local state to store and update the list of Posts
