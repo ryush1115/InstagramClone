@@ -1,0 +1,637 @@
+[
+    {
+    "email": "Webster2@hotmail.com",
+    "username": "Elmer.Weissnat10",
+    "password": "F2KC9R__6fRb8xI",
+    "profilePicture": "http://loremflickr.com/640/480",
+    "follow": [
+    "Frederic.Strosin5"
+    ],
+    "id": "1"
+    },
+    {
+    "email": "Claire37@gmail.com",
+    "username": "Frederic.Strosin5",
+    "password": "3Rvqa8WqKaorqkT",
+    "profilePicture": "http://loremflickr.com/640/480",
+    "follow": [],
+    "id": "2"
+    },
+    {
+    "email": "Ryley74@yahoo.com",
+    "username": "Xavier.Vandervort",
+    "password": "4c5YHKOXvh2appg",
+    "profilePicture": "http://loremflickr.com/640/480",
+    "follow": [],
+    "id": "3"
+    },
+    {
+    "email": "Twila_Jacobson4@hotmail.com",
+    "username": "Violette30",
+    "password": "Rss65HE8u_Ch30B",
+    "profilePicture": "http://loremflickr.com/640/480",
+    "follow": [],
+    "id": "4"
+    },
+    {
+    "email": "Gina9@yahoo.com",
+    "username": "Jakob.Breitenberg21",
+    "password": "RcyWueTgAhBeLts",
+    "profilePicture": "http://loremflickr.com/640/480",
+    "follow": [],
+    "id": "5"
+    },
+    {
+    "email": "grp3forevera@gmail.com",
+    "username": "grp3-forevera",
+    "password": "12345678",
+    "profilePicture": "\n",
+    "follow": [],
+    "id": "6"
+    },
+    {
+    "email": "undefined",
+    "username": "test1",
+    "password": "undefined",
+    "profilePicture": "\n        ",
+    "follow": [
+    "Elmer.Weissnat10",
+    "Frederic.Strosin5",
+    "Xavier.Vandervort"
+    ],
+    "id": "Gr3r1dL"
+    },
+    {
+    "email": "undefined",
+    "username": "test2",
+    "password": "undefined",
+    "profilePicture": "\n        ",
+    "follow": [
+    "Elmer.Weissnat10",
+    "Frederic.Strosin5",
+    "Xavier.Vandervort",
+    "ssss"
+    ],
+    "id": "DaNYYMJ"
+    },
+    {
+    "email": "undefined",
+    "username": "test3",
+    "password": "undefined",
+    "profilePicture": "\n        ",
+    "follow": [
+    "Elmer.Weissnat10",
+    "Frederic.Strosin5",
+    "KKK",
+    "Xavier.Vandervort"
+    ],
+    "id": "XIxWHsG"
+    },
+    {
+    "email": "undefined",
+    "username": "test4",
+    "password": "undefined",
+    "profilePicture": "\n        ",
+    "follow": [
+    "Elmer.Weissnat10",
+    "Frederic.Strosin5"
+    ],
+    "id": "AM0SMGC"
+    },
+    {
+    "email": "undefined",
+    "username": "f\n        ",
+    "password": "undefined",
+    "profilePicture": "\n        ",
+    "follow": [],
+    "id": "SJoGZdf"
+    },
+    {
+    "email": "grp3foreva@gmail.com",
+    "username": "grp3foreva\n        ",
+    "password": "123456789",
+    "profilePicture": "\n        ",
+    "follow": [],
+    "id": "Z0x_2iT"
+    },
+    {
+    "email": "grp3foreva@gmail.com",
+    "username": "grp3foreva\n        ",
+    "password": "123456789",
+    "profilePicture": "\n        ",
+    "follow": [],
+    "id": "tgMSQrc"
+    },
+    {
+    "email": "grp3foreva@gmail.com",
+    "username": "grp3foreva\n        ",
+    "password": "123456789",
+    "profilePicture": "\n        ",
+    "follow": [],
+    "id": "cWP_LRD"
+    },
+    {
+    "email": "",
+    "username": "aaa\n        ",
+    "password": "1",
+    "profilePicture": "\n        ",
+    "follow": [],
+    "id": "d51TGck"
+    },
+    {
+    "email": "newEmail@com",
+    "username": "newUsername\n        ",
+    "password": "newPassword",
+    "profilePicture": "\n        ",
+    "follow": [],
+    "id": "CyACwvW"
+    },
+    {
+    "email": "newEmail@com",
+    "username": "newUsername\n        ",
+    "password": "newPassword",
+    "profilePicture": "\n        ",
+    "follow": [],
+    "id": "sAO6hMd"
+    },
+    {
+    "email": "newEmail@com",
+    "username": "newUsername\n        ",
+    "password": "newPassword",
+    "profilePicture": "\n        ",
+    "follow": [],
+    "id": "LSVaP6g"
+    },
+    {
+    "email": "newEmail@com",
+    "username": "newUsername\n        ",
+    "password": "newPassword",
+    "profilePicture": "\n        ",
+    "follow": [],
+    "id": "G_M7Vpb"
+    },
+    {
+    "email": "newEmail@com",
+    "username": "newUsername\n        ",
+    "password": "newPassword",
+    "profilePicture": "\n        ",
+    "follow": [],
+    "id": "9PiBviC"
+    },
+    {
+    "email": "newEmail@com",
+    "username": "newUsername\n        ",
+    "password": "newPassword",
+    "profilePicture": "\n        ",
+    "follow": [],
+    "id": "yhym73k"
+    },
+    {
+    "email": "newEmail@com",
+    "username": "newUsername\n        ",
+    "password": "newPassword",
+    "profilePicture": "\n        ",
+    "follow": [],
+    "id": "HZHAsxm"
+    },
+    {
+    "email": "newEmail@com",
+    "username": "newUsername\n        ",
+    "password": "newPassword",
+    "profilePicture": "\n        ",
+    "follow": [],
+    "id": "ZToJbr8"
+    },
+    {
+    "email": "undefined",
+    "username": "undefined\n        ",
+    "password": "undefined",
+    "profilePicture": "undefined\n        ",
+    "follow": [],
+    "id": "8cZAwbM"
+    },
+    {
+    "email": "newEmail@com",
+    "username": "newUsername\n        ",
+    "password": "newPassword",
+    "profilePicture": "\n        ",
+    "follow": [],
+    "id": "aqgZ-_B"
+    },
+    {
+    "email": "undefined",
+    "username": "undefined\n        ",
+    "password": "undefined",
+    "profilePicture": "undefined\n        ",
+    "follow": [],
+    "id": "cCWwVtb"
+    },
+    {
+    "email": "newEmail@com",
+    "username": "newUsername\n        ",
+    "password": "newPassword",
+    "profilePicture": "\n        ",
+    "follow": [],
+    "id": "iZzqui1"
+    },
+    {
+    "email": "undefined",
+    "username": "undefined\n        ",
+    "password": "undefined",
+    "profilePicture": "undefined\n        ",
+    "follow": [],
+    "id": "Z6z0rAd"
+    },
+    {
+    "email": "newEmail@com",
+    "username": "newUsername\n        ",
+    "password": "newPassword",
+    "profilePicture": "\n        ",
+    "follow": [],
+    "id": "53oTASs"
+    },
+    {
+    "email": "newEmail@com",
+    "username": "newUsername\n        ",
+    "password": "newPassword",
+    "profilePicture": "\n        ",
+    "follow": [],
+    "id": "2CeDa9m"
+    },
+    {
+    "email": "newEmail@com",
+    "username": "newUsername\n        ",
+    "password": "newPassword",
+    "profilePicture": "\n        ",
+    "follow": [],
+    "id": "qm1KehM"
+    },
+    {
+    "email": "newEmail@com",
+    "username": "newUsername\n        ",
+    "password": "newPassword",
+    "profilePicture": "\n        ",
+    "follow": [],
+    "id": "gtNsqxO"
+    },
+    {
+    "email": "newEmail@com",
+    "username": "newUsername\n        ",
+    "password": "newPassword",
+    "profilePicture": "\n        ",
+    "follow": [],
+    "id": "9wmEgIK"
+    },
+    {
+    "email": "newEmail@com",
+    "username": "newUsername\n        ",
+    "password": "newPassword",
+    "profilePicture": "\n        ",
+    "follow": [],
+    "id": "SKOpoDG"
+    },
+    {
+    "email": "newEmail@com",
+    "username": "newUsername\n        ",
+    "password": "newPassword",
+    "profilePicture": "\n        ",
+    "follow": [],
+    "id": "t1CikOO"
+    },
+    {
+    "email": "newEmail@com",
+    "username": "newUsername\n        ",
+    "password": "newPassword",
+    "profilePicture": "\n        ",
+    "follow": [],
+    "id": "RuJ6co5"
+    },
+    {
+    "email": "newEmail@com",
+    "username": "newUsername\n        ",
+    "password": "newPassword",
+    "profilePicture": "\n        ",
+    "follow": [],
+    "id": "_irwRKC"
+    },
+    {
+    "email": "newEmail@com",
+    "username": "newUsername\n        ",
+    "password": "newPassword",
+    "profilePicture": "\n        ",
+    "follow": [],
+    "id": "5JVrB_Z"
+    },
+    {
+    "email": "newEmail@com",
+    "username": "newUsername\n        ",
+    "password": "newPassword",
+    "profilePicture": "\n        ",
+    "follow": "",
+    "id": "h1xi9K-"
+    },
+    {
+    "email": "newEmail@com",
+    "username": "newUsername\n        ",
+    "password": "newPassword",
+    "profilePicture": "\n        ",
+    "follow": "",
+    "id": "1XdqZmu"
+    },
+    {
+    "email": "newEmail@com",
+    "username": "newUsername\n        ",
+    "password": "newPassword",
+    "profilePicture": "\n        ",
+    "follow": "",
+    "id": "tvl_dP9"
+    },
+    {
+    "email": "newEmail@com",
+    "username": "newUsername\n        ",
+    "password": "newPassword",
+    "profilePicture": "\n        ",
+    "follow": "",
+    "id": "JKwWiyx"
+    },
+    {
+    "email": "newEmail@com",
+    "username": "newUsername\n        ",
+    "password": "newPassword",
+    "profilePicture": "\n        ",
+    "follow": "",
+    "id": "mh1sk40"
+    },
+    {
+    "email": "newEmail@com",
+    "username": "newUsername\n        ",
+    "password": "newPassword",
+    "profilePicture": "\n        ",
+    "follow": "",
+    "id": "QWWctnG"
+    },
+    {
+    "email": "newEmail@com",
+    "username": "newUsername\n        ",
+    "password": "newPassword",
+    "profilePicture": "\n        ",
+    "follow": "",
+    "id": "lfYYgh1"
+    },
+    {
+    "email": "newEmail@com",
+    "username": "newUsername\n        ",
+    "password": "newPassword",
+    "profilePicture": "\n        ",
+    "follow": "",
+    "id": "nhFMzh9"
+    },
+    {
+    "email": "newEmail@com",
+    "username": "newUsername\n        ",
+    "password": "newPassword",
+    "profilePicture": "\n        ",
+    "follow": "",
+    "id": "-DGaL5W"
+    },
+    {
+    "email": "newEmail@com",
+    "username": "newUsername\n        ",
+    "password": "newPassword",
+    "profilePicture": "\n        ",
+    "follow": "",
+    "id": "FMTmYs3"
+    },
+    {
+    "email": "newEmail@com",
+    "username": "newUsername\n        ",
+    "password": "newPassword",
+    "profilePicture": "\n        ",
+    "follow": "",
+    "id": "12KBv6-"
+    },
+    {
+    "email": "newEmail@com",
+    "username": "newUsername\n        ",
+    "password": "newPassword",
+    "profilePicture": "\n        ",
+    "follow": "",
+    "id": "XjiGPUS"
+    },
+    {
+    "email": "newEmail@com",
+    "username": "newUsername\n        ",
+    "password": "newPassword",
+    "profilePicture": "\n        ",
+    "follow": "",
+    "id": "W4vmncU"
+    },
+    {
+    "email": "newEmail@com",
+    "username": "newUsername\n        ",
+    "password": "newPassword",
+    "profilePicture": "\n        ",
+    "follow": "",
+    "id": "ZitVYUO"
+    },
+    {
+    "email": "newEmail@com",
+    "username": "newUsername\n        ",
+    "password": "newPassword",
+    "profilePicture": "\n        ",
+    "follow": "",
+    "id": "Cyvsl1k"
+    },
+    {
+    "email": "newEmail@com",
+    "username": "newUsername\n        ",
+    "password": "newPassword",
+    "profilePicture": "\n        ",
+    "follow": "",
+    "id": "pZbIvtW"
+    },
+    {
+    "email": "newEmail@com",
+    "username": "newUsername\n        ",
+    "password": "newPassword",
+    "profilePicture": "\n        ",
+    "follow": "",
+    "id": "5CfvsUZ"
+    },
+    {
+    "email": "newEmail@com",
+    "username": "newUsername\n        ",
+    "password": "newPassword",
+    "profilePicture": "\n        ",
+    "follow": "",
+    "id": "R7otKrx"
+    },
+    {
+    "email": "newEmail@com",
+    "username": "newUsername\n        ",
+    "password": "newPassword",
+    "profilePicture": "\n        ",
+    "follow": "",
+    "id": "FjYt8qL"
+    },
+    {
+    "email": "newEmail@com",
+    "username": "newUsername\n        ",
+    "password": "newPassword",
+    "profilePicture": "\n        ",
+    "follow": "",
+    "id": "Depjghj"
+    },
+    {
+    "email": "newEmail@com",
+    "username": "newUsername\n        ",
+    "password": "newPassword",
+    "profilePicture": "\n        ",
+    "follow": "",
+    "id": "HQU6xzd"
+    },
+    {
+    "email": "newEmail@com",
+    "username": "newUsername\n        ",
+    "password": "newPassword",
+    "profilePicture": "\n        ",
+    "follow": "",
+    "id": "2_0Pf6m"
+    },
+    {
+    "email": "newEmail@com",
+    "username": "newUsername\n        ",
+    "password": "newPassword",
+    "profilePicture": "\n        ",
+    "follow": "",
+    "id": "I1GrEIU"
+    },
+    {
+    "email": "newEmail@com",
+    "username": "newUsername\n        ",
+    "password": "newPassword",
+    "profilePicture": "\n        ",
+    "follow": "",
+    "id": "_7MYwI7"
+    },
+    {
+    "email": "newEmail@com",
+    "username": "newUsername\n        ",
+    "password": "newPassword",
+    "profilePicture": "\n        ",
+    "follow": "",
+    "id": "og6ou6_"
+    },
+    {
+    "email": "newEmail@com",
+    "username": "newUsername\n        ",
+    "password": "newPassword",
+    "profilePicture": "\n        ",
+    "follow": "",
+    "id": "aTv9q8C"
+    },
+    {
+    "email": "newEmail@com",
+    "username": "newUsername\n        ",
+    "password": "newPassword",
+    "profilePicture": "\n        ",
+    "follow": "",
+    "id": "mit2SjY"
+    },
+    {
+    "email": "newEmail@com",
+    "username": "newUsername\n        ",
+    "password": "newPassword",
+    "profilePicture": "\n        ",
+    "follow": "",
+    "id": "lhYraqu"
+    },
+    {
+    "email": "newEmail@com",
+    "username": "newUsername\n        ",
+    "password": "newPassword",
+    "profilePicture": "\n        ",
+    "follow": "",
+    "id": "e97UyjX"
+    },
+    {
+    "email": "newEmail@com",
+    "username": "newUsername\n        ",
+    "password": "newPassword",
+    "profilePicture": "\n        ",
+    "follow": "",
+    "id": "0r8_nsX"
+    },
+    {
+    "email": "newEmail@com",
+    "username": "newUsername\n        ",
+    "password": "newPassword",
+    "profilePicture": "\n        ",
+    "follow": "",
+    "id": "SHL6JXY"
+    },
+    {
+    "email": "newEmail@com",
+    "username": "newUsername\n        ",
+    "password": "newPassword",
+    "profilePicture": "\n        ",
+    "follow": "",
+    "id": "pPpsppS"
+    },
+    {
+    "email": "newEmail@com",
+    "username": "newUsername\n        ",
+    "password": "newPassword",
+    "profilePicture": "\n        ",
+    "follow": "",
+    "id": "minHuaq"
+    },
+    {
+    "email": "newEmail@com",
+    "username": "newUsername\n        ",
+    "password": "newPassword",
+    "profilePicture": "\n        ",
+    "follow": "",
+    "id": "GVXrPJb"
+    },
+    {
+    "email": "newEmail@com",
+    "username": "newUsername\n        ",
+    "password": "newPassword",
+    "profilePicture": "\n        ",
+    "follow": "",
+    "id": "NYRc59F"
+    },
+    {
+    "email": "newEmail@com",
+    "username": "newUsername\n        ",
+    "password": "newPassword",
+    "profilePicture": "\n        ",
+    "follow": "",
+    "id": "LEmf_wc"
+    },
+    {
+    "email": "newEmail@com",
+    "username": "newUsername\n        ",
+    "password": "newPassword",
+    "profilePicture": "\n        ",
+    "follow": "",
+    "id": "b0pTfKb"
+    },
+    {
+    "email": "newEmail@com",
+    "username": "newUsername\n        ",
+    "password": "newPassword",
+    "profilePicture": "\n        ",
+    "follow": "",
+    "id": "Nv4KP8-"
+    },
+    {
+    "email": "newEmail@com",
+    "username": "newUsername\n        ",
+    "password": "newPassword",
+    "profilePicture": "\n        ",
+    "follow": "",
+    "id": "m1H8cTw"
+    }
+]
