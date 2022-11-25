@@ -20,6 +20,8 @@ webapp.use(express.urlencoded({ extended: true }));
 // (7) import the db interactions module
 const dbLib = require('./dbFollow&Comments');
 
+const dbLibUser = require('./dbUser');
+
 /*
 // start the server and connect to the DB
 webapp.listen(port, async () => {
@@ -187,6 +189,9 @@ webapp.put('/comments/:id', async (req, res) => {
     res.status(404).json({ message: 'there was error' });
   }
 });
+
+
+
 
 
 // catch all endpoint

@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "lint": "eslint --ignore-pattern *.test.js --ignore-pattern *.test.jsx",
-    "start": "node dbCreateUser.js",
+    "start": "node index.js",
     "test": "jest --coverage --runInBand"
   },
   "keywords": [
