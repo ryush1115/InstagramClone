@@ -45,10 +45,7 @@
     justify-content: center;
     width: 50%;
     height: 100%;
-}
-
-.edit-image {
-    cursor: pointer;
+    margin-top: -10%;
 }
 
 .edit-image-instruction {
@@ -58,7 +55,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: left;
+    justify-content: space-evenly;
 }
 
 .edit-image-caption {
@@ -72,46 +69,20 @@
     margin-left: 1rem;
 }
 
-.tag-add-box {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100px;
-    width: 338px;
-    background-color: #F6F7FE;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
+.edit-image-instruction-icon {
+    padding: 0.5rem;
 }
 
-.tag-add-box-header {
+.add-tag-icon {
+    padding: 0.5rem;
+    cursor: pointer;
+}
+
+.edit-image-tags {
+    width: 100%;
     display: flex;
     flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    padding-right: 1rem;
-    padding-left: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
-.tag-add-box-input {
-    border: none;
-    background-color: #F6F7FE;
-    font-size: 20px;
-    padding-left: 1rem;
-}
-
-.tag-add-box-submit {
-    border: none;
-    font-size: 20px;
-    cursor: pointer;
-    background: none;
-}
-
-.tag-add-box-quit-button {
-    border: none;
-    background: none;
-    font-size: 15px;
-    cursor: pointer;
-}

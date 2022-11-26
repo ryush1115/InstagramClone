@@ -763,29 +763,20 @@
     {
       "username": "grp3foreva",
       "postImage": "http://loremflickr.com/640/481\n      ",
-      "postCaption": "amy2212",
+      "postCaption": "amy221",
       "publicPrivate": "false\n      ",
       "postTagOfOtherUsers": [
         {
-          "username": "Heath_Buckridge",
-          "picX": 300,
-          "picY": 185,
-          "xPos": 736,
-          "yPos": 454
+          "hashtag": "asdd",
+          "color": "red"
         },
         {
-          "picX": 378,
-          "picY": 135,
-          "xPos": 531,
-          "yPos": 404,
-          "username": "123"
+          "hashtag": "asdde",
+          "color": "blue"
         },
         {
-          "picX": 366,
-          "picY": 100,
-          "xPos": 802,
-          "yPos": 369,
-          "username": "123"
+          "hashtag": "asddef",
+          "color": "grey"
         }
       ],
       "postCommentArray": [
@@ -810,7 +801,7 @@
       "postImage": "http://loremflickr.com/640/480\n      ",
       "postCaption": "my second comment\n      ",
       "publicPrivate": "false\n      ",
-      "postTagOfOtherUsers": "undefined",
+      "postTagOfOtherUsers": [],
       "postCommentArray": [
         {
           "username": "Heath_Buckridge",
@@ -833,7 +824,7 @@
       "postImage": "http://loremflickr.com/640/480\n      ",
       "postCaption": "my omment \n      ",
       "publicPrivate": "false\n      ",
-      "postTagOfOtherUsers": "undefined",
+      "postTagOfOtherUsers": [],
       "postCommentArray": [
         {
           "username": "Heath_Buckridge",
@@ -854,9 +845,14 @@
     {
       "username": "grp3foreva",
       "postImage": "http://loremflickr.com/640/480\n      ",
-      "postCaption": "undefined\n      ",
+      "postCaption": "whaaaat      ",
       "publicPrivate": "false\n      ",
-      "postTagOfOtherUsers": "undefined",
+      "postTagOfOtherUsers": [
+        {
+          "hashtag": "#cutecat:)",
+          "color": "grey"
+        }
+      ],
       "postCommentArray": [
         {
           "username": "Heath_Buckridge",
@@ -879,7 +875,7 @@
       "postImage": "http://loremflickr.com/640/482\n      ",
       "postCaption": "amy1102\n      ",
       "publicPrivate": "false\n      ",
-      "postTagOfOtherUsers": "undefined",
+      "postTagOfOtherUsers": [],
       "postCommentArray": [
         {
           "username": "Heath_Buckridge",
@@ -902,7 +898,7 @@
       "postImage": "http://loremflickr.com/640/482\n      ",
       "postCaption": "amy0844\n      ",
       "publicPrivate": "false\n      ",
-      "postTagOfOtherUsers": "undefined",
+      "postTagOfOtherUsers": [],
       "postCommentArray": [
         {
           "username": "Heath_Buckridge",
@@ -925,7 +921,7 @@
       "postImage": "http://loremflickr.com/640/481\n      ",
       "postCaption": "test post\n      ",
       "publicPrivate": "false\n      ",
-      "postTagOfOtherUsers": "null",
+      "postTagOfOtherUsers": [],
       "postCommentArray": [
         {
           "username": "Heath_Buckridge",
@@ -948,7 +944,7 @@
       "postImage": "http://loremflickr.com/640/481\n      ",
       "postCaption": "undefined\n      ",
       "publicPrivate": "false\n      ",
-      "postTagOfOtherUsers": "null\n      ",
+      "postTagOfOtherUsers": [],
       "postCommentArray": [
         {
           "username": "Heath_Buckridge",
@@ -972,7 +968,7 @@
       "postImage": "http://loremflickr.com/640/480\n      ",
       "postCaption": "undefined\n      ",
       "publicPrivate": "false\n      ",
-      "postTagOfOtherUsers": "undefined",
+      "postTagOfOtherUsers": [],
       "postCommentArray": [
         {
           "username": "Heath_Buckridge",
@@ -995,7 +991,7 @@
       "postImage": "http://loremflickr.com/640/480\n      ",
       "postCaption": "undefined\n      ",
       "publicPrivate": "false\n      ",
-      "postTagOfOtherUsers": "undefined",
+      "postTagOfOtherUsers": [],
       "postCommentArray": [
         {
           "username": "Heath_Buckridge",
@@ -1018,7 +1014,7 @@
       "postImage": "http://loremflickr.com/640/480\n      ",
       "postCaption": "hellooooo\n      ",
       "publicPrivate": "false\n      ",
-      "postTagOfOtherUsers": "undefined",
+      "postTagOfOtherUsers": [],
       "postCommentArray": [
         {
           "username": "Heath_Buckridge",
@@ -1041,7 +1037,7 @@
       "postImage": "http://loremflickr.com/640/480\n      ",
       "postCaption": "undefined\n      ",
       "publicPrivate": "false\n      ",
-      "postTagOfOtherUsers": "undefined",
+      "postTagOfOtherUsers": [],
       "postCommentArray": [
         {
           "username": "Heath_Buckridge",
@@ -1064,7 +1060,7 @@
       "postImage": "http://loremflickr.com/640/480\n      ",
       "postCaption": "undefined\n      ",
       "publicPrivate": "false\n      ",
-      "postTagOfOtherUsers": "undefined",
+      "postTagOfOtherUsers": [],
       "postCommentArray": [
         {
           "username": "Heath_Buckridge",
@@ -1087,7 +1083,7 @@
       "postImage": "http://loremflickr.com/640/480\n      ",
       "postCaption": "undefined\n      ",
       "publicPrivate": "false\n      ",
-      "postTagOfOtherUsers": "undefined",
+      "postTagOfOtherUsers": [],
       "postCommentArray": [
         {
           "username": "Heath_Buckridge",
@@ -1110,7 +1106,7 @@
       "postImage": "http://loremflickr.com/640/480\n      ",
       "postCaption": "undefined\n      ",
       "publicPrivate": "false\n      ",
-      "postTagOfOtherUsers": "undefined",
+      "postTagOfOtherUsers": [],
       "postCommentArray": [
         {
           "username": "Heath_Buckridge",
@@ -1133,7 +1129,7 @@
       "postImage": "http://loremflickr.com/640/480\n      ",
       "postCaption": "undefined\n      ",
       "publicPrivate": "false\n      ",
-      "postTagOfOtherUsers": "undefined",
+      "postTagOfOtherUsers": [],
       "postCommentArray": [
         {
           "username": "Heath_Buckridge",
@@ -1158,7 +1154,7 @@
       "postImage": "http://loremflickr.com/640/480\n      ",
       "postCaption": "undefined\n      ",
       "publicPrivate": "false\n      ",
-      "postTagOfOtherUsers": "undefined",
+      "postTagOfOtherUsers": [],
       "postCommentArray": [
         {
           "username": "Heath_Buckridge",
