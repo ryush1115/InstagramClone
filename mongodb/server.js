@@ -20,6 +20,7 @@ webapp.use(express.urlencoded({ extended: true }));
 // (7) import the db interactions module
 const dbLib = require('./dbFollow&Comments');
 const dbLibPost = require('./dbPost');
+const dbLibLike = require('./dbLike');
 
 /*
 // start the server and connect to the DB
@@ -183,6 +184,108 @@ webapp.put('/comments/:id', async (req, res) => {
   try {
     const result = await dbLib.updateComment(req.body.message, req.params.id);
     // send the response with the appropriate status code
+    res.status(200).json({ message: result });
+  } catch (err) {
+    res.status(404).json({ message: 'there was error' });
+  }
+});
+
+// implement the GET in /posts endpoint
+webapp.get('/post', async (req, res) => {
+  console.log('READ all posts');
+  try {
+    // get the data from the db
+    const results = await dbLibPost.getPosts();
+    // send the response with the appropriate status code
+    // console.log(results.username);
+    
+    console.log(`All posts: ${JSON.stringify(results)}`);
+    res.status(200).json({ data: results });
+  } catch (err) {
+    res.status(404).json({ message: 'there was error' });
+  }
+});
+
+webapp.get('/post/:id', async (req, res) => {
+  console.log('READ the post by postId');
+  try {
+    // get the data from the db
+    const results = await dbLibPost.getPost(req.params.id);
+    // send the response with the appropriate status code
+    if (results === undefined) {
+      res.status(404).json({ error: 'unknown post' });
+      return;
+    }
+    res.status(200).json({ data: results });
+  } catch (err) {
+    res.status(404).json({ message: 'there was error' });
+  }
+});
+
+
+webapp.get('/userposts', async (req, res) => {
+  console.log('READ user posts');
+  try {
+    // get the data from the db
+    const results = await dbLibPost.getUserPosts(req.body.username);
+    console.log(req.body.username);
+    // send the response with the appropriate status code
+    // console.log(results.username);
+    
+    // console.log(`All posts: ${JSON.stringify(results)}`);
+    res.status(200).json({ data: results });
+  } catch (err) {
+    res.status(404).json({ message: 'there was error' });
+  }
+});
+
+// implement the GET in /posts endpoint
+webapp.get('/users', async (req, res) => {
+  console.log('READ all users');
+  try {
+    // get the data from the db
+    const results = await dbLibPost.getUsers();
+    // send the response with the appropriate status code
+    // console.log(results.username);
+    
+    console.log(`All posts: ${JSON.stringify(results)}`);
+    res.status(200).json({ data: results });
+  } catch (err) {
+    res.status(404).json({ message: 'there was error' });
+  }
+});
+
+webapp.get('/friendsuggestion', async (req, res) => {
+  console.log('READ all friend suggestions');
+  try {
+    // get the data from the db
+    const results = await dbLibPost.getSuggestionList();
+    // send the response with the appropriate status code
+    // console.log(results.username);
+    
+    console.log(`All friend suggestions: ${JSON.stringify(results)}`);
+    res.status(200).json({ data: results });
+  } catch (err) {
+    res.status(404).json({ message: 'there was error' });
+  }
+});
+
+// update the like array in post endpoint
+webapp.put('/postlike', async (req, res) => {
+  console.log('UPDATE the like array');
+  try {
+    result = await dbLibLike.incrementPostLike(req.body.PostId);
+    res.status(200).json({ message: result });
+  } catch (err) {
+    res.status(404).json({ message: 'there was error' });
+  }
+});
+
+// update the like array in post endpoint
+webapp.delete('/postlike', async (req, res) => {
+  console.log('Delete a like from the like array');
+  try {
+    result = await dbLibLike.cancelPostLike(req.body.PostId);
     res.status(200).json({ message: result });
   } catch (err) {
     res.status(404).json({ message: 'there was error' });
