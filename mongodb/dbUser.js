@@ -38,6 +38,13 @@ const getDB = async () => {
   return MongoConnection.db();
 };
 
+/**
+ * Close the mongodb connection
+ */
+ const closeMongoDBConnection = async () => {
+  await MongoConnection.close();
+};
+
 // create a new user
 // add a user to the database
 
@@ -69,7 +76,7 @@ const getAllUsers = async () => {
 const getUser = async (userID) => {
   try {
     const db = await getDB();
-    const result = await db.collection('User').findOne({ "_id": ObjectId(userID)});
+    const result = await db.collection('User').findOne({ _id: ObjectId(userID)});
     // print result
     console.log(`Student: ${JSON.stringify(result)}`);
   } catch (err) {
@@ -78,7 +85,7 @@ const getUser = async (userID) => {
 };
 
 // Update user records
-const updateUser = async(userID, newPassword) => {
+const updateUser = async (userID, newPassword) => {
   try {
     const db = await getDB();
     const result = await db.collection('User').updateOne(
@@ -92,17 +99,17 @@ const updateUser = async(userID, newPassword) => {
   }
 };
 
-const deleteUser = async (userID) => {
-  try {
-    const db = await getDB();
-    const result = await db.collection('user').deleteOne(
-      { _id: ObjectId(userID) },
-    );
-    console.log(`Deleted User: ${JSON.stringify(result)}`);
-  } catch (err) {
-    console.log(`error: ${err.message} `);
-  }
-}
+// const deleteUser = async (userID) => {
+//   try {
+//     const db = await getDB();
+//     const result = await db.collection('user').deleteOne(
+//       { _id: ObjectId(userID) },
+//     );
+//     console.log(`Deleted User: ${JSON.stringify(result)}`);
+//   } catch (err) {
+//     console.log(`error: ${err.message} `);
+//   }
+// }
 
 // Test part: use main function to test
 
@@ -141,5 +148,7 @@ main();
 */
 
 module.exports = {
-  connect, getDB, createUser, getAllUsers, getUser, updateUser, deleteUser,
+  //closeMongoDBConnection, connect, getDB, createUser, getAllUsers, getUser, updateUser, deleteUser,
+  closeMongoDBConnection, connect, getDB, createUser, getAllUsers, getUser, updateUser, 
+
 };

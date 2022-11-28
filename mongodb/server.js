@@ -133,7 +133,7 @@ webapp.post('/comments', async (req, res) => {
     return;
   }
   try {
-    // create the new student
+    // create the new comment
     const newComment = {
       username: req.body.username,
       message: req.body.message,
@@ -190,9 +190,31 @@ webapp.put('/comments/:id', async (req, res) => {
   }
 });
 
-
-
-
+// implement the create User endpoint
+webapp.post('/users', async (req, res) => {
+  // parse the body of the request
+  // eslint-disable-next-line max-len
+  if (!req.body.email || !req.body.username || !req.body.password || !req.body.profilePicture || !req.body.follow || !req.body.id) {
+    res.status(404).json({ message: 'missing email, username, password, profilePicture, follow or id' });
+    return;
+  }
+  try {
+    // create new user
+    const newUser = {
+      email: req.body.email,
+      username: req.body.username,
+      password: req.body.password,
+      profilePicture: req.body.profilePicture,
+      follow: req.body.follow,
+      id: req.body.id,
+    };
+    const result = await dbLibUser.createUser(newUser);
+    // send the response with the appropriate status code
+    res.status(201).json({ data: { id: result, ...newUser } });
+  } catch (err) {
+    res.status(409).json({ message: 'there was error' });
+  }
+});
 
 // catch all endpoint
 webapp.use((req, resp) => {
