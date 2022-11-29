@@ -20,6 +20,7 @@ webapp.use(express.urlencoded({ extended: true }));
 // (7) import the db interactions module
 const dbLib = require('./dbFollow&Comments');
 
+// import the db interactions modules
 const dbLibUser = require('./dbUser');
 
 /*
@@ -190,9 +191,10 @@ webapp.put('/comments/:id', async (req, res) => {
   }
 });
 
-// implement the create User endpoint
-webapp.post('/users', async (req, res) => {
-  // parse the body of the request
+// implement the POST User endpoint
+webapp.post('/user/', async (req, res) => {
+  console.log('CREATE a user');
+  // parse the body of the request to make surea all fields are present
   // eslint-disable-next-line max-len
   if (!req.body.email || !req.body.username || !req.body.password || !req.body.profilePicture || !req.body.follow || !req.body.id) {
     res.status(404).json({ message: 'missing email, username, password, profilePicture, follow or id' });
@@ -213,6 +215,63 @@ webapp.post('/users', async (req, res) => {
     res.status(201).json({ data: { id: result, ...newUser } });
   } catch (err) {
     res.status(409).json({ message: 'there was error' });
+  }
+});
+
+// implement the DELETE User endpoint
+webapp.delete('/user/:id', async (req, res) => {
+  console.log('DELETE a user');
+  // parse the body of the request to make surea all fields are present
+  // eslint-disable-next-line max-len
+
+  try {
+    const result = await dbLibUser.deleteUser(req.params.id);
+    // send the response with the appropriate status code
+    res.status(200).json({ messsage: result });
+  } catch (err) {
+    res.status(404).json({ message: 'there was an error' });
+  }
+});
+
+// implement the UPDATE User endpoint password
+webapp.put('/user/:id', async (req, res) => {
+  console.log('Update a user');
+  // parse the body of the request to make surea all fields are present
+  if (!req.body.password ) {
+    res.status(404).json({ message: 'missing password' });
+    return;
+  }
+  // eslint-disable-next-line max-len
+
+  try {
+    const result = await dbLibUser.updateUser(req.params.id, req.body.password);
+    // send the response with the appropriate status code
+    res.status(200).json({ messsage: result });
+  } catch (err) {
+    res.status(404).json({ message: 'there was an error' });
+  }
+});
+
+
+// implement the GET Users endpoint
+webapp.get('/users', async ( req, res ) => {
+  console.log('READ all students');
+  try {
+    const result = await dbLibUser.getAllUsers();
+    res.status(200).json({ data: result });
+  } catch (err) {
+    res.status(404).json({ message: 'there was an error' });
+  }
+});
+
+// implement the GET a User endpoint
+webapp.get('/user/:id', async ( req, res ) => {
+  console.log('GET a student');
+  try {
+    const result = await dbLibUser.getUser(req.params.id);
+    res.status(200).json({ data: result });
+  } catch (err) {
+    res.status(404).json({ message: 'invalid user id' });
   }
 });
 

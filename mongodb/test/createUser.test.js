@@ -1,9 +1,9 @@
-//createUser.test.js
+// createUser.test.js
 
 const request = require('supertest');
 // Import MongoDB module
-const { ObjectId } = require('mongodb');
-const { closeMongoDBConnection, connect} = require('../dbUser');
+// const { ObjectId } = require('mongodb');
+const { closeMongoDBConnection, connect } = require('../dbUser');
 
 // import the express server
 const webapp = require('../server');
@@ -12,20 +12,22 @@ const webapp = require('../server');
 let mongo;
 
 describe('POST enpoint tests', () => {
-  let db;
+  let db; // the db
   let response;
-
+  /**
+  *  we need to connect to the db
+  */
   beforeAll(async () => {
     // connect to the db
     mongo = await connect();
     // get the db
     db = mongo.db();
     // send the request to the API and collect the response
-    response = await request(webapp).post('/users')
+    response = await request(webapp).post('/user')
       .send('email=testemail&username=testusername&password=testpassword&profilePicture=null&follow=null&id=testid');
   });
 
-  /**
+/**
  * removes all testing data from the DB
  */
   const clearDatabase = async () => {
@@ -65,7 +67,7 @@ describe('POST enpoint tests', () => {
  */
   test('the new user is returned', () => {
     const testUser = {
-      email: 'testemail', username: 'testusername', password: 'testpassword', profilePicture: 'null', follow: 'null', id:'testid',
+      email: 'testemail', username: 'testusername', password: 'testpassword', profilePicture: 'null', follow: 'null', id: 'testid',
     };
     expect(JSON.parse(response.text).data).toMatchObject(testUser); // status code
   });
@@ -76,7 +78,7 @@ describe('POST enpoint tests', () => {
   });
 
   test('missing a field (email) 404', async () => {
-    const res = await request(webapp).post('/users')
+    const res = await request(webapp).post('/user')
       .send('username=testuser&message=cis');
     expect(res.status).toEqual(404);
   });

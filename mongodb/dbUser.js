@@ -9,7 +9,15 @@ const { ObjectId } = require('mongodb');
 // the mongodb server URL
 const dbURL = 'mongodb+srv://Junwei:cis557group3@cluster0.p2tpbsw.mongodb.net/SocialNetwork?retryWrites=true&w=majority';
 
+/**
+ * MongoDB database connection
+ * it will be exported so we can close the connection 
+ * after running the tests
+ */
+
 let MongoConnection;
+
+
 // connection to the db
 const connect = async () => {
   // always use try/catch to handle any exception
@@ -54,6 +62,7 @@ const createUser = async (newUser) => {
     const db = await getDB();
     const result = await db.collection('User').insertOne(newUser);
     console.log(`New User created with id: ${result.insertedId}`);
+    // return the result
     return result.insertedId;
   } catch (err) {
     console.log(`error: ${err.message}`);
@@ -67,6 +76,7 @@ const getAllUsers = async () => {
     const result = await db.collection('User').find({}).toArray(); // no filtering
     // print the results
     console.log(`Users: ${JSON.stringify(result)}`);
+    return result;
   } catch (err) {
     console.log(`error: ${err.message}`);
 }
@@ -76,15 +86,16 @@ const getAllUsers = async () => {
 const getUser = async (userID) => {
   try {
     const db = await getDB();
-    const result = await db.collection('User').findOne({ _id: ObjectId(userID)});
+    const result = await db.collection('User').findOne({ _id: ObjectId(userID) });
     // print result
     console.log(`Student: ${JSON.stringify(result)}`);
+    return result;
   } catch (err) {
     console.log(`error: ${err.message}`);
   }
 };
 
-// Update user records
+// Update user password
 const updateUser = async (userID, newPassword) => {
   try {
     const db = await getDB();
@@ -94,35 +105,38 @@ const updateUser = async (userID, newPassword) => {
     );
     // print the result
     console.log(`User: ${JSON.stringify(result)}`);
+    return result;
   } catch (err) {
     console.log(`error: ${err.message}`);
   }
 };
 
-// const deleteUser = async (userID) => {
-//   try {
-//     const db = await getDB();
-//     const result = await db.collection('user').deleteOne(
-//       { _id: ObjectId(userID) },
-//     );
-//     console.log(`Deleted User: ${JSON.stringify(result)}`);
-//   } catch (err) {
-//     console.log(`error: ${err.message} `);
-//   }
-// }
+const deleteUser = async (userID) => {
+  try {
+    const db = await getDB();
+    const result = await db.collection('User').deleteOne(
+      { _id: ObjectId(userID) },
+    );
+    console.log(`Deleted User: ${JSON.stringify(result)}`);
+    return result;
+  } catch (err) {
+    console.log(`error: ${err.message} `);
+  }
+};
 
 // Test part: use main function to test
 
 // main function to execute our code
 
-/** 
+/*
 const main = async () => {
   const conn = await connect();
   //await createUser( { email: 'rachel', username: 'rachel', password: '1234567777', profilePicture:"", follow: [], id:'1235' });
   //await getAllUsers();
   await getUser('637fc5f683768e86f5852c1c');
-  await updateUser('637fc5f683768e86f5852c1c', '123456789NewPW');
+  await updateUser('637fc5f683768e86f5852c1c', 'NewPW');
   await getUser('637fc5f683768e86f5852c1c');
+  await updateUser('637fc5f683768e86f5852c1c', 'OLDPW');
   //await deleteUser('637aaadf3f3f430d2ce0ac9f');
 //   followUser(conn, "testUser1");
 //   unfollowUser(conn, "testUser1");
@@ -148,7 +162,6 @@ main();
 */
 
 module.exports = {
-  //closeMongoDBConnection, connect, getDB, createUser, getAllUsers, getUser, updateUser, deleteUser,
-  closeMongoDBConnection, connect, getDB, createUser, getAllUsers, getUser, updateUser, 
-
+  closeMongoDBConnection, connect, getDB, createUser, getAllUsers, getUser, updateUser, deleteUser,
+  // closeMongoDBConnection, connect, getDB, createUser, getAllUsers, getUser, updateUser,
 };

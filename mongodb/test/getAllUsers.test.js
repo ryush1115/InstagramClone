@@ -12,7 +12,7 @@ const webapp = require('../server');
 let mongo;
 
 // TEST POST ENDPOINT
-describe('GET "/user/:id" endpoint integration test', () => {
+describe('GET "/users" endpoint integration test', () => {
 
   /**
    * If you get an error with afterEach
@@ -20,8 +20,8 @@ describe('GET "/user/:id" endpoint integration test', () => {
    * "env" key add -'jest': true-
    */
   let db;
-  let testID;
-  let testMessage;
+  let testUserID;
+  const testUser = { email: 'testemail', username: 'testusername', password: 'testpassword', profilePicture: 'null', follow: 'null', id: 'testid' };
 // test resource to create / expected response
 
 
@@ -32,25 +32,26 @@ describe('GET "/user/:id" endpoint integration test', () => {
  */
   beforeAll(async() => {
     mongo = await connect();
-  db = mongo.db();
-  const res = await request(webapp).post('/users')
-    .send('email=testemail&username=testusername&password=testpassword&profilePicture=null&follow=null&id=testid');
+    db = mongo.db();
+    const res = await request(webapp).post('/user')
+      .send('email=testemail&username=testusername&password=testpassword&profilePicture=null&follow=null&id=testid');
     // eslint-disable-next-line no-underscore-dangle
-  testID = JSON.parse(res.text).data._id;
-  testEmail = JSON.parse(res.text).data.email;
+    //testID = JSON.parse(res.text).data._id;
+    // eslint-disable-next-line no-underscore-dangle
+    testUserID = JSON.parse(res.text).data._id;
   });
 
    /**
  * removes all testing data from the DB
  */
-    const clearDatabase = async () => {
-        try {
-          const result = await db.collection('User').deleteOne({ username: 'testusername' });
-          console.log('result', result);
-        } catch (err) {
-          console.log('error', err.message);
-        }
-      };
+  const clearDatabase = async () => {
+    try {
+      const result = await db.collection('User').deleteOne({ username: 'testusername' });
+      console.log('result', result);
+    } catch (err) {
+      console.log('error', err.message);
+    }
+  };
 
 
   /**
@@ -69,18 +70,12 @@ describe('GET "/user/:id" endpoint integration test', () => {
   });
 
   test('Get a user endpoint status code and data', async () => {
-    const resp = await request(webapp).get(`/users/${testID}`);
-    //expect(resp.status).toEqual(200);
-    expect(resp.status).toEqual(404);
+    const resp = await request(webapp).get('/users');
+    expect(resp.status).toEqual(200);
+    //expect(resp.status).toEqual(404);
 
-    const userEmail = JSON.parse(resp.text).data;
+    const userArray = JSON.parse(resp.text).data;
     // testStudent is in the response
-    expect(userEmail).toBeUndefined();
-  });
-
-  test('user not in db status code 404', async () => {
-    const resp = await request(webapp).get('/users/1');
-    expect(resp.status).toEqual(404);
-    expect(resp.type).toBe('application/json');
+    expect(userArray).toEqual(expect.arrayContaining([{ _id: testUserID, ...testUser }]));
   });
 });
