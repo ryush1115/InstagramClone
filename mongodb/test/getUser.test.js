@@ -77,7 +77,7 @@ describe('GET "/user/:id" endpoint integration test', () => {
   });
 
   test('user not in db status code 404', async () => {
-    const resp = await request(webapp).get('/userss/1');
+    const resp = await request(webapp).get('/users/1');
     expect(resp.status).toEqual(404);
     expect(resp.type).toBe('application/json');
   });
