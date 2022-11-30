@@ -9,19 +9,6 @@ const rootURL = 'http://localhost:8080'
 
 
 // Sends a Get request to the endpoint
-// returns all the Users
-// export const getUsers = async () => {
-//   try{
-//     const response = await axios.get(`${rootURL}/User`);
-//     return response.data;
-//     // data is stored in the data
-//     // field of the response
-//   } catch (err) {
-//     console.error(err);
-//   }
-// };
-
-// Sends a Get request to the endpoint
 // returns all the Posts
 export const getPosts = async () => {
   try{
@@ -50,13 +37,10 @@ export const getUsers = async () => {
   try{
     const response = await axios.get(`${rootURL}/users`);
     return response.data.data;
-    // data is stored in the data 
-    // field of the response
   }catch (err) {
     console.error(err);
   }
 }
-
 
 // Takes the id of a User as input
 // and sends a Get request to the /User: id endpoint
@@ -74,8 +58,8 @@ export const getUser = async(userId) => {
 // the postCommentsArray attached to it
 export const getCommentsArray = async(PostId) => {
   try {
-    const response = await axios.get (`${rootURL}/Post/${PostId}`);
-    return response.data.data.postCommentsArray;
+    const response = await axios.get (`${rootURL}/activity-feed/${PostId}/comment`);
+    return response.data.data;
 
   } catch (err) {
     console.error(err);
@@ -316,24 +300,32 @@ export const deletePost = async(PostId) => {
   }
 }
 
+// THIS IS NOT WORKING
 // Increment a Like
 export const incrementPostLike = async(PostId) => {
+ console.log("running increment post like");
+ console.log("POSTID IS " + PostId);
+  
   try {
-    const post = await getPost(PostId);
-
-    const user1 = await axios.get(`${rootURL}/User1`);
-    const me = user1.data.data[0];
-
-    post.like.push(me.id);
-    
-    const response = await axios.put(`${rootURL}/Post/${PostId}`,post);
+    const response = await axios.put(`${rootURL}/postlike`, PostId);
     return response.data.data;
-
   } catch (err) {
-    console.error(err)
+    console.log("hitting error");
+    console.error(err);
   }
 }
 
+// THIS IS NOT WORKING
+// Cancel a Like
+export const cancelPostLike = async(PostId) => {
+  console.log("running cancel post like");
+   try {
+     const response = await axios.delete(`${rootURL}/postlike`,PostId);
+     return response.data.data;
+   } catch (err) {
+     console.error(err);
+   }
+ }
 
 export const getUserPosts = async (username) => {
   console.log(username);
@@ -355,27 +347,6 @@ export const getUserPosts = async (username) => {
   }
 }
 
-// Cancel post like
-export const cancelPostLike = async(PostId) => {
-  try {
-    const post = await getPost(PostId);
-
-    const user1 = await axios.get(`${rootURL}/User1`);
-    const me = user1.data.data[0];
-
-    for(let i = 0; i < post.like.length; i++){
-      if(post.like[i] === me.id){
-        post.like.splice(i,1);
-        const response = await axios.put(`${rootURL}/Post/${PostId}`,post);
-        return response.data.data;
-      }
-    }
-    return -1;
-
-  } catch (err) {
-    console.error(err)
-  }
-}
 
 export const isMyLikePost = async(PostId) => {
   try {

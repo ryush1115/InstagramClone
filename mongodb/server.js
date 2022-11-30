@@ -51,6 +51,18 @@ webapp.get('/followinglist', async (req, res) => {
   }
 });
 
+webapp.get('/commonfollowings', async (req, res) => {
+  console.log('Get if has common followings');
+  try {
+    // get the data from the db
+    const results = await dbLibPost.hasCommonFollowings(req.body.user);
+    // send the response with the appropriate status code
+    res.status(200).json({ data: results });
+  } catch (err) {
+    res.status(404).json({ message: 'there was error' });
+  }
+});
+
 // update the follow list in /followinglist endpoint
 webapp.put('/followinglist', async (req, res) => {
   console.log('UPDATE the follow list');
@@ -375,7 +387,7 @@ webapp.put('/user/:id', async (req, res) => {
 
 
 // implement the GET Users endpoint
-webapp.get('/users', async ( req, res ) => {
+webapp.get('/allusers', async ( req, res ) => {
   console.log('READ all students');
   try {
     const result = await dbLibUser.getAllUsers();

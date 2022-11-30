@@ -10,10 +10,19 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import React from 'react';
 
 // import { enableFetchMocks } from 'jest-fetch-mock';
-import {getUser, getPosts, getPost, getPassword,
+import {getUsers, getUser, getPosts, getPost, getPassword,
   getCommentMessage, getMyFollowings, getSuggestionList,
 createPost, createUser, getCommentsArray, isMyFollowing, 
-cancelFollowing, following, deletePost, cancelPostLike, isMyLikePost, createCommentInPost, hasCommonFollowings,updateComment} from '.././api/mock_api';
+cancelFollowing, following, deletePost, cancelPostLike,
+postLike, incrementPostLike, createComment, getUserPosts,
+isMyLikePost, createCommentInPost, hasCommonFollowings,updateComment} from '.././api/mock_api';
+
+
+// we good
+test('#getUsers() using async/await', async () => {
+  const data = await getUsers()
+  expect(data).toBeDefined()
+})
 
 // we good
 test('#getUser() using async/await', async () => {
@@ -33,11 +42,11 @@ test('#getPost() using async/await', async () => {
   expect(data).toBeDefined()
 })
 
-// not working
-// test('#getCommentMessage() using async/await', async () => {
-//   const data = await getCommentMessage("637aab0cbbb5ce45b921c58d")
-//   expect(data).toBeDefined()
-// })
+// we good
+test('#getCommentArray() using async/await', async () => {
+  const data = await getCommentsArray("637aaaf308e936a0c97e4a31")
+  expect(data).toBeDefined()
+})
 
 // we good
 test('#getMyFollowings() using async/await', async () => {
@@ -60,7 +69,7 @@ test('#createNewUser() using async/await', async () => {
   expect(newStoredUser).toBeDefined()
 })
 
-// we good
+// LOOK INTO THIS
 test('#createNewPost() using async/await', async () => {
   const newPost = { username: "newUsername", postImage: "newPostImage", postComment: "newPostComment", publicPrivate: false, postTagOfOtherUsers: null, id: 10, like :[] };
   // send POST request to create new User
@@ -77,9 +86,15 @@ test("Should return null when pw not found", async()=> {
 })
 
 // we good
-// // test Get Password
-test("Should return null when pw not found", async()=> {
+// // test create comment in post
+test("Should return null when create comment in post not found", async()=> {
   const result = await createCommentInPost(-99);
+  expect(result).toBeUndefined();
+})
+
+// // test create comment 
+test("Should return null when create comment  not found", async()=> {
+  const result = await createComment(-99);
   expect(result).toBeUndefined();
 })
 
@@ -138,6 +153,20 @@ test("Should return null when delete post id not found", async()=> {
   expect(result).toBeUndefined();
 })
 
+// this is not working
+// test post like
+// test("Should post a like", async()=> {
+//   const incrementedLike = await incrementPostLike("637aaaf308e936a0c97e4a31");
+//   expect(incrementedLike).toBeDefined()
+// })  
+
+// this is not working
+// test post like
+// test("Should cancel a like", async()=> {
+//   const canceledLike = await cancelPostLike("637aaaf308e936a0c97e4a31");
+//   expect(canceledLike).toBeDefined()
+// })  
+
 // we good
 // // test cancel Post Like
 test("Should return null when cancel post like not found", async()=> {
@@ -157,4 +186,19 @@ test("Should return null when isMyLikePost not found", async()=> {
 test("Should return null when updateComment not found", async()=> {
   const result = await updateComment(-99);
   expect(result).toBeUndefined();
+})
+
+test("Should return null when postlike not found", async()=> {
+  const result = await incrementPostLike(-99);
+  expect(result).toBeUndefined();
+})
+
+test("Should return null when cancelpostlike not found", async()=> {
+  const result = await cancelPostLike(-99);
+  expect(result).toBeUndefined();
+})
+
+test("Should return empty list for getUserPosts", async()=> {
+  const result = await getUserPosts(-99);
+  expect(result).toEqual([]);
 })

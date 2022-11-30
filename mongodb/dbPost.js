@@ -1,4 +1,4 @@
-const {connect } = require('./dbFollow&Comments');
+const {connect, isMyFollowing } = require('./dbFollow&Comments');
 const webapp = require('./server');
 const { ObjectId} = require('mongodb');
 
@@ -61,6 +61,11 @@ const getPost = async (PostId) => {
   
   
   const hasCommonFollowings = async (user) => {
+    console.log("Running has common followings");
+    console.log("User follow list is " + user.follow);
+    if(typeof(user.follow) == "undefined") {
+      return false;
+    }
     const userFollowList = user.follow;
     let commonCount = 0;
     for(let i = 0; i < userFollowList.length; i++){
@@ -106,5 +111,6 @@ const getPost = async (PostId) => {
     getPost,
     getUserPosts,
     getUsers,
-    getSuggestionList
+    getSuggestionList,
+    hasCommonFollowings
   };
