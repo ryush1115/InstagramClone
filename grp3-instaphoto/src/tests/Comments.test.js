@@ -11,7 +11,7 @@ import { render, screen, fireEvent } from '@testing-library/react';
 // import renderer from 'react-test-renderer';
 import React from 'react';
 
-import Comments from '.././components/Comments';
+import Comments from '.././components/ActivityFeed/activityfeed-components/Comments';
 
 // import Userpic from './components/test'
 import { Router } from "react-router";

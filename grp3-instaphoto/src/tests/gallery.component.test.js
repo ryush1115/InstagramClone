@@ -8,8 +8,7 @@ import { render, screen, fireEvent } from '@testing-library/react';
 // import FormTest from "./Form-Test"
 // import renderer from 'react-test-renderer';
 import React from 'react';
-import GalleryWrapper from '.././components/gallery.wrapper'
-import Gallery from '.././components/gallery.component'
+import GalleryWrapper from '.././components/UserProfile/user-profile-components/userprofile'
 
 // import Userpic from './components/test'
 import { Router } from "react-router";

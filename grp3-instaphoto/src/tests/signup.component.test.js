@@ -8,7 +8,7 @@ import { render, screen, fireEvent } from '@testing-library/react';
 // import FormTest from "./Form-Test"
 // import renderer from 'react-test-renderer';
 import React from 'react';
-import SignUp from '.././components/signup.component'
+import SignUp from '.././components/Login_Signup/signup.component'
 
 import { Router } from "react-router";
 import { createMemoryHistory } from 'history';

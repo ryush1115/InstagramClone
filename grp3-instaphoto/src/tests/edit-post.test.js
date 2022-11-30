@@ -12,7 +12,7 @@ import React from 'react';
 import { Router } from "react-router";
 import { createBrowserHistory } from 'history';
 
-import EditPost from "../components-2/edit-post/edit-post";
+import EditPost from "../components/EditPost/edit-post/edit-post";
 import {BrowserRouter} from "react-router-dom";
 
 test('image is loaded', async () => {

@@ -11,7 +11,7 @@ import { getByLabelText, within } from '@testing-library/dom'
 // import renderer from 'react-test-renderer';
 import React from 'react';
 
-import ActivityFeed from '.././components/activityfeed.component'
+import ActivityFeed from '.././components/ActivityFeed/activityfeed.component'
 
 // import Userpic from './components/test'
 import { Router } from "react-router";
