@@ -39,7 +39,7 @@ export const getPosts = async () => {
 // returns the attributes of the Post
 export const getPost = async(PostId) => {
   try {
-    const response = await axios.get(`${rootURL}/Post/${PostId}`);
+    const response = await axios.get(`${rootURL}/post/${PostId}`);
     return response.data.data;
   } catch (err) {
     console.error(err);
@@ -86,7 +86,7 @@ export const getCommentsArray = async(PostId) => {
 // returns the message of the comment
 export const getCommentMessage = async(CommentId) => {
   try {
-    const response = await axios.get(`${rootURL}/Comment/${CommentId}`);
+    const response = await axios.get(`${rootURL}/comments/${CommentId}`);
     return response.data.data.message;
   } catch (err) {
     console.error(err)
@@ -151,14 +151,14 @@ export const createPost = async (PostObject) => {
 export const createUser = async (UserObject) => {
   try {
     const response = await axios.post(
-        `${rootURL}/User`,
+        `${rootURL}/user`,
         `email=${UserObject.email}&username=${UserObject.username}
         &password=${UserObject.password}&profilePicture=${UserObject.profilePicture}
-        &follow=${UserObject.follow}`
+        &follow=${UserObject.follow}&id=${UserObject.id}`
     );
     console.log(`email=${UserObject.email}&username=${UserObject.username}
       &password=${UserObject.password}&profilePicture=${UserObject.profilePicture}
-      &follow=${UserObject.follow}`);
+      &follow=${UserObject.follow}&id=${UserObject.id}`);
       return response.data.data;
       // return the data with the id of the user
   } catch (err) {
@@ -168,15 +168,11 @@ export const createUser = async (UserObject) => {
 
 export const getMyFollowings = async () => {
   try {
-    const response = await axios.get(`${rootURL}/User1`);
-    const me = response.data.data[0];
-    // console.log(me.follow);
-    return me.follow;
-    // the data is stored in the mockData
-    // field of the response
+    const response = await axios.get(`${rootURL}/followinglist`);
+    return response.data.data;
   } catch (err) {
     console.error(err);
-  } 
+  }
 };
 
 export const following = async (followingName) => {
@@ -240,38 +236,20 @@ export const isMyFollowing = async (username) => {
 
 export const getSuggestionList= async () => {
   try {
-   
-    const users = await getUsers();
-    const suggestionList = [];
-    
-    for(let i = 0; i < users.length; i++){
-      const isAlreadyFollow = await isMyFollowing(users[i].username);
-      if(!isAlreadyFollow && hasCommonFollowings(users[i])){
-          suggestionList.push(users[i].username);
-      }
-    }
-    
-    return suggestionList;
+    const response = await axios.get(`${rootURL}/friendsuggestion`);
+    return response.data.data;
   } catch (err) {
+    console.error(err);
   }
 };
 
-export const hasCommonFollowings = (user) => {
-     
-  const userFollowList = user.follow;
-    let commonCount = 0;
-    for(let i = 0; i < userFollowList.length; i++){
-      let isFollowedByMe = isMyFollowing(userFollowList[i]);
-      if(isFollowedByMe)
-          commonCount++;
-    }
-    if(commonCount >= 3){
-        console.log(commonCount);
-        return true;
-    }
-    else{
-      return false;
-    }
+export const hasCommonFollowings = async(user) => {
+  try {
+    const response = await axios.get(`${rootURL}/commonfollowings`,`user=${user}`);
+    return response.data.data;
+  } catch (err) {
+    console.error(err);
+  }
 }
 // Create a Comment (without the Id) as input
 // and sends a POST request to the /Comment endpoint
