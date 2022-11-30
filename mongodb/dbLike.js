@@ -1,6 +1,7 @@
 const {connect } = require('./dbFollow&Comments');
 const webapp = require('./server');
 const { ObjectId, ObjectID } = require('mongodb');
+const {getPost } = require('./dbPost');
   
   // how does this go to server.js
   const isMyLikePost = async (PostId) => {
@@ -11,10 +12,13 @@ const { ObjectId, ObjectID } = require('mongodb');
       mongo = await connect();
       const db = mongo.db();
       const user1 = await db.collection('User1').findOne({});
-      const me = user1.data;
-  
-      for(let j = 0; j < post.like.length; j++){
-        if(post.like[j] === me.id){
+      const me = user1;
+      console.log(me._id);
+
+      console.log(post[0].like);
+      const like = post[0].like || [];
+      for(let j = 0; j < like.length; j++){
+        if(like[j] === me._id){
           return true;
         }
       }

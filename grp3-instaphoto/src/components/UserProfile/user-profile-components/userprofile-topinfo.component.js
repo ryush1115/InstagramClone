@@ -16,7 +16,7 @@ const UserProfile_TopInfo = () => {
             </div>
             <div className="profile-stats">
                 <ul>
-                    <li><span className="profile-stat-count">{postCount}</span> posts</li>
+                    <li><span className="profile-stat-count">39</span> posts</li>
                     <li><span className="profile-stat-count">169</span> followers</li>
                     <li><span className="profile-stat-count">667</span> following</li>
                 </ul>

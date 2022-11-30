@@ -5,7 +5,7 @@ import axios from 'axios';
 // To run the server, enter into command line/terminal: 
 // json-server db-grp3-instaphoto.json --port 8000
 
-const rootURL = 'http://localhost:8000'
+const rootURL = 'http://localhost:8080'
 
 
 // Sends a Get request to the endpoint
@@ -22,11 +22,11 @@ const rootURL = 'http://localhost:8000'
 // };
 
 // Sends a Get request to the endpoint
-// returns all the Users
+// returns all the Posts
 export const getPosts = async () => {
   try{
     const response = await axios.get(`${rootURL}/Post`);
-    return response.data;
+    return response.data.data;
     // data is stored in the data 
     // field of the response
   }catch (err) {
@@ -40,7 +40,7 @@ export const getPosts = async () => {
 export const getPost = async(PostId) => {
   try {
     const response = await axios.get(`${rootURL}/Post/${PostId}`);
-    return response.data;
+    return response.data.data;
   } catch (err) {
     console.error(err);
   }
@@ -48,8 +48,8 @@ export const getPost = async(PostId) => {
 
 export const getUsers = async () => {
   try{
-    const response = await axios.get(`${rootURL}/User`);
-    return response.data;
+    const response = await axios.get(`${rootURL}/users`);
+    return response.data.data;
     // data is stored in the data 
     // field of the response
   }catch (err) {
@@ -64,7 +64,7 @@ export const getUsers = async () => {
 export const getUser = async(userId) => {
   try {
     const response = await axios.get(`${rootURL}/User/${userId}`);
-    return response.data;
+    return response.data.data;
   } catch (err) {
     console.error(err);
   }
@@ -75,7 +75,7 @@ export const getUser = async(userId) => {
 export const getCommentsArray = async(PostId) => {
   try {
     const response = await axios.get (`${rootURL}/Post/${PostId}`);
-    return response.data.postCommentsArray;
+    return response.data.data.postCommentsArray;
 
   } catch (err) {
     console.error(err);
@@ -87,7 +87,7 @@ export const getCommentsArray = async(PostId) => {
 export const getCommentMessage = async(CommentId) => {
   try {
     const response = await axios.get(`${rootURL}/Comment/${CommentId}`);
-    return response.data.message;
+    return response.data.data.message;
   } catch (err) {
     console.error(err)
   }
@@ -99,7 +99,7 @@ export const getCommentMessage = async(CommentId) => {
 export const getPassword = async(userEmail) => {
   try {
     const response = await axios.get(`${rootURL}/User/${userEmail}`);
-    return response.data;
+    return response.data.data;
   } catch (err) {
     console.error(err);
   }
@@ -139,7 +139,7 @@ export const createPost = async (PostObject) => {
     &postTagOfOtherUsers=${PostObject.postTagOfOtherUsers}
     &postCommentArray=${PostObject.postCommentArray}
     &like=${[]}`);
-    return response.data;
+    return response.data.data;
   } catch (err) {
     console.error(err);
   }
@@ -159,7 +159,7 @@ export const createUser = async (UserObject) => {
     console.log(`email=${UserObject.email}&username=${UserObject.username}
       &password=${UserObject.password}&profilePicture=${UserObject.profilePicture}
       &follow=${UserObject.follow}`);
-      return response.data;
+      return response.data.data;
       // return the data with the id of the user
   } catch (err) {
     console.error(err);
@@ -169,7 +169,7 @@ export const createUser = async (UserObject) => {
 export const getMyFollowings = async () => {
   try {
     const response = await axios.get(`${rootURL}/User1`);
-    const me = response.data[0];
+    const me = response.data.data[0];
     // console.log(me.follow);
     return me.follow;
     // the data is stored in the mockData
@@ -182,7 +182,7 @@ export const getMyFollowings = async () => {
 export const following = async (followingName) => {
   try {
     const user1 = await axios.get(`${rootURL}/User1`);
-    const me = user1.data[0];
+    const me = user1.data.data[0];
     me.follow.push(followingName);
     const response = await axios.put(
       `${rootURL}/User1/${me.id}`,
@@ -199,7 +199,7 @@ export const following = async (followingName) => {
 export const cancelFollowing = async (followingName) => {
   try {
     let user1 = await axios.get(`${rootURL}/User1`);
-    const me = user1.data[0];
+    const me = user1.data.data[0];
     const myFollowings = me.follow;
     for(let i = 0; i < myFollowings.length; i++){
       if(myFollowings[i] === followingName){
@@ -222,7 +222,7 @@ export const cancelFollowing = async (followingName) => {
 export const isMyFollowing = async (username) => {
   try {
     let user1 = await axios.get(`${rootURL}/User1`);
-    const me = user1.data[0];
+    const me = user1.data.data[0];
     const myFollowings = me.follow;
     for(let j = 0; j < myFollowings.length; j++){
         if(myFollowings[j] === username){
@@ -297,7 +297,7 @@ export const createCommentInPost = async(PostId, CommentObject) => {
     post.postCommentArray.push(CommentObject);
 
     const response = await axios.put(`${rootURL}/Post/${PostId}`, post);
-    return response.data;
+    return response.data.data;
 
   } catch(err) {
     console.error(err);
@@ -319,7 +319,7 @@ export const updateComment = async(text, CommentId) => {
 
         // axios put call
         const response = await axios.put(`${rootURL}/Post/${PostIdTemp}`,post);
-        return response.data
+        return response.data.data
       }
     }
 
@@ -332,7 +332,7 @@ export const updateComment = async(text, CommentId) => {
 export const deletePost = async(PostId) => {
   try {
     const response = await axios.delete(`${rootURL}/Post/${PostId}`);
-    return response.data;
+    return response.data.data;
   } catch (err) {
     console.error(err);
   }
@@ -344,12 +344,12 @@ export const incrementPostLike = async(PostId) => {
     const post = await getPost(PostId);
 
     const user1 = await axios.get(`${rootURL}/User1`);
-    const me = user1.data[0];
+    const me = user1.data.data[0];
 
     post.like.push(me.id);
     
     const response = await axios.put(`${rootURL}/Post/${PostId}`,post);
-    return response.data;
+    return response.data.data;
 
   } catch (err) {
     console.error(err)
@@ -361,7 +361,7 @@ export const getUserPosts = async (username) => {
   console.log(username);
   try {
     const response = await axios.get(`${rootURL}/Post`);
-    const posts = response.data;
+    const posts = response.data.data;
     console.log(posts);
     const userPosts = [];
     for (let i = 0; i < posts.length; i++){
@@ -383,13 +383,13 @@ export const cancelPostLike = async(PostId) => {
     const post = await getPost(PostId);
 
     const user1 = await axios.get(`${rootURL}/User1`);
-    const me = user1.data[0];
+    const me = user1.data.data[0];
 
     for(let i = 0; i < post.like.length; i++){
       if(post.like[i] === me.id){
         post.like.splice(i,1);
         const response = await axios.put(`${rootURL}/Post/${PostId}`,post);
-        return response.data;
+        return response.data.data;
       }
     }
     return -1;
@@ -404,7 +404,7 @@ export const isMyLikePost = async(PostId) => {
     const post = await getPost(PostId);
 
     const user1 = await axios.get(`${rootURL}/User1`);
-    const me = user1.data[0];
+    const me = user1.data.data[0];
 
     for(let j = 0; j < post.like.length; j++){
       if(post.like[j] === me.id){
@@ -424,7 +424,7 @@ export const updatePost = async (postID, post) => {
     console.log(post);
     try {
         const response = await axios.put(`${rootURL}/Post/${postID}`, post);
-        return response.data;
+        return response.data.data;
     } catch (err) {
         console.error(err);
     }

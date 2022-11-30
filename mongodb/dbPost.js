@@ -1,5 +1,6 @@
 const {connect } = require('./dbFollow&Comments');
 const webapp = require('./server');
+const { ObjectId} = require('mongodb');
 
 const getPosts = async () => {
   try {
@@ -15,14 +16,15 @@ const getPosts = async () => {
   }
 };
 
-const getPost = async () => {
+const getPost = async (PostId) => {
+    console.log("the post we are looking for is " + PostId);
     try {
       // get the db
       mongo = await connect();
       const db = mongo.db();
-      const result = await db.collection('Post').find({}).toArray();
-      // console.log("running get posts");
-      console.log(`All posts: ${JSON.stringify(result.username)}`);
+      const result = await db.collection('Post').find({_id: ObjectId(PostId)}).toArray();
+      console.log("running get specific post");
+      console.log(`Specific post: ${JSON.stringify(result)}`);
       return result;
     } catch (err) {
       console.log(`error: ${err.message}`);

@@ -273,6 +273,22 @@ webapp.get('/friendsuggestion', async (req, res) => {
   }
 });
 
+// get results for is my like post
+webapp.get('/ismylikepost', async (req, res) => {
+  console.log('Run is my like post');
+  try {
+    // get the data from the db
+    const results = await dbLibLike.isMyLikePost(req.body.PostId);
+    // send the response with the appropriate status code
+    // console.log(results.username);
+    
+    console.log(`is my like post result: ${JSON.stringify(results)}`);
+    res.status(200).json({ data: results });
+  } catch (err) {
+    res.status(404).json({ message: 'there was error' });
+  }
+});
+
 // update the like array in post endpoint
 webapp.put('/postlike', async (req, res) => {
   console.log('UPDATE the like array');
