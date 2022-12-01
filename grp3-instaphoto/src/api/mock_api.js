@@ -75,8 +75,7 @@ export const getUser = async(userId) => {
 export const getCommentsArray = async(PostId) => {
   try {
     const response = await axios.get (`${rootURL}/Post/${PostId}`);
-    return response.data.data.postCommentsArray;
-
+    return response.data.data;
   } catch (err) {
     console.error(err);
   }
@@ -168,10 +167,8 @@ export const createUser = async (UserObject) => {
 
 export const getMyFollowings = async () => {
   try {
-    const response = await axios.get(`${rootURL}/User1`);
-    const me = response.data.data[0];
-    // console.log(me.follow);
-    return me.follow;
+    const response = await axios.get(`${rootURL}/followinglist`);
+    return response.data.data;
     // the data is stored in the mockData
     // field of the response
   } catch (err) {
@@ -181,15 +178,8 @@ export const getMyFollowings = async () => {
 
 export const following = async (followingName) => {
   try {
-    const user1 = await axios.get(`${rootURL}/User1`);
-    const me = user1.data.data[0];
-    me.follow.push(followingName);
-    const response = await axios.put(
-      `${rootURL}/User1/${me.id}`,
-      me
-      // update the user1
-    );
-    return response.data;
+    const response = await axios.put(`${rootURL}/followinglist`,`followingName=${followingName}`);
+    return response.data.data;
     
   } catch (err) {
     console.error(err);
@@ -198,22 +188,8 @@ export const following = async (followingName) => {
 
 export const cancelFollowing = async (followingName) => {
   try {
-    let user1 = await axios.get(`${rootURL}/User1`);
-    const me = user1.data.data[0];
-    const myFollowings = me.follow;
-    for(let i = 0; i < myFollowings.length; i++){
-      if(myFollowings[i] === followingName){
-        myFollowings.splice(i,1);
-        const response = await axios.put(
-          `${rootURL}/User1/${me.id}`,
-           me
-           // update the user1
-        );
-        return response.data;
-      }
-    }
-    return -1;
-    
+    const response = await axios.put(`${rootURL}/followinglist`,`followingName=${followingName}`);
+    return response.data.data;
   } catch (err) {
     console.error(err);
   } 
@@ -221,9 +197,13 @@ export const cancelFollowing = async (followingName) => {
 
 export const isMyFollowing = async (username) => {
   try {
+    /*
     let user1 = await axios.get(`${rootURL}/User1`);
     const me = user1.data.data[0];
     const myFollowings = me.follow;
+    */
+
+    const myFollowings = await getMyFollowings();
     for(let j = 0; j < myFollowings.length; j++){
         if(myFollowings[j] === username){
           return true;
@@ -246,7 +226,7 @@ export const getSuggestionList= async () => {
     
     for(let i = 0; i < users.length; i++){
       const isAlreadyFollow = await isMyFollowing(users[i].username);
-      if(!isAlreadyFollow && hasCommonFollowings(users[i])){
+      if(!isAlreadyFollow && await hasCommonFollowings(users[i])){
           suggestionList.push(users[i].username);
       }
     }
@@ -256,12 +236,12 @@ export const getSuggestionList= async () => {
   }
 };
 
-export const hasCommonFollowings = (user) => {
+export const hasCommonFollowings = async (user) => {
      
   const userFollowList = user.follow;
     let commonCount = 0;
     for(let i = 0; i < userFollowList.length; i++){
-      let isFollowedByMe = isMyFollowing(userFollowList[i]);
+      let isFollowedByMe = await isMyFollowing(userFollowList[i]);
       if(isFollowedByMe)
           commonCount++;
     }
@@ -280,10 +260,11 @@ export const hasCommonFollowings = (user) => {
 export const createComment = async (CommentObject) => {
   try {
     const response = await axios.post (
-      `${rootURL}/Comment`,
+      `${rootURL}/comments`,
       `username=${CommentObject.username}&message=${CommentObject.message}
-      &tagOfOtherUsers=${CommentObject.postTagOfOtherUsers}`
-    )
+      &tagOfOtherUsers=${CommentObject.postTagOfOtherUsers}&id =${CommentObject.id}`
+    );
+    return response.data.data;
   } catch (err) {
     console.error(err);
   }
@@ -293,10 +274,8 @@ export const createComment = async (CommentObject) => {
 export const createCommentInPost = async(PostId, CommentObject) => {
   try {
     // get said post
-    const post = await getPost(PostId);
-    post.postCommentArray.push(CommentObject);
-
-    const response = await axios.put(`${rootURL}/Post/${PostId}`, post);
+    const response = await axios.post(`${rootURL}/post/${PostId}/comment`, `username=${CommentObject.username}&message=${CommentObject.message}
+    &tagOfOtherUsers=${CommentObject.postTagOfOtherUsers}&id=${CommentObject.id} `);
     return response.data.data;
 
   } catch(err) {
@@ -307,21 +286,8 @@ export const createCommentInPost = async(PostId, CommentObject) => {
 // update a comment within the Post schema
 export const updateComment = async(text, CommentId) => {
   try {
-    const PostIdTemp = "CREL3Vi";
-    // get said post
-    const post = await getPost(PostIdTemp);
-
-    // loop through the post comment array
-    for (let i = 0; i<post.postCommentArray.length; i++) {
-      if(post.postCommentArray[i].id === CommentId) {
-        // update the message
-        post.postCommentArray[i].message = text
-
-        // axios put call
-        const response = await axios.put(`${rootURL}/Post/${PostIdTemp}`,post);
-        return response.data.data
-      }
-    }
+    const response = await axios.put(`${rootURL}/comments/${CommentId}`,`message=${text}`);
+    return response.data.data;
 
   } catch(err) {
     console.error(err);

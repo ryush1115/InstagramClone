@@ -28,7 +28,7 @@ const Comment = ({
                         submitLabel="Update" 
                         hasCancelButton 
                         intialText={comment.message} 
-                        handleSubmit = {(text)=>updateComment(text, comment.id)}
+                        handleSubmit = {(text)=>updateComment(text, comment._id)}
                         handleCancel = {()=>setActiveComment(null)}
                         />
                     )}

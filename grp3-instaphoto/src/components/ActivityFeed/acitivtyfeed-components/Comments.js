@@ -15,17 +15,14 @@ export default function Comments(props) {
     // const relevantComment = listComment.filter();
 
     const addComment = async(text) => {
-        const newComment = {username:"grp3foreva", message:text, tagOfOtherUsers:null,id:null};
+        const newComment = {username:"grp3foreva", message:text, tagOfOtherUsers:1,id:1};
         console.log(text);
         console.log(newComment);
         
         // Toggle comments with PostIdTemp
         // const PostIdTemp = id_.valueOf();
 
-        const PostIdTemp = "CREL3Vi";
-        console.log(PostIdTemp);
-
-        const newStoredComment = await createCommentInPost(PostIdTemp, newComment);
+        const newStoredComment = await createCommentInPost(props._id, newComment);
         // const newStoredComment = await createCommentInPost(props.post.id, newComment);
 
     }

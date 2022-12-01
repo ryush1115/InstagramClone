@@ -76,7 +76,7 @@ export default function PostRow(props) {
 
       const form = document.getElementById('commentBox');
       form.reset();
-      const newStoredComment = await createCommentInPost(props.post.id, newComment);
+      const newStoredComment = await createCommentInPost(props.post._id, newComment);
 
       // update loadData
       loadData.current = true;
@@ -90,7 +90,7 @@ export default function PostRow(props) {
       
       //e.preventDefault();
       console.log("Delete post");
-      const newDeletedPost = await deletePost(props.post.id);
+      const newDeletedPost = await deletePost(props.post._id);
       //update load data
       
       setDeletedPost(newDeletedPost);
@@ -100,8 +100,8 @@ export default function PostRow(props) {
     const ListOfComments = (props) => {
       return(  
         props.list.map(item => (
-          <div key={item.id}>
-            <Comment key={item.id} comment={item}></Comment>
+          <div key={item._id}>
+            <Comment key={item._id} comment={item}></Comment>
           </div>
       ))
       )
@@ -124,7 +124,7 @@ export default function PostRow(props) {
                   {props.post.username}
                 </span>
                 <span className="PostId"> 
-                <p>Post Id: {props.post.id}</p>
+                <p>Post Id: {props.post._id}</p>
                 </span>
               </div>
             </div>
@@ -172,7 +172,7 @@ export default function PostRow(props) {
                 
                 <Comments 
                   list={props.post.postCommentArray} 
-                  id={props.post.id} 
+                  _id={props.post._id} 
                   props={props}
                   />
               </div>
