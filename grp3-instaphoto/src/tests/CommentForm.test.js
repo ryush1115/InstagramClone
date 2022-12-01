@@ -12,7 +12,7 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import React from 'react';
 
 
-import CommentForm from '.././components/CommentForm';
+import CommentForm from '.././components/ActivityFeed/activityfeed-components/CommentForm';
 
 // import Userpic from './components/test'
 import { Router } from "react-router";

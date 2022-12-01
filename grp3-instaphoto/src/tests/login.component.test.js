@@ -10,7 +10,7 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import React from 'react';
 
 
-import Login from '.././components/login.component'
+import Login from '.././components/Login_Signup/login.component'
 
 // import Userpic from './components/test'
 import { Router } from "react-router";

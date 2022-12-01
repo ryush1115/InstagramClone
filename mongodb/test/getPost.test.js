@@ -44,29 +44,36 @@ describe('Post endpoint integration test', () => {
 
   test('Endpoint status code and response async/await', async () => {
     // // testing getPost
-    res = await request(webapp).get('/post');
+    // res = await request(webapp).get('/post');
+    // expect(res.status).toEqual(200);
+    // expect(res.type).toBe('application/json');
+
+    // // // // testing getUserPost
+    // res = await request(webapp).get('/userposts').send('username=grp3foreva');
+    // expect(res.status).toEqual(200);
+    // expect(res.type).toBe('application/json');
+
+    // // // // testing getUsers
+    // res = await request(webapp).get('/users');
+    // expect(res.status).toEqual(200);
+    // expect(res.type).toBe('application/json');
+
+    // // // // testing getSuggestionList
+    // res = await request(webapp).get('/friendsuggestion');
+    // expect(res.status).toEqual(200);
+    // expect(res.type).toBe('application/json');
+
+    // testing hasCommonFollowings
+    
+    res = await request(webapp).get('/commonfollowings','user={"_id":"637aaadf3f3f430d2ce0accb","email":"newEmail@com","username":"newUsername","password":"newPassword","profilePicture":"","follow":"","id":"mit2SjY"}');
     expect(res.status).toEqual(200);
     expect(res.type).toBe('application/json');
 
-    // // // testing getUserPost
-    res = await request(webapp).get('/userposts').send('username=grp3foreva');
-    expect(res.status).toEqual(200);
-    expect(res.type).toBe('application/json');
-
-    // // // testing getUsers
-    res = await request(webapp).get('/users');
-    expect(res.status).toEqual(200);
-    expect(res.type).toBe('application/json');
-
-    // // // testing getSuggestionList
-    res = await request(webapp).get('/friendsuggestion');
-    expect(res.status).toEqual(200);
-    expect(res.type).toBe('application/json');
 
     // testing getPost
-    res = await request(webapp).get('/post/637aaaf308e936a0c97e4a31');
-    expect(res.status).toEqual(200);
-    expect(res.type).toBe('application/json');
+    // res = await request(webapp).get('/post/637aaaf308e936a0c97e4a31');
+    // expect(res.status).toEqual(200);
+    // expect(res.type).toBe('application/json');
 
   });
 
