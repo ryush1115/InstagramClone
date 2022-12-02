@@ -170,12 +170,12 @@ webapp.post('/post/:id/comment', async (req, res) => {
 webapp.put('/comments/:id', async (req, res) => {
   console.log('UPDATE a comment');
   // parse the body of the request
-  if (!req.body.message) {
+  if (!req.body.message || !req.body.postid) {
     res.status(404).json({ message: 'missing message' });
     return;
   }
   try {
-    const result = await dbLib.updateComment(req.body.message, req.params.id);
+    const result = await dbLib.updateComment(req.body.message, req.body.postid, req.params.id);
     // send the response with the appropriate status code
     res.status(200).json({ message: result });
   } catch (err) {

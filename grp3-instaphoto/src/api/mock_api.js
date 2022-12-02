@@ -269,9 +269,11 @@ export const createCommentInPost = async(PostId, CommentObject) => {
 }
 
 // update a comment within the Post schema
-export const updateComment = async(text, CommentId) => {
+export const updateComment = async(text, postid, CommentId) => {
   try {
-    const response = await axios.put(`${rootURL}/comments/${CommentId}`,`message=${text}`);
+    console.log("sss");
+    console.log(`${CommentId}`);
+    const response = await axios.put(`${rootURL}/comments/${CommentId}`,`message=${text}&postid=${postid}`);
     return response.data.data;
 
   } catch(err) {

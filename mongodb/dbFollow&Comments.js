@@ -42,7 +42,7 @@ const getDB = async () => {
  *
  * Close the mongodb connection
  */
- const closeMongoDBConnection = async () => {
+const closeMongoDBConnection = async () => {
   await MongoConnection.close();
 };
 
@@ -81,7 +81,7 @@ const followUser = async (followingName) => {
   }
 };
 
-const unfollowUser = async ( followingName) => {
+const unfollowUser = async (followingName) => {
   try {
     // get the db
     const db = await getDB();
@@ -149,6 +149,10 @@ const createCommentInPost = async (PostId, CommentObject) => {
   try {
     // get the db
     const db = await getDB();
+
+    const newComment = await db.collection('Comment').insertOne(CommentObject);
+    CommentObject._id = newComment.insertedId;
+
     const result = await db.collection('Post').updateOne(
       { _id: ObjectId(PostId) },
       {
@@ -167,14 +171,19 @@ const createCommentInPost = async (PostId, CommentObject) => {
   }
 };
 
-const updateComment = async (text, commentId) => {
+const updateComment = async (text, postId, commentId) => {
   try {
     // get the db
     const db = await getDB();
-    const result = await db.collection('Comment').updateOne(
-      { _id: ObjectId(commentId) },
-      { $set: { message: text } },
+    console.log('aaaa');
+    console.log(`${postId}`);
+    console.log(`${commentId}`);
+    const result = await db.collection('Post').updateOne(
+      { _id: ObjectId(postId) },
+      { $set: { 'postCommentArray.$[filter].message': text } },
+      { arrayFilters: [{ 'filter._id': ObjectId(commentId) } ] }
     );
+    console.log('bbb');
     return result;
   } catch (err) {
     console.log(`error: ${err.message}`);
@@ -221,5 +230,5 @@ module.exports = {
   getCommentMessage,
   createComment,
   createCommentInPost,
-  updateComment
+  updateComment,
 };

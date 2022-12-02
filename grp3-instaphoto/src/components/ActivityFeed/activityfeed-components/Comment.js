@@ -6,7 +6,8 @@ const Comment = ({
     comment, 
     activeComment, 
     setActiveComment,
-    updateComment
+    updateComment,
+    postid
 
 }) => {
     const currentUserId = "grp3foreva"; // login username
@@ -15,7 +16,7 @@ const Comment = ({
     const isEditing = 
         activeComment &&
         activeComment.type === "editing" &&
-        activeComment.id === comment.id;
+        activeComment.id === comment._id;
     
     return (
         <div className="comment">
@@ -28,14 +29,14 @@ const Comment = ({
                         submitLabel="Update" 
                         hasCancelButton 
                         intialText={comment.message} 
-                        handleSubmit = {(text)=>updateComment(text, comment._id)}
+                        handleSubmit = {(text)=>updateComment(text, postid, comment._id)}
                         handleCancel = {()=>setActiveComment(null)}
                         />
                     )}
                     {canEdit && <div 
                         className="comment-actions"
                         onClick={()=>
-                            setActiveComment({id: comment.id, type:"editing"})
+                            setActiveComment({id: comment._id, type:"editing"})
                         }
                         >
                         Edit</div>}

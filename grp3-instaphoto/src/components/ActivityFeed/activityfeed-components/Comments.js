@@ -55,6 +55,7 @@ export default function Comments(props) {
                 activeComment={activeComment}
                 setActiveComment={setActiveComment}
                 updateComment={updateComment}
+                postid = {props._id}
                 >
              </Comment>
            </div>
