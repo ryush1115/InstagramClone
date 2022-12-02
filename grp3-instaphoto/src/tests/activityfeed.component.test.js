@@ -26,6 +26,6 @@ test("test MainFeed",async () =>{
             <MainFeed />
         </Router>
     );
-    //const inputNode = screen.getByAltText("");
-    //expect(inputNode).toBeInTheDocument();
+    const test = screen.getByText("Instaphoto");
+    expect(test).toBeInTheDocument();
 });
