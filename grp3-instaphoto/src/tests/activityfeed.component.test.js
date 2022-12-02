@@ -19,7 +19,13 @@ import { createMemoryHistory } from 'history';
 
 
 test("test MainFeed",async () =>{
-    render(<MainFeed />)
-    const inputNode = screen.getByAltText("");
-    expect(inputNode).toBeInTheDocument();
+    const history = createMemoryHistory();
+
+    render(
+        <Router location={history.location} navigator={history}>
+            <MainFeed />
+        </Router>
+    );
+    //const inputNode = screen.getByAltText("");
+    //expect(inputNode).toBeInTheDocument();
 });
