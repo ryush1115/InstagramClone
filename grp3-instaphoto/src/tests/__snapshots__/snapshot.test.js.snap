@@ -1,60 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Activity Feed matches snapshot 1`] = `
-Array [
-  <header>
-    <div
-      className="container"
-      data-testid="testcc"
-    >
-      <div
-        className="profile"
-      >
-        <div
-          className="profile-image"
-        >
-          <img
-            alt=""
-          />
-        </div>
-        <div
-          className="profile-user-settings"
-        >
-          <h1
-            className="profile-user-name"
-          >
-            grp3foreva
-          </h1>
-        </div>
-      </div>
-    </div>
-  </header>,
-  <main>
-    <div
-      className="container"
-    >
-      <div
-        className="feed"
-      >
-        <div
-          className="feedWrapper"
-        >
-          <div>
-             
-            <div>
-              <table>
-                <tbody />
-              </table>
-            </div>
-            <div />
-          </div>
-        </div>
-      </div>
-    </div>
-  </main>,
-]
-`;
-
 exports[`App matches snapshot 1`] = `
 <div
   className="App"
@@ -160,81 +105,74 @@ exports[`App matches snapshot 1`] = `
       </div>
     </div>
   </header>
-  <div
-    className="auth-wrapper"
+  <form
+    className="auth-inner"
   >
-    <form
-      className="auth-inner"
+    <div
+      className="header"
     >
-      <div
-        className="header"
+      <h3>
+        Welcome to Instaphoto 
+      </h3>
+      <img
+        alt="logo"
+        src="https://i.ibb.co/VV3Xdf1/logo.png"
+      />
+    </div>
+    <br />
+    <div
+      className="login-and-password"
+    >
+      <label>
+        Email
+      </label>
+      <input
+        className="form-control"
+        onChange={[Function]}
+        placeholder="Enter email"
+        type="email"
+        value=""
+      />
+    </div>
+    <div
+      className="login-and-password"
+    >
+      <label>
+        Password
+      </label>
+      <input
+        className="form-control"
+        onChange={[Function]}
+        placeholder="Enter password"
+        type="password"
+        value=""
+      />
+    </div>
+    <div
+      className="d-grid"
+    >
+      <button
+        className="btn btn-primary"
+        onClick={[Function]}
+        type="submit"
       >
-        <h3>
-          Welcome to Instaphoto 
-        </h3>
-        <img
-          alt="logo"
-          src="https://i.ibb.co/VV3Xdf1/logo.png"
-        />
-      </div>
+        Sign in
+      </button>
+    </div>
+    <br />
+    <p
+      className="login-create-account text-right"
+    >
+      Don't have an account? 
       <br />
-      <div
-        className="login-and-password"
+      <a
+        href="#"
+        onClick={[Function]}
       >
-        <label>
-          Email
-        </label>
-        <input
-          className="form-control"
-          onChange={[Function]}
-          placeholder="Enter email"
-          type="email"
-          value=""
-        />
-      </div>
-      <div
-        className="login-and-password"
-      >
-        <label>
-          Password
-        </label>
-        <p>
-          Forgot password?
-        </p>
-        <input
-          className="form-control"
-          onChange={[Function]}
-          placeholder="Enter password"
-          type="password"
-          value=""
-        />
-      </div>
-      <br />
-      <div
-        className="d-grid"
-      >
-        <button
-          className="btn btn-primary"
-          onClick={[Function]}
-          type="submit"
-        >
-          Sign in
-        </button>
-      </div>
-      <p
-        className="login-create-account text-right"
-      >
-        Don't have an account? 
-        <br />
-        <a
-          href="#"
-          onClick={[Function]}
-        >
-           Sign up now to join communities across the globe 
-        </a>
-      </p>
-    </form>
-  </div>
+         Sign up now to join communities across the globe 
+      </a>
+    </p>
+  </form>
 </div>
 `;
 
@@ -295,12 +233,14 @@ Array [
         </h>
         <img
           alt="logo"
+          src="https://i.ibb.co/VV3Xdf1/logo.png"
         />
       </div>
       <br />
       <div>
         <img
           className="card-img-top sig"
+          src="https://i.ibb.co/bgWdsVT/grp3.png"
         />
         <p
           className="username"
@@ -327,7 +267,9 @@ Array [
                 data-rr-ui-event-key={null}
                 onClick={[Function]}
               >
-                <span>
+                <span
+                  onClick={[Function]}
+                >
                   Home
                 </span>
               </div>
@@ -336,7 +278,9 @@ Array [
                 data-rr-ui-event-key={null}
                 onClick={[Function]}
               >
-                <span>
+                <span
+                  onClick={[Function]}
+                >
                   Create
                 </span>
               </div>
@@ -345,7 +289,9 @@ Array [
                 data-rr-ui-event-key={null}
                 onClick={[Function]}
               >
-                <span>
+                <span
+                  onClick={[Function]}
+                >
                   Profile
                 </span>
               </div>
@@ -364,6 +310,7 @@ Array [
         </p>
         <button
           className="show-all-btn"
+          onClick={[Function]}
         >
           See all
         </button>
@@ -374,26 +321,8 @@ Array [
             <img
               alt=""
               className="other-user"
+              src="https://i.ibb.co/hDvzykn/ellipse504.jpg"
             />
-          </div>
-          <button
-            className="action-btn"
-            type="button"
-          >
-            <span
-              className="username"
-            />
-            <span
-              className="follow"
-            >
-              Follow
-            </span>
-          </button>
-        </div>
-        <div
-          className="profile-card"
-        >
-          <div>
             <img
               alt=""
               className="other-user"
@@ -417,6 +346,39 @@ Array [
           className="profile-card"
         >
           <div>
+            <img
+              alt=""
+              className="other-user"
+              src="https://i.ibb.co/hDvzykn/ellipse504.jpg"
+            />
+            <img
+              alt=""
+              className="other-user"
+            />
+          </div>
+          <button
+            className="action-btn"
+            type="button"
+          >
+            <span
+              className="username"
+            />
+            <span
+              className="follow"
+            >
+              Follow
+            </span>
+          </button>
+        </div>
+        <div
+          className="profile-card"
+        >
+          <div>
+            <img
+              alt=""
+              className="other-user"
+              src="https://i.ibb.co/hDvzykn/ellipse504.jpg"
+            />
             <img
               alt=""
               className="other-user"
@@ -439,7 +401,6 @@ Array [
       </div>
     </div>
   </nav>,
-  <div />,
   <div
     className="container-0_FriendSuggestion"
   >
@@ -469,12 +430,14 @@ Array [
         </h>
         <img
           alt="logo"
+          src="https://i.ibb.co/VV3Xdf1/logo.png"
         />
       </div>
       <br />
       <div>
         <img
           className="card-img-top sig"
+          src="https://i.ibb.co/bgWdsVT/grp3.png"
         />
         <p
           className="username"
@@ -501,7 +464,9 @@ Array [
                 data-rr-ui-event-key={null}
                 onClick={[Function]}
               >
-                <span>
+                <span
+                  onClick={[Function]}
+                >
                   Home
                 </span>
               </div>
@@ -510,7 +475,9 @@ Array [
                 data-rr-ui-event-key={null}
                 onClick={[Function]}
               >
-                <span>
+                <span
+                  onClick={[Function]}
+                >
                   Create
                 </span>
               </div>
@@ -519,7 +486,9 @@ Array [
                 data-rr-ui-event-key={null}
                 onClick={[Function]}
               >
-                <span>
+                <span
+                  onClick={[Function]}
+                >
                   Profile
                 </span>
               </div>
@@ -538,6 +507,7 @@ Array [
         </p>
         <button
           className="show-all-btn"
+          onClick={[Function]}
         >
           See all
         </button>
@@ -548,26 +518,8 @@ Array [
             <img
               alt=""
               className="other-user"
+              src="https://i.ibb.co/hDvzykn/ellipse504.jpg"
             />
-          </div>
-          <button
-            className="action-btn"
-            type="button"
-          >
-            <span
-              className="username"
-            />
-            <span
-              className="follow"
-            >
-              Follow
-            </span>
-          </button>
-        </div>
-        <div
-          className="profile-card"
-        >
-          <div>
             <img
               alt=""
               className="other-user"
@@ -591,6 +543,39 @@ Array [
           className="profile-card"
         >
           <div>
+            <img
+              alt=""
+              className="other-user"
+              src="https://i.ibb.co/hDvzykn/ellipse504.jpg"
+            />
+            <img
+              alt=""
+              className="other-user"
+            />
+          </div>
+          <button
+            className="action-btn"
+            type="button"
+          >
+            <span
+              className="username"
+            />
+            <span
+              className="follow"
+            >
+              Follow
+            </span>
+          </button>
+        </div>
+        <div
+          className="profile-card"
+        >
+          <div>
+            <img
+              alt=""
+              className="other-user"
+              src="https://i.ibb.co/hDvzykn/ellipse504.jpg"
+            />
             <img
               alt=""
               className="other-user"
@@ -613,7 +598,6 @@ Array [
       </div>
     </div>
   </nav>,
-  <div />,
   <div
     className="container-0_FriendSuggestion"
   >
@@ -629,90 +613,8 @@ Array [
 
 exports[`Login matches snapshot 1`] = `
 Array [
-  <div
-    className="auth-wrapper"
-  >
-    <form
-      className="auth-inner"
-    >
-      <div
-        className="header"
-      >
-        <h3>
-          Welcome to Instaphoto 
-        </h3>
-        <img
-          alt="logo"
-          src="https://i.ibb.co/VV3Xdf1/logo.png"
-        />
-      </div>
-      <br />
-      <div
-        className="login-and-password"
-      >
-        <label>
-          Email
-        </label>
-        <input
-          className="form-control"
-          onChange={[Function]}
-          placeholder="Enter email"
-          type="email"
-          value=""
-        />
-      </div>
-      <div
-        className="login-and-password"
-      >
-        <label>
-          Password
-        </label>
-        <p>
-          Forgot password?
-        </p>
-        <input
-          className="form-control"
-          onChange={[Function]}
-          placeholder="Enter password"
-          type="password"
-          value=""
-        />
-      </div>
-      <br />
-      <div
-        className="d-grid"
-      >
-        <button
-          className="btn btn-primary"
-          onClick={[Function]}
-          type="submit"
-        >
-          Sign in
-        </button>
-      </div>
-      <p
-        className="login-create-account text-right"
-      >
-        Don't have an account? 
-        <br />
-        <a
-          href="#"
-          onClick={[Function]}
-        >
-           Sign up now to join communities across the globe 
-        </a>
-      </p>
-    </form>
-  </div>,
-  ",",
-]
-`;
-
-exports[`SignUp matches snapshot 1`] = `
-Array [
   <form
     className="auth-inner"
-    onSubmit={[Function]}
   >
     <div
       className="header"
@@ -729,36 +631,15 @@ Array [
     <div
       className="login-and-password"
     >
-      <h3>
-         Signup
-      </h3>
-    </div>
-    <div
-      className="login-and-password"
-    >
-      <label>
-        Username
-      </label>
-      <input
-        className="form-control"
-        name="username"
-        onChange={[Function]}
-        placeholder="Username"
-        type="text"
-      />
-    </div>
-    <div
-      className="login-and-password"
-    >
       <label>
         Email
       </label>
       <input
         className="form-control"
-        name="email"
         onChange={[Function]}
-        placeholder="Email"
+        placeholder="Enter email"
         type="email"
+        value=""
       />
     </div>
     <div
@@ -769,10 +650,101 @@ Array [
       </label>
       <input
         className="form-control"
-        name="password"
+        onChange={[Function]}
+        placeholder="Enter password"
+        type="password"
+        value=""
+      />
+    </div>
+    <div
+      className="d-grid"
+    >
+      <button
+        className="btn btn-primary"
+        onClick={[Function]}
+        type="submit"
+      >
+        Sign in
+      </button>
+    </div>
+    <br />
+    <p
+      className="login-create-account text-right"
+    >
+      Don't have an account? 
+      <br />
+      <a
+        href="#"
+        onClick={[Function]}
+      >
+         Sign up now to join communities across the globe 
+      </a>
+    </p>
+  </form>,
+  ",",
+]
+`;
+
+exports[`SignUp matches snapshot 1`] = `
+Array [
+  <form
+    className="auth-inner"
+  >
+    <div
+      className="header"
+    >
+      <h3>
+        Welcome to Instaphoto 
+      </h3>
+      <img
+        alt="logo"
+        src="https://i.ibb.co/VV3Xdf1/logo.png"
+      />
+    </div>
+    <br />
+    <h3>
+       Signup
+    </h3>
+    <div
+      className="login-and-password"
+    >
+      <label>
+        Username
+      </label>
+      <input
+        className="form-control"
+        onChange={[Function]}
+        placeholder="Username"
+        type="text"
+        value=""
+      />
+    </div>
+    <div
+      className="login-and-password"
+    >
+      <label>
+        Email
+      </label>
+      <input
+        className="form-control"
+        onChange={[Function]}
+        placeholder="Email"
+        type="email"
+        value=""
+      />
+    </div>
+    <div
+      className="login-and-password"
+    >
+      <label>
+        Password
+      </label>
+      <input
+        className="form-control"
         onChange={[Function]}
         placeholder="Password (more than 8 characters)"
         type="password"
+        value=""
       />
     </div>
     <div
@@ -783,23 +755,24 @@ Array [
       </label>
       <input
         className="form-control"
-        name="confirmPassword"
         onChange={[Function]}
         placeholder="Re-enter password"
         type="password"
+        value=""
       />
     </div>
-    <br />
     <div
       className="d-grid"
     >
       <button
         className="btn btn-primary"
+        onClick={[Function]}
         type="submit"
       >
         Finish
       </button>
     </div>
+    <br />
     <p
       className="forgot-password text-right"
     >
@@ -1000,75 +973,66 @@ Array [
       </div>
     </div>
   </nav>,
-  <header>
+  <div
+    className="user-profile-header"
+  >
+    <div
+      className="user-profile-header-image"
+    >
+      <img
+        alt=""
+        className="user-profile-header-image"
+        src="https://i.ibb.co/bgWdsVT/grp3.png"
+      />
+    </div>
+    <div
+      className="user-profile-header-name"
+    >
+      <h1
+        className="user-profile-header-name"
+      >
+        grp3foreva
+      </h1>
+    </div>
+    <div
+      className="profile-stats"
+    >
+      <ul>
+        <li>
+          <span
+            className="profile-stat-count"
+          >
+            39
+          </span>
+           posts
+        </li>
+        <li>
+          <span
+            className="profile-stat-count"
+          >
+            169
+          </span>
+           followers
+        </li>
+        <li>
+          <span
+            className="profile-stat-count"
+          >
+            667
+          </span>
+           following
+        </li>
+      </ul>
+    </div>
+  </div>,
+  <main>
     <div
       className="container"
     >
       <div
-        className="profile"
-      >
-        <div
-          className="profile-image"
-        >
-          <img
-            alt=""
-            src="https://i.ibb.co/bgWdsVT/grp3.png"
-          />
-        </div>
-        <div
-          className="profile-user-settings"
-        >
-          <h1
-            className="profile-user-name"
-          >
-            grp3foreva
-          </h1>
-        </div>
-        <div
-          className="profile-stats"
-        >
-          <ul>
-            <li>
-              <span
-                className="profile-stat-count"
-              >
-                0
-              </span>
-               posts
-            </li>
-            <li>
-              <span
-                className="profile-stat-count"
-              >
-                169
-              </span>
-               followers
-            </li>
-            <li>
-              <span
-                className="profile-stat-count"
-              >
-                667
-              </span>
-               following
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </header>,
-  <main>
-    <main>
-      <div
         className="gallery"
-      >
-        <div>
-           
-          <div />
-          <div />
-        </div>
-      </div>
-    </main>
+      />
+    </div>
   </main>,
   ",",
 ]

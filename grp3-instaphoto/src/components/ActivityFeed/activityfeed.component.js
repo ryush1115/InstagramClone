@@ -16,7 +16,7 @@ export default function ActivityFeedComponent(props) {
 
   return (
     <>
-      <MainFeed />
+      <MainFeed alt=""/>
     </>
   )
 };

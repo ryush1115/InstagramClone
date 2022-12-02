@@ -11,25 +11,15 @@ import { getByLabelText, within } from '@testing-library/dom'
 // import renderer from 'react-test-renderer';
 import React from 'react';
 
-import ActivityFeed from '.././components/ActivityFeed/activityfeed.component'
+import MainFeed from '../components/ActivityFeed/activityfeed.component'
 
 // import Userpic from './components/test'
 import { Router } from "react-router";
 import { createMemoryHistory } from 'history';
 
-// test("should be in the component", () => {
-//     const history = createMemoryHistory();
-//     const component = render(
-//         <Router location={history.location} navigator={history}>
-//             <ActivityFeed />,
-//         </Router>,
-//     );
-//     const labelNode = component.getByText("grp3foreva");
-//     expect(labelNode).toBeInTheDocument();
-// });
 
-test("test the single-line user information",async () =>{
-    render(<ActivityFeed />)
+test("test MainFeed",async () =>{
+    render(<MainFeed />)
     const inputNode = screen.getByAltText("");
     expect(inputNode).toBeInTheDocument();
 });

@@ -91,6 +91,7 @@ export default function PostRow(props) {
       //e.preventDefault();
       console.log("Delete post");
       const newDeletedPost = await deletePost(props.post._id);
+      console.log(newDeletedPost);
       //update load data
       
       setDeletedPost(newDeletedPost);
