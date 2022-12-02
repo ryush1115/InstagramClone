@@ -89,7 +89,7 @@ export default function PostRow(props) {
     const handleDeletePost = async(e) => {
       
       //e.preventDefault();
-      console.log("Delete post");
+      console.log("Delete post (*)");
       const newDeletedPost = await deletePost(props.post._id);
       console.log(newDeletedPost);
       //update load data

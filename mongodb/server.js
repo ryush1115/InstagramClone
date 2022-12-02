@@ -21,6 +21,7 @@ webapp.use(express.urlencoded({ extended: true }));
 const dbLib = require('./dbFollow&Comments');
 const dbLibPost = require('./dbPost');
 const dbLibLike = require('./dbLike');
+const dbLibPost2 = require('./dbCreatePost');
 
 // import the db interactions modules
 const dbLibUser = require('./dbUser');
@@ -197,6 +198,51 @@ webapp.get('/post', async (req, res) => {
     res.status(404).json({ message: 'there was error' });
   }
 });
+
+/**
+webapp.delete('/student/:id', async (req, res) => {
+  console.log('DELETE a student');
+  try {
+    const result = await dbLib.deleteStudent(req.params.id);
+    if (result.deletedCount === 0) {
+      res.status(404).json({ error: 'student not in the system' });
+      return;
+    }
+    // send the response with the appropriate status code
+    res.status(200).json({ message: result });
+  } catch (err) {
+    res.status(404).json({ message: 'there was error' });
+  }
+});
+
+MOCK API
+// Delete a Post
+export const deletePost = async(PostId) => {
+  try {
+    const response = await axios.delete(`${rootURL}/Post/${PostId}`);
+    return response.data.data;
+  } catch (err) {
+    console.error(err);
+  }
+}
+ */
+
+webapp.delete('/Post/:id', async (req, res) => {
+  console.log('Delete a POST');
+  try {
+    const result = await dbLibPost2.deletePost(req.params.id);
+    if (result.deletedCount === 0) {
+      res.status(404).json({ error: 'Post not in the system' });
+      return;
+    }
+    // send the response with the appropriate status code
+    res.status(200).json({ message: result });
+  } catch (err) {
+    res.status(404).json({ message: 'there was error' });
+  }
+});
+
+
 
 webapp.get('/post/:id', async (req, res) => {
   console.log('READ the post by postId');
