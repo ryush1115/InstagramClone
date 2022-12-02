@@ -57,10 +57,10 @@ const updatePost = async (post) => {
     }
 }
 
-const deletePost = async (post) => {
+const deletePost = async (id) => {
     try {
         const db = await getDB();
-        const result = await db.collection('Post').deleteOne({ _id: ObjectId(post._id) });
+        const result = await db.collection('Post').deleteOne({ _id: ObjectId(id) });
         console.log(`Post deleted: ${JSON.stringify(result)}`);
         return result;
     } catch (err) {
