@@ -52,17 +52,17 @@ webapp.get('/followinglist', async (req, res) => {
   }
 });
 
-webapp.get('/commonfollowings', async (req, res) => {
-  console.log('Get if has common followings');
-  try {
-    // get the data from the db
-    const results = await dbLibPost.hasCommonFollowings(req.body.user);
-    // send the response with the appropriate status code
-    res.status(200).json({ data: results });
-  } catch (err) {
-    res.status(404).json({ message: 'there was error' });
-  }
-});
+// webapp.get('/commonfollowings', async (req, res) => {
+//   console.log('Get if has common followings');
+//   try {
+//     // get the data from the db
+//     const results = dbLibPost.hasCommonFollowings(req.body.user);
+//     // send the response with the appropriate status code
+//     res.status(200).json({ data: results });
+//   } catch (err) {
+//     res.status(404).json({ message: 'there was error' });
+//   }
+// });
 
 // update the follow list in /followinglist endpoint
 webapp.put('/followinglist', async (req, res) => {
@@ -261,12 +261,12 @@ webapp.get('/post/:id', async (req, res) => {
 });
 
 
-webapp.get('/userposts', async (req, res) => {
+webapp.get('/userposts/:username', async (req, res) => {
   console.log('READ user posts');
   try {
     // get the data from the db
-    const results = await dbLibPost.getUserPosts(req.body.username);
-    console.log(req.body.username);
+    const results = await dbLibPost.getUserPosts(req.params.username);
+    console.log(req.params.username);
     // send the response with the appropriate status code
     // console.log(results.username);
     
@@ -309,11 +309,11 @@ webapp.get('/friendsuggestion', async (req, res) => {
 });
 
 // get results for is my like post
-webapp.get('/ismylikepost', async (req, res) => {
+webapp.get('/isMyLikePost/:PostId', async (req, res) => {
   console.log('Run is my like post');
   try {
     // get the data from the db
-    const results = await dbLibLike.isMyLikePost(req.body.PostId);
+    const results = await dbLibLike.isMyLikePost(req.params.PostId);
     // send the response with the appropriate status code
     // console.log(results.username);
     

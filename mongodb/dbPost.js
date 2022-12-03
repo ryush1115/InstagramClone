@@ -60,27 +60,27 @@ const getPost = async (PostId) => {
   };
   
   
-  const hasCommonFollowings = async (user) => {
-    console.log("Running has common followings");
-    console.log("User follow list is " + user.follow);
-    if(typeof(user.follow) == "undefined") {
-      return false;
-    }
-    const userFollowList = user.follow;
-    let commonCount = 0;
-    for(let i = 0; i < userFollowList.length; i++){
-      let isFollowedByMe = isMyFollowing(userFollowList[i]);
-      if(isFollowedByMe)
-          commonCount++;
-    }
-    if(commonCount >= 3){
-        console.log(commonCount);
-        return true;
-    }
-    else{
-      return false;
-    }
-  };
+  // const hasCommonFollowings = async(user) => {
+  //   console.log("Running has common followings");
+  //   console.log("User follow list is " + user.follow);
+  //   if(typeof(user.follow) == "undefined") {
+  //     return false;
+  //   }
+  //   const userFollowList = user.follow;
+  //   let commonCount = 0;
+  //   for(let i = 0; i < userFollowList.length; i++){
+  //     let isFollowedByMe = isMyFollowing(userFollowList[i]);
+  //     if(isFollowedByMe)
+  //         commonCount++;
+  //   }
+  //   if(commonCount >= 3){
+  //       console.log(commonCount);
+  //       return true;
+  //   }
+  //   else{
+  //     return false;
+  //   }
+  // };
   
   const getSuggestionList = async () => {
     try {
@@ -112,5 +112,5 @@ const getPost = async (PostId) => {
     getUserPosts,
     getUsers,
     getSuggestionList,
-    hasCommonFollowings
+    // hasCommonFollowings
   };

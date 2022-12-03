@@ -58,7 +58,7 @@ describe('Update a like list endpoint integration test', () => {
     const likedPostNew = await db.collection('Post').findOne({_id:ObjectId("637aaaf308e936a0c97e4a31")});
     expect(Object.values(likedPostNew.like).length).toBeLessThan(likeLength);
 
-    res = await request(webapp).get('/isMyLikePost').send('PostId=637aaaf308e936a0c97e4a31');
+    res = await request(webapp).get('/isMyLikePost/637aaaf308e936a0c97e4a31');
     expect(res.status).toEqual(200);
     expect(res.type).toBe('application/json');
 
