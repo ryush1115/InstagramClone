@@ -70,21 +70,9 @@ export const getCommentsArray = async(PostId) => {
 export const getCommentMessage = async(CommentId) => {
   try {
     const response = await axios.get(`${rootURL}/comments/${CommentId}`);
-    return response.data.data.message;
-  } catch (err) {
-    console.error(err)
-  }
-}
-
-// Takes a user email address as input
-// and sends a Get request to the /User endpoint
-// returns the password of the User with the email address
-export const getPassword = async(userEmail) => {
-  try {
-    const response = await axios.get(`${rootURL}/User/${userEmail}`);
     return response.data.data;
   } catch (err) {
-    console.error(err);
+    console.error(err)
   }
 }
 
@@ -106,6 +94,7 @@ export const getPassword = async(userEmail) => {
 // returns the attributes of the Post with the id
 
 export const createPost = async (PostObject) => {
+  console.log("running Create opst in mock_api")
   try {
     const response = await axios.post(
       `${rootURL}/Post`,
@@ -114,6 +103,7 @@ export const createPost = async (PostObject) => {
       &publicPrivate=${PostObject.publicPrivate}
       &postTagOfOtherUsers=${PostObject.postTagOfOtherUsers}
       &postCommentArray=${PostObject.postCommentArray}
+      &id=${PostObject.id}
       &like=${PostObject.like}`
     );
     console.log(`username=${PostObject.username}&postImage=${PostObject.postImage}
@@ -121,7 +111,8 @@ export const createPost = async (PostObject) => {
     &publicPrivate=${PostObject.publicPrivate}
     &postTagOfOtherUsers=${PostObject.postTagOfOtherUsers}
     &postCommentArray=${PostObject.postCommentArray}
-    &like=${[]}`);
+    &id=${PostObject.id}
+    &like=${PostObject.like}`);
     return response.data.data;
   } catch (err) {
     console.error(err);
@@ -222,21 +213,13 @@ export const getSuggestionList= async () => {
 };
 
 export const hasCommonFollowings = async (user) => {
-     
-  const userFollowList = user.follow;
-    let commonCount = 0;
-    for(let i = 0; i < userFollowList.length; i++){
-      let isFollowedByMe = await isMyFollowing(userFollowList[i]);
-      if(isFollowedByMe)
-          commonCount++;
-    }
-    if(commonCount >= 3){
-        console.log(commonCount);
-        return true;
-    }
-    else{
-      return false;
-    }
+  try {
+    const response = await axios.get(`${rootURL}/commonfollowings`,`user=${user}`);
+    return response.data.data;
+    
+  } catch (err) {
+    console.error(err);
+  } 
 }
 // Create a Comment (without the Id) as input
 // and sends a POST request to the /Comment endpoint
@@ -321,18 +304,8 @@ export const cancelPostLike = async(PostId) => {
 export const getUserPosts = async (username) => {
   console.log(username);
   try {
-    const response = await axios.get(`${rootURL}/Post`);
-    const posts = response.data.data;
-    console.log(posts);
-    const userPosts = [];
-    for (let i = 0; i < posts.length; i++){
-      if (posts[i].username === username){
-        userPosts.push(posts[i]);
-      }
-    }
-    console.log("mock userposts");
-    console.log(userPosts);
-    return userPosts;
+    const response = await axios.get(`${rootURL}/userposts/${username}`);
+    return response.data.data;
   } catch (err) {
     console.error(err);
   }
@@ -340,21 +313,12 @@ export const getUserPosts = async (username) => {
 
 
 export const isMyLikePost = async(PostId) => {
+  console.log("running in mock api")
   try {
-    const post = await getPost(PostId);
-
-    const user1 = await axios.get(`${rootURL}/User1`);
-    const me = user1.data.data[0];
-
-    for(let j = 0; j < post.like.length; j++){
-      if(post.like[j] === me.id){
-        return true;
-      }
-    }
-    return false;
-
+    const response = await axios.get(`${rootURL}/isMyLikePost/${PostId}`);
+    return response.data.data;
   } catch (err) {
-    console.error(err)
+    console.error(err);
   }
 }
 

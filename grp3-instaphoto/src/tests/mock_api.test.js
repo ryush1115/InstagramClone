@@ -10,7 +10,7 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import React from 'react';
 
 // import { enableFetchMocks } from 'jest-fetch-mock';
-import {getUsers, getUser, getPosts, getPost, getPassword,
+import {getUsers, getUser, getPosts, getPost, 
   getCommentMessage, getMyFollowings, getSuggestionList,
 createPost, createUser, getCommentsArray, isMyFollowing, 
 cancelFollowing, following, deletePost, cancelPostLike,
@@ -49,6 +49,13 @@ test('#getCommentArray() using async/await', async () => {
 })
 
 // we good
+test('#getCommentMessage() using async/await', async () => {
+  const data = await getCommentMessage("637aab0cbbb5ce45b921c58d")
+  expect(data).toBeDefined()
+})
+
+
+// we good
 test('#getMyFollowings() using async/await', async () => {
   const data = await getMyFollowings()
   expect(data).toBeDefined()
@@ -71,19 +78,13 @@ test('#createNewUser() using async/await', async () => {
 
 // LOOK INTO THIS
 test('#createNewPost() using async/await', async () => {
-  const newPost = { username: "newUsername", postImage: "newPostImage", postComment: "newPostComment", publicPrivate: false, postTagOfOtherUsers: null, id: 10, like :[] };
-  // send POST request to create new User
+  const newPost = { username: "newUsername", postImage: "newPostImage", postCaption: "newPostComment", publicPrivate: false, postTagOfOtherUsers: "null", postCommentArray: "null", id: 10, like :"null" };
+  // send POST request to create new Post
   const newStoredPost = await createPost(newPost);
-  // console.log(newStoredPost)
-  expect(newStoredPost).toBeUndefined()
+  console.log(newStoredPost)
+  expect(newStoredPost).toBeUnDefined()
 })
 
-// we good
-// // test Get Password
-test("Should return null when pw not found", async()=> {
-  const result = await getPassword(-99);
-  expect(result).toBeUndefined();
-})
 
 // we good
 // // test create comment in post
@@ -202,3 +203,16 @@ test("Should return empty list for getUserPosts", async()=> {
   const result = await getUserPosts(-99);
   expect(result).toEqual([]);
 })
+
+// not working
+// test('#ismylikepost() using async/await', async () => {
+//   const data = await isMyLikePost("637aaaf308e936a0c97e4a31")
+//   expect(data).toBeDefined()
+// })
+ 
+// not working
+// test('#hasCommonFollowings() using async/await', async () => {
+//   const newUser = { username: "newUsername", email: "newEmail@com", password: "newPassword", profilePicture: "null", follow: "null", id: "999"};
+//   const data = await hasCommonFollowings(newUser)
+//   expect(data).toBeDefined()
+// })

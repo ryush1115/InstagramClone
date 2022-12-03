@@ -1133,31 +1133,6 @@
       "postCommentArray": [
         {
           "username": "Heath_Buckridge",
-          "message": "message 1",
-          "tagOfOtherUsers": [],
-          "id": "1"
-        },
-        {
-          "username": "Sigmund.Roberts",
-          "message": "TA! Please Edit Me!!",
-          "tagOfOtherUsers": [],
-          "id": "2"
-        }
-      ],
-      "id": "d9s8P8b",
-      "like": [
-        "0"
-      ]
-    },
-    {
-      "username": "grp3foreva",
-      "postImage": "http://loremflickr.com/640/480\n      ",
-      "postCaption": "undefined\n      ",
-      "publicPrivate": "false\n      ",
-      "postTagOfOtherUsers": [],
-      "postCommentArray": [
-        {
-          "username": "Heath_Buckridge",
           "message": "Cute cat!!!",
           "tagOfOtherUsers": [],
           "id": "1"
@@ -1191,6 +1166,12 @@
           "message": "123",
           "tagOfOtherUsers": null,
           "id": "6"
+        },
+        {
+          "username": "grp3foreva",
+          "message": "dd",
+          "tagOfOtherUsers": null,
+          "id": null
         }
       ],
       "id": "CREL3Vi",
