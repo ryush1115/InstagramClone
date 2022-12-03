@@ -195,18 +195,10 @@ export const isMyFollowing = async (username) => {
 
 export const getSuggestionList= async () => {
   try {
-   
-    const users = await getUsers();
-    const suggestionList = [];
-    
-    for(let i = 0; i < users.length; i++){
-      const isAlreadyFollow = await isMyFollowing(users[i].username);
-      if(!isAlreadyFollow && await hasCommonFollowings(users[i])){
-          suggestionList.push(users[i].username);
-      }
-    }
-    
-    return suggestionList;
+    const response = await axios.get(`${rootURL}/friendsuggestion`);
+    return response.data.data;
+    // the data is stored in the mockData
+    // field of the response
   } catch (err) {
     console.error(err);
   }
