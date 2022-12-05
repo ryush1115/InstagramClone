@@ -127,8 +127,14 @@ export const createPost = async(post) => {
 
 export const getMyFollowings = async () => {
   try {
-    const response = await axios.get(`${rootURL}/followinglist`);
-    return response.data.data;
+    const response = await fetch(`${rootURL}/followinglist`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-auth-token': localStorage.getItem('token')
+      },
+    });
+    return await response.json();
     // the data is stored in the mockData
     // field of the response
   } catch (err) {
@@ -148,8 +154,15 @@ export const following = async (followingName) => {
 
 export const cancelFollowing = async (followingName) => {
   try {
-    const response = await axios.put(`${rootURL}/followinglist`,`followingName=${followingName}`);
-    return response.data.data;
+    const response = await fetch(`${rootURL}/followinglist`, {
+      headers: {
+        'Content-Type': 'application/json',
+        'x-auth-token': localStorage.getItem('token')
+      },
+        method: 'DELETE',
+        body: JSON.stringify({followingName: followingName})
+    })
+    return response.data;
   } catch (err) {
     console.error(err);
   } 

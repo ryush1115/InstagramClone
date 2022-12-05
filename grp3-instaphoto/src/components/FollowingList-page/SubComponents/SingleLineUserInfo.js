@@ -12,6 +12,8 @@ const FriendSuggestionComponent = (props) => {
         if(isfollowed){
             setisfollowed(false);
             cancelFollowing(props.name);
+            // refresh the page
+            //window.location.reload();
         }else{
             setisfollowed(true);
             following(props.name);
@@ -30,7 +32,7 @@ const FriendSuggestionComponent = (props) => {
 
                     <span className="text-3_FriendSuggestion" onClick={()=>{
                         handleClick();
-                        //setisfollowed(!isfollowed)
+                        setisfollowed(!isfollowed)
                     }} >{isfollowed? "Unfollow":"Follow"}</span>
 
                 </div>

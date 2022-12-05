@@ -46,12 +46,12 @@ const closeMongoDBConnection = async () => {
   await MongoConnection.close();
 };
 
-const getMyFollowing = async () => {
+const getMyFollowing = async (UserID) => {
   try {
     // get the db
     const db = await getDB();
-    const me = await db.collection('User1').findOne({});
-    const result = me.follow;
+    const me = await db.collection('User').findOne({_id: ObjectId(UserID)});
+    const result = me.following;
     console.log(`My following: ${JSON.stringify(result)}`);
     return result;
   } catch (err) {
@@ -59,12 +59,12 @@ const getMyFollowing = async () => {
   }
 };
 
-const followUser = async (followingName) => {
+const followUser = async (UserID, followingName) => {
   try {
     // get the db
     const db = await getDB();
-    const result = await db.collection('User1').updateOne(
-      {},
+    const result = await db.collection('User').updateOne(
+      {_id: ObjectId(UserID)},
       {
         $push: {
           follow: {
@@ -81,13 +81,13 @@ const followUser = async (followingName) => {
   }
 };
 
-const unfollowUser = async (followingName) => {
+const unfollowUser = async (UserID, followingName) => {
   try {
     // get the db
     const db = await getDB();
-    const result = await db.collection('User1').updateOne(
-      {},
-      { $pull: { follow: followingName } },
+    const result = await db.collection('User').updateOne(
+      {_id: ObjectId(UserID)},
+      { $pull: { following: followingName } },
     );
     console.log(`User1: ${JSON.stringify(result)}`);
     return result;

@@ -10,12 +10,9 @@ import '../FriendSuggestion-page/FriendSuggestion.css';
 const FollowingList = () => {
     
     const [followings, setFollowings] = useState([]);
-    let data;
     const someFetch = async () => {
-        //using JS fetch API
-        data = await getMyFollowings();
-        // assuming the state is in the form of an array
-        // console.log(data);
+        const data = await getMyFollowings();
+        console.log(data);
         setFollowings(data);
     }
    
@@ -24,21 +21,30 @@ const FollowingList = () => {
 
         someFetch();
         console.log(followings);
+        console.log(followings[0]);
 
     },[]);
-    console.log(data);
     console.log(followings);
-    return (
+    if (!!followings) {
+        return (
             <div className="container-0_FriendSuggestion">
                 <span className="text-0_FriendSuggestion" data-testid = "followbutton">Following</span>
-                {   
+                {
                     followings.map((v) => {
-                    return <SingleLineUserInfo name={v} description={"This is a cool person"} image={null} isfollowed={true} />
-                })}
+                        return <SingleLineUserInfo name={v} description={"This is a cool person"} image={null} isfollowed={true} />
+                    })}
             </div>
 
-    );
-
+        );
+    } else {
+        console.log("no followings");
+        return (
+            <div className="container-0_FriendSuggestion">
+                <span className="text-0_FriendSuggestion" data-testid = "followbutton">Following</span>
+                <span className="text-0_FriendSuggestion" data-testid = "followbutton">You are not following anyone</span>
+            </div>
+        );
+    }
 }
 export default FollowingList;
 

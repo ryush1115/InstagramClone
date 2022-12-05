@@ -2,10 +2,11 @@ import React, { useState, useEffect} from "react";
 import './UserProfile/userprofile.css';
 import { Navbar, Card, ListGroup, ListGroupItem } from 'react-bootstrap';
 import {useNavigate} from 'react-router-dom';
-import { getSuggestionList } from '../api/mock_api';
+import {getSuggestionList, getTokenUser, getUserPosts} from '../api/mock_api';
 
 export default function Sidebar(props) {
   const [FriendSuggestionList, setFriendSuggestionList] = useState([]);
+  const [user, setUser] = useState({});
   let data;
   const someFetch = async () => {
     //using JS fetch API
@@ -19,7 +20,9 @@ export default function Sidebar(props) {
   useEffect(() => {
       someFetch();
       console.log(FriendSuggestionList);
-
+      getTokenUser().then((user) => {
+          setUser(user.data);
+      });
   },[]);
 
   const navigate = useNavigate();
@@ -52,11 +55,11 @@ export default function Sidebar(props) {
         <br></br>
         <div>
           <Card.Img
-            src="https://i.ibb.co/bgWdsVT/grp3.png"
+            src={user.profilePicture}
             variant='top'
             className='sig'
           />
-        <p className = 'username'> grp3foreva</p>
+        <p className = 'username'> {user.username}</p>
         </div>
         <div>
           <Card.Body>

@@ -44,13 +44,24 @@ webapp.get('/', (req, resp) => {
 
 // implement the GET in /followinglist endpoint
 webapp.get('/followinglist', async (req, res) => {
-  try {
-    // get the data from the db
-    const results = await dbLib.getMyFollowing();
-    // send the response with the appropriate status code
-    res.status(200).json({ data: results });
+  const token = req.header('x-auth-token');
+  if (!token) {
+    res.status(401).json({message: 'no token, authorization denied'});
+  }
+  console.log("token is " + token);
+    try {
+      await jwt.verify(token, "testKey", {},  async (err, decoded) => {
+        if (err) {
+          res.status(401).json({message: 'token is not valid'});
+          return;
+        } else {
+          const result = await dbLib.getMyFollowing(decoded.id);
+          res.json(result);
+          return;
+        }
+      })
   } catch (err) {
-    res.status(404).json({ message: 'there was error' });
+    console.trace(err);
   }
 });
 
@@ -104,6 +115,28 @@ webapp.put('/followinglist', async (req, res) => {
   } catch (err) {
     res.status(404).json({ message: 'there was error' });
   }
+});
+
+webapp.delete('/followinglist', async (req, res) => {
+  const token = req.header('x-auth-token');
+    if (!token) {
+        res.status(401).json({message: 'no token, authorization denied'});
+    }
+    console.log("token is " + token);
+    try {
+        await jwt.verify(token, "testKey", {},  async (err, decoded) => {
+            if (err) {
+                res.status(401).json({message: 'token is not valid'});
+            } else {
+              const id = decoded.id;
+                const result = await dbLib.unfollowUser(decoded.id, req.body.followingName);
+                res.json(result);
+                return;
+            }
+        })
+    } catch (err) {
+        console.trace(err);
+    }
 });
 
 // implement the GET in /activity-feed/:id/comment endpoint
