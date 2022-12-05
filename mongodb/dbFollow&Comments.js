@@ -60,6 +60,8 @@ const getMyFollowing = async (UserID) => {
 };
 
 const followUser = async (UserID, followingName) => {
+  console.log("followUser");
+  console.log(UserID);
   try {
     // get the db
     const db = await getDB();
@@ -67,14 +69,11 @@ const followUser = async (UserID, followingName) => {
       {_id: ObjectId(UserID)},
       {
         $push: {
-          follow: {
-            $each: [followingName],
-            $position: 0,
-          },
+          following: followingName
         },
       },
     );
-    console.log(`User1: ${JSON.stringify(result)}`);
+    console.log(`User: ${JSON.stringify(result)}`);
     return result;
   } catch (err) {
     console.log(`error: ${err.message}`);

@@ -103,17 +103,27 @@ webapp.put('/followinglist', async (req, res) => {
     return;
   }
   try {
-    const isAlreadyFollow = await dbLib.isMyFollowing(req.body.followingName);
+    const isAlreadyFollow = await dbLib.isMyFollowing(req.body.followingName)
+    console.log("isAlreadyFollow is " + isAlreadyFollow);
     let result;
-    if (!isAlreadyFollow) {
-      result = await dbLib.followUser(req.body.followingName);
-    } else {
-      result = await dbLib.unfollowUser(req.body.followingName);
-    }
-    // send the response with the appropriate status code
-    res.status(200).json({ message: result });
+    const token = req.header('x-auth-token');
+    jwt.verify(token, "testKey", {},  async (err, decoded) => {
+        if (err) {
+            res.status(404).json({ message: 'token is not valid' });
+        } else {
+          const id = decoded.id;
+          if (!isAlreadyFollow) {
+            result = await dbLib.followUser(decoded.id, req.body.followingName);
+          } else {
+            result = await dbLib.unfollowUser(req.body.followingName);
+          }
+          // send the response with the appropriate status code
+          res.status(200).json({ message: result });
+        }
+    });
   } catch (err) {
     res.status(404).json({ message: 'there was error' });
+    console.trace(err);
   }
 });
 
@@ -128,7 +138,6 @@ webapp.delete('/followinglist', async (req, res) => {
             if (err) {
                 res.status(401).json({message: 'token is not valid'});
             } else {
-              const id = decoded.id;
                 const result = await dbLib.unfollowUser(decoded.id, req.body.followingName);
                 res.json(result);
                 return;

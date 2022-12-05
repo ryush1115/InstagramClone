@@ -16,6 +16,7 @@ const FriendSuggestionComponent = (props) => {
             //window.location.reload();
         }else{
             setisfollowed(true);
+            console.log(props.name);
             following(props.name);
         }
     }

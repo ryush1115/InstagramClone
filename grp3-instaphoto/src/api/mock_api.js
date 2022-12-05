@@ -143,12 +143,21 @@ export const getMyFollowings = async () => {
 };
 
 export const following = async (followingName) => {
+  console.log(followingName);
+  console.log("mockapi called");
+  console.log(JSON.stringify(followingName));
   try {
-    const response = await axios.put(`${rootURL}/followinglist`,`followingName=${followingName}`);
-    return response.data.data;
-    
+    const response = await fetch(`${rootURL}/followinglist`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+            'x-auth-token': localStorage.getItem('token')
+        },
+        body: JSON.stringify({followingName: followingName})
+    });
+    return response.data;
   } catch (err) {
-    console.error(err);
+    console.trace(err);
   } 
 };
 

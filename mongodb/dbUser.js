@@ -74,7 +74,7 @@ const getAllUsers = async () => {
     const db = await getDB();
     return await db.collection('User').find({}).toArray();
   } catch (err) {
-    console.log(`error: ${err.message}`);
+    console.trace(err);
 }
 };
 
@@ -130,6 +130,7 @@ const getSuggestionList = async (userID) => {
     const users = await getAllUsers();
     const list = [];
     for (let i = 0; i < users.length; i++) {
+      console.log(users[i]._id);
       const isFollowingMe = await isFollowing(userID, users[i]._id.toHexString());
       if (!isFollowingMe && await hasCommonFollowing(userID, users[i]._id)) {
         list.push(users[i]);
@@ -145,11 +146,15 @@ const getSuggestionList = async (userID) => {
 const isFollowing = async (userID, otherUserID) => {
   const user = await getUser(userID);
   const otherUser = await getUser(otherUserID);
-  for (let i = 0; i < user.followers.length; i++) {
-    if (user.followers[i].equals(otherUser)) {
-      return true;
+  if (!!user.followers) {
+    for (let i = 0; i < user.followers.length; i++) {
+      if (user.followers[i].equals(otherUser)) {
+        return true;
+      }
     }
+    return false;
   }
+  return false;
 }
 
 const hasCommonFollowing = async (userID, otherUserID) => {
