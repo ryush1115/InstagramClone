@@ -1,13 +1,21 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import ActivityFeedUsername from "./Activity-Feed-Username";
 import AddPost from "./AddPost";
 import './activityfeed.css';
 import Sidebar from "../../sidebar.component";
+import {getTokenUser, getUserPosts} from "../../../api/mock_api";
 
 export default function MainFeed(props) {
 
     const [roster, setRoster] = useState([]);
     const [create, setCreate] = useState('default');
+    const [user, setUser] = useState({});
+
+    useEffect(() => {
+        getTokenUser().then((user) => {
+            setUser(user.data);
+        });
+    }, []);
 
     return (
         <div className={"mainfeed-wrapper"}>
@@ -15,10 +23,9 @@ export default function MainFeed(props) {
             <div className={"mainfeed"}>
                 <div className="profile">
                     <div className="profile-image">
-                        <img alt="" />
-                        {/* <img src={require('../images/grp3.PNG')} alt=""/> */}
+                        <img alt="" src={user.profilePicture} />
                     </div>
-                    <ActivityFeedUsername username={"grp3foreva"}/>
+                    <ActivityFeedUsername username={user.username}/>
                 </div>
                 <div className="container">
                     <div className="feed">

@@ -46,10 +46,10 @@ const createPost = async (post) => {
     }
 }
 
-const updatePost = async (post) => {
+const updatePost = async (post, id) => {
     try {
         const db = await getDB();
-        const result = await db.collection('Post').updateOne({ _id: ObjectId(post._id) }, { $set: post });
+        const result = await db.collection('Post').updateOne({ _id: ObjectId(id) }, { $set: post });
         console.log(`Post updated: ${JSON.stringify(result)}`);
         return result;
     } catch (err) {
@@ -68,10 +68,10 @@ const deletePost = async (id) => {
     }
 }
 
-const getPost = async (post) => {
+const getPost = async (postID) => {
     try {
         const db = await getDB();
-        const result = await db.collection('Post').findOne({ _id: ObjectId(post._id) });
+        const result = await db.collection('Post').findOne({ _id: ObjectId(postID) });
         console.log(`Post found: ${JSON.stringify(result)}`);
         return result;
     } catch (err) {

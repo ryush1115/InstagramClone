@@ -4,6 +4,7 @@ const { ObjectId, ObjectID } = require('mongodb');
 const {getPost } = require('./dbPost');
   
   // how does this go to server.js
+  // what does this even do lol
   const isMyLikePost = async (PostId) => {
     try {
       console.log("running is my like post");

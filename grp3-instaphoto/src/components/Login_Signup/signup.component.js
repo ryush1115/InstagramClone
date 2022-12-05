@@ -4,6 +4,7 @@ import './login_signup.css';
 import Form from './login_signup-components/form.component'
 import Form_Submit from './login_signup-components/form-submit.component'
 import Form_Welcome from './login_signup-components/form-welcome.component'
+import {createUser} from "../../api/mock_api";
 
 const SignupComponent = () => {
   const navigate = useNavigate();
@@ -17,7 +18,17 @@ const SignupComponent = () => {
     navigate('/sign-in');
   };
 
-  const handleSubmitClick = (e) => {
+  const signUp = async (username, email, password) => {
+      const data = await createUser(username, email, password);
+    if (data.error) {
+      alert(data.error);
+    } else {
+      localStorage.setItem('token', data.token);
+      navigate('/user-profile');
+    }
+  }
+
+  const handleSubmitClick = async (e) => {
     e.preventDefault();
     console.log("Printing test output: ");
     console.log(username, email, password, confirmPassword);
@@ -43,15 +54,9 @@ const SignupComponent = () => {
     // console.log(username, email, password, confirmPassword);
 
     if (validateEmail(email) && password.length >= 8 && confirmPassword === password) {
-      // if all validated, then add user to the json database
-      // Post a User object to the database with email and password
-      // call createUser
-      //handleCreateNewStudent(e);
-
-      // navigate to the home page
-      navigate('/userprofile');
-    };
-  }
+        await signUp(username, email, password);
+    }
+  };
 
   const validateEmail = (email) => {
     const regex =

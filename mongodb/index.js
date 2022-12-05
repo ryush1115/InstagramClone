@@ -4,7 +4,7 @@
  const webapp = require('./server');
 
  // (5) define the port
- const port = 8080;
+ const port = 8000;
  
  // start the server and connect to the DB
  webapp.listen(port, async () => {

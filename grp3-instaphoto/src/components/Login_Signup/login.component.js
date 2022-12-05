@@ -4,6 +4,7 @@ import './login_signup.css';
 import Form from './login_signup-components/form.component'
 import Form_Submit from './login_signup-components/form-submit.component'
 import Form_Welcome from './login_signup-components/form-welcome.component'
+import {verifyUser} from '../../api/mock_api';
 
 const LoginComponent=()=>{
   const [email, setEmail] = useState('');
@@ -14,17 +15,15 @@ const LoginComponent=()=>{
     navigate('/sign-up');
   };
 
-
-  // 1. *** Don't do this for HW2 *** read the json database first
-  // 2. Check whether the email values are in the database by calling API with specific ID
-  //    a. if not, then sign up
-  //    b. *** Don't do this for HW2*** if yes, check password ! NO NEED TO CHECK THIS! Not safe to check password in the front
-  //        *** i. if no, warn user
-  //        *** ii if yes, go to c
-  //    c. sign in button to create a new page -> fetch from backend and present them to frontend
-  //      the page should have a framework, and each framework should have variables to be submitted based on user's data
-
-  // validate email
+  const login = async (email, password) => {
+    const data = await verifyUser(email, password);
+    if (data.error) {
+        alert(data.error);
+    } else {
+      localStorage.setItem('token', data.token);
+      navigate('/user-profile');
+    }
+  }
   const validateEmail = (email) => {
   const regex =
     /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
@@ -32,12 +31,7 @@ const LoginComponent=()=>{
     return regex.test(String(email).toLowerCase());
   };
 
-  // asynchronous function
-  // how to encapsulate two function (1. asynch, 2. sync) into another function
-  // const checkEmailInDB = () > {
-  // }
-
-  const handleSubmitClick = (e) => {
+  const handleSubmitClick = async (e) => {
     e.preventDefault();
     
     if (!validateEmail(email)) {
@@ -53,17 +47,9 @@ const LoginComponent=()=>{
       
     }
     if (validateEmail(email) && password.length >= 8) {
-      console.log("valid email and password");
-      
-      // check if the email is in the database?
-      //if(email) exists in the backend?
-
-      navigate('/userprofile');
-
-      // if useNavigate to navigate to a page. then the page will re-render
-      // if have useEffect with no parameter, then that will re-render
+      await login(email, password);
     }
-    }
+  };
 
     // first do the validation in the front end
     // have a wrapper function to call to encapsulate the two function (1. validate email format/pw lenght)

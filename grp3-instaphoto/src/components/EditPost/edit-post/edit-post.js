@@ -67,13 +67,15 @@ export default function EditPost(props) {
     useEffect( () => {
         const fetchPost = async () => {
             const data = await getPost(postID);
-            console.log(data);
-            setPost(data);
-            setTags(data.postTagOfOtherUsers);
-            setCaption(data.postCaption);
+            console.log(data[0]);
+            setPost(data[0]);
+            setTags(data[0].postTagOfOtherUsers);
+            setCaption(data[0].postCaption);
+            console.log("post1");
+            console.log(post);
         };
         fetchPost().catch(console.error);
-        console.log("post");
+        console.log("post2");
         console.log(post);
 
         const reloadTags = () => {
@@ -96,8 +98,8 @@ export default function EditPost(props) {
                         updatePost(postID, post).then((data) => {
                             console.log("updated");
                             console.log(data);
+                            navigateToUserProfile();
                         }).catch(console.error);
-                        navigateToUserProfile();
                     }}>Update</button>
                 </div>
                 <div className={"edit-post-body"}>

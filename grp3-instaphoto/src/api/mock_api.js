@@ -5,7 +5,7 @@ import axios from 'axios';
 // To run the server, enter into command line/terminal: 
 // json-server db-grp3-instaphoto.json --port 8000
 
-const rootURL = 'http://localhost:8080'
+const rootURL = 'http://localhost:8000'
 
 
 // Sends a Get request to the endpoint
@@ -45,7 +45,7 @@ export const getUsers = async () => {
 // Takes the id of a User as input
 // and sends a Get request to the /User: id endpoint
 // returns the attributes of the User
-export const getUser = async(userId) => {
+export const getUser = async (userId) => {
   try {
     const response = await axios.get(`${rootURL}/User/${userId}`);
     return response.data.data;
@@ -53,6 +53,21 @@ export const getUser = async(userId) => {
     console.error(err);
   }
 };
+
+export const getTokenUser = async () => {
+    try {
+        const response = await fetch(`${rootURL}/gettokenuser`, {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/json',
+              'x-auth-token': localStorage.getItem('token')
+            }
+        });
+        return await response.json();
+    } catch (err) {
+        console.error(err);
+    }
+}
 
 // takes id of a post, and gets 
 // the postCommentsArray attached to it
@@ -93,52 +108,22 @@ export const getCommentMessage = async(CommentId) => {
 // and sends a POST request to the /Post endpoint
 // returns the attributes of the Post with the id
 
-export const createPost = async (PostObject) => {
-  console.log("running Create opst in mock_api")
+
+export const createPost = async(post) => {
+  console.log(post);
   try {
-    const response = await axios.post(
-      `${rootURL}/Post`,
-      `username=${PostObject.username}&postImage=${PostObject.postImage}
-      &postCaption=${PostObject.postCaption}
-      &publicPrivate=${PostObject.publicPrivate}
-      &postTagOfOtherUsers=${PostObject.postTagOfOtherUsers}
-      &postCommentArray=${PostObject.postCommentArray}
-      &id=${PostObject.id}
-      &like=${PostObject.like}`
-    );
-    console.log(`username=${PostObject.username}&postImage=${PostObject.postImage}
-    &postCaption=${PostObject.postCaption}
-    &publicPrivate=${PostObject.publicPrivate}
-    &postTagOfOtherUsers=${PostObject.postTagOfOtherUsers}
-    &postCommentArray=${PostObject.postCommentArray}
-    &id=${PostObject.id}
-    &like=${PostObject.like}`);
-    return response.data.data;
+    return await fetch(`${rootURL}/post`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-auth-token': localStorage.getItem('token')
+        },
+        body: JSON.stringify(post)
+    });
   } catch (err) {
-    console.error(err);
+    console.trace(err);
   }
 }
-
-// Takes a user (without the Id) as input
-// and sends a POST request to the /User endpoint
-// returns the attributes of the User with the id
-export const createUser = async (UserObject) => {
-  try {
-    const response = await axios.post(
-        `${rootURL}/user`,
-        `email=${UserObject.email}&username=${UserObject.username}
-        &password=${UserObject.password}&profilePicture=${UserObject.profilePicture}
-        &follow=${UserObject.follow}&id=${UserObject.id}`
-    );
-    console.log(`email=${UserObject.email}&username=${UserObject.username}
-      &password=${UserObject.password}&profilePicture=${UserObject.profilePicture}
-      &follow=${UserObject.follow}&id=${UserObject.id}`);
-      return response.data.data;
-      // return the data with the id of the user
-  } catch (err) {
-    console.error(err);
-  }
-};
 
 export const getMyFollowings = async () => {
   try {
@@ -192,26 +177,6 @@ export const isMyFollowing = async (username) => {
   } 
 };
 
-
-export const getSuggestionList= async () => {
-  try {
-   
-    const users = await getUsers();
-    const suggestionList = [];
-    
-    for(let i = 0; i < users.length; i++){
-      const isAlreadyFollow = await isMyFollowing(users[i].username);
-      if(!isAlreadyFollow && await hasCommonFollowings(users[i])){
-          suggestionList.push(users[i].username);
-      }
-    }
-    
-    return suggestionList;
-  } catch (err) {
-    console.error(err);
-  }
-};
-
 export const hasCommonFollowings = async (user) => {
   try {
     const response = await axios.get(`${rootURL}/commonfollowings`,`user=${user}`);
@@ -242,8 +207,14 @@ export const createComment = async (CommentObject) => {
 export const createCommentInPost = async(PostId, CommentObject) => {
   try {
     // get said post
-    const response = await axios.post(`${rootURL}/post/${PostId}/comment`, `username=${CommentObject.username}&message=${CommentObject.message}
-    &tagOfOtherUsers=${CommentObject.postTagOfOtherUsers}&id=${CommentObject.id} `);
+    const response = await fetch(`${rootURL}/post/${PostId}/comment`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-auth-token': localStorage.getItem('token')
+      },
+      body: JSON.stringify(CommentObject)
+    });
     return response.data.data;
 
   } catch(err) {
@@ -311,6 +282,28 @@ export const getUserPosts = async (username) => {
   }
 }
 
+export const verifyUser = async (email, password) => {
+  const response = await fetch('http://localhost:8000/login', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ email, password }),
+  });
+  return await response.json();
+}
+
+export const createUser = async (username, email, password) => {
+  const response = await fetch('http://localhost:8000/signup', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ username, email, password }),
+  });
+  return await response.json();
+}
+
 
 export const isMyLikePost = async(PostId) => {
   console.log("running in mock api")
@@ -327,11 +320,45 @@ export const updatePost = async (postID, post) => {
     console.log("updatePost123");
     console.log(post);
     try {
-        const response = await axios.put(`${rootURL}/Post/${postID}`, post);
-        return response.data.data;
+      const response = await fetch(`${rootURL}/post/${postID}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-auth-token': localStorage.getItem('token'),
+        },
+        body: JSON.stringify(post),
+      });
+        return response.data;
     } catch (err) {
         console.error(err);
     }
+}
+
+export const checkJWT = async () => {
+  const token = localStorage.getItem('token');
+  console.log("token");
+  console.log(token);
+    try {
+        const response = await fetch(`${rootURL}/checktoken`, {
+          method: 'GET',
+          headers: {
+              'x-auth-token': token,
+          },
+        });
+        return await response.json();
+    } catch (err) {
+        console.error(err.message);
+    }
+}
+
+export const getSuggestionList = async () => {
+  return await fetch(`${rootURL}/get-suggestion-list`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      'x-auth-token': localStorage.getItem('token')
+    }
+  });
 }
 // Sends a Get request to the endpoint
 // returns all the Timeline Posts

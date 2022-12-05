@@ -1,6 +1,6 @@
-import React , { useState } from "react";
+import React, {useEffect, useState} from "react";
 import '../dragdrop.css';
-import {createPost } from '../api/mock_api';
+import {createPost, getTokenUser, getUserPosts} from '../api/mock_api';
 
 
 // <input> elements with type="file" let the user choose one or more files from their device storage.
@@ -15,22 +15,29 @@ export default function DragDrop(props) {
   // ref to the input using the 'useRef' hook
   const inputRef = React.useRef(null);
 
+  const [username, setUsername] = useState("");
+
+
   // drag state, initialized to false
   const [dragActive, setDragActive] = React.useState(false);  
-  
+  useEffect(() => {
+      getTokenUser().then((user) => {
+          setUsername(user.data.username);
+      });
+  }, []);
+
 
   const [, setNewPost] = useState(null);
 
   // create variables for post creation
-  let newUsername = "grp3foreva";
   let newPostComment;
-  let newPostImage = "http://loremflickr.com/640/480"; // default to this image for HW2
+  let newPostImage;
 
 
   const handleOnChange = function(e) {
     e.preventDefault();
     
-    if (e.target.name==="comment") {
+    if (e.target.name==="caption") {
      newPostComment = e.target.value;
     }
     if (e.target.name==="postImage") {
@@ -46,7 +53,9 @@ export default function DragDrop(props) {
     // stop default behavior to avoid reloading the page
     e.preventDefault();
     // create new Post variable
-    const newPost = {username: newUsername, postImage: newPostImage, postComment: newPostComment, publicPrivate:false, postTagOfOtherUsers:null, postCommentArray:[], id:null, like: []};
+      console.log(username);
+        console.log(newPostComment);
+    const newPost = {username: username, postImage: newPostImage, postCaption: newPostComment, publicPrivate:false, postTagOfOtherUsers:[], postCommentArray:[], like: []};
     // clear the form
     const form = document.getElementById('add-post');
     
@@ -59,6 +68,8 @@ export default function DragDrop(props) {
     // backend
     setNewPost(newStoredPost);
     props.setCreate('default');
+    // reload the page
+    window.location.reload();
   };
 
   // when dragActive is true, add an invisible elemnt to cover the entire state form. 

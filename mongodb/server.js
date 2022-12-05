@@ -8,14 +8,14 @@ const express = require('express');
 // (cross-origin resource sharing)
 const cors = require('cors');
 
-// (3) create an instanece of our express app
+// (3) create an instance of our express app
 const webapp = express();
 
 // (4) enable cors
 webapp.use(cors());
 
-// (6) configure express to parse bodies
-webapp.use(express.urlencoded({ extended: true }));
+// (6) configure express to parse bodies (better to use JSON, easier to work with.)
+webapp.use(express.json());
 
 // (7) import the db interactions module
 const dbLib = require('./dbFollow&Comments');
@@ -25,6 +25,9 @@ const dbLibPost2 = require('./dbCreatePost');
 
 // import the db interactions modules
 const dbLibUser = require('./dbUser');
+
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
 /*
 // start the server and connect to the DB
@@ -41,7 +44,6 @@ webapp.get('/', (req, resp) => {
 
 // implement the GET in /followinglist endpoint
 webapp.get('/followinglist', async (req, res) => {
-  console.log('READ all followings');
   try {
     // get the data from the db
     const results = await dbLib.getMyFollowing();
@@ -52,21 +54,38 @@ webapp.get('/followinglist', async (req, res) => {
   }
 });
 
-// webapp.get('/commonfollowings', async (req, res) => {
-//   console.log('Get if has common followings');
-//   try {
-//     // get the data from the db
-//     const results = dbLibPost.hasCommonFollowings(req.body.user);
-//     // send the response with the appropriate status code
-//     res.status(200).json({ data: results });
-//   } catch (err) {
-//     res.status(404).json({ message: 'there was error' });
-//   }
-// });
+// TODO: Test this endpoint
+webapp.get('/get-suggestion-list', async (req, res) => {
+  // check the token
+  const token = req.header('x-auth-token');
+  if (!token) {
+    res.status(404).json({ message: 'no token, authorization denied' });
+  }
+  try {
+    await jwt.verify(token, "testKey", {},  async (err, decoded) => {
+      if (err) {
+        res.status(404).json({ message: 'token is not valid' });
+        return;
+      } else {
+        const user = await dbLibUser.getUser(decoded.id);
+        if (!user) {
+          res.status(404).json({ message: 'user not found' });
+          return;
+        }
+      }
+      const suggestionList = await dbLibUser.getSuggestionList(decoded.id);
+      res.status(200).json({ data: suggestionList });
+    });
+  } catch (err) {
+    res.status(404).json({ message: 'there was error' });
+  }
+});
+
+
+
 
 // update the follow list in /followinglist endpoint
 webapp.put('/followinglist', async (req, res) => {
-  console.log('UPDATE the follow list');
   // parse the body of the request
   if (!req.body.followingName) {
     res.status(404).json({ message: 'missing following name' });
@@ -89,7 +108,6 @@ webapp.put('/followinglist', async (req, res) => {
 
 // implement the GET in /activity-feed/:id/comment endpoint
 webapp.get('/post/:id/comment', async (req, res) => {
-  console.log('READ the comments of one post bt postId');
   try {
     // get the data from the db
     const results = await dbLib.getCommentsArray(req.params.id);
@@ -102,7 +120,6 @@ webapp.get('/post/:id/comment', async (req, res) => {
 
 // implement the GET in /comments/:id endpoint
 webapp.get('/comments/:id', async (req, res) => {
-  console.log('READ the comment by commentId');
   try {
     // get the data from the db
     const results = await dbLib.getCommentMessage(req.params.id);
@@ -119,7 +136,6 @@ webapp.get('/comments/:id', async (req, res) => {
 
 // implement the POST in /comments endpoint
 webapp.post('/comments', async (req, res) => {
-  console.log('CREATE a comment');
   // parse the body of the request
   if (!req.body.username || !req.body.message || !req.body.tagOfOtherUsers || !req.body.id) {
     res.status(404).json({ message: 'missing username, message,tagOfOtherUsers, or id' });
@@ -143,7 +159,6 @@ webapp.post('/comments', async (req, res) => {
 
 // implement the POST in /post/:id/comment endpoint
 webapp.post('/post/:id/comment', async (req, res) => {
-  console.log('CREATE a comment in a post by postId');
   // parse the body of the request
   if (!req.body.username || !req.body.message || !req.body.tagOfOtherUsers || !req.body.id) {
     res.status(404).json({ message: 'missing username, message,tagOfOtherUsers, or id' });
@@ -168,7 +183,6 @@ webapp.post('/post/:id/comment', async (req, res) => {
 
 // implement the PUT /comments/id endpoint
 webapp.put('/comments/:id', async (req, res) => {
-  console.log('UPDATE a comment');
   // parse the body of the request
   if (!req.body.message || !req.body.postid) {
     res.status(404).json({ message: 'missing message' });
@@ -185,14 +199,12 @@ webapp.put('/comments/:id', async (req, res) => {
 
 // implement the GET in /posts endpoint
 webapp.get('/post', async (req, res) => {
-  console.log('READ all posts');
   try {
     // get the data from the db
     const results = await dbLibPost.getPosts();
     // send the response with the appropriate status code
     // console.log(results.username);
     
-    console.log(`All posts: ${JSON.stringify(results)}`);
     res.status(200).json({ data: results });
   } catch (err) {
     res.status(404).json({ message: 'there was error' });
@@ -228,7 +240,6 @@ export const deletePost = async(PostId) => {
  */
 
 webapp.delete('/Post/:id', async (req, res) => {
-  console.log('Delete a POST');
   try {
     const result = await dbLibPost2.deletePost(req.params.id);
     if (result.deletedCount === 0) {
@@ -245,7 +256,6 @@ webapp.delete('/Post/:id', async (req, res) => {
 
 
 webapp.get('/post/:id', async (req, res) => {
-  console.log('READ the post by postId');
   try {
     // get the data from the db
     const results = await dbLibPost.getPost(req.params.id);
@@ -262,15 +272,9 @@ webapp.get('/post/:id', async (req, res) => {
 
 
 webapp.get('/userposts/:username', async (req, res) => {
-  console.log('READ user posts');
   try {
     // get the data from the db
     const results = await dbLibPost.getUserPosts(req.params.username);
-    console.log(req.params.username);
-    // send the response with the appropriate status code
-    // console.log(results.username);
-    
-    // console.log(`All posts: ${JSON.stringify(results)}`);
     res.status(200).json({ data: results });
   } catch (err) {
     res.status(404).json({ message: 'there was error' });
@@ -279,14 +283,12 @@ webapp.get('/userposts/:username', async (req, res) => {
 
 // implement the GET in /posts endpoint
 webapp.get('/users', async (req, res) => {
-  console.log('READ all users');
   try {
     // get the data from the db
     const results = await dbLibPost.getUsers();
     // send the response with the appropriate status code
     // console.log(results.username);
     
-    console.log(`All posts: ${JSON.stringify(results)}`);
     res.status(200).json({ data: results });
   } catch (err) {
     res.status(404).json({ message: 'there was error' });
@@ -294,14 +296,12 @@ webapp.get('/users', async (req, res) => {
 });
 
 webapp.get('/friendsuggestion', async (req, res) => {
-  console.log('READ all friend suggestions');
   try {
     // get the data from the db
     const results = await dbLibPost.getSuggestionList();
     // send the response with the appropriate status code
     // console.log(results.username);
     
-    console.log(`All friend suggestions: ${JSON.stringify(results)}`);
     res.status(200).json({ data: results });
   } catch (err) {
     res.status(404).json({ message: 'there was error' });
@@ -310,14 +310,12 @@ webapp.get('/friendsuggestion', async (req, res) => {
 
 // get results for is my like post
 webapp.get('/isMyLikePost/:PostId', async (req, res) => {
-  console.log('Run is my like post');
   try {
     // get the data from the db
     const results = await dbLibLike.isMyLikePost(req.params.PostId);
     // send the response with the appropriate status code
     // console.log(results.username);
     
-    console.log(`is my like post result: ${JSON.stringify(results)}`);
     res.status(200).json({ data: results });
   } catch (err) {
     res.status(404).json({ message: 'there was error' });
@@ -326,7 +324,6 @@ webapp.get('/isMyLikePost/:PostId', async (req, res) => {
 
 // update the like array in post endpoint
 webapp.put('/postlike', async (req, res) => {
-  console.log('UPDATE the like array');
   try {
     result = await dbLibLike.incrementPostLike(req.body.PostId);
     res.status(200).json({ message: result });
@@ -337,9 +334,8 @@ webapp.put('/postlike', async (req, res) => {
 
 // update the like array in post endpoint
 webapp.delete('/postlike', async (req, res) => {
-  console.log('Delete a like from the like array');
   try {
-    result = await dbLibLike.cancelPostLike(req.body.PostId);
+    const result = await dbLibLike.cancelPostLike(req.body.PostId);
     res.status(200).json({ message: result });
   } catch (err) {
     res.status(404).json({ message: 'there was error' });
@@ -349,7 +345,6 @@ webapp.delete('/postlike', async (req, res) => {
 
 // implement the POST User endpoint
 webapp.post('/user/', async (req, res) => {
-  console.log('CREATE a user');
   // parse the body of the request to make surea all fields are present
   // eslint-disable-next-line max-len
   if (!req.body.email || !req.body.username || !req.body.password || !req.body.profilePicture || !req.body.follow || !req.body.id) {
@@ -376,7 +371,6 @@ webapp.post('/user/', async (req, res) => {
 
 // implement the DELETE User endpoint
 webapp.delete('/user/:id', async (req, res) => {
-  console.log('DELETE a user');
   // parse the body of the request to make surea all fields are present
   // eslint-disable-next-line max-len
 
@@ -391,7 +385,6 @@ webapp.delete('/user/:id', async (req, res) => {
 
 // implement the UPDATE User endpoint password
 webapp.put('/user/:id', async (req, res) => {
-  console.log('Update a user');
   // parse the body of the request to make surea all fields are present
   if (!req.body.password ) {
     res.status(404).json({ message: 'missing password' });
@@ -411,7 +404,6 @@ webapp.put('/user/:id', async (req, res) => {
 
 // implement the GET Users endpoint
 webapp.get('/allusers', async ( req, res ) => {
-  console.log('READ all students');
   try {
     const result = await dbLibUser.getAllUsers();
     res.status(200).json({ data: result });
@@ -422,13 +414,189 @@ webapp.get('/allusers', async ( req, res ) => {
 
 // implement the GET a User endpoint
 webapp.get('/user/:id', async ( req, res ) => {
-  console.log('GET a student');
   try {
     const result = await dbLibUser.getUser(req.params.id);
     res.status(200).json({ data: result });
   } catch (err) {
     res.status(404).json({ message: 'invalid user id' });
   }
+});
+
+webapp.post('/login', async (req, res) => {
+  const {email, password} = req.body;
+  if (!email || !password) {
+    res.status(404).json({message: 'missing email or password'});
+  }
+  const user = await dbLibUser.getUserByEmail(email);
+  if (!user) {
+      res.status(404).json({message: 'invalid email'});
+  }
+  bcrypt.compare(password, user.password, (err, result) => {
+    if (err) {
+      res.status(404).json({message: 'invalid password'});
+    }
+    try {
+      // issue a token here
+      jwt.sign({ id: user._id }, "testKey", { expiresIn: 3600 }, (err, token) => {
+        if (err) throw err;
+        res.status(200).json({
+          token,
+          user: {
+            id: user._id,
+            email: user.email,
+          },
+        });
+      });
+    } catch (err) {
+      res.status(404).json({message: 'invalid token'});
+    }
+  });
+});
+
+//TODO: Test this endpoint
+webapp.post('/signup', async (req, res) => {
+  const { email, password, username } = req.body;
+  if (!email || !password || !username) {
+    res.status(404).json({ message: 'missing username or password' });
+  }
+  const user = await dbLibUser.getUserByEmail(email);
+  if (user) {
+    res.status(404).json({message: 'user already exists'});
+  }
+  const salt = await bcrypt.genSalt(10);
+  const hash = await bcrypt.hash(password, salt);
+  const newUser = {
+    username,
+    email,
+    password: hash,
+    profilePicture: "",
+    bio: "",
+    followers: [],
+    following: [],
+    posts: [],
+  };
+  const result = await dbLibUser.createUser(newUser);
+  jwt.sign({ id: result }, "testKey", { expiresIn: 3600 }, (err, token) => {
+    if (err) throw err;
+    res.status(200).json({
+      token,
+      user: {
+        id: result,
+        email: email,
+      },
+    });
+  });
+});
+
+webapp.post('/post', async (req, res) => {
+  // make sure all fields are present
+  const post = req.body;
+  try {
+    const result = await dbLibPost2.createPost(post);
+    res.status(201).json({ data: { id: result, ...post } });
+    return;
+  } catch (err) {
+    res.status(409).json({message: "there was an error"});
+    return;
+  }
+});
+
+//TODO: Fix status codes
+webapp.get('/checktoken', async (req, res) => {
+  const token = req.header('x-auth-token');
+  if (!token) {
+    res.status(401).json({message: "no token"});
+    }
+    try {
+      jwt.verify(token, "testKey", {}, (err, decoded) => {
+        if (err) {
+          res.status(402).json({message: "invalid token"});
+          console.trace(err);
+          return;
+        }
+        res.status(200).json({message: "valid token"});
+      });
+    } catch (err) {
+      res.status(403).json({message: "invalid token"});
+    }
+});
+
+webapp.put('/post/:id', async (req, res) => {
+  // check the json web token
+  const token = req.header('x-auth-token');
+    if (!token) {
+        res.status(401).json({message: 'no token, authorization denied'});
+        return;
+    }
+    // TODO: Fix the status codes
+    try {
+      await jwt.verify(token, "testKey", {},  async (err, decoded) => {
+        if (err) {
+          res.status(401).json({message: 'invalid token'});
+          console.trace(err);
+          return;
+        }
+        const user = await dbLibUser.getUser(decoded.id);
+        if (!user) {
+          res.status(402).json({message: 'invalid user'});
+          return;
+        }
+        const post = await dbLibPost2.getPost(req.params.id);
+        if (!post) {
+          res.status(403).json({message: 'invalid post id'});
+          return;
+        }
+        /*if (post.username !== user.username) {
+          console.log(post.username);
+          console.log(user.username);
+          res.status(404).json({message: 'unauthorized'});
+          return;
+        }*/
+        const updatedPost = {
+          username: req.body.username,
+          postImage: req.body.postImage,
+          postCaption: req.body.postCaption,
+          publicPrivate: req.body.publicPrivate,
+          postTagOfOtherUsers: req.body.postTagOfOtherUsers,
+          postCommentArray: req.body.postCommentArray,
+          like: req.body.like,
+        }
+        const id = req.params.id;
+        if (!updatedPost.postCaption || !updatedPost.postTagOfOtherUsers || !updatedPost.postCommentArray || !updatedPost.like) {
+            res.status(405).json({message: 'missing fields'});
+            return;
+        }
+        const result = await dbLibPost2.updatePost(updatedPost, id);
+        res.status(200).json({data: result});
+      });
+    } catch (err) {
+        console.trace(err);
+    }
+});
+
+webapp.get('/gettokenuser', async (req, res) => {
+    const token = req.header('x-auth-token');
+    if (!token) {
+        res.status(401).json({message: "no token"});
+        return;
+    }
+    try {
+        jwt.verify(token, "testKey", {}, async (err, decoded) => {
+            if (err) {
+                res.status(402).json({message: "invalid token"});
+                console.trace(err);
+                return;
+            }
+            const user = await dbLibUser.getUser(decoded.id);
+            if (!user) {
+                res.status(403).json({message: "invalid user"});
+                return;
+            }
+            res.status(200).json({data: user});
+        });
+    } catch (err) {
+        console.trace(err);
+    }
 });
 
 // catch all endpoint

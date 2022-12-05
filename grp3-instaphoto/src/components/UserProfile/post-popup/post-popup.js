@@ -44,7 +44,7 @@ export default function PostPopup(props) {
                             <div className={"post-popup-header-right"}>
                                 <button className={"post-popup-header-right-ellipsis"}>
                                     <FontAwesomeIcon icon={faEllipsis} onClick={() => setIsOpen(!isOpen)}/>
-                                    <PostSettingsDropdown openState={isOpen} postID={post.id}/>
+                                    <PostSettingsDropdown openState={isOpen} postID={post._id}/>
                                 </button>
                             </div>
                         </div>

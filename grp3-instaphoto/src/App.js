@@ -1,7 +1,7 @@
-import React from 'react'
+import React, {useLayoutEffect, useState} from 'react'
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import './App.css'
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Login from './components/Login_Signup/login.component'
 import SignUp from './components/Login_Signup/signup.component'
 import Userprofile from './components/UserProfile/userprofile'
@@ -11,14 +11,27 @@ import FollowingList from './components/FollowingList-page/FollowingList'
 import DragDrop from './components/dragdrop.component'
 import HomeNavbar from "./components/navbar/homenavbar";
 import EditPost from "./components/EditPost/edit-post/edit-post";
+import {checkJWT} from "./api/mock_api";
 
 
 // import Userpic from './components/test'
 import Gallery from './components/UserProfile/user-profile-components/userprofile-gallery.component'
 import Sidebar from './components/sidebar.component'
 
-
 export default function App() {
+  const [loginState, setLoginState] = useState(false);
+
+  localStorage.setItem("loginState", `${loginState}`);
+
+  useLayoutEffect(() => {
+    checkJWT().then((response) => {
+      if (response.status === 200) {
+        setLoginState(true);
+        localStorage.setItem("loginState", `${loginState}`);
+      }
+    })
+  }, []);
+
   return (
     <Router>
       <div className="App">
@@ -35,7 +48,7 @@ export default function App() {
           {/* <Route path="/user-pic" element={<Userpic />} />                */}
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/sidebar" element={<Sidebar />} />
-          <Route path="/userprofile" element={<Userprofile userName={"grp3foreva"} />} />
+          <Route path="/userprofile" element={<Userprofile />} />
           <Route path="/dragdrop" element={<DragDrop />} />
           <Route path="/followinglist" element={<FollowingList />} />
           <Route path={"/edit-post/:id"} element={<EditPost />} />

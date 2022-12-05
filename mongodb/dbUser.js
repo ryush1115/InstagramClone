@@ -61,7 +61,6 @@ const createUser = async (newUser) => {
   try {
     const db = await getDB();
     const result = await db.collection('User').insertOne(newUser);
-    console.log(`New User created with id: ${result.insertedId}`);
     // return the result
     return result.insertedId;
   } catch (err) {
@@ -73,10 +72,7 @@ const createUser = async (newUser) => {
 const getAllUsers = async () => {
   try {
     const db = await getDB();
-    const result = await db.collection('User').find({}).toArray(); // no filtering
-    // print the results
-    console.log(`Users: ${JSON.stringify(result)}`);
-    return result;
+    return await db.collection('User').find({}).toArray();
   } catch (err) {
     console.log(`error: ${err.message}`);
 }
@@ -86,26 +82,31 @@ const getAllUsers = async () => {
 const getUser = async (userID) => {
   try {
     const db = await getDB();
-    const result = await db.collection('User').findOne({ _id: ObjectId(userID) });
-    // print result
-    console.log(`Student: ${JSON.stringify(result)}`);
-    return result;
+    return await db.collection('User').findOne({ _id: ObjectId(userID) });
   } catch (err) {
     console.log(`error: ${err.message}`);
   }
 };
 
+// get a user given their email
+// TODO: Test this function
+const getUserByEmail = async (email) => {
+  try {
+    const db = await getDB();
+    return await db.collection('User').findOne({ email: email });
+  } catch (err) {
+    console.log(`error: ${err.message}`);
+  }
+}
+
 // Update user password
 const updateUser = async (userID, newPassword) => {
   try {
     const db = await getDB();
-    const result = await db.collection('User').updateOne(
+    return await db.collection('User').updateOne(
       { _id: ObjectId(userID) },
       { $set: { password: newPassword } },
     );
-    // print the result
-    console.log(`User: ${JSON.stringify(result)}`);
-    return result;
   } catch (err) {
     console.log(`error: ${err.message}`);
   }
@@ -114,15 +115,53 @@ const updateUser = async (userID, newPassword) => {
 const deleteUser = async (userID) => {
   try {
     const db = await getDB();
-    const result = await db.collection('User').deleteOne(
+    return await db.collection('User').deleteOne(
       { _id: ObjectId(userID) },
     );
-    console.log(`Deleted User: ${JSON.stringify(result)}`);
-    return result;
   } catch (err) {
     console.log(`error: ${err.message} `);
   }
 };
+
+// TODO: This isn't really efficient but it works for now
+// TODO: Test this function
+const getSuggestionList = async (userID) => {
+  try {
+    const users = await getAllUsers();
+    const list = [];
+    for (let i = 0; i < users.length; i++) {
+      const isFollowingMe = await isFollowing(userID, users[i]._id.toHexString());
+      if (!isFollowingMe && await hasCommonFollowing(userID, users[i]._id)) {
+        list.push(users[i]);
+      }
+    }
+    return list;
+  } catch (err) {
+    console.trace(err);
+  }
+}
+
+// checks if user B follows user A
+const isFollowing = async (userID, otherUserID) => {
+  const user = await getUser(userID);
+  const otherUser = await getUser(otherUserID);
+  for (let i = 0; i < user.followers.length; i++) {
+    if (user.followers[i].equals(otherUser)) {
+      return true;
+    }
+  }
+}
+
+const hasCommonFollowing = async (userID, otherUserID) => {
+  const otherUser = await getUser(otherUserID);
+  let count = 0;
+  for (let i = 0; i < otherUser.following.length; i++) {
+    if (await isFollowing(otherUser.following[i], userID)) {
+      count++;
+    }
+  }
+  return count >= 3;
+}
 
 // Test part: use main function to test
 
@@ -163,5 +202,6 @@ main();
 
 module.exports = {
   closeMongoDBConnection, connect, getDB, createUser, getAllUsers, getUser, updateUser, deleteUser,
+    getUserByEmail, getSuggestionList
   // closeMongoDBConnection, connect, getDB, createUser, getAllUsers, getUser, updateUser,
 };

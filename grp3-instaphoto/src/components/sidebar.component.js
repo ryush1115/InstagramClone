@@ -17,7 +17,6 @@ export default function Sidebar(props) {
 
 
   useEffect(() => {
-
       someFetch();
       console.log(FriendSuggestionList);
 

@@ -2,7 +2,7 @@
 import {useState, useEffect} from "react";
 import Comment from './Comment';
 import CommentForm from './CommentForm';
-import {createCommentInPost, updateComment} from '../../../api/mock_api';
+import {createCommentInPost, getTokenUser, updateComment} from '../../../api/mock_api';
 
 export default function Comments(props) {
 
@@ -10,12 +10,19 @@ export default function Comments(props) {
 
     const [backendComments, setBackendComments] = useState([]);
     const [activeComment, setActiveComment] = useState(null);
+    const [user, setUser] = useState({});
+
+    useEffect(() => {
+        getTokenUser().then((user) => {
+            setUser(user.data);
+        });
+    }, []);
     
     //useEffect(()=>{}, []); // triggered once after mounting
     // const relevantComment = listComment.filter();
 
     const addComment = async(text) => {
-        const newComment = {username:"grp3foreva", message:text, tagOfOtherUsers:1,id:1};
+        const newComment = {username:user.username, message:text, tagOfOtherUsers:1,id:1};
         console.log(text);
         console.log(newComment);
         
