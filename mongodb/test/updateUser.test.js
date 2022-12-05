@@ -24,7 +24,10 @@ describe('PUT enpoint tests', () => {
     db = mongo.db();
     // send the request to the API and collect the response
     response = await request(webapp).post('/user')
-      .send('email=testemail&username=testusername&password=testpassword&profilePicture=null&follow=null&id=testid');
+      .send({
+        email: 'testemail', username: 'testusername', password: 'testpassword', profilePicture: 'null', follow: 'null', id: 'testid',
+      });
+    //'email=testemail&username=testusername&password=testpassword&profilePicture=null&follow=null&id=testid'
     // eslint-disable-next-line no-underscore-dangle
     testUserID = JSON.parse(response.text).data._id;
   });
@@ -61,7 +64,9 @@ describe('PUT enpoint tests', () => {
     // expect new user to be added successfully
 
     response = await request(webapp).put(`/user/${testUserID}`)
-      .send('password=myNEWpassword');
+      .send({
+        password: "myNEWpassword",
+      });
     expect(response.status).toEqual(200);
     expect(response.type).toBe('application/json');
 

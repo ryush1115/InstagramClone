@@ -27,7 +27,9 @@ describe('GET "/comments/:id" endpoint integration test', () => {
     mongo = await connect();
     db = mongo.db();
     const res = await request(webapp).post('/comments')
-      .send('username=testuser&message=testmessage&tagOfOtherUsers=testtag&id=testid');
+      .send({
+        username: 'testuser', message: 'testmessage', tagOfOtherUsers: 'testtag', id: 'testid',
+      });
     // eslint-disable-next-line no-underscore-dangle
     testID = JSON.parse(res.text).data._id;
     testMessage = JSON.parse(res.text).data.message;

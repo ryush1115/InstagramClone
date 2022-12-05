@@ -207,6 +207,6 @@ main();
 
 module.exports = {
   closeMongoDBConnection, connect, getDB, createUser, getAllUsers, getUser, updateUser, deleteUser,
-    getUserByEmail, getSuggestionList
+    getUserByEmail, getSuggestionList, isFollowing
   // closeMongoDBConnection, connect, getDB, createUser, getAllUsers, getUser, updateUser,
 };

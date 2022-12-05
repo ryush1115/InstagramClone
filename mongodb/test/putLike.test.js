@@ -42,7 +42,9 @@ describe('Update a like list endpoint integration test', () => {
 
   test('Endpoint status code and response async/await', async () => {    
     res = await request(webapp).put('/postlike')
-      .send('PostId=637aaaf308e936a0c97e4a31');
+      .send({
+        PostId: "637aaaf308e936a0c97e4a31",
+      });
     expect(res.status).toEqual(200);
     expect(res.type).toBe('application/json');
 
@@ -51,7 +53,9 @@ describe('Update a like list endpoint integration test', () => {
     expect(Object.values(likedPost.like)[0]).toEqual(ObjectId('637aaae916cea0e87898f182'));
 
     res = await request(webapp).delete('/postlike')
-      .send('PostId=637aaaf308e936a0c97e4a31');
+      .send({
+        PostId: "637aaaf308e936a0c97e4a31",
+      });
     expect(res.status).toEqual(200);
     expect(res.type).toBe('application/json');
 

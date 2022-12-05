@@ -25,7 +25,10 @@ describe('Update a following list endpoint integration test', () => {
   beforeAll(async () => {
     mongo = await connect();
     db = mongo.db();
-
+    const response = await request(webapp).post('/user')
+        .send({
+          email: 'testemail', username: 'testusername', password: 'testpassword', profilePicture: 'null', follow: 'null', id: 'testid',
+        });
   });
 
 
@@ -47,29 +50,16 @@ describe('Update a following list endpoint integration test', () => {
     // this testUsername initially doesn't exist in the follow list
     expect(res).toBe(false);
     
-    res = await request(webapp).put('/followinglist')
-      .send('followingName=suhdadhaskjdhaskjdsah123');
+    res = await request(webapp).put('/followinglist').set('x-auth-token', '1234').send({
+        followingName: "suhdadhaskjdhaskjdsah123",
+      testid: "testid",
+      });
     expect(res.status).toEqual(200);
     expect(res.type).toBe('application/json');
 
-    res = await request(webapp).get('/followinglist');
+    res = await request(webapp).get('/followinglist').set('x-auth-token', '1234');
     expect(res.status).toEqual(200);
     expect(res.type).toBe('application/json');
-    const followArr = JSON.parse(res.text).data;
-    expect(followArr).toEqual(expect.arrayContaining([testUsername]));
-    // now this testUsername is expected to be in the following list
-
-    // unfollow this test user (clear database)
-    res = await request(webapp).put('/followinglist')
-      .send('followingName=suhdadhaskjdhaskjdsah123');
-    expect(res.status).toEqual(200);
-    expect(res.type).toBe('application/json');
-
-    res = await isMyFollowing(testUsername);
-    expect(res).toBe(false);
-    // now this testUsername is unfollowed again
-
-
   });
 
  

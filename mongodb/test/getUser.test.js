@@ -36,11 +36,15 @@ describe('GET "/user/:id" endpoint integration test', () => {
     mongo = await connect();
     db = mongo.db();
     const res = await request(webapp).post('/user')
-      .send('email=testemail&username=testusername&password=testpassword&profilePicture=null&follow=null&id=testid');
+      .send({
+        email: 'testemail', username: 'testusername', password: 'testpassword', profilePicture: 'null', follow: 'null', id: 'testid',
+      });
       // eslint-disable-next-line no-underscore-dangle
     testID = JSON.parse(res.text).data._id;
     testUserTemp = JSON.parse(res.text).data;
   });
+
+  //'email=testemail&username=testusername&password=testpassword&profilePicture=null&follow=null&id=testid'
 
  /**
  * removes all testing data from the DB
@@ -77,6 +81,21 @@ describe('GET "/user/:id" endpoint integration test', () => {
     // testStudent is in the response
     expect(userEmail).toEqual(testUserTemp);
   });
+
+  test('isFollowing', async() => {
+    const resp = await request(webapp).post('/testisfollowing').send({
+      userID: "638ce9841acf9196840abd4e",
+      otherUserID: "638ce9a41acf9196840abd4f"
+    })
+    expect(resp.status).toEqual(200);
+  });
+
+  test('suggestions', async() => {
+    const resp = await request(webapp).post('/testsuggestions').send({
+      userID: "638ce9841acf9196840abd4e"
+    })
+    expect(resp.status).toEqual(200);
+  })
 
 //   test('user not in db status code 404', async () => {
 //     const resp = await request(webapp).get('/user/999');

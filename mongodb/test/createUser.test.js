@@ -24,8 +24,12 @@ describe('POST enpoint tests', () => {
     db = mongo.db();
     // send the request to the API and collect the response
     response = await request(webapp).post('/user')
-      .send('email=testemail&username=testusername&password=testpassword&profilePicture=null&follow=null&id=testid');
+      .send({
+        email: 'testemail', username: 'testusername', password: 'testpassword', profilePicture: 'null', follow: 'null', id: 'testid',
+      });
   });
+
+  //'email=testemail&username=testusername&password=testpassword&profilePicture=null&follow=null&id=testid'
 
 /**
  * removes all testing data from the DB

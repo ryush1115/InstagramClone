@@ -26,7 +26,13 @@ describe('POST enpoint tests', () => {
     db = mongo.db();
     // send the request to the API and collect the response
     response = await request(webapp).post('/comments')
-      .send('username=testuser&message=testmessage&tagOfOtherUsers=testtag&id=testid');
+      .send({
+        username: 'Junwei',
+        message: 'Hello World',
+        tagOfOtherUsers: ['Junwei', 'Junwei'],
+        id: 'testid'
+      });
+    //'username=testuser&message=testmessage&tagOfOtherUsers=testtag&id=testid'
   });
   /**
  * removes all testing data from the DB
@@ -68,14 +74,14 @@ describe('POST enpoint tests', () => {
  */
   test('the new comment is returned', () => {
     const testComment = {
-      username: 'testuser', message: 'testmessage', tagOfOtherUsers: 'testtag', id: 'testid',
+      username: 'Junwei', message: 'Hello World', tagOfOtherUsers: ['Junwei', 'Junwei'], id: 'testid',
     };
     expect(JSON.parse(response.text).data).toMatchObject(testComment); // status code
   });
 
   test('The new comment is in the database', async () => {
-    const insertedComment = await db.collection('Comment').findOne({ username: 'testuser' });
-    expect(insertedComment.username).toEqual('testuser');
+    const insertedComment = await db.collection('Comment').findOne({ username: 'Junwei' });
+    expect(insertedComment.username).toEqual('Junwei');
   });
 
   test('missing a field (email) 404', async () => {

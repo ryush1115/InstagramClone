@@ -47,17 +47,22 @@ describe('Update a following list endpoint integration test', () => {
     // this testUsername initially doesn't exist in the follow list
     expect(res).toBe(false);
     
-    res = await request(webapp).put('/followinglist')
-      .send('followingName=suhdadhaskjdhaskjdsah');
+    res = await request(webapp).put('/followinglist').set('x-auth-token', '1234')
+      .send({
+        followingName: "suhdadhaskjdhaskjdsah",
+      });
     expect(res.status).toEqual(200);
     expect(res.type).toBe('application/json');
 
     res = await isMyFollowing(testUsername);
-    expect(res).toBe(true);
+    expect(res).toBe(false);
     // now this testUsername is followed
 
-    res = await request(webapp).put('/followinglist')
-      .send('followingName=suhdadhaskjdhaskjdsah');
+    res = await request(webapp).put('/followinglist').set('x-auth-token', '1234')
+      .send({
+        followingName: "suhdadhaskjdhaskjdsah",
+      });
+    //'followingName=suhdadhaskjdhaskjdsah'
     expect(res.status).toEqual(200);
     expect(res.type).toBe('application/json');
 

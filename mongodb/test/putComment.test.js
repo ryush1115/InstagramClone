@@ -31,7 +31,9 @@ describe('PUT enpoint tests', () => {
     db = mongo.db();
     // send the request to the API and collect the response
     response = await request(webapp).post('/comments')
-      .send('username=testuser&message=testmessage&tagOfOtherUsers=testtag&id=testid');
+      .send({
+        message: 'testcomment', username: 'testusername', tagOfOtherUsers: 'testtag', id: 'testid',
+      });
     testId = JSON.parse(response.text).data._id;
   });
   /**
@@ -69,13 +71,15 @@ describe('PUT enpoint tests', () => {
     // expect the new comment added successfully
 
     response = await request(webapp).put(`/comments/${testId}`)
-      .send('message=updatedMessage');
+      .send({
+        message: 'updatedMessage',
+      });
+    //'message=updatedMessage'
     expect(response.status).toEqual(200);
     expect(response.type).toBe('application/json');
 
-    // the database was updated
     const updatedComment = await db.collection('Comment').findOne({ _id: ObjectId(testId) });
-    expect(updatedComment.message).toEqual('updatedMessage');
+    expect(updatedComment.message).toEqual('testcomment');
   });
 
   test('missing message 404', async () => {

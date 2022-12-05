@@ -34,7 +34,9 @@ describe('GET "/users" endpoint integration test', () => {
     mongo = await connect();
     db = mongo.db();
     const res = await request(webapp).post('/user')
-      .send('email=testemail&username=testusername&password=testpassword&profilePicture=null&follow=null&id=testid');
+      .send({
+        email: 'testemail', username: 'testusername', password: 'testpassword', profilePicture: 'null', follow: 'null', id: 'testid',
+      });
     // eslint-disable-next-line no-underscore-dangle
     //testID = JSON.parse(res.text).data._id;
     // eslint-disable-next-line no-underscore-dangle
