@@ -126,11 +126,11 @@ export default function PostRow(props) {
 
               <div className="postBottomLeft">
                 
-                <Comments 
+                {/* <Comments 
                   list={props.post.postCommentArray} 
                   _id={props.post._id} 
                   props={props}
-                  />
+                  /> */}
               </div>
               
               <div>
