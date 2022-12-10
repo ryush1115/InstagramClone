@@ -3,7 +3,7 @@ import '../userprofile.css';
 // import {getPosts} from '../api/mock_api';
 import {getTokenUser} from "../../../api/mock_api";
 
-const UserProfile_TopInfo = () => {
+const UserProfile_TopInfo = (props) => {
   const[postCount, setPostCount] = useState(0);
   const[followersCount, setFollowersCount] = useState(0);
   const[followingCount, setFollowingCount] = useState(0);
@@ -11,28 +11,41 @@ const UserProfile_TopInfo = () => {
   const[profilePic, setProfilePic] = useState("");
 
   useEffect(() => {
-    getTokenUser().then((user) => {
-        const userdata = user.data;
-        try {
-            setPostCount(userdata.posts.length);
-        } catch (err) {
-            setPostCount(0);
-        }
-        try {
-            setFollowersCount(userdata.followers.length);
-        } catch (err) {
-            setFollowersCount(0);
-        }
-        try {
-            setFollowingCount(userdata.following.length);
-        } catch (err) {
-            setFollowingCount(0);
-        }
-        setUserName(userdata.username);
-        console.log(userdata);
-        setProfilePic(userdata.profilePicture);
-    });
+      if (!!props.user) {
+          console.log("user given");
+          console.log(props.user);
+          const user = props.user.data;
+          setPostCount(user.posts.length);
+          setFollowersCount(user.followers.length);
+          setFollowingCount(user.following.length);
+          setUserName(user.username);
+          setProfilePic(user.profilePic);
+      } else {
+          getTokenUser().then((user) => {
+              const userdata = user.data;
+              try {
+                  setPostCount(userdata.posts.length);
+              } catch (err) {
+                  setPostCount(0);
+              }
+              try {
+                  setFollowersCount(userdata.followers.length);
+              } catch (err) {
+                  setFollowersCount(0);
+              }
+              try {
+                  setFollowingCount(userdata.following.length);
+              } catch (err) {
+                  setFollowingCount(0);
+              }
+              setUserName(userdata.username);
+              console.log(userdata);
+              setProfilePic(userdata.profilePicture);
+          });
+      }
   }, []);
+
+  console.log("userprofile_topinfo");
 
   return (
     <>

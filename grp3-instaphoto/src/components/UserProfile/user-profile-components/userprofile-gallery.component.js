@@ -5,27 +5,27 @@ import GalleryItem from "./galleryItem";
 
 export default function UserprofileComponent(props) {
 
-    const [FriendSuggestionList, setFriendSuggestionList] = useState([]);
     const [userPosts, setUserPosts] = useState([]);
 
     useEffect(() => {
-        getTokenUser().then((user) => {
-            console.log(user.data);
-            getUserPosts(user.data.username).then((posts) => {
+        if (!!props.user) {
+            const user = props.user.data;
+            getUserPosts(user.username).then((posts) => {
                 setUserPosts(posts);
             });
-        });
-        const fetchFriendSuggestions = async () => {
-            const data = await getSuggestionList();
-            setFriendSuggestionList(data);
+        } else {
+            getTokenUser().then((user) => {
+                console.log(user.data);
+                getUserPosts(user.data.username).then((posts) => {
+                    setUserPosts(posts);
+                });
+            });
         }
-        fetchFriendSuggestions().catch(console.error);
     }, []);
 
+
     const galleryItems = userPosts.map((post) => {
-        return (
-            <GalleryItem post={post} />
-        );
+        return <GalleryItem key={post.id} post={post} />
     });
 
     return (

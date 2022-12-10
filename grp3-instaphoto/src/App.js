@@ -16,6 +16,7 @@ import EditPost from "./components/EditPost/edit-post/edit-post";
 // import Userpic from './components/test'
 import Gallery from './components/UserProfile/user-profile-components/userprofile-gallery.component'
 import Sidebar from './components/sidebar.component'
+import OtherUserProfile from "./components/UserProfile/otheruserprofile";
 
 export default function App() {
   const [loginState, setLoginState] = useState(false);
@@ -38,7 +39,7 @@ export default function App() {
           <Route path="/sign-in" element={<Login />} />
           <Route path="/sign-up" element={<SignUp />} />
           <Route path="/user-profile" element={<Userprofile />} />
-          <Route path={"/user-profile/:id"} element={<Userprofile />} />
+          <Route path={"/user-profile/:id"} element={<OtherUserProfile />} />
           <Route path="/activity-feed" element={<ActivityFeed />} />
           <Route path = "/friendsuggestion" element = {<FriendSuggestion />}/>
           <Route path="/gallery" element={<Gallery />} />

@@ -25,6 +25,17 @@ export default function PostPopup(props) {
         }
     }
 
+    const loadSettings = () => {
+        if (!window.location.pathname.match(/^\/user-profile\/[a-fA-F0-9]+$/)) {
+            return (
+                <button className={"post-popup-header-right-ellipsis"}>
+                    <FontAwesomeIcon icon={faEllipsis} onClick={() => setIsOpen(!isOpen)}/>
+                    <PostSettingsDropdown openState={isOpen} postID={post._id}/>
+                </button>
+            );
+        }
+    }
+
     if (!props.openState) {
         return null;
     } else {
@@ -42,10 +53,7 @@ export default function PostPopup(props) {
                                 </div>
                             </div>
                             <div className={"post-popup-header-right"}>
-                                <button className={"post-popup-header-right-ellipsis"}>
-                                    <FontAwesomeIcon icon={faEllipsis} onClick={() => setIsOpen(!isOpen)}/>
-                                    <PostSettingsDropdown openState={isOpen} postID={post._id}/>
-                                </button>
+                                {loadSettings()}
                             </div>
                         </div>
                         <div className={"post-popup-body"}>

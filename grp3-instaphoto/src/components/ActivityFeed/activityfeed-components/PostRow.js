@@ -12,6 +12,8 @@ export default function PostRow(props) {
     const [isLiked, setIsLiked] = useState();
     const [likeCounter, setLikeCounter] = useState(props.post.like.length);
 
+
+    // TODO: Refactor this code
     const someFetch = async () => {
       //using JS fetch API
       const data = await isMyLikePost(props.post.id)
@@ -112,20 +114,11 @@ export default function PostRow(props) {
       <tr>
         <div className="post"
         >
-          {/* {props.post.username} */}
           <div className="postWrapper">
             <div className="postTop">
               <div className="postTopLeft">
-                {/* <img
-                          className="postProfileImg"
-                          src={require('../images/test.png')}
-                          alt=""
-                      /> */}
-                <span className="postUsername" data-testid = "testing1"> 
+                <span className="postUsername" data-testid = "testing1">
                   {props.post.username}
-                </span>
-                <span className="PostId"> 
-                <p>Post Id: {props.post._id}</p>
                 </span>
               </div>
             </div>

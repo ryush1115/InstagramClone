@@ -11,6 +11,8 @@ export default function GalleryItem(props) {
 
     // Our GalleryItem should contain information about the post it represents
     const post = props.post;
+    console.log("poop");
+    console.log(post);
 
     return (
         <div className="gallery-item">
