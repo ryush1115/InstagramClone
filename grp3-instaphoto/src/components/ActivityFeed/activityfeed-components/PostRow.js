@@ -2,13 +2,12 @@ import React, { useState, useEffect, useRef } from "react";
 import './activityfeed.css';
 import '../../UserProfile/userprofile.css';
 import {  createComment, deletePost, isMyLikePost,incrementPostLike, cancelPostLike, getCommentMessage, createCommentInPost} from '../../../api/mock_api';
-import Comment from './Comment';
 import Comments from './Comments';
 
 export default function PostRow(props) {
-    const[, setNewComment] = useState(null);
+    // const[, setNewComment] = useState(null);
     const[, setDeletedPost] = useState(null);
-    const[, setIncrementLike] = useState(null);
+    // const[, setIncrementLike] = useState(null);
     const [isLiked, setIsLiked] = useState();
     const [likeCounter, setLikeCounter] = useState(props.post.like.length);
 
@@ -40,49 +39,48 @@ export default function PostRow(props) {
     const loadData = useRef(false);
 
     let newPostComment_;
-    let tagOfOtherUsers;
 
     // stores user input for the comment
-    const handleOnChangeComment = (e) => {
-      if (e.target.name==='commentBox')  {
-        newPostComment_ = e.target.value;
-      }
-    }
+    // const handleOnChangeComment = (e) => {
+    //   if (e.target.name==='commentBox')  {
+    //     newPostComment_ = e.target.value;
+    //   }
+    // }
 
     // handle create comment
-    const handleCreateComment = async (e) => {
-      // stop default behavior to avoid reloading the page
-      e.preventDefault();
-      // use a dummy ID for now
-      const newComment = {username:"grp3foreva", message:newPostComment_, tagOfOtherUsers:null,id:null};
+    // const handleCreateComment = async (e) => {
+    //   // stop default behavior to avoid reloading the page
+    //   e.preventDefault();
+    //   // use a dummy ID for now
+    //   const newComment = {username:"grp3foreva", message:newPostComment_, tagOfOtherUsers:null,id:null};
       
-      console.log(newComment);
-      // clear the form
-      const form = document.getElementById('commentBox');
-      form.reset();
-      const newStoredComment = await createComment(newComment); 
-      // update LoadData
-      loadData.current = true;
-      setNewComment(newStoredComment);
-    }
+    //   console.log(newComment);
+    //   // clear the form
+    //   const form = document.getElementById('commentBox');
+    //   form.reset();
+    //   const newStoredComment = await createComment(newComment); 
+    //   // update LoadData
+    //   loadData.current = true;
+    //   setNewComment(newStoredComment);
+    // }
 
     // handle create comment in post
-    const handleCreateCommentInPost = async(e) => {
-      e.preventDefault();
+    // const handleCreateCommentInPost = async(e) => {
+    //   e.preventDefault();
       
-      const newComment = {username:"grp3foreva", message:newPostComment_, tagOfOtherUsers:null,id:null};
+    //   const newComment = {username:"grp3foreva", message:newPostComment_, tagOfOtherUsers:null,id:null};
 
-      console.log(newComment);
+    //   console.log(newComment);
 
-      const form = document.getElementById('commentBox');
-      form.reset();
-      const newStoredComment = await createCommentInPost(props.post._id, newComment);
+    //   const form = document.getElementById('commentBox');
+    //   form.reset();
+    //   const newStoredComment = await createCommentInPost(props.post._id, newComment);
 
-      // update loadData
-      loadData.current = true;
-      setNewComment(newStoredComment);
+    //   // update loadData
+    //   loadData.current = true;
+    //   setNewComment(newStoredComment);
 
-    }
+    // }
 
     // });
     // handle delete Post

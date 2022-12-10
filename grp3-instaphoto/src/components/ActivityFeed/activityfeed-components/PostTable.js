@@ -17,19 +17,27 @@ export default function PostTable (props){
    const rows = [];
 
     postsList.forEach((element) => {
-      // const {post} = element;
-      if (usernameFilter === 'SHOW_ALL') {
-        rows.unshift(
-          <PostRow post={element} key={counter.current} />
-        );
-      } else {
-        if (!element.username.startsWith(usernameFilter)) {
-          return;
-        }
-        rows.unshift(
-          <PostRow post={element} key={counter.current}/>,
-        );
-      }
+      const {post} = element;
+
+
+
+      // if (usernameFilter === 'SHOW_ALL') {
+      //   rows.unshift(
+      //     <PostRow post={element} key={counter.current} />
+      //   );
+      // } else {
+      //   if (!element.username.startsWith(usernameFilter)) {
+      //     return;
+      //   }
+      //   rows.unshift(
+      //     <PostRow post={element} key={counter.current}/>,
+      //   );
+      // }
+
+      rows.unshift(
+        <PostRow post={element} key={counter.current} />
+      )
+
       // increment counter
       counter.current += 1;
     });
