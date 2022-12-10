@@ -74,28 +74,33 @@ export default function DragDrop(props) {
 
   // when dragActive is true, add an invisible elemnt to cover the entire state form. 
   // this listens to the events without interference from any other elements.
-  return (
-      <div className="create-post_">
-      <div className="create-post-content_">
-        <div className="create-post_title_">Create a new post!</div>
-        <form id="form-file-upload" onSubmit={handleCreatePost}>
-        <p>Create a Post Here!! </p>    
-            <input
-              type="text"
-              name="caption"
-              placeholder="Enter a caption..."
-              onChange={handleOnChange}
-            />
-            <input
-              type="text"
-              name="postImage"
-              placeholder="Add a url"
-              onChange={handleOnChange}
-            />
-            <button type="submit">Create Post</button>
-        </form>
-          
-      </div>
-      </div>
-    );
+
+    if (sessionStorage.getItem("token")) {
+        return (
+            <div className="create-post_">
+                <div className="create-post-content_">
+                    <div className="create-post_title_">Create a new post!</div>
+                    <form id="form-file-upload" onSubmit={handleCreatePost}>
+                        <p>Create a Post Here!! </p>
+                        <input
+                            type="text"
+                            name="caption"
+                            placeholder="Enter a caption..."
+                            onChange={handleOnChange}
+                        />
+                        <input
+                            type="text"
+                            name="postImage"
+                            placeholder="Add a url"
+                            onChange={handleOnChange}
+                        />
+                        <button type="submit">Create Post</button>
+                    </form>
+
+                </div>
+            </div>
+        );
+    } else {
+        window.location.href = "/sign-in";
+    }
 };

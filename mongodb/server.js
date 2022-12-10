@@ -4,12 +4,22 @@
 // backend ==> require
 const express = require('express');
 
+const session = require('express-session');
+
 // (2) import and enable cors
 // (cross-origin resource sharing)
 const cors = require('cors');
 
 // (3) create an instance of our express app
 const webapp = express();
+
+webapp.use(
+    session({
+        secret: 'secret',
+        resave: false,
+        saveUninitialized: false,
+    })
+);
 
 // (4) enable cors
 webapp.use(cors());
@@ -494,6 +504,7 @@ webapp.post('/login', async (req, res) => {
       // issue a token here
       jwt.sign({ id: user._id }, "testKey", { expiresIn: 3600 }, (err, token) => {
         if (err) throw err;
+        req.session.token = token;
         res.status(200).json({
           token,
           user: {
@@ -533,6 +544,7 @@ webapp.post('/signup', async (req, res) => {
   const result = await dbLibUser.createUser(newUser);
   jwt.sign({ id: result }, "testKey", { expiresIn: 3600 }, (err, token) => {
     if (err) throw err;
+    req.session.token = token;
     res.status(200).json({
       token,
       user: {

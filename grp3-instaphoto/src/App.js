@@ -11,7 +11,6 @@ import FollowingList from './components/FollowingList-page/FollowingList'
 import DragDrop from './components/dragdrop.component'
 import HomeNavbar from "./components/navbar/homenavbar";
 import EditPost from "./components/EditPost/edit-post/edit-post";
-import {checkJWT} from "./api/mock_api";
 
 
 // import Userpic from './components/test'
@@ -24,28 +23,24 @@ export default function App() {
   localStorage.setItem("loginState", `${loginState}`);
 
   useLayoutEffect(() => {
-    checkJWT().then((response) => {
-      if (response.status === 200) {
-        setLoginState(true);
-        localStorage.setItem("loginState", `${loginState}`);
-      }
-    })
+    if (window.sessionStorage.token) {
+      setLoginState(true);
+    }
   }, []);
 
+  // TODO: Selectively render navbar buttons based on login state
   return (
     <Router>
       <div className="App">
         <HomeNavbar />
-        {/* <div className="auth-wrapper"> */}
-          {/* <div className="auth-inner"> */}
         <Routes>
           <Route exact path="/" element={<Login />} />
           <Route path="/sign-in" element={<Login />} />
           <Route path="/sign-up" element={<SignUp />} />
           <Route path="/user-profile" element={<Userprofile />} />
+          <Route path={"/user-profile/:id"} element={<Userprofile />} />
           <Route path="/activity-feed" element={<ActivityFeed />} />
           <Route path = "/friendsuggestion" element = {<FriendSuggestion />}/>
-          {/* <Route path="/user-pic" element={<Userpic />} />                */}
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/sidebar" element={<Sidebar />} />
           <Route path="/userprofile" element={<Userprofile />} />

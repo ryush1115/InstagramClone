@@ -25,25 +25,31 @@ const FollowingList = () => {
 
     },[]);
     console.log(followings);
-    if (!!followings) {
-        return (
-            <div className="container-0_FriendSuggestion">
-                <span className="text-0_FriendSuggestion" data-testid = "followbutton">Following</span>
-                {
-                    followings.map((v) => {
-                        return <SingleLineUserInfo name={v} description={"This is a cool person"} image={null} isfollowed={true} />
-                    })}
-            </div>
 
-        );
+    if (sessionStorage.getItem("token")) {
+        if (!!followings) {
+            return (
+                <div className="container-0_FriendSuggestion">
+                    <span className="text-0_FriendSuggestion" data-testid = "followbutton">Following</span>
+                    {
+                        followings.map((v) => {
+                            return <SingleLineUserInfo name={v} description={"This is a cool person"} image={null} isfollowed={true} />
+                        })}
+                </div>
+
+            );
+        } else {
+            console.log("no followings");
+            return (
+                <div className="container-0_FriendSuggestion">
+                    <span className="text-0_FriendSuggestion" data-testid = "followbutton">Following</span>
+                    <span className="text-0_FriendSuggestion" data-testid = "followbutton">You are not following anyone</span>
+                </div>
+            );
+        }
     } else {
-        console.log("no followings");
-        return (
-            <div className="container-0_FriendSuggestion">
-                <span className="text-0_FriendSuggestion" data-testid = "followbutton">Following</span>
-                <span className="text-0_FriendSuggestion" data-testid = "followbutton">You are not following anyone</span>
-            </div>
-        );
+        console.log("not signed in");
+        window.location.href = "/sign-in";
     }
 }
 export default FollowingList;

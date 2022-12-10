@@ -23,7 +23,7 @@ const FriendSuggestion = () => {
       console.log(user_data.data);
       setFriendSuggestionList(data);
       setUserList(users);
-        setUser(user_data.data);
+      setUser(user_data.data);
   }
   
 
@@ -34,37 +34,43 @@ const FriendSuggestion = () => {
       console.log(userList);
 
   },[]);
- try {
-     return (
-         <Fragment>
-             <Sidebar/>
 
-             <div className="container-0_FriendSuggestion">
-                 <span className="text-0_FriendSuggestion">Suggested</span>
-                 {FriendSuggestionList.map(v => {
-                     return <SingleLineUserInfo name={v} description={"This is a cool person"} image={null} isfollowed={false} />
-                 })}
-             </div>
+  if (sessionStorage.getItem("token")) {
+      try {
+          return (
+              <Fragment>
+                  <Sidebar/>
 
-         </Fragment>
-     );
- } catch (e) {
-     return (
-         <Fragment>
-             <Sidebar />
-             <div className="container-0_FriendSuggestion">
-                 <span className="text-0_FriendSuggestion">Suggested</span>
-                 {
-                        userList.map(v => {
-                            if (v.username !== user.username && !user.following.includes(v.username)) {
-                                return <SingleLineUserInfo name={v.username} description={"This is a cool person"} image={null} isfollowed={false} />
-                            }
-                        })
-                 }
-             </div>
-         </Fragment>
-     );
- }
+                  <div className="container-0_FriendSuggestion">
+                      <span className="text-0_FriendSuggestion">Suggested</span>
+                      {FriendSuggestionList.map(v => {
+                          return <SingleLineUserInfo name={v} description={"This is a cool person"} image={null} isfollowed={false} />
+                      })}
+                  </div>
+
+              </Fragment>
+          );
+      } catch (e) {
+          return (
+              <Fragment>
+                  <Sidebar />
+                  <div className="container-0_FriendSuggestion">
+                      <span className="text-0_FriendSuggestion">Suggested</span>
+                      {
+                          userList.map(v => {
+                              if (v.username !== user.username && !user.following.includes(v.username)) {
+                                  return <SingleLineUserInfo name={v.username} description={"This is a cool person"} image={null} isfollowed={false} />
+                              }
+                          })
+                      }
+                  </div>
+              </Fragment>
+          );
+      }
+  } else {
+        console.log("not signed in");
+        window.location.href = "/sign-in";
+  }
 }
 
 export default FriendSuggestion;

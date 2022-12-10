@@ -23,7 +23,7 @@ const SignupComponent = () => {
     if (data.error) {
       alert(data.error);
     } else {
-      localStorage.setItem('token', data.token);
+      sessionStorage.setItem('token', data.token);
       navigate('/user-profile');
     }
   }
@@ -48,11 +48,6 @@ const SignupComponent = () => {
       console.log('Passwords entered do not match!');
     }
 
-    //TO DO: check if email is not in the database
-    //TO DO: check if username is not in the database
-    // if no error, then navigate to userProfile
-    // console.log(username, email, password, confirmPassword);
-
     if (validateEmail(email) && password.length >= 8 && confirmPassword === password) {
         await signUp(username, email, password);
     }
@@ -63,34 +58,25 @@ const SignupComponent = () => {
       /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
     return regex.test(String(email).toLowerCase());
   };
- 
-  /*
-  const handleCreateNewStudent = async (e) => {
-    // stop default behavior to avoid reloading the page
-    e.preventDefault();
-    // create new User variable
-    const newUser = { username: newUsername, email: newEmail, password: newPassword, profilePicture: "", follow: [] };
 
-    // send POST request to create new User
-    const newStoredUser = await createUser(newUser);
-    console.log("New Student Created");
-  } 
-  */
-
-  return (
-    <form className="auth-inner">
-      <Form_Welcome/>
-      <h3> Signup</h3>
-      <Form label = "Username" type = "text" placeholder = "Username" value = {username} onChange={e => setUsername(e.target.value)}/>
-      <Form label = "Email" type = "email" placeholder = "Email" value = {email} onChange={e => setEmail(e.target.value)}/>
-      <Form label = "Password" type = "password" placeholder = "Password (more than 8 characters)" value = {password} onChange={e => setPassword(e.target.value)}/>
-      <Form label = "Re-enter Password" type = "password" placeholder = "Re-enter password" value = {confirmPassword} onChange={e => setConfirmPassword(e.target.value)}/>
-      <Form_Submit label = "Finish" onClick={handleSubmitClick}/>
-      <p className="forgot-password text-right">
-        Already registered <a href="/sign-in" onClick={navigateToLogin}>sign in?</a>
-      </p>
-    </form>
-  )
+    if (sessionStorage.getItem('token')) {
+        window.location.href = '/user-profile';
+    } else {
+        return (
+            <form className="auth-inner">
+                <Form_Welcome/>
+                <h3> Signup</h3>
+                <Form label = "Username" type = "text" placeholder = "Username" value = {username} onChange={e => setUsername(e.target.value)}/>
+                <Form label = "Email" type = "email" placeholder = "Email" value = {email} onChange={e => setEmail(e.target.value)}/>
+                <Form label = "Password" type = "password" placeholder = "Password (more than 8 characters)" value = {password} onChange={e => setPassword(e.target.value)}/>
+                <Form label = "Re-enter Password" type = "password" placeholder = "Re-enter password" value = {confirmPassword} onChange={e => setConfirmPassword(e.target.value)}/>
+                <Form_Submit label = "Finish" onClick={handleSubmitClick}/>
+                <p className="forgot-password text-right">
+                    Already registered <a href="/sign-in" onClick={navigateToLogin}>sign in?</a>
+                </p>
+            </form>
+        )
+    }
 }
 
 export default SignupComponent;

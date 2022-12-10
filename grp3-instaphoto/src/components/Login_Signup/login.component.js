@@ -20,7 +20,7 @@ const LoginComponent=()=>{
     if (data.error) {
         alert(data.error);
     } else {
-      localStorage.setItem('token', data.token);
+      sessionStorage.setItem('token', data.token);
       navigate('/user-profile');
     }
   }
@@ -58,20 +58,23 @@ const LoginComponent=()=>{
 
     // to transition from 1 page to another, use a hook called useNavigate
 
+  if (sessionStorage.getItem("token")) {
+    window.location.href = "/user-profile";
+  } else {
     return (
-      <form className = "auth-inner">
-        <Form_Welcome/>
-        <Form label = "Email" type = "email" placeholder = "Enter email" value={email} onChange={e => setEmail(e.target.value)}/>
-        <Form label = "Password" type="password" placeholder = "Enter password" value={password} onChange={e => setPassword(e.target.value)}/>
-        <Form_Submit label = "Sign in" onClick={(e) => handleSubmitClick(e)}/>
+        <form className = "auth-inner">
+          <Form_Welcome/>
+          <Form label = "Email" type = "email" placeholder = "Enter email" value={email} onChange={e => setEmail(e.target.value)}/>
+          <Form label = "Password" type="password" placeholder = "Enter password" value={password} onChange={e => setPassword(e.target.value)}/>
+          <Form_Submit label = "Sign in" onClick={(e) => handleSubmitClick(e)}/>
 
-        <p className="login-create-account text-right">
-          Don't have an account? <br></br>
-          <a href="#" onClick={navigateToSignup}> Sign up now to join communities across the globe </a>
-        </p>
-      </form>
-
+          <p className="login-create-account text-right">
+            Don't have an account? <br></br>
+            <a href="#" onClick={navigateToSignup}> Sign up now to join communities across the globe </a>
+          </p>
+        </form>
     )
+  }
 }
 
 export default LoginComponent;

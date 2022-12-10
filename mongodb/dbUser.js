@@ -143,6 +143,7 @@ const getSuggestionList = async (userID) => {
 }
 
 // checks if user B follows user A
+// TODO: Fix the weird error this throws
 const isFollowing = async (userID, otherUserID) => {
   const user = await getUser(userID);
   const otherUser = await getUser(otherUserID);

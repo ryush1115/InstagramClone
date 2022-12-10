@@ -47,8 +47,7 @@ export const getUsers = async () => {
 // returns the attributes of the User
 export const getUser = async (userId) => {
   try {
-    const response = await axios.get(`${rootURL}/User/${userId}`);
-    return response.data.data;
+    return await axios.get(`${rootURL}/User/${userId}`);
   } catch (err) {
     console.error(err);
   }
@@ -60,7 +59,7 @@ export const getTokenUser = async () => {
             method: 'GET',
             headers: {
               'Content-Type': 'application/json',
-              'x-auth-token': localStorage.getItem('token')
+              'x-auth-token': sessionStorage.getItem('token')
             }
         });
         return await response.json();
@@ -116,7 +115,7 @@ export const createPost = async(post) => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'x-auth-token': localStorage.getItem('token')
+          'x-auth-token': sessionStorage.getItem('token')
         },
         body: JSON.stringify(post)
     });
@@ -131,7 +130,7 @@ export const getMyFollowings = async () => {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-        'x-auth-token': localStorage.getItem('token')
+        'x-auth-token': sessionStorage.getItem('token')
       },
     });
     return await response.json();
@@ -151,7 +150,7 @@ export const following = async (followingName) => {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
-            'x-auth-token': localStorage.getItem('token')
+            'x-auth-token': sessionStorage.getItem('token')
         },
         body: JSON.stringify({followingName: followingName})
     });
@@ -166,7 +165,7 @@ export const cancelFollowing = async (followingName) => {
     const response = await fetch(`${rootURL}/followinglist`, {
       headers: {
         'Content-Type': 'application/json',
-        'x-auth-token': localStorage.getItem('token')
+        'x-auth-token': sessionStorage.getItem('token')
       },
         method: 'DELETE',
         body: JSON.stringify({followingName: followingName})
@@ -233,7 +232,7 @@ export const createCommentInPost = async(PostId, CommentObject) => {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'x-auth-token': localStorage.getItem('token')
+        'x-auth-token': sessionStorage.getItem('token')
       },
       body: JSON.stringify(CommentObject)
     });
@@ -346,7 +345,7 @@ export const updatePost = async (postID, post) => {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
-          'x-auth-token': localStorage.getItem('token'),
+          'x-auth-token': sessionStorage.getItem('token'),
         },
         body: JSON.stringify(post),
       });
@@ -357,7 +356,7 @@ export const updatePost = async (postID, post) => {
 }
 
 export const checkJWT = async () => {
-  const token = localStorage.getItem('token');
+  const token = sessionStorage.getItem('token');
   console.log("token");
   console.log(token);
     try {
@@ -378,7 +377,7 @@ export const getSuggestionList = async () => {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
-      'x-auth-token': localStorage.getItem('token')
+      'x-auth-token': sessionStorage.getItem('token')
     }
   });
 }

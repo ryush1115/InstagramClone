@@ -1,11 +1,7 @@
 import React, { useState, useEffect, Fragment} from "react";
-import {Routes, Route, useNavigate} from 'react-router-dom';
 import '../userprofile.css';
-import { Navbar, Card, ListGroup, ListGroupItem } from 'react-bootstrap';
-// import { goToAnchor, configureAnchors } from 'react-scrollable-anchor';
 import {getSuggestionList, getTokenUser, getUserPosts} from '../../../api/mock_api';
 import GalleryItem from "./galleryItem";
-// import Sidebar from '../../sidebar.component'
 
 export default function UserprofileComponent(props) {
 
