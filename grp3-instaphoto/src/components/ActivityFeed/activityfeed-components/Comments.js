@@ -39,9 +39,9 @@ export default function Comments(props) {
          <div className="comment-form-title">Enter comment</div>
          <CommentForm submitLabel="Write" handleSubmit={addComment}/>
          <div>
-            {/* {id_.id} */}
          {props.list.map(item => (
-           <div key={item.id}>
+           <div key={props._id}>
+            {/* <div key={item.id}> */}
              <Comment 
                 key={item.id}
                 comment={item}
