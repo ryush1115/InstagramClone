@@ -19,7 +19,6 @@ export default function SearchBar (props) {
           <PostTable username={username} posts={props.roster} />
         </div>
       )
-  
 }
 
 

@@ -8,6 +8,7 @@ export default function FilterablePostTable(props) {
     // ref to indicate if this is the first rendering
     const firstRendering = useRef(true);
     // get the list of [Timeline] Posts from the backend
+    
     useEffect(() => {
       // get the list of [Timeline] Posts from the backend
       async function fetchData() {

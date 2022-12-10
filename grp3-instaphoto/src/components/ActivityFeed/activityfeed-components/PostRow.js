@@ -12,7 +12,6 @@ export default function PostRow(props) {
     const [isLiked, setIsLiked] = useState();
     const [likeCounter, setLikeCounter] = useState(props.post.like.length);
 
-
     // TODO: Refactor this code
     const someFetch = async () => {
       //using JS fetch API
