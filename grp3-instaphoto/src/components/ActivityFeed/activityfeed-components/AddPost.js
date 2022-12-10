@@ -14,7 +14,6 @@ export default function AddPost() {
 
     return (
       <div>
-        {/* <FilterablePostTable /> */}
         <FilterablePostTable reload={loadData} />
       </div>
     )

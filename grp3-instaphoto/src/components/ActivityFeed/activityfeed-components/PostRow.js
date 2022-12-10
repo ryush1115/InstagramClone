@@ -23,7 +23,6 @@ export default function PostRow(props) {
         someFetch();
     },[]);
 
-
     // handle increment Like
     const handleLikeClick = async(e) => {
       //console.log("Increment Like");
@@ -99,15 +98,6 @@ export default function PostRow(props) {
       loadData.current = true;
     }
 
-    const ListOfComments = (props) => {
-      return(  
-        props.list.map(item => (
-          <div key={item._id}>
-            <Comment key={item._id} comment={item}></Comment>
-          </div>
-      ))
-      )
-    }
 
     return (
       <tr>
@@ -133,32 +123,7 @@ export default function PostRow(props) {
               <div className="postBottomLeft">
                 {props.post.postCaption}
               </div>
-							
-							
-              {/* <button type="remove" onClick={handleDeletePost}>Delete</button> */}
-              {/* <button type="remove">Edit</button> */}
-              
             </div>
-            {/* <div className="postBottom">
-             
-              <form id="commentBox" onSubmit={handleCreateComment}>
-                <label></label>
-                <input type="text" 
-                name="commentBox_" 
-                className="commentBox" 
-                size="15" 
-                placeholder="Enter a comment..." 
-                onChange={handleOnChangeComment}
-                />
-                <button type="submit">Post!</button>
-              </form>
-              <div className="postBottomRight">
-                
-                <span className="postCommentText"> Comments Array: {props.post.postCommentsArray} </span>
-
-              </div>
-
-            </div> */}
 						<div className="postBottom">
 
               <div className="postBottomLeft">
@@ -174,16 +139,10 @@ export default function PostRow(props) {
                 {/* {props.post.postComment} */}
               </div>
               <div className="postBottomRight">
-                  {/* <List list={commentArray}/> */}
-                  {/* <ListOfComments list={props.post.postCommentArray}/> */}
-                  {/* <Comments list={props.post}/> */}
-                  
-
               </div>
 							<div style ={{'margin-top' : '2.3em'}}>	
 									<button data-testid="button-0" onClick={()=>{
 														handleLikeClick();
-														//setisfollowed(!isfollowed)
 									}} >{isLiked? "unLike":"Like"}
 									</button>
 									<p data-testid = "likeCounter">{likeCounter}</p>
@@ -192,9 +151,6 @@ export default function PostRow(props) {
             </div>
             <div className="postBottom-Lower" >
             	<form id="commentBox">
-                
-                {/* <input type="text" className="commentBox" name="commentBox" size="20" onChange={handleOnChangeComment} placeholder="Enter a comment..." />
-                <button type="submitComment" onClick={handleCreateCommentInPost}>Enter</button> */}
               </form>
               <button type="remove" onClick={handleDeletePost}>Delete</button>
             </div>

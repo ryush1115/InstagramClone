@@ -14,7 +14,7 @@ export default function PostTable (props){
    postsList = props.posts;
 
    const makeRows = () => {
-    const rows = [];
+   const rows = [];
 
     postsList.forEach((element) => {
       // const {post} = element;
@@ -32,7 +32,6 @@ export default function PostTable (props){
       }
       // increment counter
       counter.current += 1;
-
     });
     return rows;
   };
@@ -41,7 +40,6 @@ export default function PostTable (props){
   return (
     <table>
       <tbody>{rows}</tbody>
-
     </table>
   );
 }

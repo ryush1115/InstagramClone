@@ -27,7 +27,7 @@ export default function FilterablePostTable(props) {
 
     return (
       <SearchBar roster={roster} />
-    )
+    );
 }
 
 

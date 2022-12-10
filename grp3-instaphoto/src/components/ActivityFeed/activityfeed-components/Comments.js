@@ -34,20 +34,6 @@ export default function Comments(props) {
 
     }
 
-    // return(  
-    //    <div> 
-    //     <div className="comment-form-title">Enter comment</div>
-    //     <CommentForm submitLabel="Write" handleSubmit={addComment}/>
-    //     <div>
-    //     {props.list.map(item => (
-    //       <div key={item.id}>
-    //         <Comment key={item.id} comment={item}></Comment>
-    //       </div>
-    //   ))}
-    //   </div>
-    //   </div>
-    //   )
-
       return(  
         <div> 
          <div className="comment-form-title">Enter comment</div>
