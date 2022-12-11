@@ -81,6 +81,7 @@ export default function PostRow(props) {
                   list={props.post.postCommentArray} 
                   _id={props.post._id} 
                   props={props}
+                  userLoginName6 = {props.userLoginName5}
                   />
               </div>
               

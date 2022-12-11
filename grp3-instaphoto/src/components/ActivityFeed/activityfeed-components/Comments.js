@@ -42,6 +42,7 @@ export default function Comments(props) {
                 setActiveComment={setActiveComment}
                 updateComment={updateComment}
                 postid = {props._id}
+                userLoginName7 = {props.userLoginName6}
                 />
            </div>
        ))}

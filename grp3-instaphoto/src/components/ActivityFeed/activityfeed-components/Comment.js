@@ -9,7 +9,8 @@ const Comment = ({
     activeComment, 
     setActiveComment,
     updateComment,
-    postid
+    postid,
+    userLoginName7
 
 }) => {
     
@@ -21,7 +22,7 @@ const Comment = ({
     }, []);
     
     //const currentUserId = usernameLoggedIn; // login username
-    const currentUserId = user.username; // login username
+    const currentUserId = userLoginName7; // login username
     const canEdit = comment.username === currentUserId; // allow editing if comment username matches current user Id
     
     const isEditing = 
