@@ -9,8 +9,7 @@ const Comment = ({
     activeComment, 
     setActiveComment,
     updateComment,
-    postid,
-    usernameLoggedIn
+    postid
 
 }) => {
     
@@ -20,7 +19,6 @@ const Comment = ({
             setUser(user.data);
         });
     }, []);
-    
     
     //const currentUserId = usernameLoggedIn; // login username
     const currentUserId = user.username; // login username
