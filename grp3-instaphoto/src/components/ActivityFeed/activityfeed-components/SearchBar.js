@@ -15,7 +15,7 @@ export default function SearchBar (props) {
 
     return (
         <div>
-          <PostTable username={username} posts={props.roster} />
+          <PostTable username={username} posts={props.roster} userLoginName4 = {props.userLoginName3}/>
         </div>
       )
 }

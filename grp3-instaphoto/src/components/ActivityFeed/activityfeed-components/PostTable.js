@@ -62,10 +62,10 @@ export default function PostTable (props){
       }
       // loop thru loginUserName's following, then check if
       // element.username (the post's author) is loginUserName's following
-      
+
 
       rows.unshift(
-        <PostRow post={element} key={counter.current} />
+        <PostRow post={element} key={counter.current} userLoginName5 = {props.userLoginName4}/>
       )
 
       // increment counter
