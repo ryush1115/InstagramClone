@@ -60,6 +60,9 @@ export default function PostTable (props){
 
             return;
       }
+      // loop thru loginUserName's following, then check if
+      // element.username (the post's author) is loginUserName's following
+      
 
       rows.unshift(
         <PostRow post={element} key={counter.current} />

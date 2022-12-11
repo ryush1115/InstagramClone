@@ -2,7 +2,7 @@
 import FilterablePostTable from "./FilterablePostTable";
 import React, { useState,useRef } from "react";
 
-export default function AddPost() {
+export default function AddPost(props) {
     // local state new Post
     // we don't need the state variable since we are not passing it as a prop
     // Its child will get the list of Posts from the backend
@@ -14,7 +14,7 @@ export default function AddPost() {
 
     return (
       <div>
-        <FilterablePostTable reload={loadData}/>
+        <FilterablePostTable reload={loadData} userLoginName2 ={props.userLoginName1}/>
       </div>
     )
 
