@@ -26,9 +26,9 @@ export default function Comments(props) {
         const newStoredComment = await createCommentInPost(props._id, newComment);
     }
 
-    const updateComment = async(text) => {
-      const updatedComment = await updateComment(text, props._id, commentid);
-    }
+    // const updateComment = async(text) => {
+    //   const updatedComment = await updateComment(text, props._id, comment._id);
+    // }
 
       return(  
         <div> 
