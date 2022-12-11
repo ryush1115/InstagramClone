@@ -9,7 +9,6 @@ const CommentForm = ({
     initialText='',
     handleCancel
 }) => {
-    
     const [text, setText] = useState(initialText);
     const isTextareaDisabled = text.length === 0;
     const onSubmit = event => {
@@ -33,7 +32,6 @@ const CommentForm = ({
                 onClick={handleCancel}>
                     Cancel
             </button>)}
-
         </form>
     );
 };
