@@ -5,9 +5,7 @@ import {deletePost, isMyLikePost,incrementPostLike, cancelPostLike} from '../../
 import Comments from './Comments';
 
 export default function PostRow(props) {
-    // const[, setNewComment] = useState(null);
     const[, setDeletedPost] = useState(null);
-    // const[, setIncrementLike] = useState(null);
     const [isLiked, setIsLiked] = useState();
     const [likeCounter, setLikeCounter] = useState(props.post.like.length);
 
@@ -53,8 +51,7 @@ export default function PostRow(props) {
 
     return (
       <tr>
-        <div className="post"
-        >
+        <div className="post">
           <div className="postWrapper">
             <div className="postTop">
               <div className="postTopLeft">
