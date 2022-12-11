@@ -23,14 +23,19 @@ export default function Comments(props) {
         const newComment = {username:user.username, message:text, tagOfOtherUsers:1,id:1};
         console.log("comment text: ", text);
         console.log(newComment);
-        
         const newStoredComment = await createCommentInPost(props._id, newComment);
+    }
+
+    const updateComment = async(text) => {
+      const updatedComment = await updateComment(text, props._id, commentid);
     }
 
       return(  
         <div> 
          <div className="comment-form-title">Enter comment</div>
+         
          <CommentForm submitLabel="Write" handleSubmit={addComment}/>
+
          <div>
          {props.list.map(item => (
            <div key={item._id}>

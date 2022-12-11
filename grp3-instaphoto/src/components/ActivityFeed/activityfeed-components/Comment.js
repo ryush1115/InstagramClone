@@ -1,8 +1,7 @@
 // Comment.js
 import './comments.css';
 import CommentForm from './CommentForm';
-import React, {useEffect, useState} from 'react';
-import {getTokenUser} from "../../../api/mock_api";
+//import React, {useEffect, useState} from 'react';
 
 const Comment = ({
     comment, 
@@ -13,14 +12,6 @@ const Comment = ({
     userLoginName7
 
 }) => {
-    
-    const [user, setUser] = useState({});
-    useEffect(() => {
-        getTokenUser().then((user) => {
-            setUser(user.data);
-        });
-    }, []);
-    
     //const currentUserId = usernameLoggedIn; // login username
     const currentUserId = userLoginName7; // login username
     const canEdit = comment.username === currentUserId; // allow editing if comment username matches current user Id
