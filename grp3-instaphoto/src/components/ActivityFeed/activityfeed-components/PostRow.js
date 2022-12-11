@@ -131,6 +131,7 @@ export default function PostRow(props) {
                   _id={props.post._id} 
                   props={props}
                   />
+
               </div>
               
               <div>

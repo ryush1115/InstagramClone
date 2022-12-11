@@ -6,8 +6,6 @@ import Sidebar from "../../sidebar.component";
 import {getTokenUser, getUserPosts} from "../../../api/mock_api";
 
 export default function MainFeed(props) {
-
-    const [roster, setRoster] = useState([]);
     const [create, setCreate] = useState('default');
     const [user, setUser] = useState({});
 

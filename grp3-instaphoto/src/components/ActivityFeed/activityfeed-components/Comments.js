@@ -17,21 +17,14 @@ export default function Comments(props) {
             setUser(user.data);
         });
     }, []);
-    
-    //useEffect(()=>{}, []); // triggered once after mounting
-    // const relevantComment = listComment.filter();
 
     const addComment = async(text) => {
         const newComment = {username:user.username, message:text, tagOfOtherUsers:1,id:1};
         console.log(text);
         console.log(newComment);
         
-        // Toggle comments with PostIdTemp
-        // const PostIdTemp = id_.valueOf();
-
         const newStoredComment = await createCommentInPost(props._id, newComment);
         // const newStoredComment = await createCommentInPost(props.post.id, newComment);
-
     }
 
       return(  
@@ -49,6 +42,7 @@ export default function Comments(props) {
                 setActiveComment={setActiveComment}
                 updateComment={updateComment}
                 postid = {props._id}
+                //username = {props.username}
                 >
              </Comment>
            </div>

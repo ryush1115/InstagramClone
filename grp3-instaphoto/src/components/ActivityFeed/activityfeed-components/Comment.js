@@ -7,12 +7,13 @@ const Comment = ({
     activeComment, 
     setActiveComment,
     updateComment,
-    postid
+    postid,
+    //username
 
 }) => {
-    const currentUserId = "grp3foreva"; // login username
+    const currentUserId = comment.username; // login username
     const canEdit = comment.username === currentUserId; // allow editing if comment username matches current user Id
-    const fiveMinutes = 300000; // equivalent to five minutes
+    
     const isEditing = 
         activeComment &&
         activeComment.type === "editing" &&
