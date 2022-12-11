@@ -43,7 +43,7 @@ export default function Comments(props) {
                 setActiveComment={setActiveComment}
                 updateComment={updateComment}
                 postid = {props._id}
-                //username = {props.username}
+                usernameLoggedIn = {props}
                 />
            </div>
        ))}

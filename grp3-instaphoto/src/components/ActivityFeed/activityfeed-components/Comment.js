@@ -8,10 +8,10 @@ const Comment = ({
     setActiveComment,
     updateComment,
     postid,
-    //username
+    usernameLoggedIn
 
 }) => {
-    const currentUserId = comment.username; // login username
+    const currentUserId = usernameLoggedIn; // login username
     const canEdit = comment.username === currentUserId; // allow editing if comment username matches current user Id
     
     const isEditing = 
