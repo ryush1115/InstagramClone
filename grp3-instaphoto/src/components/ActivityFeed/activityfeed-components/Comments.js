@@ -1,10 +1,12 @@
 //Comments.js
-import {useState, useEffect} from "react";
+import {useState, useEffect, useRef} from "react";
 import Comment from './Comment';
 import CommentForm from './CommentForm';
 import {createCommentInPost, getTokenUser, updateComment} from '../../../api/mock_api';
 
 export default function Comments(props) {
+  // counter to provide unique key to rows
+  const counter = useRef(0);
 
     console.log(props.list);
 
@@ -24,7 +26,6 @@ export default function Comments(props) {
         
         const newStoredComment = await createCommentInPost(props._id, newComment);
     }
-    {/* <div key={item.id}> */}
 
       return(  
         <div> 
@@ -32,10 +33,10 @@ export default function Comments(props) {
          <CommentForm submitLabel="Write" handleSubmit={addComment}/>
          <div>
          {props.list.map(item => (
-           <div key={props._id}>
+           <div key={item._id}>
             {/* <div key={props._id}> */}
              <Comment 
-                key={item.id}
+                key={item._id}
                 comment={item}
                 activeComment={activeComment}
                 setActiveComment={setActiveComment}

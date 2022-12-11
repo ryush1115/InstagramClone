@@ -11,9 +11,8 @@ import PostTable from './PostTable'
 
 export default function SearchBar (props) {
     const [username, setUsername] = useState('');
-    const handleFilterTextChange = (e) => {
-        setUsername(e.target.value);
-    }
+    //const username = '';
+
     return (
         <div>
           <PostTable username={username} posts={props.roster} />

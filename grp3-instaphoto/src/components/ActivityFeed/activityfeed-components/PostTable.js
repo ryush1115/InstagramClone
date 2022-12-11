@@ -5,19 +5,18 @@ export default function PostTable (props){
    // counter to provide unique key to rows
    const counter = useRef(0);
    let postsList = [];
-   let usernameFilter = 'SHOW_ALL';
+   const usernameFilter = 'SHOW_ALL';
+
    // get the list of posts and the username from props
 
-   if (props.username) {
-     usernameFilter = props.username;
-   }
    postsList = props.posts;
 
    const makeRows = () => {
    const rows = [];
 
     postsList.forEach((element) => {
-      const {post} = element;
+
+      //const {post} = element;
 
       // if (usernameFilter === 'SHOW_ALL') {
       //   rows.unshift(
@@ -32,12 +31,27 @@ export default function PostTable (props){
       //   );
       // }
 
+      // if (usernameFilter === 'SHOW_ALL') {
+
+      // } else {
+      //   if(!element.publicPrivate==='true') {
+      //     return;
+      //   }
+      // }
+      
+      console.log("element.publicPrivate");
+      console.log(element.publicPrivate);
+      if(!element.publicPrivate===true) {
+            return;
+      }
+
       rows.unshift(
         <PostRow post={element} key={counter.current} />
       )
 
       // increment counter
       counter.current += 1;
+
     });
     return rows;
   };
