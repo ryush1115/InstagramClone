@@ -20,12 +20,14 @@ export default function Comments(props) {
 
     const addComment = async(text) => {
         const newComment = {username:user.username, message:text, tagOfOtherUsers:1,id:1};
-        console.log(text);
+        console.log("comment text: ", text);
         console.log(newComment);
         
         const newStoredComment = await createCommentInPost(props._id, newComment);
         // const newStoredComment = await createCommentInPost(props.post.id, newComment);
     }
+
+    {/* <div key={item.id}> */}
 
       return(  
         <div> 
@@ -34,7 +36,6 @@ export default function Comments(props) {
          <div>
          {props.list.map(item => (
            <div key={props._id}>
-            {/* <div key={item.id}> */}
              <Comment 
                 key={item.id}
                 comment={item}
@@ -43,8 +44,7 @@ export default function Comments(props) {
                 updateComment={updateComment}
                 postid = {props._id}
                 //username = {props.username}
-                >
-             </Comment>
+                />
            </div>
        ))}
        </div>
