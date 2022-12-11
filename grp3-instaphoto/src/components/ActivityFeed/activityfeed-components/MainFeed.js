@@ -3,10 +3,11 @@ import ActivityFeedUsername from "./Activity-Feed-Username";
 import AddPost from "./AddPost";
 import './activityfeed.css';
 import Sidebar from "../../sidebar.component";
-import {getTokenUser, getUserPosts} from "../../../api/mock_api";
+import {getTokenUser} from "../../../api/mock_api";
 
 export default function MainFeed(props) {
     const [create, setCreate] = useState('default');
+    
     const [user, setUser] = useState({});
 
     useEffect(() => {

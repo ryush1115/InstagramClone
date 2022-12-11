@@ -1,6 +1,6 @@
 //CommentForm.js
 
-import {useState, useEffect} from "react";
+import {useState} from "react";
 
 const CommentForm = ({
     handleSubmit, 

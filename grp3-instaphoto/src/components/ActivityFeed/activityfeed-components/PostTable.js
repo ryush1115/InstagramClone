@@ -1,4 +1,4 @@
-import React, { useState, Fragment, useEffect, useRef } from "react";
+import React, {useRef } from "react";
 import PostRow from './PostRow'
 
 export default function PostTable (props){
@@ -18,8 +18,6 @@ export default function PostTable (props){
 
     postsList.forEach((element) => {
       const {post} = element;
-
-
 
       // if (usernameFilter === 'SHOW_ALL') {
       //   rows.unshift(

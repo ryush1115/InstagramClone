@@ -50,7 +50,7 @@ export default function PostRow(props) {
       setDeletedPost(newDeletedPost);
       loadData.current = true;
     }
-    
+
     return (
       <tr>
         <div className="post"
@@ -88,7 +88,6 @@ export default function PostRow(props) {
               </div>
               
               <div>
-                {/* {props.post.postComment} */}
               </div>
               <div className="postBottomRight">
               </div>

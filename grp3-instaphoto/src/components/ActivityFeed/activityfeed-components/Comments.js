@@ -8,7 +8,6 @@ export default function Comments(props) {
 
     console.log(props.list);
 
-    const [backendComments, setBackendComments] = useState([]);
     const [activeComment, setActiveComment] = useState(null);
     const [user, setUser] = useState({});
 
@@ -24,9 +23,7 @@ export default function Comments(props) {
         console.log(newComment);
         
         const newStoredComment = await createCommentInPost(props._id, newComment);
-        // const newStoredComment = await createCommentInPost(props.post.id, newComment);
     }
-
     {/* <div key={item.id}> */}
 
       return(  
@@ -36,6 +33,7 @@ export default function Comments(props) {
          <div>
          {props.list.map(item => (
            <div key={props._id}>
+            {/* <div key={props._id}> */}
              <Comment 
                 key={item.id}
                 comment={item}
