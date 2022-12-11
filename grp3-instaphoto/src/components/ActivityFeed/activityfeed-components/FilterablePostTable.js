@@ -31,8 +31,7 @@ export default function FilterablePostTable(props) {
 
     return (
       // <PostTable posts={roster} />
-      <SearchBar roster={roster} />
-
+      <SearchBar roster={roster} userLoginName3={props.userLoginName2}/>
 
     );
 }
