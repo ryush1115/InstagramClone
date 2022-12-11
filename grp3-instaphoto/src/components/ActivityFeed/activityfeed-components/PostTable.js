@@ -38,7 +38,7 @@ export default function PostTable (props){
       //   }
       // }
 
-      console.log("element.publicPrivate");
+      console.log("PostTable: element.publicPrivate");
       console.log(element.publicPrivate);
       if(!element.publicPrivate===true) {
             return;

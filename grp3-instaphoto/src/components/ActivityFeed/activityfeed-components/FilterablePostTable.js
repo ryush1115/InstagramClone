@@ -1,6 +1,7 @@
 import React, { useState,  useEffect, useRef } from "react";
 import SearchBar from './SearchBar';
 import {  getPosts} from '../../../api/mock_api';
+import PostTable from './PostTable'
 
 export default function FilterablePostTable(props) {
     // Local state to store and update the list of Posts
@@ -14,6 +15,8 @@ export default function FilterablePostTable(props) {
       // get the list of [Timeline] Posts from the backend
       async function fetchData() {
         const data = await getPosts();
+        console.log("getPosts data: ");
+        console.log(data);
         setRoster(data);
       }
 
@@ -27,7 +30,10 @@ export default function FilterablePostTable(props) {
     });
 
     return (
+      // <PostTable posts={roster} />
       <SearchBar roster={roster} />
+
+
     );
 }
 
