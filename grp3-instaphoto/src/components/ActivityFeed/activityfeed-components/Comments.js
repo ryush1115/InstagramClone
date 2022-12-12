@@ -2,7 +2,7 @@
 import {useState, useEffect, useRef} from "react";
 import Comment from './Comment';
 import CommentForm from './CommentForm';
-import {createCommentInPost, getTokenUser, updateComment} from '../../../api/mock_api';
+import {createCommentInPost, getTokenUser, updateComment as updateCommentAPI} from '../../../api/mock_api';
 
 export default function Comments(props) {
   // counter to provide unique key to rows
@@ -24,11 +24,17 @@ export default function Comments(props) {
         console.log("comment text: ", text);
         console.log(newComment);
         const newStoredComment = await createCommentInPost(props._id, newComment);
+        return newStoredComment;
     }
-
-    // const updateComment = async(text) => {
-    //   const updatedComment = await updateComment(text, props._id, comment._id);
-    // }
+// handleSubmit = {(text)=>updateComment(text, postid, comment._id)}
+    const updateComment = async(text, postID, commentID) => {
+      console.log("text", text);
+      console.log("props._id", props._id);
+      console.log("commentID", commentID);
+      const updatedComment = await updateCommentAPI(text, props._id, commentID);
+      //updateComment(text, props._id, commentID).then(()=> {})
+      return updatedComment;
+    }
 
       return(  
         <div> 
