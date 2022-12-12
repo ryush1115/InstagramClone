@@ -6,7 +6,7 @@ import {createCommentInPost, getTokenUser, updateComment as updateCommentAPI} fr
 
 export default function Comments(props) {
   // counter to provide unique key to rows
-  const counter = useRef(0);
+  //const counter = useRef(0);
 
     console.log(props.list);
 
@@ -34,6 +34,13 @@ export default function Comments(props) {
       const updatedComment = await updateCommentAPI(text, props._id, commentID);
       //updateComment(text, props._id, commentID).then(()=> {})
       return updatedComment;
+
+      // need to map through backendcomments
+      // const updatedBackendComments = backendComments.map(backendComment) => {
+      // if (backendComment.id === commentID) {
+      // 
+      //}
+      //} See 54.26 of https://www.youtube.com/watch?v=sjAeLwuezxo&ab_channel=MonsterlessonsAcademy
     }
 
       return(  
