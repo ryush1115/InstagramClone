@@ -374,10 +374,13 @@ webapp.get('/friendsuggestion', async (req, res) => {
 });
 
 // get results for is my like post
-webapp.get('/isMyLikePost/:PostId', async (req, res) => {
+webapp.get('/isMyLikePost/:PostUser', async (req, res) => {
+  var stringArray = req.params.PostUser;
+  var stringSplit = stringArray.split('&');
+  // console.log("running in server.js is my like post", stringSplit[0]);
   try {
     // get the data from the db
-    const results = await dbLibLike.isMyLikePost(req.params.PostId);
+    const results = await dbLibLike.isMyLikePost(stringSplit[0], stringSplit[1]);
     // send the response with the appropriate status code
     // console.log(results.username);
     
@@ -389,8 +392,12 @@ webapp.get('/isMyLikePost/:PostId', async (req, res) => {
 
 // update the like array in post endpoint
 webapp.put('/postlike', async (req, res) => {
+  console.log("printing in server.js", req.body);
+  
+  const {PostId, UserId} = req.body;
   try {
-    result = await dbLibLike.incrementPostLike(req.body.PostId);
+    // console.log("printing in server", req.body);
+    result = await dbLibLike.incrementPostLike(PostId, UserId);
     res.status(200).json({ message: result });
   } catch (err) {
     res.status(404).json({ message: 'there was error' });
@@ -398,9 +405,10 @@ webapp.put('/postlike', async (req, res) => {
 });
 
 // update the like array in post endpoint
-webapp.delete('/postlike', async (req, res) => {
+webapp.delete('/deletelike', async (req, res) => {
+  const {PostId, UserId} = req.body;
   try {
-    const result = await dbLibLike.cancelPostLike(req.body.PostId);
+    const result = await dbLibLike.cancelPostLike(PostId, UserId);
     res.status(200).json({ message: result });
   } catch (err) {
     res.status(404).json({ message: 'there was error' });

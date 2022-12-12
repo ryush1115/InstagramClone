@@ -5,21 +5,21 @@ const {getPost } = require('./dbPost');
   
   // how does this go to server.js
   // what does this even do lol
-  const isMyLikePost = async (PostId) => {
+  const isMyLikePost = async (PostId, UserId) => {
     try {
-      console.log("running is my like post");
+      // console.log("running is my like post in dbLike.js and printing PostId", PostId);
       
       const post = await getPost(PostId);
       mongo = await connect();
       const db = mongo.db();
-      const user1 = await db.collection('User1').findOne({});
-      const me = user1;
-      console.log(me._id);
 
-      console.log(post[0].like);
+
+      // console.log(post[0].like);
       const like = post[0].like || [];
       for(let j = 0; j < like.length; j++){
-        if(like[j] === me._id){
+        console.log("like is this", like[j], "userid is that", ObjectId(UserId));
+        if(like[j].equals(ObjectId(UserId))){
+          console.log("returning true");
           return true;
         }
       }
@@ -30,22 +30,23 @@ const {getPost } = require('./dbPost');
     }
   };
   
-  const incrementPostLike = async(PostId) => {
+  const incrementPostLike = async(PostId, UserId) => {
     try {
-      console.log("running increment post like");
+      // console.log("running increment post like in dblike.js");
+      // console.log("Post Id is", PostId, UserId);
       
       mongo = await connect();
       const db = mongo.db();
-      const user1 = await db.collection('User1').findOne({});
-      const me = user1;
-      console.log(me._id);
+      // const user1 = await db.collection('User1').findOne({});
+      // const me = user1;
+      // console.log(me._id);
   
       const result = await db.collection('Post').updateOne(
         { _id: ObjectId(PostId) },
         {
           $push: {
             like: {
-              $each: [me._id],
+              $each: [ObjectId(UserId)],
               $position: 0,
             },
           },
@@ -60,20 +61,18 @@ const {getPost } = require('./dbPost');
     }
   }
   
-  const cancelPostLike = async(PostId) => {
+  const cancelPostLike = async(PostId, UserId) => {
     try {
-      console.log("running cancel post like");
+      // console.log("running cancel post like");
       
       mongo = await connect();
       const db = mongo.db();
-      const user1 = await db.collection('User1').findOne({});
-      const me = user1;
-      console.log(me._id);
+
   
       const result = await db.collection('Post').updateOne(
         { _id: ObjectId(PostId) },
         {
-          $pull: {like: me._id},
+          $pull: {like: ObjectId(UserId)},
           }
       );
       

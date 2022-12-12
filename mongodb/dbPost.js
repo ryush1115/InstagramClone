@@ -14,7 +14,7 @@ const getPosts = async () => {
 };
 
 const getPost = async (PostId) => {
-    console.log("the post we are looking for is " + PostId);
+    // console.log("the post we are looking for is " + PostId);
     try {
       // get the db
       const mongo = await connect();
