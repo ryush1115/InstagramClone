@@ -1,4 +1,4 @@
-import React, {useRef } from "react";
+import React, {useRef} from "react";
 import PostRow from './PostRow'
 
 export default function PostTable (props){
@@ -38,14 +38,15 @@ export default function PostTable (props){
       //   }
       // }
 
-      console.log("PostTable: element.publicPrivate");
+      // console.log("PostTable: element.publicPrivate");
+      // console.log("Printing inside PostTable", props.username);
       console.log(element.publicPrivate);
       if(!element.publicPrivate===true) {
             return;
       }
 
       rows.unshift(
-        <PostRow post={element} key={counter.current} />
+        <PostRow post={element} key={counter.current} userid={props.userid}/>
       )
 
       // increment counter

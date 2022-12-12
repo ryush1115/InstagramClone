@@ -266,31 +266,33 @@ export const deletePost = async(PostId) => {
   }
 }
 
-// THIS IS NOT WORKING
 // Increment a Like
-export const incrementPostLike = async(PostId) => {
+export const incrementPostLike = async(PostId, UserId) => {
  console.log("running increment post like");
  console.log("POSTID IS " + PostId);
-  
-  try {
-    const response = await axios.put(`${rootURL}/postlike`, PostId);
-    return response.data.data;
-  } catch (err) {
-    console.log("hitting error");
-    console.error(err);
-  }
+ console.log("UserID IS " + UserId);
+
+ const response = await fetch('http://localhost:8000/postlike', {
+  method: 'PUT',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({ PostId, UserId }),
+});
+return await response.json();
 }
 
-// THIS IS NOT WORKING
 // Cancel a Like
-export const cancelPostLike = async(PostId) => {
+export const cancelPostLike = async(PostId, UserId) => {
   console.log("running cancel post like");
-   try {
-     const response = await axios.delete(`${rootURL}/postlike`,PostId);
-     return response.data.data;
-   } catch (err) {
-     console.error(err);
-   }
+  const response = await fetch('http://localhost:8000/deletelike', {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ PostId, UserId }),
+  });
+  return await response.json();
  }
 
 export const getUserPosts = async (username) => {
@@ -326,14 +328,16 @@ export const createUser = async (username, email, password) => {
 }
 
 
-export const isMyLikePost = async(PostId) => {
-  console.log("running in mock api")
-  try {
-    const response = await axios.get(`${rootURL}/isMyLikePost/${PostId}`);
-    return response.data.data;
-  } catch (err) {
-    console.error(err);
-  }
+export const isMyLikePost = async(PostId, UserId) => {
+  const PostUser = PostId + "&" + UserId;
+  console.log("running is my like post");
+  const response = await fetch(`http://localhost:8000/isMyLikePost/${PostUser}`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+  return await response.json();
 }
 
 export const updatePost = async (postID, post) => {
