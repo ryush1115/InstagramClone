@@ -73,15 +73,7 @@ const isMyLikePost = async (PostId, UserId) => {
 const incrementPostLike = async (PostId, UserId) => {
   try {
     console.log('running increment post like');
-
-    /// const mongo = await connect();
-    // const db = mongo.db();
     const db = await getDB();
-    /*
-    const user1 = await db.collection('User1').findOne({});
-    const me = user1;
-    console.log(me._id);
-    */
     const result = await db.collection('Post').updateOne(
       { _id: ObjectId(PostId) },
       {
@@ -104,15 +96,6 @@ const incrementPostLike = async (PostId, UserId) => {
 const cancelPostLike = async (PostId, UserId) => {
   try {
     console.log('running cancel post like');
-
-    // const mongo = await connect();
-    // const db = mongo.db();
-
-    /*
-    const user1 = await db.collection('User1').findOne({});
-    const me = user1;
-    console.log(me._id);
-    */
     const db = await getDB();
     const result = await db.collection('Post').updateOne(
       { _id: ObjectId(PostId) },

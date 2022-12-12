@@ -1,5 +1,6 @@
 // createUser.test.js
 
+const { ObjectId } = require('mongodb');
 const request = require('supertest');
 // Import MongoDB module
 // const { ObjectId } = require('mongodb');
@@ -14,6 +15,7 @@ let mongo;
 describe('POST enpoint tests', () => {
     let db; // the db
     let response;
+    let responseUser;
     /**
      *  we need to connect to the db
      */
@@ -25,7 +27,7 @@ describe('POST enpoint tests', () => {
         // send the request to the API and collect the response
         response = await request(webapp).post('/post')
             .send({
-                username: 'testname', postImage: 'testimage', postCaption: 'testdescription', publicPrivate: false, postTagOfOtherUsers: [], postCommentArray: [], postLikeArray: [], like: [],
+                username: 'test123', postImage: 'testimage', postCaption: 'testdescription', publicPrivate: false, postTagOfOtherUsers: [], postCommentArray: [], postLikeArray: [], like: [],
             });
     });
 
@@ -34,7 +36,15 @@ describe('POST enpoint tests', () => {
      */
     const clearDatabase = async () => {
         try {
-            const result = await db.collection('Post').deleteOne({ username: 'testname' });
+            const resultUser = db.collection('User').updateOne(
+                { username: 'test123' },
+                {
+                  $pull: { posts: ObjectId(JSON.parse(response.text).data.id.insertedId) },
+                },
+              );
+ 
+            const result = await db.collection('Post').deleteOne({ username: 'test123' });
+            console.log('resultUser', resultUser);
             console.log('result', result);
         } catch (err) {
             console.log('error', err.message);
@@ -69,20 +79,20 @@ describe('POST enpoint tests', () => {
      */
     test('the new post is created', () => {
         const testPost = {
-            username: 'testname', postImage: 'testimage', postCaption: 'testdescription', publicPrivate: false, postTagOfOtherUsers: [], postCommentArray: [], postLikeArray: [], like: [],
+            username: 'test123', postImage: 'testimage', postCaption: 'testdescription', publicPrivate: false, postTagOfOtherUsers: [], postCommentArray: [], postLikeArray: [], like: [],
         };
         expect(JSON.parse(response.text).data).toMatchObject(testPost); // status code
     });
 
     test('The new post is in the database', async () => {
-        const createdPost = await db.collection('Post').findOne({ username: 'testname' });
-        expect(createdPost.username).toEqual('testname');
+        const createdPost = await db.collection('Post').findOne({ username: 'test123' });
+        expect(createdPost.username).toEqual('test123');
     });
 
     test('missing a field (image) 404', async () => {
         const res = await request(webapp).post('/user')
             .send({
-                username: 'testname', postCaption: 'testdescription', publicPrivate: false, postTagOfOtherUsers: [], postCommentArray: [], postLikeArray: [], like: [],
+                username: 'test123', postCaption: 'testdescription', publicPrivate: false, postTagOfOtherUsers: [], postCommentArray: [], postLikeArray: [], like: [],
             });
         expect(res.status).toEqual(404);
     });
