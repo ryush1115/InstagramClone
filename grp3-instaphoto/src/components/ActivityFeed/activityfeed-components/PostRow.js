@@ -12,7 +12,7 @@ export default function PostRow(props) {
     // TODO: Refactor this code
     const someFetch = async () => {
       //using JS fetch API
-      const data = await isMyLikePost(props.post.id)
+      const data = await isMyLikePost(props.post._id)
       setIsLiked(data);
   }
  

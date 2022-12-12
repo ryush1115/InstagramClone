@@ -167,7 +167,7 @@ export const cancelFollowing = async (followingName) => {
         'Content-Type': 'application/json',
         'x-auth-token': sessionStorage.getItem('token')
       },
-        method: 'DELETE',
+        method: 'PUT',
         body: JSON.stringify({followingName: followingName})
     })
     return response.data;
@@ -176,13 +176,28 @@ export const cancelFollowing = async (followingName) => {
   } 
 };
 
+export const getSuggestionList= async () => {
+  try {
+   
+    const users = await getUsers();
+    const suggestionList = [];
+    
+    for(let i = 0; i < users.length; i++){
+      const isAlreadyFollow = await isMyFollowing(users[i].username);
+      const myself = await isMyself(users[i]);
+      if( !myself && !isAlreadyFollow && await hasCommonFollowings(users[i])){
+          suggestionList.push(users[i].username);
+      }
+    }
+    
+    return suggestionList;
+  } catch (err) {
+  }
+};
+
+
 export const isMyFollowing = async (username) => {
   try {
-    /*
-    let user1 = await axios.get(`${rootURL}/User1`);
-    const me = user1.data.data[0];
-    const myFollowings = me.follow;
-    */
 
     const myFollowings = await getMyFollowings();
     for(let j = 0; j < myFollowings.length; j++){
@@ -198,6 +213,45 @@ export const isMyFollowing = async (username) => {
   } 
 };
 
+export const hasCommonFollowings = async(user) => {
+     
+  const userFollowList = user.following;
+    let commonCount = 0;
+    for(let i = 0; i < userFollowList.length; i++){
+      let isFollowedByMe = await isMyFollowing(userFollowList[i]);
+      if(isFollowedByMe)
+          commonCount++;
+    }
+    if(commonCount >= 3){
+        console.log(commonCount);
+        return true;
+    }
+    else{
+      return false;
+    }
+}
+
+export const isMyself = async (user) => {
+  try {
+    const response = await fetch(`${rootURL}/isMyself`, {
+      headers: {
+        'Content-Type': 'application/json',
+        'x-auth-token': sessionStorage.getItem('token')
+      },
+        method: 'PUT',
+        body: JSON.stringify({user: user})
+    })
+    console.log("111");
+    //return response.data.data;
+    return await response.json();
+    //return false;
+  
+  } catch (err) {
+    console.error(err);
+  } 
+};
+
+/*
 export const hasCommonFollowings = async (user) => {
   try {
     const response = await axios.get(`${rootURL}/commonfollowings`,`user=${user}`);
@@ -207,6 +261,8 @@ export const hasCommonFollowings = async (user) => {
     console.error(err);
   } 
 }
+*/
+
 // Create a Comment (without the Id) as input
 // and sends a POST request to the /Comment endpoint
 // returns the attributes of the Comment with the id
@@ -372,6 +428,7 @@ export const checkJWT = async () => {
     }
 }
 
+/*
 export const getSuggestionList = async () => {
   return await fetch(`${rootURL}/get-suggestion-list`, {
     method: 'GET',
@@ -381,6 +438,7 @@ export const getSuggestionList = async () => {
     }
   });
 }
+*/
 // Sends a Get request to the endpoint
 // returns all the Timeline Posts
 // export const getTimelinePosts = async () => {

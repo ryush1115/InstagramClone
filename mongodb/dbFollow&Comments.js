@@ -95,11 +95,11 @@ const unfollowUser = async (UserID, followingName) => {
   }
 };
 
-const isMyFollowing = async (followingName) => {
+const isMyFollowing = async (myId, followingName) => {
   try {
     // get the db
     const db = await getDB();
-    const count = await db.collection('User1').find({ follow: followingName }).count();
+    const count = await db.collection('User').find({$and: [{_id: ObjectId(myId)}, { following: followingName }]}).count();
     const ans = (count > 0);
     console.log(`Is this user my followng: ${ans}`);
     return ans;
