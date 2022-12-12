@@ -15,11 +15,12 @@ export default function PostRow(props) {
       const data = await isMyLikePost(props.post._id, props.userid);
       console.log("Printing in post row", data);
       setIsLiked(data);
+      console.log('sss');
   }
  
     useEffect(() => {
         someFetch();
-    },[]);
+    }, []);
 
     // handle increment Like
     const handleLikeClick = async(e) => {
