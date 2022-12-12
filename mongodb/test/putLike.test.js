@@ -61,12 +61,16 @@ describe('Update a like list endpoint integration test', () => {
     expect(res.status).toEqual(200);
     expect(res.type).toBe('application/json');
 
-    // const likedPostNew = await db.collection('Post').findOne({_id:ObjectId("637aaaf308e936a0c97e4a31")});
-    // expect(Object.values(likedPostNew.like).length).toBeLessThan(likeLength);
+    const likedPostNew = await db.collection('Post').findOne({_id:ObjectId("6393d0e10bb4641f458b4d91")});
+    expect(Object.values(likedPostNew.like).length).toBeLessThan(likeLength);
 
-    // res = await request(webapp).get('/isMyLikePost/637aaaf308e936a0c97e4a31');
-    // expect(res.status).toEqual(200);
-    // expect(res.type).toBe('application/json');
+    res = await request(webapp).put('/isMyLikePost')
+      .send({
+        PostId: ObjectId("6393d0e10bb4641f458b4d91"),
+        UserId: ObjectId("638d46c33ab44b7693a40000")
+      });
+    expect(res.status).toEqual(200);
+    expect(res.type).toBe('application/json');
 
   });
 

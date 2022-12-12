@@ -86,7 +86,10 @@ const incrementPostLike = async (PostId, UserId) => {
       { _id: ObjectId(PostId) },
       {
         $push: {
-          like: ObjectId(UserId),
+          like: {
+            $each: [ObjectId(UserId)],
+            $position: 0
+          }
         },
       },
     );
