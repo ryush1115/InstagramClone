@@ -285,8 +285,8 @@ return await response.json();
 // Cancel a Like
 export const cancelPostLike = async(PostId, UserId) => {
   console.log("running cancel post like");
-  const response = await fetch('http://localhost:8000/deletelike', {
-    method: 'DELETE',
+  const response = await fetch('http://localhost:8000/postunlike', {
+    method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
     },
@@ -329,14 +329,16 @@ export const createUser = async (username, email, password) => {
 
 
 export const isMyLikePost = async(PostId, UserId) => {
-  const PostUser = PostId + "&" + UserId;
+  //const PostUser = PostId + "&" + UserId;
   console.log("running is my like post");
-  const response = await fetch(`http://localhost:8000/isMyLikePost/${PostUser}`, {
-    method: 'GET',
+  const response = await fetch(`http://localhost:8000/isMyLikePost`, {
+    method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
     },
+    body: JSON.stringify({ PostId, UserId }),
   });
+  
   return await response.json();
 }
 
