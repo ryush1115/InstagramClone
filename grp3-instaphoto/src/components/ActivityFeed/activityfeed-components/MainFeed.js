@@ -29,7 +29,7 @@ export default function MainFeed(props) {
                 <div className="container">
                     <div className="feed">
                         <div className="feedWrapper">
-                            <AddPost />
+                            <AddPost userLoginName1 = {user.username}/>
                         </div>
                     </div>
                 </div>
