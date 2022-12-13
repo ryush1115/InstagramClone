@@ -39,7 +39,18 @@ const createPost = async (post) => {
     try {
         const db = await getDB();
         const result = await db.collection('Post').insertOne(post);
-        console.log(`Post created: ${JSON.stringify(result)}`);
+        console.log(`Post created: ${JSON.stringify(result.insertedId)}`);
+        const resultUser = await db.collection('User').updateOne(
+            { username: post.username },
+            {
+              $push: {
+                posts: {
+                  $each: [ObjectId(result.insertedId)],
+                  $position: 0
+                }
+              },
+            },
+          );
         return result;
     } catch (err) {
         console.log(`error: ${err.message}`);
@@ -60,6 +71,14 @@ const updatePost = async (post, id) => {
 const deletePost = async (id) => {
     try {
         const db = await getDB();
+        const post = await db.collection('Post').findOne({_id: ObjectId(id)});
+        const resultUser = await db.collection('User').updateOne(
+            { username: post.username },
+            {
+              $pull: { posts: ObjectId(post._id) },
+            },
+          );
+        console.log("Post deleted from user", JSON.stringify(resultUser));
         const result = await db.collection('Post').deleteOne({ _id: ObjectId(id) });
         console.log(`Post deleted: ${JSON.stringify(result)}`);
         return result;
@@ -83,5 +102,5 @@ module.exports = {
     createPost,
     updatePost,
     deletePost,
-    getPost
+    getPost,
 }

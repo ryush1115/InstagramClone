@@ -50,7 +50,8 @@ export default function PostTable (props){
       //   }
       // }
 
-      console.log("PostTable: element.publicPrivate");
+      // console.log("PostTable: element.publicPrivate");
+      // console.log("Printing inside PostTable", props.username);
       console.log(element.publicPrivate);
       //if ((!element.publicPrivate===true) {
         // followingList.forEach(x) {
@@ -65,7 +66,8 @@ export default function PostTable (props){
 
 
       rows.unshift(
-        <PostRow post={element} key={counter.current} userLoginName5 = {props.userLoginName4}/>
+        // <PostRow post={element} key={counter.current} userLoginName5 = {props.userLoginName4}/>
+        <PostRow post={element} key={counter.current} userid={props.userid} userLoginName5 = {props.userLoginName4}/>
       )
 
       // increment counter

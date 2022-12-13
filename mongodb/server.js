@@ -51,6 +51,7 @@ webapp.get('/', (req, resp) => {
   resp.json({ message: 'welcome to our backend!!!' });
 });
 
+
 // implement the GET in /followinglist endpoint
 webapp.get('/followinglist', async (req, res) => {
   const token = req.header('x-auth-token');
@@ -76,6 +77,7 @@ webapp.get('/followinglist', async (req, res) => {
 });
 
 // TODO: Test this endpoint
+/*
 webapp.get('/get-suggestion-list', async (req, res) => {
   // check the token
   const token = req.header('x-auth-token');
@@ -101,6 +103,7 @@ webapp.get('/get-suggestion-list', async (req, res) => {
     res.status(404).json({ message: 'there was error' });
   }
 });
+*/
 
 // update the follow list in /followinglist endpoint
 webapp.put('/followinglist', async (req, res) => {
@@ -110,12 +113,11 @@ webapp.put('/followinglist', async (req, res) => {
     return;
   }
   try {
-    const isAlreadyFollow = await dbLib.isMyFollowing(req.body.followingName);
-    console.log(`isAlreadyFollow is ${isAlreadyFollow}`);
     let result;
     const token = req.header('x-auth-token');
     if (token === '1234') {
       const id = req.body.testid;
+      const isAlreadyFollow = await dbLib.isMyFollowing(id, req.body.followingName);
       if (isAlreadyFollow) {
         result = await dbLib.unfollowUser(id, req.body.followingName);
       } else {
@@ -128,10 +130,11 @@ webapp.put('/followinglist', async (req, res) => {
           res.status(404).json({ message: 'token is not valid' });
         } else {
           const { id } = decoded;
+          const isAlreadyFollow = await dbLib.isMyFollowing(decoded.id, req.body.followingName);
           if (!isAlreadyFollow) {
             result = await dbLib.followUser(decoded.id, req.body.followingName);
           } else {
-            result = await dbLib.unfollowUser(req.body.followingName);
+            result = await dbLib.unfollowUser(decoded.id, req.body.followingName);
           }
           // send the response with the appropriate status code
           res.status(200).json({ message: result });
@@ -144,18 +147,21 @@ webapp.put('/followinglist', async (req, res) => {
   }
 });
 
-webapp.delete('/followinglist', async (req, res) => {
+webapp.put('/isMyself', async (req, res) => {
   const token = req.header('x-auth-token');
   if (!token) {
     res.status(401).json({ message: 'no token, authorization denied' });
   }
-  console.log(`token is ${token}`);
+ 
   try {
     await jwt.verify(token, 'testKey', {}, async (err, decoded) => {
       if (err) {
         res.status(401).json({ message: 'token is not valid' });
       } else {
-        const result = await dbLib.unfollowUser(decoded.id, req.body.followingName);
+        const result = (decoded.id === req.body.user._id);
+        console.log(`${result}`);
+        console.log(`${decoded.id}`);
+        console.log(`${req.body.user._id}`);
         res.json(result);
       }
     });
@@ -163,6 +169,7 @@ webapp.delete('/followinglist', async (req, res) => {
     console.trace(err);
   }
 });
+
 
 // implement the GET in /activity-feed/:id/comment endpoint
 webapp.get('/post/:id/comment', async (req, res) => {
@@ -366,14 +373,14 @@ webapp.get('/friendsuggestion', async (req, res) => {
 });
 
 // get results for is my like post
-webapp.get('/isMyLikePost/:PostId', async (req, res) => {
+webapp.put('/isMyLikePost', async (req, res) => {
   try {
     // get the data from the db
-    const results = await dbLibLike.isMyLikePost(req.params.PostId);
+    const results = await dbLibLike.isMyLikePost(req.body.PostId, req.body.UserId);
     // send the response with the appropriate status code
     // console.log(results.username);
-
-    res.status(200).json({ data: results });
+    
+    res.status(200).json(results);
   } catch (err) {
     res.status(404).json({ message: 'there was error' });
   }
@@ -381,8 +388,11 @@ webapp.get('/isMyLikePost/:PostId', async (req, res) => {
 
 // update the like array in post endpoint
 webapp.put('/postlike', async (req, res) => {
+  console.log("printing in server.js", req.body);
+  
+  const {PostId, UserId} = req.body;
   try {
-    result = await dbLibLike.incrementPostLike(req.body.PostId);
+    const result = await dbLibLike.incrementPostLike(req.body.PostId, req.body.UserId);
     res.status(200).json({ message: result });
   } catch (err) {
     res.status(404).json({ message: 'there was error' });
@@ -390,9 +400,9 @@ webapp.put('/postlike', async (req, res) => {
 });
 
 // update the like array in post endpoint
-webapp.delete('/postlike', async (req, res) => {
+webapp.put('/postunlike', async (req, res) => {
   try {
-    const result = await dbLibLike.cancelPostLike(req.body.PostId);
+    const result = await dbLibLike.cancelPostLike(req.body.PostId, req.body.UserId);
     res.status(200).json({ message: result });
   } catch (err) {
     res.status(404).json({ message: 'there was error' });

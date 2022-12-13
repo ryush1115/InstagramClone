@@ -9,31 +9,35 @@ export default function PostRow(props) {
   const canDelete = props.post.username === currentUserId; // allow delete post if post author username matches current user Id
 
   const[, setDeletedPost] = useState(null);
-    const [isLiked, setIsLiked] = useState();
+    const [isLiked, setIsLiked] = useState(false);
     const [likeCounter, setLikeCounter] = useState(props.post.like.length);
 
     // TODO: Refactor this code
     const someFetch = async () => {
       //using JS fetch API
-      const data = await isMyLikePost(props.post._id)
+      const data = await isMyLikePost(props.post._id, props.userid);
+      console.log("Printing in post row", data);
       setIsLiked(data);
+      console.log('sss');
   }
  
     useEffect(() => {
         someFetch();
-    },[]);
+    }, []);
 
     // handle increment Like
     const handleLikeClick = async(e) => {
       //console.log("Increment Like");
       if(isLiked){
         setIsLiked(false);
-        cancelPostLike(props.post.id);
+        cancelPostLike(props.post._id, props.userid);
+        console.log("This is postrow.js", props.userid);
         setLikeCounter(likeCounter - 1);
       }else{
         setIsLiked(true);
-        incrementPostLike(props.post.id);
+        incrementPostLike(props.post._id, props.userid);
         setLikeCounter(likeCounter + 1);
+        console.log("This is postrow.js", props.userid);
       }
     }
 
