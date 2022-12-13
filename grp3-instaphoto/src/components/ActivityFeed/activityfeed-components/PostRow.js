@@ -5,7 +5,10 @@ import {deletePost, isMyLikePost,incrementPostLike, cancelPostLike} from '../../
 import Comments from './Comments';
 
 export default function PostRow(props) {
-    const[, setDeletedPost] = useState(null);
+  const currentUserId = props.userLoginName5    // current User Id
+  const canDelete = props.post.username === currentUserId; // allow delete post if post author username matches current user Id
+
+  const[, setDeletedPost] = useState(null);
     const [isLiked, setIsLiked] = useState();
     const [likeCounter, setLikeCounter] = useState(props.post.like.length);
 
@@ -101,7 +104,7 @@ export default function PostRow(props) {
             <div className="postBottom-Lower" >
             	<form id="commentBox">
               </form>
-              <button type="remove" onClick={handleDeletePost}>Delete</button>
+                {canDelete && <button type="remove" onClick={handleDeletePost}>Delete</button>}
             </div>
           </div>
         </div>
