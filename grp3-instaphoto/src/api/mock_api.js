@@ -248,7 +248,9 @@ export const updateComment = async(text, postid, CommentId) => {
   try {
     console.log("sss");
     console.log(`${CommentId}`);
-    const response = await axios.put(`${rootURL}/comments/${CommentId}`,`message=${text}&postid=${postid}`);
+    console.log("text", text);
+    //const response = await axios.put(`${rootURL}/comments/${CommentId}/${postid}/${text}`,`message=${text}&postid=${postid}`);
+    const response = await axios.put(`${rootURL}/comments/${CommentId}/${postid}/${text}`);
     return response.data.data;
 
   } catch(err) {
