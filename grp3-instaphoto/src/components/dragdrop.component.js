@@ -55,7 +55,7 @@ export default function DragDrop(props) {
     // create new Post variable
       console.log(username);
         console.log(newPostComment);
-    const newPost = {username: username, postImage: newPostImage, postCaption: newPostComment, publicPrivate:false, postTagOfOtherUsers:[], postCommentArray:[], like: []};
+    const newPost = {username: username, postImage: newPostImage, postCaption: newPostComment, publicPrivate:true, postTagOfOtherUsers:[], postCommentArray:[], like: []};
     // clear the form
     const form = document.getElementById('add-post');
     

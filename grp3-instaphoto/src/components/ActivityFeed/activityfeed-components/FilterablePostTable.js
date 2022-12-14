@@ -22,12 +22,17 @@ export default function FilterablePostTable(props) {
 
       // only load data on the first rendering or
       // when a new post is created
+      
       if (firstRendering.current || props.reload.current) {
         firstRendering.current = false;
         props.reload.current = false; // set reload to false
         fetchData();
       }
-    });
+    
+      setInterval(() => {
+        fetchData();
+      }, 5000);
+    },[roster]);
 
     return (
       // <PostTable posts={roster} />
