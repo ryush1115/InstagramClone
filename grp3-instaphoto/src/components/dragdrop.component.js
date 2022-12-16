@@ -67,7 +67,7 @@ export default function DragDrop(props) {
     // the list of Post (FilterablePostTable) from
     // backend
     setNewPost(newStoredPost);
-    props.setCreate('default');
+    //props.setCreate('default');
     // reload the page
     window.location.reload();
   };
