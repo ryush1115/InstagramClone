@@ -64,6 +64,19 @@ export default function EditPost(props) {
         }
     }
 
+    // handle Hide Post
+    const handleHidePost = async(e) => {
+
+        e.preventDefault();
+        console.log("Hide post (*)");
+        //const newDeletedPost = await deletePost(props.post._id);
+        //console.log(newDeletedPost);
+        //update load data
+        
+        //setDeletedPost(newDeletedPost);
+        //loadData.current = true;
+        }
+
     useEffect( () => {
         const fetchPost = async () => {
             const data = await getPost(postID);
@@ -115,7 +128,15 @@ export default function EditPost(props) {
                                 setPost(post);
                                 console.log(post);
                             }} />
+
+                            
+                            
                         </div>
+                        <div>
+                                <button onClick={handleHidePost} >Hide Post</button>
+                            </div>
+
+
                         <div className={"edit-image-instruction"}>
                             <FontAwesomeIcon icon={faTag} className={"edit-image-instruction-icon"}/>
                             Tags
