@@ -64,8 +64,8 @@ const LoginComponent=()=>{
     return (
         <form className = "auth-inner">
           <Form_Welcome/>
-          <Form label = "Email" type = "email" placeholder = "Enter email" value={email} onChange={e => setEmail(e.target.value)}/>
-          <Form label = "Password" type="password" placeholder = "Enter password" value={password} onChange={e => setPassword(e.target.value)}/>
+          <Form id = "email" label = "Email" type = "email" placeholder = "Enter email" value={email} onChange={e => setEmail(e.target.value)}/>
+          <Form id = "password" label = "Password" type="password" placeholder = "Enter password" value={password} onChange={e => setPassword(e.target.value)}/>
           <Form_Submit label = "Sign in" onClick={(e) => handleSubmitClick(e)}/>
 
           <p className="login-create-account text-right">
