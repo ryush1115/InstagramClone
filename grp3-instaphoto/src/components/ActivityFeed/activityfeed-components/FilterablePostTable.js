@@ -6,7 +6,7 @@ import PostTable from './PostTable'
 export default function FilterablePostTable(props) {
     // Local state to store and update the list of Posts
     const [roster, setRoster] = useState([]);
-    
+    const [page, setPage] = useState(0);
     // ref to indicate if this is the first rendering
     const firstRendering = useRef(true);
     // get the list of [Timeline] Posts from the backend
@@ -14,7 +14,7 @@ export default function FilterablePostTable(props) {
     useEffect(() => {
       // get the list of [Timeline] Posts from the backend
       async function fetchData() {
-        const data = await getPosts();
+        const data = await getPosts(page);
         console.log("getPosts data: ");
         console.log(data);
         setRoster(data);
