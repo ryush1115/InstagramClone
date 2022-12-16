@@ -31,7 +31,7 @@ export default function FilterablePostTable(props) {
     
       setInterval(() => {
         fetchData();
-      }, 5000);
+      }, 10000);
     },[roster]);
 
     return (
