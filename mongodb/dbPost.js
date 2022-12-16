@@ -35,12 +35,10 @@ const getDB = async () => {
   return MongoConnection.db();
 };
 
-
-
 const getPosts = async () => {
   try {
     // get the db
-    
+
     const db = await getDB();
     return await db.collection('Post').find({}).toArray();
   } catch (err) {
@@ -49,39 +47,39 @@ const getPosts = async () => {
 };
 
 const getPost = async (PostId) => {
-    // console.log("the post we are looking for is " + PostId);
-    try {
-      // get the db
-      const db = await getDB();
-      return await db.collection('Post').find({_id: ObjectId(PostId)}).toArray();
-    } catch (err) {
-      console.log(`error: ${err.message}`);
-    }
-  };
+  // console.log("the post we are looking for is " + PostId);
+  try {
+    // get the db
+    const db = await getDB();
+    return await db.collection('Post').find({_id: ObjectId(PostId)}).toArray();
+  } catch (err) {
+    console.log(`error: ${err.message}`);
+  }
+};
 
-  const getUserPosts = async (username) => {
-    try {
-      // get the db
-      const db = await getDB();
-      return await db.collection('Post').find({username: username}).toArray();
-    } catch (err) {
-      console.log(`error: ${err.message}`);
-    }
-  };
-  
-  const getUsers = async () => {
-    try {
-      // get the db
-      console.log("running get users");
-      const db = await getDB();
-      const result = await db.collection('User').find({}).toArray();
-  
-      console.log(`All users: ${JSON.stringify(result)}`);
-      return result;
-    } catch (err) {
-      console.log(`error: ${err.message}`);
-    }
-  };
+const getUserPosts = async (username) => {
+  try {
+    // get the db
+    const db = await getDB();
+    return await db.collection('Post').find({username: username}).toArray();
+  } catch (err) {
+    console.log(`error: ${err.message}`);
+  }
+};
+
+const getUsers = async () => {
+  try {
+    // get the db
+    console.log('running get users');
+    const db = await getDB();
+    const result = await db.collection('User').find({}).toArray();
+
+    console.log(`All users: ${JSON.stringify(result)}`);
+    return result;
+  } catch (err) {
+    console.log(`error: ${err.message}`);
+  }
+};
   
   
   // const hasCommonFollowings = async(user) => {
