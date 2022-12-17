@@ -1,13 +1,57 @@
-const {connect, isMyFollowing } = require('./dbFollow&Comments');
+const {isMyFollowing } = require('./dbFollow&Comments');
 const webapp = require('./server');
 const { ObjectId} = require('mongodb');
+const { MongoClient } = require('mongodb');
 
-const getPosts = async () => {
+// the mongodb server URL
+const dbURL = 'mongodb+srv://Junwei:cis557group3@cluster0.p2tpbsw.mongodb.net/SocialNetwork?retryWrites=true&w=majority';
+
+let MongoConnection;
+// connection to the db
+const connect = async () => {
+  // always use try/catch to handle any exception
+  try {
+    MongoConnection = (await MongoClient.connect(
+      dbURL,
+      { useNewUrlParser: true, useUnifiedTopology: true },
+    ));// we return the entire connection, not just the DB
+    // check that we are connected to the db
+    console.log(`connected to db: ${MongoConnection.db().databaseName}`);
+    return MongoConnection;
+  } catch (err) {
+    console.log(err.message);
+  }
+};
+
+/**
+ *
+ * @returns the database attached to this MongoDB connection
+ */
+const getDB = async () => {
+  // test if there is an active connection
+  if (!MongoConnection) {
+    await connect();
+  }
+  return MongoConnection.db();
+};
+
+
+
+const getPosts = async (page) => {
   try {
     // get the db
-    const mongo = await connect();
-    const db = mongo.db();
-    return await db.collection('Post').find({}).toArray();
+    const pageValue = page || 0;
+    const postsPerPage = 3;
+    let posts = [];
+
+    const db = await getDB();
+    await db.collection('Post')
+    .find({})
+    .skip(pageValue * postsPerPage)
+    .limit(postsPerPage)
+    .forEach(book => posts.push(book));
+    console.log(posts);
+    return posts;
   } catch (err) {
     console.log(`error: ${err.message}`);
   }
@@ -17,8 +61,7 @@ const getPost = async (PostId) => {
     // console.log("the post we are looking for is " + PostId);
     try {
       // get the db
-      const mongo = await connect();
-      const db = mongo.db();
+      const db = await getDB();
       return await db.collection('Post').find({_id: ObjectId(PostId)}).toArray();
     } catch (err) {
       console.log(`error: ${err.message}`);
@@ -28,8 +71,7 @@ const getPost = async (PostId) => {
   const getUserPosts = async (username) => {
     try {
       // get the db
-      const mongo = await connect();
-      const db = mongo.db();
+      const db = await getDB();
       return await db.collection('Post').find({username: username}).toArray();
     } catch (err) {
       console.log(`error: ${err.message}`);
@@ -40,8 +82,7 @@ const getPost = async (PostId) => {
     try {
       // get the db
       console.log("running get users");
-      const mongo = await connect();
-      const db = mongo.db();
+      const db = await getDB();
       const result = await db.collection('User').find({}).toArray();
   
       console.log(`All users: ${JSON.stringify(result)}`);
