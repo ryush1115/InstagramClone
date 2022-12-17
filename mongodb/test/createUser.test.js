@@ -71,7 +71,7 @@ describe('POST enpoint tests', () => {
  */
   test('the new user is returned', () => {
     const testUser = {
-      email: 'testemail', username: 'testusername', password: 'testpassword', profilePicture: 'null', follow: 'null', id: 'testid',
+      email: 'testemail', username: 'testusername', password: 'testpassword', profilePicture: 'https://cdn-icons-png.flaticon.com/512/18/18601.png', follow: 'null', id: 'testid',
     };
     expect(JSON.parse(response.text).data).toMatchObject(testUser); // status code
   });

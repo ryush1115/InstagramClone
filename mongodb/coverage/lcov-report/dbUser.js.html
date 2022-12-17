@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">27.27% </span>
+                <span class="strong">35.06% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>21/77</span>
+                <span class='fraction'>27/77</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">8.33% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/12</span>
+                <span class='fraction'>1/12</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">16.66% </span>
+                <span class="strong">33.33% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>2/12</span>
+                <span class='fraction'>4/12</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">28.37% </span>
+                <span class="strong">36.48% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>21/74</span>
+                <span class='fraction'>27/74</span>
             </div>
         
             
@@ -317,16 +317,9 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -334,12 +327,19 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -527,12 +527,12 @@ const connect = async () =&gt; {
  *
  * @returns the database attached to this MongoDB connection
  */
-const getDB = <span class="fstat-no" title="function not covered" >as</span>ync () =&gt; {
+const getDB = async () =&gt; {
   // test if there is an active connection
-<span class="cstat-no" title="statement not covered" >  if (!MongoConnection) {</span>
+  <span class="missing-if-branch" title="if path not taken" >I</span>if (!MongoConnection) {
 <span class="cstat-no" title="statement not covered" >    await connect();</span>
   }
-<span class="cstat-no" title="statement not covered" >  return MongoConnection.db();</span>
+  return MongoConnection.db();
 };
 &nbsp;
 /**
@@ -545,13 +545,13 @@ const getDB = <span class="fstat-no" title="function not covered" >as</span>ync 
 // create a new user
 // add a user to the database
 &nbsp;
-const createUser = <span class="fstat-no" title="function not covered" >as</span>ync (newUser) =&gt; {
+const createUser = async (newUser) =&gt; {
   // async/await
-<span class="cstat-no" title="statement not covered" >  try {</span>
-    const db = <span class="cstat-no" title="statement not covered" >await getDB();</span>
-    const result = <span class="cstat-no" title="statement not covered" >await db.collection('User').insertOne(newUser);</span>
+  try {
+    const db = await getDB();
+    const result = await db.collection('User').insertOne(newUser);
     // return the result
-<span class="cstat-no" title="statement not covered" >    return result.insertedId;</span>
+    return result.insertedId;
   } catch (err) {
 <span class="cstat-no" title="statement not covered" >    console.log(`error: ${err.message}`);</span>
   }
@@ -706,7 +706,7 @@ module.exports = {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2022-12-12T17:41:59.883Z
+                at 2022-12-17T01:00:15.464Z
             </div>
         <script src="prettify.js"></script>
         <script>
