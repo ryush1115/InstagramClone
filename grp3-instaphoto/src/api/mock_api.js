@@ -304,7 +304,7 @@ export const makePostPrivate = async (PostId) => {
   try {
     console.log("Make Post Private");
     console.log(`${PostId}`);
-    const response = await axios.put(`${rootURL}/Post/${PostId}/publicPrivate/${false}`);
+    const response = await axios.put(`${rootURL}/Post/${PostId}/publicPrivate=${false}`);
     return response.data.data;
   } catch(err) {
     console.error(err);
@@ -316,7 +316,7 @@ export const makePostPublic = async (PostId) => {
   try {
     console.log("Make Post Public");
     console.log(`${PostId}`);
-    const response = await axios.put(`${rootURL}/Post/${PostId}/publicPrivate/${true}`);
+    const response = await axios.put(`${rootURL}/Post/${PostId}/publicPrivate=${true}`);
     return response.data.data;
   } catch(err) {
     console.error(err);

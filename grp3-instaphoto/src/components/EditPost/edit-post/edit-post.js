@@ -3,7 +3,7 @@ import {useNavigate, useParams} from "react-router-dom";
 import "./edit-post.css";
 import { faTag, faPlus, faX} from "@fortawesome/free-solid-svg-icons";
 import {Card, ListGroup, ListGroupItem, Navbar} from "react-bootstrap";
-import {getPost, updatePost} from "../../../api/mock_api";
+import {getPost, updatePost, makePostPrivate, makePostPublic} from "../../../api/mock_api";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import EditPostTagComponent from "./edit-post-tag.component";
 import TagAddBox from "./edit-post-tag-add-box.component";
@@ -68,13 +68,9 @@ export default function EditPost(props) {
     const handleHidePost = async(e) => {
 
         e.preventDefault();
-        console.log("Hide post (*)");
-        //const newDeletedPost = await deletePost(props.post._id);
-        //console.log(newDeletedPost);
-        //update load data
-        
-        //setDeletedPost(newDeletedPost);
-        //loadData.current = true;
+        console.log("Hide post");
+        const newHiddenPost = await makePostPrivate(postID);
+        console.log(newHiddenPost);
         }
 
     useEffect( () => {

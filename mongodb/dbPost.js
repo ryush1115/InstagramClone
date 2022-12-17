@@ -80,59 +80,115 @@ const getUsers = async () => {
     console.log(`error: ${err.message}`);
   }
 };
-  
-  
-  // const hasCommonFollowings = async(user) => {
-  //   console.log("Running has common followings");
-  //   console.log("User follow list is " + user.follow);
-  //   if(typeof(user.follow) == "undefined") {
-  //     return false;
-  //   }
-  //   const userFollowList = user.follow;
-  //   let commonCount = 0;
-  //   for(let i = 0; i < userFollowList.length; i++){
-  //     let isFollowedByMe = isMyFollowing(userFollowList[i]);
-  //     if(isFollowedByMe)
-  //         commonCount++;
-  //   }
-  //   if(commonCount >= 3){
-  //       console.log(commonCount);
-  //       return true;
-  //   }
-  //   else{
-  //     return false;
-  //   }
-  // };
-  
-  const getSuggestionList = async () => {
-    try {
-      // get the db
-      const users = await getUsers();
-      // send the response with the appropriate status code
-      // console.log(results.username);
-      const suggestionList = [];
-      
-      for(let i = 0; i < users.length; i++){
-        const isAlreadyFollow = await isMyFollowing(users[i].username);
-        if(!isAlreadyFollow && hasCommonFollowings(users[i])){
-            suggestionList.push(users[i].username);
-        }
+
+const updateComment = async (text, postId, commentId) => {
+  try {
+    // get the db
+    const db = await getDB();
+    console.log('aaaa');
+    console.log(`${postId}`);
+    console.log(`${commentId}`);
+    const result = await db.collection('Post').updateOne(
+      { _id: ObjectId(postId) },
+      { $set: { 'postCommentArray.$[filter].message': text } },
+      { arrayFilters: [{ 'filter._id': ObjectId(commentId) } ] }
+    );
+    console.log('bbb');
+    return result;
+  } catch (err) {
+    console.log(`error: ${err.message}`);
+  }
+};
+
+// Make a Post Private (i.e. can only be viewed by Author)
+const makePostPrivate = async (postId) => {
+  try {
+    const db = await getDB();
+    return await db.collection('Post').updateOne(
+      { _id: ObjectId(postId) },
+      { $set: { publicPrivate: false } },
+    );
+  } catch (err) {
+    console.log(`error: ${err.message}`);
+  }
+};
+
+// Make a Post Public (i.e. can be viewed by all users)
+const makePostPublic = async (postId) => {
+  try {
+    const db = await getDB();
+    return await db.collection('Post').updateOne(
+      { _id: ObjectId(postId) },
+      { $set: { publicPrivate: true } },
+    );
+  } catch (err) {
+    console.log(`error: ${err.message}`);
+  }
+};
+
+
+// const hasCommonFollowings = async(user) => {
+//   console.log("Running has common followings");
+//   console.log("User follow list is " + user.follow);
+//   if(typeof(user.follow) == "undefined") {
+//     return false;
+//   }
+//   const userFollowList = user.follow;
+//   let commonCount = 0;
+//   for(let i = 0; i < userFollowList.length; i++){
+//     let isFollowedByMe = isMyFollowing(userFollowList[i]);
+//     if(isFollowedByMe)
+//         commonCount++;
+//   }
+//   if(commonCount >= 3){
+//       console.log(commonCount);
+//       return true;
+//   }
+//   else{
+//     return false;
+//   }
+// };
+
+const getSuggestionList = async () => {
+  try {
+    // get the db
+    const users = await getUsers();
+    // send the response with the appropriate status code
+    // console.log(results.username);
+    const suggestionList = [];
+    
+    for(let i = 0; i < users.length; i++){
+      const isAlreadyFollow = await isMyFollowing(users[i].username);
+      if(!isAlreadyFollow && hasCommonFollowings(users[i])){
+          suggestionList.push(users[i].username);
       }
-      console.log(`All suggestions: ${JSON.stringify(suggestionList)}`);
-      
-      return suggestionList;
-  
-    } catch (err) {
-      console.log(`error: ${err.message}`);
     }
-  };
-  
-  module.exports = {
-    connect,
-    getPosts,
-    getPost,
-    getUserPosts,
-    getUsers,
-    getSuggestionList,
-    // hasCommonFollowings
-  };
+    console.log(`All suggestions: ${JSON.stringify(suggestionList)}`);
+    
+    return suggestionList;
+
+  } catch (err) {
+    console.log(`error: ${err.message}`);
+  }
+};
+
+const main = async() => {
+  await getPost('638d4b743ab44b7693a406de');
+  //await makePostPrivate('638d4b743ab44b7693a406de');
+  //await makePostPublic('638d4b743ab44b7693a406de');
+};
+
+// execute main
+main();
+
+// module.exports = {
+//   connect,
+//   getPosts,
+//   getPost,
+//   getUserPosts,
+//   getUsers,
+//   getSuggestionList,
+//   makePostPrivate,
+//   makePostPublic,
+//   // hasCommonFollowings
+// };
