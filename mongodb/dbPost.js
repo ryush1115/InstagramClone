@@ -37,12 +37,21 @@ const getDB = async () => {
 
 
 
-const getPosts = async () => {
+const getPosts = async (page) => {
   try {
     // get the db
-    
+    const pageValue = page || 0;
+    const postsPerPage = 3;
+    let posts = [];
+
     const db = await getDB();
-    return await db.collection('Post').find({}).toArray();
+    await db.collection('Post')
+    .find({})
+    .skip(pageValue * postsPerPage)
+    .limit(postsPerPage)
+    .forEach(book => posts.push(book));
+    console.log(posts);
+    return posts;
   } catch (err) {
     console.log(`error: ${err.message}`);
   }

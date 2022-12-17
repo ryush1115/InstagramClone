@@ -265,10 +265,10 @@ webapp.put('/comments/:commentid/:postid/:message', async (req, res) => {
 });
 
 // implement the GET in /posts endpoint
-webapp.get('/post', async (req, res) => {
+webapp.get('/post/:page', async (req, res) => {
   try {
     // get the data from the db
-    const results = await dbLibPost.getPosts();
+    const results = await dbLibPost.getPosts(req.params.page);
     // send the response with the appropriate status code
     // console.log(results.username);
 
