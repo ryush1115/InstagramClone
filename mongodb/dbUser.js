@@ -173,7 +173,7 @@ const hasCommonFollowing = async (userID, otherUserID) => {
 
 // main function to execute our code
 
-
+/*
 const main = async () => {
   await createUser({ email: 'rachel', username: 'rachel', password: '1234567777', profilePicture: "", follow: [], id: '1235' });
   //await getAllUsers();
@@ -201,12 +201,12 @@ const main = async () => {
 };
 
 // execute main
-main();
+// main();
+*/
 
 
-
-// module.exports = {
-//   closeMongoDBConnection, connect, getDB, createUser, getAllUsers, getUser, updateUser, deleteUser,
-//     getUserByEmail, getSuggestionList, isFollowing
-//   // closeMongoDBConnection, connect, getDB, createUser, getAllUsers, getUser, updateUser,
-// };
+module.exports = {
+  closeMongoDBConnection, connect, getDB, createUser, getAllUsers, getUser, updateUser, deleteUser,
+    getUserByEmail, getSuggestionList, isFollowing
+  // closeMongoDBConnection, connect, getDB, createUser, getAllUsers, getUser, updateUser,
+};
