@@ -8,6 +8,7 @@ import Userprofile from './components/UserProfile/userprofile'
 import ActivityFeed from './components/ActivityFeed/activityfeed.component'
 import FriendSuggestion from './components/FriendSuggestion-page/FriendSuggestion.component'
 import FollowingList from './components/FollowingList-page/FollowingList'
+import UserList from './components/AllUsers/AllUsers'
 import DragDrop from './components/dragdrop.component'
 import HomeNavbar from "./components/navbar/homenavbar";
 import EditPost from "./components/EditPost/edit-post/edit-post";
@@ -42,6 +43,7 @@ export default function App() {
           <Route path={"/user-profile/:id"} element={<OtherUserProfile />} />
           <Route path="/activity-feed" element={<ActivityFeed />} />
           <Route path = "/friendsuggestion" element = {<FriendSuggestion />}/>
+          <Route path = "/allUsers" element = {<UserList />}/>
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/sidebar" element={<Sidebar />} />
           <Route path="/userprofile" element={<Userprofile />} />
