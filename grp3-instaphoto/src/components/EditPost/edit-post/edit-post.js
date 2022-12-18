@@ -67,11 +67,21 @@ export default function EditPost(props) {
     // handle Hide Post
     const handleHidePost = async(e) => {
 
-        e.preventDefault();
+        // e.preventDefault();
         console.log("Hide post");
         const newHiddenPost = await makePostPrivate(postID);
         console.log(newHiddenPost);
-        }
+        
+    }
+
+    const handleShowPost = async(e) => {
+
+        // e.preventDefault();
+       
+        const newHiddenPost = await makePostPublic(postID);
+
+        
+    }
 
     useEffect( () => {
         const fetchPost = async () => {
@@ -130,6 +140,7 @@ export default function EditPost(props) {
                         </div>
                         <div>
                                 <button onClick={handleHidePost} >Hide Post</button>
+                                <button onClick={handleShowPost} >Show Post</button>
                             </div>
 
 

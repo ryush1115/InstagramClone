@@ -711,6 +711,21 @@ webapp.post('/testsuggestions', async (req, res) => {
   res.status(200).json({ data: result });
 });
 
+// get results for is my like post
+webapp.put('/Post/:PostId/:status', async (req, res) => {
+  try {
+    // get the data from the db
+    const results = await dbLibPost.changePostPrivateOrPublic(req.params.PostId, req.params.status);
+    // send the response with the appropriate status code
+    // console.log(results.username);
+    
+    res.status(200).json(results);
+  } catch (err) {
+    res.status(404).json({ message: 'there was error' });
+  }
+});
+
+
 // catch all endpoint
 webapp.use((req, resp) => {
   resp.status(404).json({ error: 'invalid endpoint' });

@@ -81,50 +81,21 @@ const getUsers = async () => {
   }
 };
 
-const updateComment = async (text, postId, commentId) => {
-  try {
-    // get the db
-    const db = await getDB();
-    console.log('aaaa');
-    console.log(`${postId}`);
-    console.log(`${commentId}`);
-    const result = await db.collection('Post').updateOne(
-      { _id: ObjectId(postId) },
-      { $set: { 'postCommentArray.$[filter].message': text } },
-      { arrayFilters: [{ 'filter._id': ObjectId(commentId) } ] }
-    );
-    console.log('bbb');
-    return result;
-  } catch (err) {
-    console.log(`error: ${err.message}`);
-  }
-};
 
 // Make a Post Private (i.e. can only be viewed by Author)
-const makePostPrivate = async (postId) => {
+const changePostPrivateOrPublic = async (postId, status) => {
   try {
     const db = await getDB();
     return await db.collection('Post').updateOne(
       { _id: ObjectId(postId) },
-      { $set: { publicPrivate: false } },
+      { $set: { publicPrivate: status } },
     );
   } catch (err) {
     console.log(`error: ${err.message}`);
   }
 };
 
-// Make a Post Public (i.e. can be viewed by all users)
-const makePostPublic = async (postId) => {
-  try {
-    const db = await getDB();
-    return await db.collection('Post').updateOne(
-      { _id: ObjectId(postId) },
-      { $set: { publicPrivate: true } },
-    );
-  } catch (err) {
-    console.log(`error: ${err.message}`);
-  }
-};
+
 
 
 // const hasCommonFollowings = async(user) => {
@@ -172,23 +143,14 @@ const getSuggestionList = async () => {
   }
 };
 
-const main = async() => {
-  await getPost('638d4b743ab44b7693a406de');
-  //await makePostPrivate('638d4b743ab44b7693a406de');
-  //await makePostPublic('638d4b743ab44b7693a406de');
+
+module.exports = {
+  connect,
+  getPosts,
+  getPost,
+  getUserPosts,
+  getUsers,
+  getSuggestionList,
+  changePostPrivateOrPublic,
+  // hasCommonFollowings
 };
-
-// execute main
-main();
-
-// module.exports = {
-//   connect,
-//   getPosts,
-//   getPost,
-//   getUserPosts,
-//   getUsers,
-//   getSuggestionList,
-//   makePostPrivate,
-//   makePostPublic,
-//   // hasCommonFollowings
-// };
