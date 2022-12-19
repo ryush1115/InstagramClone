@@ -70,14 +70,14 @@ export default function EditPost(props) {
         // e.preventDefault();
         console.log("Hide post");
         const newHiddenPost = await makePostPrivate(postID);
-        console.log(newHiddenPost);
+        //console.log(newHiddenPost);
         
     }
 
     const handleShowPost = async(e) => {
 
         // e.preventDefault();
-       
+        console.log("Show post");
         const newHiddenPost = await makePostPublic(postID);
 
         
@@ -139,8 +139,7 @@ export default function EditPost(props) {
                             
                         </div>
                         <div>
-                                <p>Is post public? : {post.publicPrivate}</p>
-                                {/* <p> {post.publicPrivate} ? 'public': 'private' </p> */}
+                                <p> Is post public? : {post.publicPrivate} </p>
                                 <button onClick={handleHidePost} >Hide Post</button>
                                 <button onClick={handleShowPost} >Show Post</button>
                             </div>

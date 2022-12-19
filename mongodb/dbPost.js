@@ -86,9 +86,10 @@ const getUsers = async () => {
 const changePostPrivateOrPublic = async (postId, status) => {
   try {
     const db = await getDB();
+    const myBool = (status.toLowerCase() === 'true');
     return await db.collection('Post').updateOne(
       { _id: ObjectId(postId) },
-      { $set: { publicPrivate: status } },
+      { $set: { publicPrivate: myBool } },
     );
   } catch (err) {
     console.log(`error: ${err.message}`);
