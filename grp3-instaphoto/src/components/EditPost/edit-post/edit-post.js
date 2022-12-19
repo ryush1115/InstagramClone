@@ -140,7 +140,7 @@ export default function EditPost(props) {
                         </div>
                         <div>
                                 <p>Is post public? : {post.publicPrivate}</p>
-                                <p> {post.publicPrivate} ? 'public': 'private' </p>
+                                {/* <p> {post.publicPrivate} ? 'public': 'private' </p> */}
                                 <button onClick={handleHidePost} >Hide Post</button>
                                 <button onClick={handleShowPost} >Show Post</button>
                             </div>
