@@ -175,13 +175,12 @@ const hasCommonFollowing = async (userID, otherUserID) => {
 
 /*
 const main = async () => {
-  const conn = await connect();
-  //await createUser( { email: 'rachel', username: 'rachel', password: '1234567777', profilePicture:"", follow: [], id:'1235' });
+  await createUser({ email: 'rachel', username: 'rachel', password: '1234567777', profilePicture: "", follow: [], id: '1235' });
   //await getAllUsers();
-  await getUser('637fc5f683768e86f5852c1c');
-  await updateUser('637fc5f683768e86f5852c1c', 'NewPW');
-  await getUser('637fc5f683768e86f5852c1c');
-  await updateUser('637fc5f683768e86f5852c1c', 'OLDPW');
+  // await getUser('637fc5f683768e86f5852c1c');
+  // await updateUser('637fc5f683768e86f5852c1c', 'NewPW');
+  // await getUser('637fc5f683768e86f5852c1c');
+  // await updateUser('637fc5f683768e86f5852c1c', 'OLDPW');
   //await deleteUser('637aaadf3f3f430d2ce0ac9f');
 //   followUser(conn, "testUser1");
 //   unfollowUser(conn, "testUser1");
@@ -202,9 +201,9 @@ const main = async () => {
 };
 
 // execute main
-main();
-
+// main();
 */
+
 
 module.exports = {
   closeMongoDBConnection, connect, getDB, createUser, getAllUsers, getUser, updateUser, deleteUser,

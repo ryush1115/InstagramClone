@@ -335,6 +335,28 @@ webapp.get('/post/:id', async (req, res) => {
   }
 });
 
+// Make Post Private
+webapp.put('/post/:id', async (req, res) => {
+  try {
+    const result = await dbLibPost.makePostPrivate(req.params.id);
+    // send the response with the appropriate status code
+    res.status(200).json({ message: result });
+  } catch (err) {
+    res.status(404).json({ message: 'there was an error' });
+  }
+});
+
+// Make Post Public
+webapp.put('/post/:id', async (req, res) => {
+  try {
+    const result = await dbLibPost.makePostPublic(req.params.id);
+    // send the response with the appropriate status code
+    res.status(200).json({ message: result });
+  } catch (err) {
+    res.status(404).json({ message: 'there was an error' });
+  }
+});
+
 webapp.get('/userposts/:username', async (req, res) => {
   try {
     // get the data from the db
@@ -688,6 +710,21 @@ webapp.post('/testsuggestions', async (req, res) => {
   const result = await dbLibUser.getSuggestionList(userID);
   res.status(200).json({ data: result });
 });
+
+// get results for is my like post
+webapp.put('/Post/:PostId/:status', async (req, res) => {
+  try {
+    // get the data from the db
+    const results = await dbLibPost.changePostPrivateOrPublic(req.params.PostId, req.params.status);
+    // send the response with the appropriate status code
+    // console.log(results.username);
+    
+    res.status(200).json(results);
+  } catch (err) {
+    res.status(404).json({ message: 'there was error' });
+  }
+});
+
 
 // catch all endpoint
 webapp.use((req, resp) => {

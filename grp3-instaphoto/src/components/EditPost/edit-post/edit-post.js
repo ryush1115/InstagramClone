@@ -3,7 +3,7 @@ import {useNavigate, useParams} from "react-router-dom";
 import "./edit-post.css";
 import { faTag, faPlus, faX} from "@fortawesome/free-solid-svg-icons";
 import {Card, ListGroup, ListGroupItem, Navbar} from "react-bootstrap";
-import {getPost, updatePost} from "../../../api/mock_api";
+import {getPost, updatePost, makePostPrivate, makePostPublic} from "../../../api/mock_api";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import EditPostTagComponent from "./edit-post-tag.component";
 import TagAddBox from "./edit-post-tag-add-box.component";
@@ -64,6 +64,25 @@ export default function EditPost(props) {
         }
     }
 
+    // handle Hide Post
+    const handleHidePost = async(e) => {
+
+        // e.preventDefault();
+        console.log("Hide post");
+        const newHiddenPost = await makePostPrivate(postID);
+        console.log(newHiddenPost);
+        
+    }
+
+    const handleShowPost = async(e) => {
+
+        // e.preventDefault();
+       
+        const newHiddenPost = await makePostPublic(postID);
+
+        
+    }
+
     useEffect( () => {
         const fetchPost = async () => {
             const data = await getPost(postID);
@@ -115,7 +134,16 @@ export default function EditPost(props) {
                                 setPost(post);
                                 console.log(post);
                             }} />
+
+                            
+                            
                         </div>
+                        <div>
+                                <button onClick={handleHidePost} >Hide Post</button>
+                                <button onClick={handleShowPost} >Show Post</button>
+                            </div>
+
+
                         <div className={"edit-image-instruction"}>
                             <FontAwesomeIcon icon={faTag} className={"edit-image-instruction-icon"}/>
                             Tags
