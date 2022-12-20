@@ -418,6 +418,7 @@ webapp.post('/user/', async (req, res) => {
     return;
   }
   try {
+    // create new user
     const newUser = {
       email: req.body.email,
       username: req.body.username,
@@ -426,7 +427,6 @@ webapp.post('/user/', async (req, res) => {
       follow: req.body.follow,
       id: req.body.id,
     };
-
     const result = await dbLibUser.createUser(newUser);
     // send the response with the appropriate status code
     res.status(201).json({ data: { id: result, ...newUser } });
@@ -535,7 +535,7 @@ webapp.post('/signup', async (req, res) => {
     username,
     email,
     password: hash,
-    profilePicture: 'https://cdn-icons-png.flaticon.com/512/18/18601.png',
+    profilePicture: '',
     bio: '',
     followers: [],
     following: [],
