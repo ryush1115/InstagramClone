@@ -50,7 +50,7 @@ const getPosts = async (page) => {
     .skip(pageValue * postsPerPage)
     .limit(postsPerPage)
     .forEach(book => posts.push(book));
-    console.log(posts);
+    // console.log(posts);
     return posts;
   } catch (err) {
     console.log(`error: ${err.message}`);
