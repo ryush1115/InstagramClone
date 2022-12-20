@@ -9,6 +9,8 @@ import '../../UserProfile/post-popup/post-popup-tag.css';
 export default function PostRow(props) {
   const currentUserId = props.userLoginName5    // current User Id
   const canDelete = props.post.username === currentUserId; // allow delete post if post author username matches current user Id
+  const canHide = props.post.username === currentUserId; // allow delete post if post author username matches current user Id
+
 
   const[, setDeletedPost] = useState(null);
   const [isLiked, setIsLiked] = useState(false);
@@ -69,8 +71,20 @@ export default function PostRow(props) {
       return <div className={"no-tags-text"}>No tags</div>
     }
   }
+    // handle Hide Post
+    const handleHidePost = async(e) => {
+  
+      //e.preventDefault();
+      console.log("Hide post (*)");
+      //const newDeletedPost = await deletePost(props.post._id);
+      //console.log(newDeletedPost);
+      //update load data
+      
+      //setDeletedPost(newDeletedPost);
+      loadData.current = true;
+    }
 
-  return (
+    return (
       <tr>
         <div className="post">
           <div className="postWrapper">
@@ -128,6 +142,7 @@ export default function PostRow(props) {
                   {loadTags()}
                 </div>
               </div>
+                {/* {canHide && <button type="remove" onClick={handleHidePost}>Hide</button>} */}
             </div>
           </div>
         </div>

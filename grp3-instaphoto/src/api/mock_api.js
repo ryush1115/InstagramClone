@@ -307,6 +307,31 @@ export const createCommentInPost = async(PostId, CommentObject) => {
   }
 }
 
+// Hide a Post / Make a post Private
+export const makePostPrivate = async (PostId) => {
+  try {
+    console.log("Make Post Private");
+    console.log(`${PostId}`);
+    const response = await axios.put(`${rootURL}/Post/${PostId}/${false}`);
+    return response.data.data;
+  } catch(err) {
+    console.error(err);
+  }
+}
+
+// Make a post Public
+export const makePostPublic = async (PostId) => {
+  try {
+    console.log("Make Post Public");
+    console.log(`${PostId}`);
+    const response = await axios.put(`${rootURL}/Post/${PostId}/${true}`);
+    return response.data.data;
+  } catch(err) {
+    console.error(err);
+  }
+}
+
+
 // update a comment within the Post schema
 export const updateComment = async(text, postid, CommentId) => {
   try {
