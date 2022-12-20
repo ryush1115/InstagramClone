@@ -57,7 +57,7 @@ export default function FilterablePostTable(props) {
     
       setInterval(() => {
         fetchData();
-      }, 80000000);
+      }, 800000000);
     },[]);
 
     function timeout(delay) {
@@ -66,9 +66,7 @@ export default function FilterablePostTable(props) {
 
     const fetchNewData = async () => {
       await timeout(2000);
-      console.log("fetching new data");
       setPage(page+1);
-      console.log("page is ", page)
       const newData = await getPosts(page);
       for (let i = 0; i < newData.length; i++) {
         if (newData[i].publicPrivate===false) {
@@ -82,9 +80,7 @@ export default function FilterablePostTable(props) {
             }
         }
     }
-      console.log("new data is ", newData);
       setRoster([...roster, ...newData]);
-      console.log("new roster length is", roster.length);
       if (newData.length === 0 || newData.length < 3) {
         sethasMore(false);
       }
