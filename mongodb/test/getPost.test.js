@@ -44,7 +44,7 @@ describe('Post endpoint integration test', () => {
 
   test('Endpoint status code and response async/await', async () => {
     // testing getPost
-    res = await request(webapp).get('/post');
+    res = await request(webapp).get('/post/0');
     expect(res.status).toEqual(200);
     expect(res.type).toBe('application/json');
 

@@ -14,7 +14,7 @@ export default function PostTable (props){
            if ((!element.publicPrivate===true)) {
                return;
            }
-           rows.unshift(
+           rows.push(
                <PostRow user={user} post={element} key={counter.current}/>
            )
            counter.current += 1;
@@ -30,6 +30,5 @@ export default function PostTable (props){
        </table>
    );
 }
-
 
 
