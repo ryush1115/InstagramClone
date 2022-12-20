@@ -30,7 +30,6 @@ export default function App() {
     }
   }, []);
 
-  // TODO: Selectively render navbar buttons based on login state
   return (
     <Router>
       <div className="App">
@@ -41,6 +40,7 @@ export default function App() {
           <Route path="/sign-up" element={<SignUp />} />
           <Route path="/user-profile" element={<Userprofile />} />
           <Route path={"/user-profile/:id"} element={<OtherUserProfile />} />
+          <Route path={"/user/:username"} element={<OtherUserProfile />} />
           <Route path="/activity-feed" element={<ActivityFeed />} />
           <Route path = "/friendsuggestion" element = {<FriendSuggestion />}/>
           <Route path = "/allUsers" element = {<UserList />}/>

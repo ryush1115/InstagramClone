@@ -26,7 +26,9 @@ const FriendSuggestionComponent = (props) => {
             <img className="image-0_FriendSuggestion" src={props.image} />
             <div className="container-2_FriendSuggestion">
                 <div className="container-3_FriendSuggestion">
-                    <span className="text-1_FriendSuggestion">{props.name}</span>
+                    <span className="text-1_FriendSuggestion" onClick={() => {
+                        window.location.href = `/user/${props.name}`;
+                    }}>{props.name}</span>
                     <span className="text-2_FriendSuggestion">{props.description}</span>
                 </div>
                 <div className="container-4_FriendSuggestion">

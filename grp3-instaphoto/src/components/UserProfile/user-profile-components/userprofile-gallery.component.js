@@ -15,10 +15,16 @@ export default function UserprofileComponent(props) {
             });
         } else {
             getTokenUser().then((user) => {
-                console.log(user.data);
-                getUserPosts(user.data.username).then((posts) => {
-                    setUserPosts(posts);
-                });
+                if (user.status === 401) {
+                    console.log("not signed in");
+                    sessionStorage.removeItem("token");
+                    window.location.href = "/sign-in";
+                } else {
+                    console.log(user.data);
+                    getUserPosts(user.data.username).then((posts) => {
+                        setUserPosts(posts);
+                    });
+                }
             });
         }
     }, []);

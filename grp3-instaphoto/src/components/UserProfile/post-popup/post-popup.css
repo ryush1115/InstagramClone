@@ -10,6 +10,11 @@
     left: 0;
 }
 
+.comment {
+    display: flex;
+    flex-direction: column;
+}
+
 .post-popup-wrapper1 {
     background-color: rgba(0, 0, 0, 0.15);
     width: 100vw;
@@ -81,7 +86,7 @@
 
 .post-header-username {
     font-weight: 500;
-    font-size: 14px;
+    font-size: 27px;
     cursor: pointer;
 }
 
@@ -174,7 +179,6 @@
     align-items: center;
     width: 100%;
     height: 60%;
-    overflow: auto;
 }
 
 .post-popup-comments-button {
@@ -185,6 +189,7 @@
 .post-popup-comments-section {
     height: 100%;
     padding-top: 5%;
+    overflow: auto;
 }
 
 .post-popup-add-comment {

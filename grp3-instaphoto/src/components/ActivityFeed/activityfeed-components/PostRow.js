@@ -3,14 +3,16 @@ import './activityfeed.css';
 import '../../UserProfile/userprofile.css';
 import {deletePost, isMyLikePost,incrementPostLike, cancelPostLike} from '../../../api/mock_api';
 import Comments from './Comments';
+import PostPopupTag from "../../UserProfile/post-popup/post-popup-tag.component";
+import '../../UserProfile/post-popup/post-popup-tag.css';
 
 export default function PostRow(props) {
   const currentUserId = props.userLoginName5    // current User Id
   const canDelete = props.post.username === currentUserId; // allow delete post if post author username matches current user Id
 
   const[, setDeletedPost] = useState(null);
-    const [isLiked, setIsLiked] = useState(false);
-    const [likeCounter, setLikeCounter] = useState(props.post.like.length);
+  const [isLiked, setIsLiked] = useState(false);
+  const [likeCounter, setLikeCounter] = useState(props.post.like.length);
 
     // TODO: Refactor this code
     const someFetch = async () => {
@@ -20,7 +22,7 @@ export default function PostRow(props) {
       setIsLiked(data);
       console.log('sss');
   }
- 
+
     useEffect(() => {
         someFetch();
     }, []);
@@ -56,15 +58,27 @@ export default function PostRow(props) {
       loadData.current = true;
     }
 
-    return (
+  const loadTags = () => {
+    if (props.post.postTagOfOtherUsers.length > 0) {
+      console.log("Loading tags")
+      console.log(props.post.postTagOfOtherUsers);
+      return props.post.postTagOfOtherUsers.map((tag) => {
+        return <PostPopupTag color={tag.color} hashtag={tag.hashtag} />
+      })
+    } else {
+      return <div className={"no-tags-text"}>No tags</div>
+    }
+  }
+
+  return (
       <tr>
         <div className="post">
           <div className="postWrapper">
             <div className="postTop">
               <div className="postTopLeft">
-                <span className="postUsername" data-testid = "testing1">
+                <a href={`/user/${props.post.username}`} className="postUsername" data-testid = "testing1">
                   {props.post.username}
-                </span>
+                </a>
               </div>
             </div>
 
@@ -80,7 +94,7 @@ export default function PostRow(props) {
                 {props.post.postCaption}
               </div>
             </div>
-						<div className="postBottom">
+            <div className="postBottom">
 
               <div className="postBottomLeft">
                 
@@ -109,6 +123,11 @@ export default function PostRow(props) {
             	<form id="commentBox">
               </form>
                 {canDelete && <button type="remove" onClick={handleDeletePost}>Delete</button>}
+              <div className={"post-popup-footer"}>
+                <div className={"post-popup-tags"}>
+                  {loadTags()}
+                </div>
+              </div>
             </div>
           </div>
         </div>

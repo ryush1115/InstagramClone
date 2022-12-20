@@ -3,23 +3,37 @@ import './userprofile.css';
 import Sidebar from '../sidebar.component'
 import UserProfile_TopInfo from './user-profile-components/userprofile-topinfo.component'
 import UserProfile_Gallery from './user-profile-components/userprofile-gallery.component'
-import {getUser} from "../../api/mock_api";
+import {getUser, getUserByName} from "../../api/mock_api";
 import {useParams} from "react-router-dom";
 
-// TODO: Add a big "follow" / "unfollow" button to the user bio below their info
 export default function OtherUserProfile(props) {
 
     const userID = useParams().id;
+    const userName = useParams().username;
     const [user, setUser] = useState(null);
 
     useEffect(() => {
-        getUser(userID).then((userdata) => {
-            if (userdata.status === 404) {
-                console.log("user not found");
-            } else {
-                setUser(userdata.data);
-            }
-        });
+        if (userID) {
+            getUser(userID).then((userdata) => {
+                if (userdata.status === 404) {
+                    console.log("user not found");
+                } else {
+                    setUser(userdata.data);
+                }
+            });
+        } else if (userName) {
+            getUserByName(userName).then((userdata) => {
+                if (!!userdata) {
+                    console.log("user found");
+                    console.log(userdata);
+                    if (userdata.status === 404) {
+                        console.log("user not found");
+                    } else {
+                        setUser(userdata.data);
+                    }
+                }
+            });
+        }
     }, []);
 
     // checks if logged in
@@ -32,7 +46,10 @@ export default function OtherUserProfile(props) {
             // user not found
             return (
                 <>
-                    <h1>User not found!</h1>
+                    <Sidebar />
+                    <div className={"nothing-found"}>
+                        <h1>User not found</h1>
+                    </div>
                 </>
             )
         } else {

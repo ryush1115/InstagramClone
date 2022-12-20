@@ -1,15 +1,25 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import './post-popup.css';
 import { faComment, faEllipsis, faHeart } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import PostSettingsDropdown from "./post-settings-dropdown";
 import PostPopupTag from "./post-popup-tag.component";
+import {cancelPostLikeWithToken, getTokenUser, incrementPostLikeWithToken, isMyLikePost} from "../../../api/mock_api";
 
 export default function PostPopup(props) {
 
     const [isOpen, setIsOpen] = React.useState(false);
+    const [isLiked, setIsLiked] = React.useState(false);
 
     // TODO: Break this into smaller components
+
+    useEffect(() => {
+        getTokenUser().then((user) => {
+            isMyLikePost(props.post._id, user.data._id).then((data) => {
+                setIsLiked(data);
+            });
+        });
+    }, [isLiked]);
 
     const post = props.post;
 
@@ -25,8 +35,41 @@ export default function PostPopup(props) {
         }
     }
 
+    const loadComments = () => {
+        if (post.postCommentArray.length > 0) {
+            return post.postCommentArray.map((comment) => {
+                return (
+                <div className={"comment"}>
+                    <span className={"comment-username"}>{comment.username}</span>
+                    <span className={"comment-text"}>{comment.message}</span>
+                </div>
+                );
+            })
+        } else {
+            return <div className={"no-comments-text"}>No comments</div>
+        }
+    }
+
+    const handleLike = () => {
+        if (isLiked) {
+            setIsLiked(false);
+            cancelPostLikeWithToken(post._id);
+            post.like.length--;
+        } else {
+            setIsLiked(true);
+            incrementPostLikeWithToken(post._id);
+            post.like.length++;
+        }
+    }
+
+    const createComment = () => {
+        console.log("Create comment");
+    }
+
     const loadSettings = () => {
-        if (!window.location.pathname.match(/^\/user-profile\/[a-fA-F0-9]+$/)) {
+        if (!window.location.pathname.match(/^\/user-profile\/[a-zA-Z0-9]+$/) &&
+            !window.location.pathname.match(/^\/user\/[a-zA-Z0-9]+$/)) {
+            console.log("Loading settings");
             return (
                 <button className={"post-popup-header-right-ellipsis"}>
                     <FontAwesomeIcon icon={faEllipsis} onClick={() => setIsOpen(!isOpen)}/>
@@ -44,12 +87,8 @@ export default function PostPopup(props) {
                     <div className={"post-popup"}>
                         <div className={"post-popup-header"}>
                             <div className={"post-popup-header-left"}>
-                                <div className={"profile-pic-wrapper"}>
-                                    <img className={"profile-pic"} src={"https://i.ibb.co/bgWdsVT/grp3.png"} alt={"pfp"}/>
-                                </div>
                                 <div className={"post-header-username"}>
-                                    {/* Placeholder div, import user's username later*/}
-                                    grp3foreva
+                                    {post.username}
                                 </div>
                             </div>
                             <div className={"post-popup-header-right"}>
@@ -65,7 +104,7 @@ export default function PostPopup(props) {
                             </div>
                             <div className={"post-popup-body-right"}>
                                 <div className={"post-popup-likes"}>
-                                    <button className={"post-popup-like-button"}>
+                                    <button className={"post-popup-like-button"} onClick={() => handleLike()}>
                                         <FontAwesomeIcon icon={faHeart} className={"post-popup-like-button-icon"}/>
                                         <div className={"post-popup-like-button-text"}>{post.like.length} likes</div>
                                     </button>
@@ -76,7 +115,7 @@ export default function PostPopup(props) {
                                         <div className={"post-popup-comments-button-text"}>View all {post.postCommentArray.length} comments</div>
                                     </button>
                                     <div className={"post-popup-comments-section"}>
-                                        COMMENTS GO HERE COMMENTS GO HERE
+                                        {loadComments()}
                                     </div>
                                 </div>
                                 <input className={"post-popup-add-comment"} placeholder={"Add Comment..."} />
