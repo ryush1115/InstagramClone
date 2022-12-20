@@ -1,6 +1,6 @@
 function EndMsg() {
     return (
-        <p style={{ textAlign: "center" }}>
+        <p>
           <b>Yay! You have seen it all</b>
         </p>
     )
