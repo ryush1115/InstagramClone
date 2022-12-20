@@ -96,7 +96,7 @@ export default function Sidebar(props) {
 
                 </div>
                 <button className="action-btn" type="button">
-                     {/* <span className="username">{FriendSuggestionList[0]}</span>  */}
+                     <span className="username">{FriendSuggestionList[0]}</span> 
                     <span className="follow">Follow</span>
                 </button>
             </div>
@@ -107,7 +107,7 @@ export default function Sidebar(props) {
 
                 </div>
                 <button className="action-btn" type="button">
-                    {/* <span className="username">{FriendSuggestionList[1]}</span> */}
+                    <span className="username">{FriendSuggestionList[1]}</span>
                     <span className="follow">Follow</span>
                 </button>
             </div>
@@ -118,7 +118,7 @@ export default function Sidebar(props) {
 
                 </div>
                 <button className="action-btn" type="button">
-                    {/* <span className="username">{FriendSuggestionList[2]}</span> */}
+                    <span className="username">{FriendSuggestionList[2]}</span>
                     <span className="follow">Follow</span>
                 </button>
             </div>
