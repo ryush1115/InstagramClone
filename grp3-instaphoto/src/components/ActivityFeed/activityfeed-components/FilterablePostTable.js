@@ -57,7 +57,7 @@ export default function FilterablePostTable(props) {
     
       setInterval(() => {
         fetchData();
-      }, 5000);
+      }, 1000000);
     },[]);
 
     function timeout(delay) {
@@ -81,10 +81,12 @@ export default function FilterablePostTable(props) {
             }
         }
     }
+    if (newData.length === 0 || newData.length < 3) {
+      sethasMore(false);
+      return;
+    }
       setRoster([...roster, ...newData]);
-      if (newData.length === 0 || newData.length < 3) {
-        sethasMore(false);
-      }
+      
     };
 
     return (
