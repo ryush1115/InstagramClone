@@ -169,6 +169,15 @@ const hasCommonFollowing = async (userID, otherUserID) => {
   return count >= 3;
 }
 
+const getUserByUsername = async (username) => {
+  try {
+    const db = await getDB();
+    return await db.collection('User').findOne({ username: username });
+  } catch (err) {
+    console.log(`error: ${err.message}`);
+  }
+}
+
 // Test part: use main function to test
 
 // main function to execute our code
@@ -207,6 +216,6 @@ const main = async () => {
 
 module.exports = {
   closeMongoDBConnection, connect, getDB, createUser, getAllUsers, getUser, updateUser, deleteUser,
-    getUserByEmail, getSuggestionList, isFollowing
+    getUserByEmail, getSuggestionList, isFollowing, getUserByUsername
   // closeMongoDBConnection, connect, getDB, createUser, getAllUsers, getUser, updateUser,
 };

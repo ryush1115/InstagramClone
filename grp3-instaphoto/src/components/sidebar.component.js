@@ -11,17 +11,26 @@ export default function Sidebar(props) {
   const someFetch = async () => {
     //using JS fetch API
     data = await getSuggestionList();
-    // assuming the state is in the form of an array
-    //console.log(data);
-    setFriendSuggestionList(data);
+    if (data.status === 200) {
+        setFriendSuggestionList(data);
+    } else if (data.status === 401){
+        console.log("error");
+        sessionStorage.removeItem("token");
+        window.location.href = "/sign-in";
+    }
  }
-
 
   useEffect(() => {
       someFetch();
       console.log(FriendSuggestionList);
       getTokenUser().then((user) => {
-          setUser(user.data);
+          if (user.status === 401) {
+                console.log("not signed in");
+                sessionStorage.removeItem("token");
+                window.location.href = "/sign-in";
+          } else {
+              setUser(user.data);
+          }
       });
   },[]);
 
@@ -44,86 +53,91 @@ export default function Sidebar(props) {
   };
 
 
-    return (
-        <Navbar className='home'>
-            <Card className='card'>
-        <div className = 'logo'>
-            <h>Instaphoto&nbsp;</h>
-            <img src="https://i.ibb.co/VV3Xdf1/logo.png" alt="logo"/>
+  if (!!user) {
+      return (
+          <Navbar className='home'>
+              <Card className='card'>
+                  <div className = 'logo'>
+                      <h>Instaphoto&nbsp;</h>
+                      <img src="https://i.ibb.co/VV3Xdf1/logo.png" alt="logo"/>
 
-        </div>
-        <br></br>
-        <div>
-          <Card.Img
-            src={user.profilePicture}
-            variant='top'
-            className='sig'
-          />
-        <p className = 'username'> {user.username}</p>
-        </div>
-        <div>
-          <Card.Body>
-            <Card.Text>
-              <div className='space'></div>
-              <ListGroup variant='flush'>
-                <ListGroupItem className='list'>
+                  </div>
+                  <br></br>
+                  <div>
+                      <Card.Img
+                          src={user.profilePicture}
+                          variant='top'
+                          className='sig'
+                      />
+                      <p className = 'username'> {user.username}</p>
+                  </div>
+                  <div>
+                      <Card.Body>
+                          <Card.Text>
+                              <div className='space'></div>
+                              <ListGroup variant='flush'>
+                                  <ListGroupItem className='list'>
                   <span onClick = {navigateToHome}>
                     Home
                   </span>
-                </ListGroupItem>
-                <ListGroupItem className='list'>
+                                  </ListGroupItem>
+                                  <ListGroupItem className='list'>
                   <span onClick = {handleCreate}>
                     Create
                   </span>
-                </ListGroupItem>
-                <ListGroupItem className='list'>
+                                  </ListGroupItem>
+                                  <ListGroupItem className='list'>
                   <span onClick = {navigateToProfile}>
                     Profile
                   </span>
-                </ListGroupItem>
-              </ListGroup>
-            </Card.Text>
-          </Card.Body>
-          </div>
-          <br></br>
-          <div className = 'suggestions'>
-            <p className="suggestion-text">Suggestions for you</p>
-            <button className="show-all-btn" onClick = {navigateToSuggestions}>See all</button>
-            <div className="profile-card">
-                <div>
-                    <img className = 'other-user' src='https://i.ibb.co/hDvzykn/ellipse504.jpg' alt=""/>
-                    <img className = 'other-user' alt=""/>
+                                  </ListGroupItem>
+                              </ListGroup>
+                          </Card.Text>
+                      </Card.Body>
+                  </div>
+                  <br></br>
+                  <div className = 'suggestions'>
+                      <p className="suggestion-text">Suggestions for you</p>
+                      <button className="show-all-btn" onClick = {navigateToSuggestions}>See all</button>
+                      <div className="profile-card">
+                          <div>
+                              <img className = 'other-user' src='https://i.ibb.co/hDvzykn/ellipse504.jpg' alt=""/>
+                              <img className = 'other-user' alt=""/>
 
-                </div>
-                <button className="action-btn" type="button">
-                     <span className="username">{FriendSuggestionList[0]}</span> 
-                    <span className="follow">Follow</span>
-                </button>
-            </div>
-            <div className="profile-card">
-                <div>
-                    <img className = 'other-user' src='https://i.ibb.co/hDvzykn/ellipse504.jpg' alt=""/>
-                    <img className = 'other-user' alt=""/>
+                          </div>
+                          <button className="action-btn" type="button">
+                              <span className="username">{FriendSuggestionList[0]}</span>
+                              <span className="follow">Follow</span>
+                          </button>
+                      </div>
+                      <div className="profile-card">
+                          <div>
+                              <img className = 'other-user' src='https://i.ibb.co/hDvzykn/ellipse504.jpg' alt=""/>
+                              <img className = 'other-user' alt=""/>
 
-                </div>
-                <button className="action-btn" type="button">
-                    <span className="username">{FriendSuggestionList[1]}</span>
-                    <span className="follow">Follow</span>
-                </button>
-            </div>
-            <div className="profile-card">
-                <div>
-                    <img className = 'other-user' src='https://i.ibb.co/hDvzykn/ellipse504.jpg' alt=""/>
-                    <img className = 'other-user' alt=""/>
+                          </div>
+                          <button className="action-btn" type="button">
+                              <span className="username">{FriendSuggestionList[1]}</span>
+                              <span className="follow">Follow</span>
+                          </button>
+                      </div>
+                      <div className="profile-card">
+                          <div>
+                              <img className = 'other-user' src='https://i.ibb.co/hDvzykn/ellipse504.jpg' alt=""/>
+                              <img className = 'other-user' alt=""/>
 
-                </div>
-                <button className="action-btn" type="button">
-                    <span className="username">{FriendSuggestionList[2]}</span>
-                    <span className="follow">Follow</span>
-                </button>
-            </div>
-          </div>
-        </Card>
-        </Navbar>
-    )
+                          </div>
+                          <button className="action-btn" type="button">
+                              <span className="username">{FriendSuggestionList[2]}</span>
+                              <span className="follow">Follow</span>
+                          </button>
+                      </div>
+                  </div>
+              </Card>
+          </Navbar>
+      )
+  } else {
+      sessionStorage.removeItem("token");
+      window.location.href = "/sign-in";
+  }
 };
