@@ -1,5 +1,4 @@
 import React, { useState,  useEffect, useRef } from "react";
-import SearchBar from './SearchBar';
 import {  getPosts} from '../../../api/mock_api';
 import PostTable from './PostTable'
 import InfiniteScroll from "react-infinite-scroll-component";
@@ -11,20 +10,45 @@ export default function FilterablePostTable(props) {
     const [roster, setRoster] = useState([]);
     const [page, setPage] = useState(1);
     const [hasMore, sethasMore] = useState(true);
+    
+    const user = props.user;
+    
+    // ref to indicate if this is the first rendering
     const firstRendering = useRef(true);
+    // get the list of [Timeline] Posts from the backend
+
+    console.log("FilterablePostTable.js");
     
     useEffect(() => {
       // get the list of [Timeline] Posts from the backend
       async function fetchData() {
-        const data = await getPosts(0);
-        console.log("getPosts data: ");
-        console.log(data);
-        setRoster(data);
+          console.log("FilterablePostTable.js useEffect");
+          const data = await getPosts(0);
+
+          console.log("FilterablePostTable.js useEffect data");
+          console.log(data);
+          console.log(user);
+
+          //for each loop
+            for (let i = 0; i < data.length; i++) {
+                if (data[i].publicPrivate===false) {
+                    if (data[i].username===user) {
+                       continue;
+                    } else if (user.following.includes(data[i].username)) {
+                        continue;
+                    } else {
+                        data.splice(i, 1);
+                        i--;
+                    }
+                }
+            }
+            if (roster.length !== data.length) {
+                setRoster(data);
+            }
       }
 
       // only load data on the first rendering or
       // when a new post is created
-      
       if (firstRendering.current || props.reload.current) {
         firstRendering.current = false;
         props.reload.current = false; // set reload to false
@@ -34,7 +58,7 @@ export default function FilterablePostTable(props) {
       setInterval(() => {
         fetchData();
       }, 10000);
-    },[roster]);
+    },[]);
 
     function timeout(delay) {
       return new Promise( res => setTimeout(res, delay) );
@@ -69,10 +93,11 @@ export default function FilterablePostTable(props) {
       loader={<Loader />}
       endMessage={<EndMsg />}
       >
-      <SearchBar roster={roster} userLoginName3={props.userLoginName2}/>
+      <PostTable user={user} username={user.username} posts={roster} userid ={user._id} userLoginName4 = {props.userLoginName3}/>
       </InfiniteScroll>
       </>
 
+        
     );
 }
 
