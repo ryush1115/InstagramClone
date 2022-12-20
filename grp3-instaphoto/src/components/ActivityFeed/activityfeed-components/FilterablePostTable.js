@@ -24,7 +24,7 @@ export default function FilterablePostTable(props) {
       async function fetchData() {
           console.log("FilterablePostTable.js useEffect");
           const data = await getPostsAll(page); // maybe we should make a different API call that loads everything, except of skipping for the 10 second refreshes? How will that affect where the cursor is?
-
+          console.log('data length is', data.length, "with page", page);
           // console.log("FilterablePostTable.js useEffect data");
           // console.log(data);
           // console.log(user);
@@ -57,7 +57,7 @@ export default function FilterablePostTable(props) {
     
       setInterval(() => {
         fetchData();
-      }, 10000);
+      }, 5000);
     },[]);
 
     function timeout(delay) {
@@ -67,6 +67,7 @@ export default function FilterablePostTable(props) {
     const fetchNewData = async () => {
       await timeout(2000);
       setPage(page+1);
+      console.log("new page is ", page);
       const newData = await getPosts(page);
       for (let i = 0; i < newData.length; i++) {
         if (newData[i].publicPrivate===false) {
