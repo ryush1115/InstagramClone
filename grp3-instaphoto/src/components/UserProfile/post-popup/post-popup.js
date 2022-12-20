@@ -12,7 +12,6 @@ export default function PostPopup(props) {
     const [isLiked, setIsLiked] = React.useState(false);
 
     // TODO: Break this into smaller components
-
     useEffect(() => {
         getTokenUser().then((user) => {
             isMyLikePost(props.post._id, user.data._id).then((data) => {
