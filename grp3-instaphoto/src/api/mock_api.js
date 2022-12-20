@@ -12,7 +12,7 @@ const rootURL = 'http://localhost:8000'
 // returns all the Posts
 export const getPosts = async (page) => {
   try{
-    const response = await axios.get(`${rootURL}/Post/${page}`);
+    const response = await axios.get(`${rootURL}/post/${page}`);
     return response.data.data;
     // data is stored in the data 
     // field of the response
@@ -21,6 +21,18 @@ export const getPosts = async (page) => {
   }
 }
 
+// Sends a Get request to the endpoint
+// returns all the Posts
+export const getPostsAll = async (page) => {
+  try{
+    const response = await axios.get(`${rootURL}/postAll/${page}`);
+    return response.data.data;
+    // data is stored in the data 
+    // field of the response
+  }catch (err) {
+    console.error(err);
+  }
+}
 // Takes the id of a Post as input
 // and sends a Get request to the /Post: id endpoint
 // returns the attributes of the Post

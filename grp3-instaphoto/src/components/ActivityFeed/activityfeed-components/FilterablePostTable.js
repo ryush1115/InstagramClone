@@ -1,5 +1,5 @@
 import React, { useState,  useEffect, useRef } from "react";
-import {  getPosts} from '../../../api/mock_api';
+import {  getPosts, getPostsAll} from '../../../api/mock_api';
 import PostTable from './PostTable'
 import InfiniteScroll from "react-infinite-scroll-component";
 import Loader from './infinitescroll-components/loader.js';
@@ -22,8 +22,8 @@ export default function FilterablePostTable(props) {
     useEffect(() => {
       // get the list of [Timeline] Posts from the backend
       async function fetchData() {
-          // console.log("FilterablePostTable.js useEffect");
-          const data = await getPosts(page);
+          console.log("FilterablePostTable.js useEffect");
+          const data = await getPostsAll(page); // maybe we should make a different API call that loads everything, except of skipping for the 10 second refreshes? How will that affect where the cursor is?
 
           // console.log("FilterablePostTable.js useEffect data");
           // console.log(data);
@@ -57,7 +57,7 @@ export default function FilterablePostTable(props) {
     
       setInterval(() => {
         fetchData();
-      }, 800000000);
+      }, 10000);
     },[]);
 
     function timeout(delay) {
