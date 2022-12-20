@@ -3,6 +3,7 @@ import {useState, useEffect, useRef} from "react";
 import Comment from './Comment';
 import CommentForm from './CommentForm';
 import {createCommentInPost, getTokenUser, updateComment as updateCommentAPI} from '../../../api/mock_api';
+import './activityfeed.css'
 
 export default function Comments(props) {
   // counter to provide unique key to rows
@@ -44,12 +45,12 @@ export default function Comments(props) {
     }
 
       return(  
-        <div> 
+        <div className={"commentsBox"}>
          <div className="comment-form-title">Enter comment</div>
          
          <CommentForm submitLabel="Write" handleSubmit={addComment}/>
 
-         <div>
+         <div className={"commentsBox"}>
          {props.list.map(item => (
            <div key={item._id}>
             {/* <div key={props._id}> */}

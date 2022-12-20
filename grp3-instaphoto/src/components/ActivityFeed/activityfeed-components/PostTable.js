@@ -70,7 +70,6 @@ export default function PostTable (props){
       )
 
       // increment counter
-      console.log("printing counter ", counter.current);
       counter.current += 1;
 
     });
@@ -84,6 +83,5 @@ export default function PostTable (props){
     </table>
   );
 }
-
 
 
