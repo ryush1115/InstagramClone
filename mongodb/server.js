@@ -127,7 +127,7 @@ webapp.put('/followinglist', async (req, res) => {
     } else {
       jwt.verify(token, 'testKey', {}, async (err, decoded) => {
         if (err) {
-          res.status(404).json({ message: 'token is not valid' });
+          res.status(401).json({ message: 'token is not valid' });
         } else {
           const { id } = decoded;
           const isAlreadyFollow = await dbLib.isMyFollowing(decoded.id, req.body.followingName);
@@ -335,6 +335,28 @@ webapp.get('/post/:id', async (req, res) => {
   }
 });
 
+// Make Post Private
+webapp.put('/post/:id', async (req, res) => {
+  try {
+    const result = await dbLibPost.makePostPrivate(req.params.id);
+    // send the response with the appropriate status code
+    res.status(200).json({ message: result });
+  } catch (err) {
+    res.status(404).json({ message: 'there was an error' });
+  }
+});
+
+// Make Post Public
+webapp.put('/post/:id', async (req, res) => {
+  try {
+    const result = await dbLibPost.makePostPublic(req.params.id);
+    // send the response with the appropriate status code
+    res.status(200).json({ message: result });
+  } catch (err) {
+    res.status(404).json({ message: 'there was an error' });
+  }
+});
+
 webapp.get('/userposts/:username', async (req, res) => {
   try {
     // get the data from the db
@@ -388,12 +410,30 @@ webapp.put('/isMyLikePost', async (req, res) => {
 
 // update the like array in post endpoint
 webapp.put('/postlike', async (req, res) => {
-  console.log("printing in server.js", req.body);
-  
-  const {PostId, UserId} = req.body;
+  const token = req.header('x-auth-token');
   try {
-    const result = await dbLibLike.incrementPostLike(req.body.PostId, req.body.UserId);
-    res.status(200).json({ message: result });
+    jwt.verify(token, 'testKey', {}, async (err, decoded) => {
+      if (err) {
+        res.status(401).json({ message: 'invalid token' });
+        return;
+      }
+      if (!!req.body.UserId) {
+        try {
+          const result = await dbLibLike.incrementPostLike(req.body.PostId, req.body.UserId);
+          res.status(200).json({ message: result });
+        } catch (err) {
+          console.trace(err);
+          res.status(404).json({ message: 'there was error' });
+        }
+      } else {
+        try {
+            const result = await dbLibLike.incrementPostLike(req.body.PostId, decoded.id);
+            res.status(200).json({ message: result });
+        } catch (err) {
+            res.status(404).json({ message: 'there was error' });
+        }
+      }
+    });
   } catch (err) {
     res.status(404).json({ message: 'there was error' });
   }
@@ -401,11 +441,36 @@ webapp.put('/postlike', async (req, res) => {
 
 // update the like array in post endpoint
 webapp.put('/postunlike', async (req, res) => {
+  const token = req.header('x-auth-token');
+  if (!token) {
+    res.status(401).json({ message: 'no token' });
+    return;
+  }
   try {
-    const result = await dbLibLike.cancelPostLike(req.body.PostId, req.body.UserId);
-    res.status(200).json({ message: result });
+    await jwt.verify(token, 'testKey', {}, async (err, decoded) => {
+        if (err) {
+            res.status(401).json({ message: 'invalid token' });
+            return;
+        }
+        if (!!req.body.UserId) {
+            try {
+              const result = await dbLibLike.cancelPostLike(req.body.PostId, req.body.UserId);
+              res.status(200).json({ message: result });
+            } catch (err) {
+              res.status(404).json({ message: 'there was error' });
+            }
+        } else {
+          const userID = decoded.id;
+            try {
+                const result = await dbLibLike.cancelPostLike(req.body.PostId, userID);
+                res.status(200).json({ message: result });
+            } catch (err) {
+              res.status(404).json({ message: 'there was error' });
+            }
+        }
+    });
   } catch (err) {
-    res.status(404).json({ message: 'there was error' });
+    res.status(401).json({ message: 'invalid token' });
   }
 });
 
@@ -439,7 +504,6 @@ webapp.post('/user/', async (req, res) => {
 webapp.delete('/user/:id', async (req, res) => {
   // parse the body of the request to make surea all fields are present
   // eslint-disable-next-line max-len
-
   try {
     const result = await dbLibUser.deleteUser(req.params.id);
     // send the response with the appropriate status code
@@ -494,16 +558,18 @@ webapp.post('/login', async (req, res) => {
   }
   const user = await dbLibUser.getUserByEmail(email);
   if (!user) {
-    res.status(404).json({ message: 'invalid email' });
+    res.status(401).json({ message: 'invalid email' });
   }
   bcrypt.compare(password, user.password, (err, result) => {
     if (err) {
-      res.status(404).json({ message: 'invalid password' });
+      res.status(401).json({ message: 'invalid password' });
     }
     try {
       // issue a token here
       jwt.sign({ id: user._id }, 'testKey', { expiresIn: 3600 }, (err, token) => {
-        if (err) throw err;
+        if (err) {
+            res.status(401).json({ message: 'invalid password' });
+        }
         req.session.token = token;
         res.status(200).json({
           token,
@@ -543,7 +609,9 @@ webapp.post('/signup', async (req, res) => {
   };
   const result = await dbLibUser.createUser(newUser);
   jwt.sign({ id: result }, 'testKey', { expiresIn: 3600 }, (err, token) => {
-    if (err) throw err;
+    if (err) {
+        res.status(401).json({ message: 'invalid token' });
+    }
     req.session.token = token;
     res.status(200).json({
       token,
@@ -555,6 +623,19 @@ webapp.post('/signup', async (req, res) => {
   });
 });
 
+webapp.get('/User-Name/:username', async (req, res) => {
+  const username = req.params.username;
+    if (!username) {
+        res.status(404).json({ message: 'missing username' });
+    }
+    const user = await dbLibUser.getUserByUsername(username);
+    if (!user) {
+        res.status(404).json({ message: 'invalid username' });
+    } else {
+      res.status(200).json({ data: user });
+    }
+});
+
 webapp.post('/post', async (req, res) => {
   // make sure all fields are present
   const post = req.body;
@@ -563,7 +644,7 @@ webapp.post('/post', async (req, res) => {
     res.status(201).json({ data: { id: result, ...post } });
     return;
   } catch (err) {
-    res.status(409).json({ message: 'there was an error' });
+    res.status(500).json({ message: 'there was an error' });
   }
 });
 
@@ -576,14 +657,14 @@ webapp.get('/checktoken', async (req, res) => {
   try {
     jwt.verify(token, 'testKey', {}, (err, decoded) => {
       if (err) {
-        res.status(402).json({ message: 'invalid token' });
+        res.status(401).json({ message: 'invalid token' });
         console.trace(err);
         return;
       }
       res.status(200).json({ message: 'valid token' });
     });
   } catch (err) {
-    res.status(403).json({ message: 'invalid token' });
+    res.status(401).json({ message: 'invalid token' });
   }
 });
 
@@ -614,20 +695,14 @@ webapp.put('/post/:id', async (req, res) => {
         }
         const user = await dbLibUser.getUser(decoded.id);
         if (!user) {
-          res.status(402).json({ message: 'invalid user' });
+          res.status(404).json({ message: 'invalid user' });
           return;
         }
         const post = await dbLibPost2.getPost(req.params.id);
         if (!post) {
-          res.status(403).json({ message: 'invalid post id' });
+          res.status(404).json({ message: 'invalid post id' });
           return;
         }
-        /* if (post.username !== user.username) {
-            console.log(post.username);
-            console.log(user.username);
-            res.status(404).json({message: 'unauthorized'});
-            return;
-          } */
         const updatedPost = {
           username: req.body.username,
           postImage: req.body.postImage,
@@ -660,13 +735,13 @@ webapp.get('/gettokenuser', async (req, res) => {
   try {
     jwt.verify(token, 'testKey', {}, async (err, decoded) => {
       if (err) {
-        res.status(402).json({ message: 'invalid token' });
+        res.status(401).json({ message: 'invalid token' });
         console.trace(err);
         return;
       }
       const user = await dbLibUser.getUser(decoded.id);
       if (!user) {
-        res.status(403).json({ message: 'invalid user' });
+        res.status(404).json({ message: 'invalid user' });
         return;
       }
       res.status(200).json({ data: user });
@@ -688,6 +763,21 @@ webapp.post('/testsuggestions', async (req, res) => {
   const result = await dbLibUser.getSuggestionList(userID);
   res.status(200).json({ data: result });
 });
+
+// get results for is my like post
+webapp.put('/Post/:PostId/:status', async (req, res) => {
+  try {
+    // get the data from the db
+    const results = await dbLibPost.changePostPrivateOrPublic(req.params.PostId, req.params.status);
+    // send the response with the appropriate status code
+    // console.log(results.username);
+    
+    res.status(200).json(results);
+  } catch (err) {
+    res.status(404).json({ message: 'there was error' });
+  }
+});
+
 
 // catch all endpoint
 webapp.use((req, resp) => {

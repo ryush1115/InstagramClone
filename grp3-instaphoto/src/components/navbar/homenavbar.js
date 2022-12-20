@@ -41,6 +41,11 @@ export default function HomeNavbar() {
                                     Discover Friends
                                 </Link>
                             </li>
+                            <li className = "nav-item">
+                                <Link className = "nav-link" to={'/allUsers'}>
+                                    All Users
+                                </Link>
+                            </li>
                             { <li className = "createpost">
                                 <Link className = "nav-link" to={'/dragdrop'}>
                                     Create Post
