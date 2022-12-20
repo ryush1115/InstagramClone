@@ -9,7 +9,7 @@ import EndMsg from './infinitescroll-components/endmsg.js';
 export default function FilterablePostTable(props) {
     // Local state to store and update the list of Posts
     const [roster, setRoster] = useState([]);
-    const [page, setPage] = useState(0);
+    const [page, setPage] = useState(1);
     const [hasMore, sethasMore] = useState(true);
     const firstRendering = useRef(true);
     
@@ -50,7 +50,7 @@ export default function FilterablePostTable(props) {
       const postsFormServer = await fetchPosts();
   
       setRoster([...roster, ...postsFormServer]);
-      if (postsFormServer.length === 0 || postsFormServer.length < 20) {
+      if (postsFormServer.length === 0 || postsFormServer.length < 3) {
         sethasMore(false);
       }
       setPage(page + 1);
