@@ -336,26 +336,26 @@ webapp.get('/post/:id', async (req, res) => {
 });
 
 // Make Post Private
-webapp.put('/post/:id', async (req, res) => {
-  try {
-    const result = await dbLibPost.makePostPrivate(req.params.id);
-    // send the response with the appropriate status code
-    res.status(200).json({ message: result });
-  } catch (err) {
-    res.status(404).json({ message: 'there was an error' });
-  }
-});
+// webapp.put('/post/:id', async (req, res) => {
+//   try {
+//     const result = await dbLibPost.makePostPrivate(req.params.id);
+//     // send the response with the appropriate status code
+//     res.status(200).json({ message: result });
+//   } catch (err) {
+//     res.status(404).json({ message: 'there was an error' });
+//   }
+// });
 
-// Make Post Public
-webapp.put('/post/:id', async (req, res) => {
-  try {
-    const result = await dbLibPost.makePostPublic(req.params.id);
-    // send the response with the appropriate status code
-    res.status(200).json({ message: result });
-  } catch (err) {
-    res.status(404).json({ message: 'there was an error' });
-  }
-});
+// // Make Post Public
+// webapp.put('/post/:id', async (req, res) => {
+//   try {
+//     const result = await dbLibPost.makePostPublic(req.params.id);
+//     // send the response with the appropriate status code
+//     res.status(200).json({ message: result });
+//   } catch (err) {
+//     res.status(404).json({ message: 'there was an error' });
+//   }
+// });
 
 webapp.get('/userposts/:username', async (req, res) => {
   try {
