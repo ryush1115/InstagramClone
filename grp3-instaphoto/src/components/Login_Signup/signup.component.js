@@ -66,10 +66,10 @@ const SignupComponent = () => {
             <form className="auth-inner">
                 <Form_Welcome/>
                 <h3> Signup</h3>
-                <Form label = "Username" type = "text" placeholder = "Username" value = {username} onChange={e => setUsername(e.target.value)}/>
-                <Form label = "Email" type = "email" placeholder = "Email" value = {email} onChange={e => setEmail(e.target.value)}/>
-                <Form label = "Password" type = "password" placeholder = "Password (more than 8 characters)" value = {password} onChange={e => setPassword(e.target.value)}/>
-                <Form label = "Re-enter Password" type = "password" placeholder = "Re-enter password" value = {confirmPassword} onChange={e => setConfirmPassword(e.target.value)}/>
+                <Form id = "Username" label = "Username" type = "text" placeholder = "Username" value = {username} onChange={e => setUsername(e.target.value)}/>
+                <Form id = "Email" label = "Email" type = "email" placeholder = "Email" value = {email} onChange={e => setEmail(e.target.value)}/>
+                <Form id = "Password1" label = "Password" type = "password" placeholder = "Password (more than 8 characters)" value = {password} onChange={e => setPassword(e.target.value)}/>
+                <Form id = "Password2" label = "Re-enter Password" type = "password" placeholder = "Re-enter password" value = {confirmPassword} onChange={e => setConfirmPassword(e.target.value)}/>
                 <Form_Submit label = "Finish" onClick={handleSubmitClick}/>
                 <p className="forgot-password text-right">
                     Already registered <a href="/sign-in" onClick={navigateToLogin}>sign in?</a>

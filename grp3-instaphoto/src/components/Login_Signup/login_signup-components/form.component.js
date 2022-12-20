@@ -9,6 +9,7 @@ const Form = (props) => {
     <div className="login-and-password">
           <label>{props.label}</label>
           <input
+            id = {props.id}
             type={props.type}
             className="form-control"
             placeholder={props.placeholder}
