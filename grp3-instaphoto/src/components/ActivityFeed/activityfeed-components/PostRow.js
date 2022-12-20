@@ -3,43 +3,19 @@ import './activityfeed.css';
 import '../../UserProfile/userprofile.css';
 import {deletePost, isMyLikePost,incrementPostLike, cancelPostLike} from '../../../api/mock_api';
 import Comments from './Comments';
+import PostPopupTag from "../../UserProfile/post-popup/post-popup-tag.component";
+import '../../UserProfile/post-popup/post-popup-tag.css';
+import LikeButton from "./LikeButton";
 
 export default function PostRow(props) {
-  const currentUserId = props.userLoginName5    // current User Id
+  const user = props.user;                      // current User
+  const currentUserId = user.username;    // current User Id
   const canDelete = props.post.username === currentUserId; // allow delete post if post author username matches current user Id
+  const canHide = props.post.username === currentUserId; // allow delete post if post author username matches current user Id
+
+  const post = props.post;
 
   const[, setDeletedPost] = useState(null);
-    const [isLiked, setIsLiked] = useState(false);
-    const [likeCounter, setLikeCounter] = useState(props.post.like.length);
-
-    // TODO: Refactor this code
-    const someFetch = async () => {
-      //using JS fetch API
-      const data = await isMyLikePost(props.post._id, props.userid);
-      console.log("Printing in post row", data);
-      setIsLiked(data);
-      console.log('sss');
-  }
- 
-    useEffect(() => {
-        someFetch();
-    }, []);
-
-    // handle increment Like
-    const handleLikeClick = async(e) => {
-      //console.log("Increment Like");
-      if(isLiked){
-        setIsLiked(false);
-        cancelPostLike(props.post._id, props.userid);
-        console.log("This is postrow.js", props.userid);
-        setLikeCounter(likeCounter - 1);
-      }else{
-        setIsLiked(true);
-        incrementPostLike(props.post._id, props.userid);
-        setLikeCounter(likeCounter + 1);
-        console.log("This is postrow.js", props.userid);
-      }
-    }
 
     const loadData = useRef(false);
 
@@ -48,11 +24,35 @@ export default function PostRow(props) {
       
       //e.preventDefault();
       console.log("Delete post (*)");
-      const newDeletedPost = await deletePost(props.post._id);
+      const newDeletedPost = await deletePost(post._id);
       console.log(newDeletedPost);
       //update load data
       
       setDeletedPost(newDeletedPost);
+      loadData.current = true;
+    }
+
+  const loadTags = () => {
+    if (post.postTagOfOtherUsers.length > 0) {
+      console.log("Loading tags")
+      console.log(post.postTagOfOtherUsers);
+      return post.postTagOfOtherUsers.map((tag) => {
+        return <PostPopupTag color={tag.color} hashtag={tag.hashtag} />
+      })
+    } else {
+      return <div className={"no-tags-text"}>No tags</div>
+    }
+  }
+    // handle Hide Post
+    const handleHidePost = async(e) => {
+  
+      //e.preventDefault();
+      console.log("Hide post (*)");
+      //const newDeletedPost = await deletePost(props.post._id);
+      //console.log(newDeletedPost);
+      //update load data
+      
+      //setDeletedPost(newDeletedPost);
       loadData.current = true;
     }
 
@@ -62,53 +62,43 @@ export default function PostRow(props) {
           <div className="postWrapper">
             <div className="postTop">
               <div className="postTopLeft">
-                <span className="postUsername" data-testid = "testing1">
-                  {props.post.username}
-                </span>
+                <a href={`/user/${post.username}`} className="postUsername" data-testid = "testing1">
+                  {post.username}
+                </a>
               </div>
             </div>
-
             <div className="postCenter">
               <img
                 className="postImage"
-                src={props.post.postImage}
+                src={post.postImage}
                 alt="" />
             </div>
-
             <div className="postBottom">
               <div className="postBottomLeft">
-                {props.post.postCaption}
+                {post.postCaption}
               </div>
             </div>
-						<div className="postBottom">
-
+            <div className="postBottom">
               <div className="postBottomLeft">
-                
                 <Comments 
-                  list={props.post.postCommentArray} 
-                  _id={props.post._id} 
+                  list={post.postCommentArray}
+                  _id={post._id}
                   props={props}
-                  userLoginName6 = {props.userLoginName5}
+                  user={user}
+                  userLoginName6 = {user.username}
                   />
               </div>
-              
-              <div>
-              </div>
-              <div className="postBottomRight">
-              </div>
-							<div style ={{'margin-top' : '2.3em'}}>	
-									<button data-testid="button-0" onClick={()=>{
-														handleLikeClick();
-									}} >{isLiked? "unLike":"Like"}
-									</button>
-									<p data-testid = "likeCounter">{likeCounter}</p>
-							</div>
-              
+              <LikeButton user={user} post={post}/>
             </div>
             <div className="postBottom-Lower" >
-            	<form id="commentBox">
-              </form>
-                {canDelete && <button type="remove" onClick={handleDeletePost}>Delete</button>}
+              <form id="commentBox"/>
+              {canDelete && <button type="remove" onClick={handleDeletePost}>Delete</button>}
+              <div className={"post-popup-footer"}>
+                <div className={"post-popup-tags"}>
+                  {loadTags()}
+                </div>
+              </div>
+                {/* {canHide && <button type="remove" onClick={handleHidePost}>Hide</button>} */}
             </div>
           </div>
         </div>

@@ -37,7 +37,7 @@ export const getUsers = async () => {
   try{
     const response = await axios.get(`${rootURL}/users`);
     return response.data.data;
-  }catch (err) {
+  } catch (err) {
     console.error(err);
   }
 }
@@ -53,6 +53,14 @@ export const getUser = async (userId) => {
   }
 };
 
+export const getUserByName = async (userName) => {
+    try {
+        return await axios.get(`${rootURL}/User-Name/${userName}`);
+    } catch (err) {
+      return err;
+    }
+}
+
 export const getTokenUser = async () => {
     try {
         const response = await fetch(`${rootURL}/gettokenuser`, {
@@ -65,6 +73,7 @@ export const getTokenUser = async () => {
         return await response.json();
     } catch (err) {
         console.error(err);
+        return err;
     }
 }
 
@@ -198,7 +207,6 @@ export const getSuggestionList= async () => {
 
 export const isMyFollowing = async (username) => {
   try {
-
     const myFollowings = await getMyFollowings();
     for(let j = 0; j < myFollowings.length; j++){
         if(myFollowings[j] === username){
@@ -299,6 +307,31 @@ export const createCommentInPost = async(PostId, CommentObject) => {
   }
 }
 
+// Hide a Post / Make a post Private
+export const makePostPrivate = async (PostId) => {
+  try {
+    console.log("Make Post Private");
+    console.log(`${PostId}`);
+    const response = await axios.put(`${rootURL}/Post/${PostId}/${false}`);
+    return response.data.data;
+  } catch(err) {
+    console.error(err);
+  }
+}
+
+// Make a post Public
+export const makePostPublic = async (PostId) => {
+  try {
+    console.log("Make Post Public");
+    console.log(`${PostId}`);
+    const response = await axios.put(`${rootURL}/Post/${PostId}/${true}`);
+    return response.data.data;
+  } catch(err) {
+    console.error(err);
+  }
+}
+
+
 // update a comment within the Post schema
 export const updateComment = async(text, postid, CommentId) => {
   try {
@@ -334,10 +367,23 @@ export const incrementPostLike = async(PostId, UserId) => {
   method: 'PUT',
   headers: {
     'Content-Type': 'application/json',
+    'x-auth-token': sessionStorage.getItem('token')
   },
   body: JSON.stringify({ PostId, UserId }),
 });
 return await response.json();
+}
+
+export const incrementPostLikeWithToken = async (PostId) => {
+    const response = await fetch('http://localhost:8000/postlike', {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+            'x-auth-token': sessionStorage.getItem('token')
+        },
+        body: JSON.stringify({ PostId }),
+    });
+    return await response.json();
 }
 
 // Cancel a Like
@@ -346,11 +392,25 @@ export const cancelPostLike = async(PostId, UserId) => {
   const response = await fetch('http://localhost:8000/postunlike', {
     method: 'PUT',
     headers: {
-      'Content-Type': 'application/json',
+        'Content-Type': 'application/json',
+        'x-auth-token': sessionStorage.getItem('token')
     },
     body: JSON.stringify({ PostId, UserId }),
   });
   return await response.json();
+ }
+
+ export const cancelPostLikeWithToken = async(PostId) => {
+    console.log("running cancel post like");
+    const response = await fetch('http://localhost:8000/postunlike', {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-auth-token': sessionStorage.getItem('token')
+        },
+        body: JSON.stringify({ PostId }),
+    });
+    return await response.json();
  }
 
 export const getUserPosts = async (username) => {

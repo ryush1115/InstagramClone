@@ -13,6 +13,26 @@
     color: white;
     /* box-shadow: 2px 3px 5px #fc7e7e; */
   }
+
+.nothing-found {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.user-profile-header-button {
+    background-color: blue;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+    width: 100%;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
   
   .logo{
     margin-top: 50px;

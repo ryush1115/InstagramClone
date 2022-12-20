@@ -1,13 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import './userprofile.css';
 import Sidebar from '../sidebar.component'
 import Dragdrop from '../dragdrop.component'
 import UserProfile_TopInfo from './user-profile-components/userprofile-topinfo.component'
 import UserProfile_Gallery from './user-profile-components/userprofile-gallery.component'
-import {getUser} from "../../api/mock_api";
-import {useParams} from "react-router-dom";
 
-export default function Userprofile(props) {
+export default function Userprofile() {
 
     const [create, setCreate] = useState('default');
 

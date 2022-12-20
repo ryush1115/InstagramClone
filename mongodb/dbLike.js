@@ -94,16 +94,17 @@ const incrementPostLike = async (PostId, UserId) => {
 };
 
 const cancelPostLike = async (PostId, UserId) => {
+  console.log('running cancel post like123');
   try {
     console.log('running cancel post like');
     const db = await getDB();
+    console.log(UserId);
     const result = await db.collection('Post').updateOne(
       { _id: ObjectId(PostId) },
       {
         $pull: { like: ObjectId(UserId) },
       },
     );
-
     console.log(`delete post like: ${JSON.stringify(result)}`);
     return result;
   } catch (err) {
