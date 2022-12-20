@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">27.27% </span>
+                <span class="strong">26.82% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>21/77</span>
+                <span class='fraction'>22/82</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">16.66% </span>
+                <span class="strong">15.38% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>2/12</span>
+                <span class='fraction'>2/13</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">28.37% </span>
+                <span class="strong">27.84% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>21/74</span>
+                <span class='fraction'>22/79</span>
             </div>
         
             
@@ -275,7 +275,15 @@
 <a name='L210'></a><a href='#L210'>210</a>
 <a name='L211'></a><a href='#L211'>211</a>
 <a name='L212'></a><a href='#L212'>212</a>
-<a name='L213'></a><a href='#L213'>213</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L213'></a><a href='#L213'>213</a>
+<a name='L214'></a><a href='#L214'>214</a>
+<a name='L215'></a><a href='#L215'>215</a>
+<a name='L216'></a><a href='#L216'>216</a>
+<a name='L217'></a><a href='#L217'>217</a>
+<a name='L218'></a><a href='#L218'>218</a>
+<a name='L219'></a><a href='#L219'>219</a>
+<a name='L220'></a><a href='#L220'>220</a>
+<a name='L221'></a><a href='#L221'>221</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
@@ -442,6 +450,14 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -658,19 +674,27 @@ const hasCommonFollowing = <span class="fstat-no" title="function not covered" >
 <span class="cstat-no" title="statement not covered" >  return count &gt;= 3;</span>
 }
 &nbsp;
+const getUserByUsername = <span class="fstat-no" title="function not covered" >as</span>ync (username) =&gt; {
+<span class="cstat-no" title="statement not covered" >  try {</span>
+    const db = <span class="cstat-no" title="statement not covered" >await getDB();</span>
+<span class="cstat-no" title="statement not covered" >    return await db.collection('User').findOne({ username: username });</span>
+  } catch (err) {
+<span class="cstat-no" title="statement not covered" >    console.log(`error: ${err.message}`);</span>
+  }
+}
+&nbsp;
 // Test part: use main function to test
 &nbsp;
 // main function to execute our code
 &nbsp;
 /*
 const main = async () =&gt; {
-  const conn = await connect();
-  //await createUser( { email: 'rachel', username: 'rachel', password: '1234567777', profilePicture:"", follow: [], id:'1235' });
+  await createUser({ email: 'rachel', username: 'rachel', password: '1234567777', profilePicture: "", follow: [], id: '1235' });
   //await getAllUsers();
-  await getUser('637fc5f683768e86f5852c1c');
-  await updateUser('637fc5f683768e86f5852c1c', 'NewPW');
-  await getUser('637fc5f683768e86f5852c1c');
-  await updateUser('637fc5f683768e86f5852c1c', 'OLDPW');
+  // await getUser('637fc5f683768e86f5852c1c');
+  // await updateUser('637fc5f683768e86f5852c1c', 'NewPW');
+  // await getUser('637fc5f683768e86f5852c1c');
+  // await updateUser('637fc5f683768e86f5852c1c', 'OLDPW');
   //await deleteUser('637aaadf3f3f430d2ce0ac9f');
 //   followUser(conn, "testUser1");
 //   unfollowUser(conn, "testUser1");
@@ -691,13 +715,13 @@ const main = async () =&gt; {
 };
 &nbsp;
 // execute main
-main();
-&nbsp;
+// main();
 */
+&nbsp;
 &nbsp;
 module.exports = {
   closeMongoDBConnection, connect, getDB, createUser, getAllUsers, getUser, updateUser, deleteUser,
-    getUserByEmail, getSuggestionList, isFollowing
+    getUserByEmail, getSuggestionList, isFollowing, getUserByUsername
   // closeMongoDBConnection, connect, getDB, createUser, getAllUsers, getUser, updateUser,
 };</pre></td></tr></table></pre>
 
@@ -706,7 +730,7 @@ module.exports = {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2022-12-12T17:41:59.883Z
+                at 2022-12-20T06:14:54.063Z
             </div>
         <script src="prettify.js"></script>
         <script>

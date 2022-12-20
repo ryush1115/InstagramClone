@@ -17,6 +17,7 @@ describe('Update a following list endpoint integration test', () => {
   let res;
   let db;
   const testUsername = "suhdadhaskjdhaskjdsah123";
+  let testUserId;
   /**
      * Make sure that the data is in the DB before running
      * any test
@@ -29,6 +30,9 @@ describe('Update a following list endpoint integration test', () => {
         .send({
           email: 'testemail', username: 'testusername', password: 'testpassword', profilePicture: 'null', follow: 'null', id: 'testid',
         });
+    
+    console.log("response for user is ", JSON.parse(response.text).data._id);
+    testUserId =  JSON.parse(response.text).data._id;
   });
 
 
@@ -46,7 +50,7 @@ describe('Update a following list endpoint integration test', () => {
   });
 
   test('Endpoint status code and response async/await', async () => {
-    res = await isMyFollowing(testUsername);
+    res = await isMyFollowing(testUserId, testUsername);
     // this testUsername initially doesn't exist in the follow list
     expect(res).toBe(false);
     
@@ -57,7 +61,7 @@ describe('Update a following list endpoint integration test', () => {
     expect(res.status).toEqual(200);
     expect(res.type).toBe('application/json');
 
-    res = await request(webapp).get('/followinglist').set('x-auth-token', '1234');
+    res = await request(webapp).get('/followinglist').set('x-auth-token', '1234')
     expect(res.status).toEqual(200);
     expect(res.type).toBe('application/json');
   });

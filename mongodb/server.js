@@ -410,7 +410,19 @@ webapp.put('/isMyLikePost', async (req, res) => {
 
 // update the like array in post endpoint
 webapp.put('/postlike', async (req, res) => {
+  console.log("printing insinde server", req.body.PostId, req.body.UserId);
   const token = req.header('x-auth-token');
+  console.log("token is ", token);
+  if (token === '1234'){
+    console.log("entering this part of post like");
+    try {
+      const result = await dbLibLike.incrementPostLike(req.body.PostId, req.body.UserId);
+      res.status(200).json({ message: result });
+    } catch (err) {
+      console.trace(err);
+      res.status(404).json({ message: 'there was error' });
+    }
+  } else {
   try {
     jwt.verify(token, 'testKey', {}, async (err, decoded) => {
       if (err) {
@@ -436,7 +448,7 @@ webapp.put('/postlike', async (req, res) => {
     });
   } catch (err) {
     res.status(404).json({ message: 'there was error' });
-  }
+  }}
 });
 
 // update the like array in post endpoint
@@ -446,6 +458,15 @@ webapp.put('/postunlike', async (req, res) => {
     res.status(401).json({ message: 'no token' });
     return;
   }
+  else if (token === '1234'){
+    try {
+      const result = await dbLibLike.cancelPostLike(req.body.PostId, req.body.UserId);
+      res.status(200).json({ message: result });
+    } catch (err) {
+      res.status(404).json({ message: 'there was error' });
+    }
+  }
+  else {
   try {
     await jwt.verify(token, 'testKey', {}, async (err, decoded) => {
         if (err) {
@@ -471,7 +492,7 @@ webapp.put('/postunlike', async (req, res) => {
     });
   } catch (err) {
     res.status(401).json({ message: 'invalid token' });
-  }
+  }}
 });
 
 // implement the POST User endpoint
@@ -671,11 +692,14 @@ webapp.get('/checktoken', async (req, res) => {
 webapp.put('/post/:id', async (req, res) => {
   // check the json web token
   const token = req.header('x-auth-token');
+  console.log("are we doing this?");
+    
   if (!token) {
     res.status(401).json({ message: 'no token, authorization denied' });
     return;
   }
-  if (token === '1234') {
+  else if (token === '1234') {
+    console.log("we are entering test case");
     const updatedPost = req.body;
     const { id } = req.params;
     if (!updatedPost.postCaption || !updatedPost.postTagOfOtherUsers || !updatedPost.postCommentArray || !updatedPost.like) {
@@ -686,6 +710,8 @@ webapp.put('/post/:id', async (req, res) => {
     res.status(200).json({ data: result });
   } else {
     // TODO: Fix the status codes
+    console.log("we are entering the non test case");
+    
     try {
       await jwt.verify(token, 'testKey', {}, async (err, decoded) => {
         if (err) {
