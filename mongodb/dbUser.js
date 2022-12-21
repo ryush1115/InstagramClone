@@ -178,44 +178,62 @@ const getUserByUsername = async (username) => {
   }
 }
 
-// Test part: use main function to test
+const failedSignIn = async (email) => {
+  try {
+    const db = await getDB();
+    const user = await db.collection('User').findOne({ email: email });
+    if (user.loginAttemptsObject.currentNumber < 3) {
+      const updatedUser = await db.collection('User').findOneAndUpdate(
+          { email: email },
+          { $inc: { "loginAttemptsObject.currentNumber": 1 }, $set: {"loginAttemptsObject.lastAttempt": Date.now() } },
+          { returnOriginal: false }
+      );
+      return updatedUser.value.loginAttemptsObject.currentNumber;
+    } else {
+      const updatedUser = await db.collection('User').findOneAndUpdate(
+          { email: email },
+          { $set: {"loginAttemptsObject.lastAttempt": Date.now() } },
+          { returnOriginal: false }
+      );
+      return updatedUser.value.loginAttemptsObject.currentNumber;
+    }
+  } catch (err) {
+    console.log(`error: ${err.message}`);
+  }
+}
 
-// main function to execute our code
+const resetFailedSignIns = async (email) => {
+  try {
+    const db = await getDB();
+    const updatedUser = await db.collection('User').findOne({ email: email });
+    if (updatedUser.loginAttemptsObject.currentNumber === 3) {
+      // If it is, set it to 0
+      const result = await db.collection('User').findOneAndUpdate(
+          { email: email },
+          { $set: { "loginAttemptsObject.currentNumber": 0, "loginAttemptsObject.lastAttempt": Date.now() } },
+          { returnOriginal: false }
+      );
+      return result.value.loginAttemptsObject.currentNumber;
+    } else {
+      return updatedUser.loginAttemptsObject.currentNumber;
+    }
+  } catch (err) {
+    console.log(`error: ${err.message}`);
+  }
+}
 
-/*
-const main = async () => {
-  await createUser({ email: 'rachel', username: 'rachel', password: '1234567777', profilePicture: "", follow: [], id: '1235' });
-  //await getAllUsers();
-  // await getUser('637fc5f683768e86f5852c1c');
-  // await updateUser('637fc5f683768e86f5852c1c', 'NewPW');
-  // await getUser('637fc5f683768e86f5852c1c');
-  // await updateUser('637fc5f683768e86f5852c1c', 'OLDPW');
-  //await deleteUser('637aaadf3f3f430d2ce0ac9f');
-//   followUser(conn, "testUser1");
-//   unfollowUser(conn, "testUser1");
-//   isMyFollowing(conn, "testUser1");
-//   isMyFollowing(conn, "Elmer.Weissnat10");
-//   getCommentsArray(conn,'637aaaf308e936a0c97e4a31');
-//   getCommentMessage(conn, "637aab0cbbb5ce45b921c599");
-
-//   const testComment = {
-//     username: 'testUser',
-//     message: 'testContent',
-//     tagOfOtherUsers: '',
-//     id: '',
-//   };
-
-//   createComment(conn, testComment);
-//   createCommentInPost(conn, '637aaaf308e936a0c97e4a31', testComment);
-};
-
-// execute main
-// main();
-*/
-
+const getLoginAttempts = async (email) => {
+    try {
+      const db = await getDB();
+      const user = await db.collection('User').findOne({email: email});
+      return user.loginAttemptsObject;
+    } catch (err) {
+        console.log(`error: ${err.message}`);
+    }
+}
 
 module.exports = {
   closeMongoDBConnection, connect, getDB, createUser, getAllUsers, getUser, updateUser, deleteUser,
-    getUserByEmail, getSuggestionList, isFollowing, getUserByUsername
-  // closeMongoDBConnection, connect, getDB, createUser, getAllUsers, getUser, updateUser,
+  getUserByEmail, getSuggestionList, isFollowing, getUserByUsername, failedSignIn, resetFailedSignIns,
+  getLoginAttempts
 };

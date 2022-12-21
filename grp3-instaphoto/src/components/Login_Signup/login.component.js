@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 import {useNavigate} from 'react-router-dom';
 import './login_signup.css';
 import Form from './login_signup-components/form.component'
@@ -9,6 +9,7 @@ import {verifyUser} from '../../api/mock_api';
 const LoginComponent=()=>{
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [failedMessage, setFailedMessage] = useState('');
 
   const navigate = useNavigate();
   const navigateToSignup = () => {
@@ -17,11 +18,25 @@ const LoginComponent=()=>{
 
   const login = async (email, password) => {
     const data = await verifyUser(email, password);
+    if (data.status === 403) {
+      // show the user that they failed to sign in!
+      const failedNumber = data.message;
+      if (failedNumber >= 3) {
+        setFailedMessage('You have failed to sign in 3 times. Please try again later.');
+      } else if (failedNumber < 3) {
+        setFailedMessage("You have failed to sign in " + failedNumber + " times. Please try again.");
+      }
+    }
     if (data.error) {
         alert(data.error);
-    } else {
+    } else if (data.status === 200) {
+      console.log("password good!");
+      console.log(data);
       sessionStorage.setItem('token', data.token);
       navigate('/user-profile');
+    } else {
+      console.log("password bad!");
+      console.log(data);
     }
   }
   const validateEmail = (email) => {
@@ -51,13 +66,6 @@ const LoginComponent=()=>{
     }
   };
 
-    // first do the validation in the front end
-    // have a wrapper function to call to encapsulate the two function (1. validate email format/pw lenght)
-    // &. 2. check if email is in database
-    // try to get a certain based on email key, if get an error then user does not exist, direct to sign up
-
-    // to transition from 1 page to another, use a hook called useNavigate
-
   if (sessionStorage.getItem("token")) {
     window.location.href = "/user-profile";
   } else {
@@ -69,8 +77,12 @@ const LoginComponent=()=>{
           <Form_Submit label = "Sign in" onClick={(e) => handleSubmitClick(e)}/>
 
           <p className="login-create-account text-right">
-            Don't have an account? <br></br>
+            Don't have an account?
+            <br></br>
             <a href="#" onClick={navigateToSignup}> Sign up now to join communities across the globe </a>
+          </p>
+          <p className={"failed-text"}>
+            {failedMessage}
           </p>
         </form>
     )
