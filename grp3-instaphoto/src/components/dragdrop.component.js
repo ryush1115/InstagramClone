@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import '../dragdrop.css';
 import {createPost, getTokenUser, getUserPosts} from '../api/mock_api';
+import axios from 'axios';
 
 
 // <input> elements with type="file" let the user choose one or more files from their device storage.
@@ -16,60 +17,66 @@ export default function DragDrop(props) {
   const inputRef = React.useRef(null);
 
   const [username, setUsername] = useState("");
+  const [file, setFile] = useState();
+  const [caption, setCaption] = useState("");
+  const [images, setImages] = useState([]);
 
 
-  // drag state, initialized to false
-  const [dragActive, setDragActive] = React.useState(false);  
   useEffect(() => {
       getTokenUser().then((user) => {
           setUsername(user.data.username);
       });
   }, []);
 
-
-  const [, setNewPost] = useState(null);
+//   const [, setNewPost] = useState(null);
 
   // create variables for post creation
   let newPostComment;
   let newPostImage;
-
 
   const handleOnChange = function(e) {
     e.preventDefault();
     
     if (e.target.name==="caption") {
      newPostComment = e.target.value;
+     setCaption(e.target.value);
     }
     if (e.target.name==="postImage") {
       newPostImage = e.target.value; 
      }
   }
 
-  const onButtonClick =() => {
-    inputRef.current.click();
+  const submit = async event => {
+    event.preventDefault()
+
+    const formData = new FormData();
+    formData.append("image", file)
+    formData.append("caption", caption)
+    await axios.post("/postsfile", formData, { headers: {'Content-Type': 'multipart/form-data'}})
   }
 
   const handleCreatePost = async (e) => {
     // stop default behavior to avoid reloading the page
     e.preventDefault();
     // create new Post variable
-      console.log(username);
-        console.log(newPostComment);
+    console.log(username);
+    console.log(newPostComment);
     const newPost = {username: username, postImage: newPostImage, postCaption: newPostComment, publicPrivate:true, postTagOfOtherUsers:[], postCommentArray:[], like: []};
     // clear the form
-    const form = document.getElementById('add-post');
+   //const form = document.getElementById('add-post');
+
     
     // send POST request to create the Post
-    const newStoredPost = await createPost(newPost);
+    //const newStoredPost = await createPost(newPost);
     
     // newStoredPost has an id
     // then update state to trigger re-rendering and load
-    // the list of Post (FilterablePostTable) from
-    // backend
-    setNewPost(newStoredPost);
-    //props.setCreate('default');
+    // the list of Post (FilterablePostTable) from backend
+    //setNewPost(newStoredPost);
+    
+    
     // reload the page
-    window.location.reload();
+    //window.location.reload();
   };
 
   // when dragActive is true, add an invisible elemnt to cover the entire state form. 
@@ -80,19 +87,20 @@ export default function DragDrop(props) {
             <div className="create-post_">
                 <div className="create-post-content_">
                     <div className="create-post_title_">Create a new post!</div>
-                    <form id="form-file-upload" onSubmit={handleCreatePost}>
-                        <p>Create a Post Here!! </p>
+                    <form id="form-file-upload" onSubmit={submit}>
+                        <p> Create a Post Here!! </p>
                         <input
                             type="text"
                             name="caption"
                             placeholder="Enter a caption..."
-                            onChange={handleOnChange}
+                            onChange={e => setCaption(e.target.value)}
                         />
                         <input
                             type="file"
+                            accept="image/*"
                             name="postImage"
                             placeholder="Add a url"
-                            onChange={handleOnChange}
+                            onChange={e => setFile(e.target.files[0])} 
                         />
                         <button type="submit">Create Post</button>
                     </form>
