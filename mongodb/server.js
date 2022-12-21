@@ -265,10 +265,24 @@ webapp.put('/comments/:commentid/:postid/:message', async (req, res) => {
 });
 
 // implement the GET in /posts endpoint
-webapp.get('/post', async (req, res) => {
+webapp.get('/post/:page', async (req, res) => {
   try {
     // get the data from the db
-    const results = await dbLibPost.getPosts();
+    const results = await dbLibPost.getPosts(req.params.page);
+    // send the response with the appropriate status code
+    // console.log(results.username);
+
+    res.status(200).json({ data: results });
+  } catch (err) {
+    res.status(404).json({ message: 'there was error' });
+  }
+});
+
+// implement the GET in /posts endpoint
+webapp.get('/postAll/:page', async (req, res) => {
+  try {
+    // get the data from the db
+    const results = await dbLibPost.getPostsAll(req.params.page);
     // send the response with the appropriate status code
     // console.log(results.username);
 

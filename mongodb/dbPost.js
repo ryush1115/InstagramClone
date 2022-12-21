@@ -35,12 +35,48 @@ const getDB = async () => {
   return MongoConnection.db();
 };
 
-const getPosts = async () => {
+
+
+const getPosts = async (page) => {
   try {
     // get the db
-
+    const pageValue = page || 0;
+    console.log("page value is ", pageValue);
+    const postsPerPage = 3;
+    let posts = [];
     const db = await getDB();
-    return await db.collection('Post').find({}).toArray();
+    posts = await db.collection('Post')
+    .find({})
+    .sort({_id:-1})
+    .skip(pageValue * postsPerPage)
+    .limit(postsPerPage)
+    .toArray()
+    
+    console.log("printing type of posts", posts);
+
+    return posts;
+  } catch (err) {
+    console.log(`error: ${err.message}`);
+  }
+};
+
+const getPostsAll = async (page) => {
+  try {
+    // get the db
+    const pageValue = page || 0;
+    console.log("page value is ", pageValue);
+    const postsPerPage = 3;
+    let posts = [];
+    const db = await getDB();
+    posts = await db.collection('Post')
+    .find({})
+    .sort({_id:-1})
+    .limit((pageValue+1)*postsPerPage)
+    .toArray()
+    
+    console.log("printing type of posts", posts);
+
+    return posts;
   } catch (err) {
     console.log(`error: ${err.message}`);
   }
@@ -153,5 +189,5 @@ module.exports = {
   getUsers,
   getSuggestionList,
   changePostPrivateOrPublic,
-  // hasCommonFollowings
+  getPostsAll
 };
