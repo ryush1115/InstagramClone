@@ -4,6 +4,19 @@
 // backend ==> require
 const express = require('express');
 
+// to lock a user out after 3 unsuccessful attempts we'll need to keep track of:
+// their attempt count
+// a time stamp of their first attempt
+// we should store a sign-in-attempts object
+// it should timestamp the last unsuccessful attempt for a user, and increment the value after each attempt
+// on the login page, we should check if their attempt number is 2
+// if it is, and we're within a certain time thresh hold since their last attempt, we lock them out
+
+// we'll need to update:
+// login page
+// mock api function for logging in
+
+
 const session = require('express-session');
 
 // (2) import and enable cors
@@ -37,6 +50,7 @@ const dbLibPost2 = require('./dbCreatePost');
 
 // import the db interactions modules
 const dbLibUser = require('./dbUser');
+const {failedSignIn, resetFailedSignIns, getLoginAttempts} = require("./dbUser");
 
 /*
 // start the server and connect to the DB
@@ -75,35 +89,6 @@ webapp.get('/followinglist', async (req, res) => {
     console.trace(err);
   }
 });
-
-// TODO: Test this endpoint
-/*
-webapp.get('/get-suggestion-list', async (req, res) => {
-  // check the token
-  const token = req.header('x-auth-token');
-  if (!token) {
-    res.status(404).json({ message: 'no token, authorization denied' });
-  }
-  try {
-    await jwt.verify(token, 'testKey', {}, async (err, decoded) => {
-      if (err) {
-        res.status(404).json({ message: 'token is not valid' });
-        return;
-      }
-      const user = await dbLibUser.getUser(decoded.id);
-      if (!user) {
-        res.status(404).json({ message: 'user not found' });
-        return;
-      }
-
-      const suggestionList = await dbLibUser.getSuggestionList(decoded.id);
-      res.status(200).json({ data: suggestionList });
-    });
-  } catch (err) {
-    res.status(404).json({ message: 'there was error' });
-  }
-});
-*/
 
 // update the follow list in /followinglist endpoint
 webapp.put('/followinglist', async (req, res) => {
@@ -292,34 +277,6 @@ webapp.get('/postAll/:page', async (req, res) => {
   }
 });
 
-/**
-webapp.delete('/student/:id', async (req, res) => {
-  console.log('DELETE a student');
-  try {
-    const result = await dbLib.deleteStudent(req.params.id);
-    if (result.deletedCount === 0) {
-      res.status(404).json({ error: 'student not in the system' });
-      return;
-    }
-    // send the response with the appropriate status code
-    res.status(200).json({ message: result });
-  } catch (err) {
-    res.status(404).json({ message: 'there was error' });
-  }
-});
-
-MOCK API
-// Delete a Post
-export const deletePost = async(PostId) => {
-  try {
-    const response = await axios.delete(`${rootURL}/Post/${PostId}`);
-    return response.data.data;
-  } catch (err) {
-    console.error(err);
-  }
-}
- */
-
 webapp.delete('/Post/:id', async (req, res) => {
   try {
     const result = await dbLibPost2.deletePost(req.params.id);
@@ -490,13 +447,17 @@ webapp.put('/postunlike', async (req, res) => {
 
 // implement the POST User endpoint
 webapp.post('/user/', async (req, res) => {
-  // parse the body of the request to make surea all fields are present
+  // parse the body of the request to make sure all fields are present
   // eslint-disable-next-line max-len
   if (!req.body.email || !req.body.username || !req.body.password || !req.body.profilePicture || !req.body.follow || !req.body.id) {
     res.status(404).json({ message: 'missing email, username, password, profilePicture, follow or id' });
     return;
   }
   try {
+    const loginAttemptsObject = {
+      lastAttempt: Date(),
+      currentNumber: 0
+    };
     // create new user
     const newUser = {
       email: req.body.email,
@@ -504,6 +465,7 @@ webapp.post('/user/', async (req, res) => {
       password: req.body.password,
       profilePicture: req.body.profilePicture,
       follow: req.body.follow,
+      loginAttemptsObject: loginAttemptsObject,
       id: req.body.id,
     };
     const result = await dbLibUser.createUser(newUser);
@@ -574,27 +536,44 @@ webapp.post('/login', async (req, res) => {
   if (!user) {
     res.status(401).json({ message: 'invalid email' });
   }
-  bcrypt.compare(password, user.password, (err, result) => {
+  bcrypt.compare(password, user.password, async (err, matched) => {
     if (err) {
-      res.status(401).json({ message: 'invalid password' });
+      // call something that increments the user's failed sign-ins
+      console.trace(err);
+      const number = await failedSignIn(email);
+      res.status(403).json({ message: 'invalid password', number: number });
+      return;
     }
-    try {
-      // issue a token here
-      jwt.sign({ id: user._id }, 'testKey', { expiresIn: 3600 }, (err, token) => {
-        if (err) {
-            res.status(401).json({ message: 'invalid password' });
+    if (matched) {
+      const lastAttemptObject = await getLoginAttempts(email);
+      if (lastAttemptObject.currentNumber < 3 || lastAttemptObject.lastAttempt < Date.now() - 60000) { // 1 minute
+        try {
+          // issue a token here
+          await jwt.sign({id: user._id}, 'testKey', {expiresIn: 3600}, async (err, token) => {
+            if (err) {
+              res.status(401).json({message: 'token signing failed!'});
+            }
+            await resetFailedSignIns(email);
+            req.session.token = token;
+            res.status(200).json({
+              token,
+              user: {
+                id: user._id,
+                email: user.email,
+              },
+            });
+          });
+        } catch (err) {
+          res.status(404).json({message: 'invalid token'});
         }
-        req.session.token = token;
-        res.status(200).json({
-          token,
-          user: {
-            id: user._id,
-            email: user.email,
-          },
-        });
-      });
-    } catch (err) {
-      res.status(404).json({ message: 'invalid token' });
+      } else {
+        res.status(403).json({message: 'too many failed sign-ins, try again later.',
+          number: lastAttemptObject.currentNumber});
+      }
+    } else {
+      const number = await failedSignIn(email);
+      console.log("number is ", number);
+      res.status(403).json({ message: 'invalid password', number: number });
     }
   });
 });
@@ -611,15 +590,20 @@ webapp.post('/signup', async (req, res) => {
   }
   const salt = await bcrypt.genSalt(10);
   const hash = await bcrypt.hash(password, salt);
+  const loginAttemptsObject = {
+    lastAttempt: Date.now(),
+    currentNumber: 0
+  };
   const newUser = {
-    username,
-    email,
+    username: username,
+    email: email,
     password: hash,
     profilePicture: '',
     bio: '',
     followers: [],
     following: [],
     posts: [],
+    loginAttemptsObject: loginAttemptsObject,
   };
   const result = await dbLibUser.createUser(newUser);
   jwt.sign({ id: result }, 'testKey', { expiresIn: 3600 }, (err, token) => {
