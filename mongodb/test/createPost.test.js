@@ -96,4 +96,11 @@ describe('POST enpoint tests', () => {
             });
         expect(res.status).toEqual(404);
     });
+
+    test ('post is deleted', async () => {
+        const postId = JSON.parse(response.text).data._id
+        const res = await request(webapp).delete(`/Post/${postId}`) 
+        expect(res.status).toEqual(200);
+    })
+
 });
