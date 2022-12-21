@@ -25,7 +25,14 @@ describe('GET "/user/:id" endpoint integration test', () => {
   //let testUser;
   // test resource to create / expected response
   const testUser = {
-    email: 'testemail', username: 'testusername', password: 'testpassword', profilePicture: 'null', follow: 'null', id: 'testid',
+    username: "testusername",
+    email: "testuser@gmail.com",
+    password: "test1234",
+    profilePicture: '',
+    bio: '',
+    followers: [],
+    following: [],
+    posts: [],
   };
   /**
  * Make sure that the data is in the DB before running
@@ -35,13 +42,13 @@ describe('GET "/user/:id" endpoint integration test', () => {
   beforeAll(async() => {
     mongo = await connect();
     db = mongo.db();
-    const res = await request(webapp).post('/user')
-      .send({
-        email: 'testemail', username: 'testusername', password: 'testpassword', profilePicture: 'null', follow: 'null', id: 'testid',
-      });
+    const res = await request(webapp).post('/signup')
+      .send(testUser);
       // eslint-disable-next-line no-underscore-dangle
-    testID = JSON.parse(res.text).data._id;
-    testUserTemp = JSON.parse(res.text).data;
+    // console.log(res);
+    testID = JSON.parse(res.text).user.id;
+    // console.log(testID);
+    // testUserTemp = JSON.parse(res.text).data;
   });
 
   //'email=testemail&username=testusername&password=testpassword&profilePicture=null&follow=null&id=testid'
@@ -53,6 +60,8 @@ describe('GET "/user/:id" endpoint integration test', () => {
     try {
       const result = await db.collection('User').deleteOne({ username: 'testusername' });
       console.log('result', result);
+      await mongo.close();
+      await closeMongoDBConnection(); // mongo client that started server.
     } catch (err) {
       console.log('error', err.message);
     }
@@ -79,12 +88,12 @@ describe('GET "/user/:id" endpoint integration test', () => {
 
     const userEmail = JSON.parse(resp.text).data;
     // testStudent is in the response
-    expect(userEmail).toEqual(testUserTemp);
+    expect(userEmail.email).toEqual("testuser@gmail.com");
   });
 
   test('isFollowing', async() => {
     const resp = await request(webapp).post('/testisfollowing').send({
-      userID: "638ce9841acf9196840abd4e",
+      userID: testID,
       otherUserID: "638ce9a41acf9196840abd4f"
     })
     expect(resp.status).toEqual(200);

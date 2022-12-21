@@ -48,6 +48,11 @@ describe('Post endpoint integration test', () => {
     expect(res.status).toEqual(200);
     expect(res.type).toBe('application/json');
 
+    res = await request(webapp).get('/postAll/0');
+    expect(res.status).toEqual(200);
+    expect(res.type).toBe('application/json');
+
+
     // // // testing getUserPost
     res = await request(webapp).get('/userposts/grp3foreva');
     expect(res.status).toEqual(200);

@@ -25,7 +25,13 @@ describe('Update a following list endpoint integration test', () => {
   beforeAll(async () => {
     mongo = await connect();
     db = mongo.db();
-
+    const response = await request(webapp).post('/user')
+        .send({
+          email: 'testemail', username: 'testusername', password: 'testpassword', profilePicture: 'null', follow: 'null', id: 'testid',
+        });
+    
+    console.log("response for user is ", JSON.parse(response.text).data._id);
+    testId =  JSON.parse(response.text).data._id;
   });
 
 
@@ -35,6 +41,8 @@ describe('Update a following list endpoint integration test', () => {
  */
   afterAll(async () => {
     try {
+      const result = await db.collection('User').deleteOne({ username: 'testusername' });
+      console.log('result', result);
       await mongo.close();
       await closeMongoDBConnection(); // mongo client that started server.
     } catch (err) {
@@ -43,7 +51,7 @@ describe('Update a following list endpoint integration test', () => {
   });
 
   test('Endpoint status code and response async/await', async () => {
-    res = await isMyFollowing(testUsername);
+    res = await isMyFollowing(testId, testUsername);
     // this testUsername initially doesn't exist in the follow list
     expect(res).toBe(false);
     
@@ -54,7 +62,7 @@ describe('Update a following list endpoint integration test', () => {
     expect(res.status).toEqual(200);
     expect(res.type).toBe('application/json');
 
-    res = await isMyFollowing(testUsername);
+    res = await isMyFollowing(testId, testUsername);
     expect(res).toBe(false);
     // now this testUsername is followed
 
@@ -66,7 +74,7 @@ describe('Update a following list endpoint integration test', () => {
     expect(res.status).toEqual(200);
     expect(res.type).toBe('application/json');
 
-    res = await isMyFollowing(testUsername);
+    res = await isMyFollowing(testId, testUsername);
     expect(res).toBe(false);
     // now this testUsername is unfollowed again
 

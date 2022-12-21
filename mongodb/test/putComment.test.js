@@ -16,7 +16,8 @@ let mongo;
 describe('PUT enpoint tests', () => {
   let db; // the db
   let response; // the response from our express server
-  let testId;
+  let commentId;
+
   /**
      * We need to make the request to the endpoint
      * before running any test.
@@ -30,11 +31,16 @@ describe('PUT enpoint tests', () => {
     // get the db
     db = mongo.db();
     // send the request to the API and collect the response
+    const newComment = {
+      username: "testusernme",
+      message: "testmessage",
+      tagOfOtherUsers: [],
+      id: "639ca675f56694f0db8f72f1",
+    };
     response = await request(webapp).post('/comments')
-      .send({
-        message: 'testcomment', username: 'testusername', tagOfOtherUsers: 'testtag', id: 'testid',
-      });
-    testId = JSON.parse(response.text).data._id;
+      .send(newComment);
+      console.log(JSON.parse(response.text));
+    commentId = JSON.parse(response.text).data._id;
   });
   /**
  * removes all testing data from the DB
@@ -70,20 +76,17 @@ describe('PUT enpoint tests', () => {
     expect(response.status).toBe(201); // status code
     // expect the new comment added successfully
 
-    response = await request(webapp).put(`/comments/${testId}`)
-      .send({
-        message: 'updatedMessage',
-      });
+    response = await request(webapp).put(`/comments/${commentId}/639ca675f56694f0db8f72f1/testmessage`)
     //'message=updatedMessage'
     expect(response.status).toEqual(200);
     expect(response.type).toBe('application/json');
 
-    const updatedComment = await db.collection('Comment').findOne({ _id: ObjectId(testId) });
-    expect(updatedComment.message).toEqual('testcomment');
+    const updatedComment = await db.collection('Comment').findOne({ _id: ObjectId(commentId) });
+    expect(updatedComment.message).toEqual('testmessage');
   });
 
   test('missing message 404', async () => {
-    response = await request(webapp).put(`/comments/${testId}`)
+    response = await request(webapp).put(`/comments/${commentId}`)
       .send('major=music');
     expect(response.status).toEqual(404);
   });

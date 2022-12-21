@@ -64,7 +64,7 @@ describe('PUT enpoint tests', () => {
         // expect new post to be added successfully
 
         const post = await db.collection('Post').findOne({ _id: ObjectId(testPostID) });
-
+        console.log("it found the post", post);
         const updatedPost = {
             username: post.username, postImage: post.postImage, postCaption: 'newcaption', publicPrivate: false, postTagOfOtherUsers: [], postCommentArray: [], postLikeArray: [], like: [],
         }

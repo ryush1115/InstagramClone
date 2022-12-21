@@ -22,14 +22,22 @@ describe('PUT enpoint tests', () => {
     mongo = await connect();
     // get the db
     db = mongo.db();
+    const newUser = {
+      username:"testusername",
+      email:"test@gmail.com",
+      password: "test1234",
+      profilePicture: '',
+      bio: '',
+      followers: [],
+      following: [],
+      posts: [],
+    };
     // send the request to the API and collect the response
-    response = await request(webapp).post('/user')
-      .send({
-        email: 'testemail', username: 'testusername', password: 'testpassword', profilePicture: 'null', follow: 'null', id: 'testid',
-      });
+    response = await request(webapp).post('/signup')
+      .send(newUser);
     //'email=testemail&username=testusername&password=testpassword&profilePicture=null&follow=null&id=testid'
     // eslint-disable-next-line no-underscore-dangle
-    testUserID = JSON.parse(response.text).data._id;
+    testUserID = JSON.parse(response.text).user.id;
   });
 
 /**
@@ -60,7 +68,7 @@ describe('PUT enpoint tests', () => {
   });
 
   test('change the pw of this new user', async () => {
-    expect(response.status).toBe(201); // status code
+    expect(response.status).toBe(200); // status code
     // expect new user to be added successfully
 
     response = await request(webapp).put(`/user/${testUserID}`)
