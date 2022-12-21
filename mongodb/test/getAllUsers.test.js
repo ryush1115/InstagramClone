@@ -21,9 +21,16 @@ describe('GET "/users" endpoint integration test', () => {
    */
   let db;
   let testUserID;
-  const testUser = { email: 'testemail', username: 'testusername', password: 'testpassword', profilePicture: 'null', follow: 'null', id: 'testid' };
-// test resource to create / expected response
-
+  const testUser = {
+    username:"testusername",
+    email:"test@gmail.com",
+    password: "test1234",
+    profilePicture: '',
+    bio: '',
+    followers: [],
+    following: [],
+    posts: [],
+  };
 
 /**
  * Make sure that the data is in the DB before running
@@ -33,14 +40,19 @@ describe('GET "/users" endpoint integration test', () => {
   beforeAll(async() => {
     mongo = await connect();
     db = mongo.db();
-    const res = await request(webapp).post('/user')
-      .send({
-        email: 'testemail', username: 'testusername', password: 'testpassword', profilePicture: 'null', follow: 'null', id: 'testid',
-      });
-    // eslint-disable-next-line no-underscore-dangle
-    //testID = JSON.parse(res.text).data._id;
-    // eslint-disable-next-line no-underscore-dangle
-    testUserID = JSON.parse(res.text).data._id;
+    const newUser = {
+      username:"testusername",
+      email:"test@gmail.com",
+      password: "test1234",
+      profilePicture: '',
+      bio: '',
+      followers: [],
+      following: [],
+      posts: [],
+    };
+    response = await request(webapp).post('/signup')
+      .send(newUser);
+    testUserID = JSON.parse(response.text).user.id;
   });
 
    /**
@@ -78,6 +90,13 @@ describe('GET "/users" endpoint integration test', () => {
 
     const userArray = JSON.parse(resp.text).data;
     // testStudent is in the response
-    expect(userArray).toEqual(expect.arrayContaining([{ _id: testUserID, ...testUser }]));
+    expect(userArray).toEqual(          // 1
+    expect.arrayContaining([      // 2
+      expect.objectContaining({   // 3
+        _id: testUserID               // 4
+      })
+    ])
+  )
+
   });
 });
