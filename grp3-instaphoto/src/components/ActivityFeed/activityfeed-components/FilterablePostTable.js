@@ -4,35 +4,57 @@ import PostTable from './PostTable'
 import InfiniteScroll from "react-infinite-scroll-component";
 import Loader from './infinitescroll-components/loader.js';
 import EndMsg from './infinitescroll-components/endmsg.js';
+import NewPostAlert from "./NewPostAlert";
 
 export default function FilterablePostTable(props) {
     // Local state to store and update the list of Posts
     const [roster, setRoster] = useState([]);
-    const[page, setPage]  = useState(0);
-    const [hasMore, sethasMore] = useState(true);
+    const [page, setPage]  = useState(0);
+    const [hasMore, setHasMore] = useState(true);
 
     const user = props.user;
-    
-    // ref to indicate if this is the first rendering
-    const firstRendering = useRef(true);
-    // get the list of [Timeline] Posts from the backend
 
-    // console.log("FilterablePostTable.js");
-    
+    let postsLength = useRef(0);
+    const MINUTE_MS = 6000;
+
+    const [newPosts, setNewPosts] = useState(false);
+
     useEffect(() => {
       // get the list of [Timeline] Posts from the backend
       async function fetchData() {
+
+          let posts = await getPosts();
+          console.log(posts.data);
+          console.log(posts.data.length);
+
+          for (let i = 0; i < posts.data.length; i++) {
+              if (posts.data[i].publicPrivate===false) {
+                  if (posts.data[i].username === user.username) {
+                      continue;
+                  } else if (user.following.includes(posts.data[i].username)) {
+                      console.log("following");
+                      console.log(posts.data[i]);
+                      continue;
+                  } else {
+                      posts.data.splice(i, 1);
+                      i--;
+                  }
+              }
+          }
+
+          console.log(posts.data);
+          console.log(posts.data.length);
+
+          postsLength.current = posts.data.length;
+
           console.log("FilterablePostTable.js useEffect");
-          const data = await getPostsAll(page); // maybe we should make a different API call that loads everything, except of skipping for the 10 second refreshes? How will that affect where the cursor is?
+          let data = await getPostsAll(page);
           console.log('data length is', data.length, "with page", page);
-          // console.log("FilterablePostTable.js useEffect data");
-          // console.log(data);
-          // console.log(user);
 
           //for each loop
             for (let i = 0; i < data.length; i++) {
                 if (data[i].publicPrivate===false) {
-                    if (data[i].username===user) {
+                    if (data[i].username === user.username) {
                        continue;
                     } else if (user.following.includes(data[i].username)) {
                         continue;
@@ -42,22 +64,35 @@ export default function FilterablePostTable(props) {
                     }
                 }
             }
-            if (roster.length !== data.length) {
-                setRoster(data);
-            }
+            setRoster(roster.concat(data));
       }
+      fetchData();
 
-      // only load data on the first rendering or
-      // when a new post is created
-      if (firstRendering.current || props.reload.current) {
-        firstRendering.current = false;
-        props.reload.current = false; // set reload to false
-        fetchData();
-      }
-    
-      setInterval(() => {
-        fetchData();
-      }, 1000000);
+
+
+      const interval = setInterval(async () => {
+          console.log("FilterablePostTable.js useEffect setInterval");
+          const data = await getPosts();
+          let posts = data.data;
+          for (let i = 0; i < posts.length; i++) {
+              if (posts[i].publicPrivate===false) {
+                  if (posts[i].username === user.username) {
+                      continue;
+                  } else if (user.following.includes(posts[i].username)) {
+                      continue;
+                  } else {
+                      posts.splice(i, 1);
+                      i--;
+                  }
+              }
+          }
+          console.log(posts.length);
+          if (postsLength.current !== posts.length) {
+                setNewPosts(true);
+          }
+      }, MINUTE_MS);
+
+      return () => clearInterval(interval);
     },[]);
 
     function timeout(delay) {
@@ -68,7 +103,8 @@ export default function FilterablePostTable(props) {
       await timeout(2000);
       setPage(page+1);
       console.log("new page is ", page);
-      const newData = await getPosts(page);
+      let newData = await getPostsAll(page);
+      console.log("new data is ", newData);
       for (let i = 0; i < newData.length; i++) {
         if (newData[i].publicPrivate===false) {
             if (newData[i].username===user) {
@@ -82,11 +118,10 @@ export default function FilterablePostTable(props) {
         }
     }
     if (newData.length === 0 || newData.length < 3) {
-      sethasMore(false);
+      setHasMore(false);
       return;
     }
-      setRoster([...roster, ...newData]);
-      
+      setRoster(roster.concat(newData));
     };
 
     return (
@@ -97,7 +132,8 @@ export default function FilterablePostTable(props) {
       loader={<Loader />}
       endMessage={<EndMsg />}
       >
-        <PostTable user={user} username={user.username} posts={roster} userid ={user._id} userLoginName4 = {props.userLoginName3}/>
+          {newPosts ? <NewPostAlert /> : null}
+        <PostTable user={user} posts={roster} />
         </InfiniteScroll>
     );
 }
