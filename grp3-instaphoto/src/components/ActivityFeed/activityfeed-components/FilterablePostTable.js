@@ -29,7 +29,7 @@ export default function FilterablePostTable(props) {
           console.log(posts.length);
 
           for (let i = 0; i < posts.length; i++) {
-              if (posts[i].publicPrivate===false) {
+              if (posts[i].publicPrivate===true) {
                   if (posts[i].username === user.username) {
                       continue;
                   } else if (user.following.includes(posts[i].username)) {
