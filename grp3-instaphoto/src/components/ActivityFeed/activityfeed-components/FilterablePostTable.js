@@ -11,6 +11,7 @@ export default function FilterablePostTable(props) {
     const [roster, setRoster] = useState([]);
     const [page, setPage]  = useState(0);
     const [hasMore, setHasMore] = useState(true);
+    const [hasMoreInd, setHasMoreInd] = useState(true);
 
     const user = props.user;
 
@@ -121,19 +122,19 @@ export default function FilterablePostTable(props) {
       await timeout(2000);
       setPage(page+1);
       newPage = newPage+ 1;
-      console.log("new page is ", page);
-      let newData = await getPosts(newPage);
+      console.log("new page is ", page+newPage);
+      let newData = await getPosts(page+newPage);
       console.log("new data is ", newData.data[0].username);
-      const newPosts = new Set();
+      const newPosts = [];
       newData = newData.data;
       for (let i = 0; i < newData.length; i++) {
         if (newData[i].publicPrivate===true) {
             if (newData[i].username===user.username) {
                 console.log("it should be going here");
-                newPosts.add(newData[i]);
+                newPosts.push(newData[i]);
                continue;
             } else if (user.following.includes(newData[i].username)) {
-                newPosts.add(newData[i]);
+                newPosts.push(newData[i]);
                 continue;
             } else {
                 newData.splice(i, 1);
@@ -143,20 +144,28 @@ export default function FilterablePostTable(props) {
     }
 
     console.log("printing in infinite loop", newPosts);
+    
+    let counter = 0;
     while (newPosts.length === 0){
+        console.log("i'm entering this loop?");
         fetchNewData();
+        counter ++;
+        if (counter >7) {
+            break;
+        }
     }
 
     
     console.log("printing in infinite loop roster", newPosts.length);
-    const setPosts = new Set(roster.concat(...newPosts))
+    const setPosts = [...roster, ...newPosts];
     setRoster(setPosts);
     
     if (newPosts.length === 0 || newPosts.length < 3) {
+        console.log("entering end statement");
+        await timeout(3000);  
       setHasMore(false);
       return;
     }
-
     };
 
     return (
