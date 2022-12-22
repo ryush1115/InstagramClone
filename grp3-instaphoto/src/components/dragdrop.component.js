@@ -101,7 +101,7 @@ export default function DragDrop(props) {
                             onChange={e => setImage(e.target.files[0])} 
                         />
                     </form>
-                    <button onClick={()=>setPicture()}>Comfirm the image</button>
+                    <button onClick={()=>setPicture()}>Confirm the image</button>
                     <button onClick={()=>handleCreatePost()}>Create Post</button>
                 </div>
 

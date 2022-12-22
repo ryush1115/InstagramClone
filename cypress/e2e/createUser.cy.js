@@ -11,11 +11,9 @@ describe('Test that we can create a new User', () => {
     
     // click on Finish button
     cy.get('button').click()
-
     // check that we have landed on user profile
     cy.contains('Profile')
     cy.contains('Activity Feed')
-    cy.contains('grp3rocks')
     
     
   })
