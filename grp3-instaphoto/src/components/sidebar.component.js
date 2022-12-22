@@ -96,43 +96,6 @@ export default function Sidebar(props) {
                       </Card.Body>
                   </div>
                   <br></br>
-                  <div className = 'suggestions'>
-                      <p className="suggestion-text">Suggestions for you</p>
-                      <button className="show-all-btn" onClick = {navigateToSuggestions}>See all</button>
-                      <div className="profile-card">
-                          <div>
-                              <img className = 'other-user' src='https://i.ibb.co/hDvzykn/ellipse504.jpg' alt=""/>
-                              <img className = 'other-user' alt=""/>
-
-                          </div>
-                          <button className="action-btn" type="button">
-                              <span className="username">{FriendSuggestionList[0]}</span>
-                              <span className="follow">Follow</span>
-                          </button>
-                      </div>
-                      <div className="profile-card">
-                          <div>
-                              <img className = 'other-user' src='https://i.ibb.co/hDvzykn/ellipse504.jpg' alt=""/>
-                              <img className = 'other-user' alt=""/>
-
-                          </div>
-                          <button className="action-btn" type="button">
-                              <span className="username">{FriendSuggestionList[1]}</span>
-                              <span className="follow">Follow</span>
-                          </button>
-                      </div>
-                      <div className="profile-card">
-                          <div>
-                              <img className = 'other-user' src='https://i.ibb.co/hDvzykn/ellipse504.jpg' alt=""/>
-                              <img className = 'other-user' alt=""/>
-
-                          </div>
-                          <button className="action-btn" type="button">
-                              <span className="username">{FriendSuggestionList[2]}</span>
-                              <span className="follow">Follow</span>
-                          </button>
-                      </div>
-                  </div>
               </Card>
           </Navbar>
       )

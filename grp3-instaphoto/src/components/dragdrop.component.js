@@ -89,7 +89,7 @@ export default function DragDrop(props) {
                             onChange={handleOnChange}
                         />
                         <input
-                            type="file"
+                            type="text"
                             name="postImage"
                             placeholder="Add a url"
                             onChange={handleOnChange}

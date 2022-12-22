@@ -10,13 +10,17 @@ const rootURL = 'http://localhost:8000'
 
 // Sends a Get request to the endpoint
 // returns all the Posts
-export const getPosts = async (page) => {
-  try{
-    const response = await axios.get(`${rootURL}/post/${page}`);
-    return response.data.data;
-    // data is stored in the data 
-    // field of the response
-  }catch (err) {
+export const getPosts = async () => {
+  try {
+    const response = await fetch(`${rootURL}/posts`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'x-auth-token': sessionStorage.getItem('token'),
+        }
+    });
+    return await response.json();
+  } catch (err) {
     console.error(err);
   }
 }
