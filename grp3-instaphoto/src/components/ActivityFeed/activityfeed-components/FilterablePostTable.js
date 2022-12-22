@@ -108,8 +108,9 @@ export default function FilterablePostTable(props) {
     const fetchNewData = async () => {
       await timeout(2000);
       setPage(page+1);
+      const newPage = 1;
       console.log("new page is ", page);
-      let newData = await getPosts(page);
+      let newData = await getPosts(newPage);
       console.log("new data is ", newData.data[0].username);
       const newPosts = new Set()
       newData = newData.data;
@@ -128,11 +129,11 @@ export default function FilterablePostTable(props) {
     }
 
     console.log("printing in infinite loop", newPosts);
-    while (newPosts.length() === 0){
+    while (newPosts.length === 0){
         fetchNewData();
     }
     setRoster(roster.concat(...newPosts));
-    console.log("printing in infinite loop roster", roster);
+    console.log("printing in infinite loop roster", newPosts.length);
     
     if (newPosts.length === 0 || newPosts.length < 3) {
       setHasMore(false);
