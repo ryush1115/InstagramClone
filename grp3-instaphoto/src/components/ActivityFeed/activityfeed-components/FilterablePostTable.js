@@ -25,11 +25,11 @@ export default function FilterablePostTable(props) {
 
           let posts = await getPostsAll(page);
           console.log("Fetching first data");
-          console.log(posts);
-          console.log(posts.length);
+          console.log("printing post name", posts[0].username);
+          console.log("printing followers", user.following);
 
           for (let i = 0; i < posts.length; i++) {
-              if (posts[i].publicPrivate===false) {
+              if (posts[i].publicPrivate===true) {
                   if (posts[i].username === user.username) {
                       continue;
                   } else if (user.following.includes(posts[i].username)) {
@@ -37,13 +37,14 @@ export default function FilterablePostTable(props) {
                       console.log(posts[i]);
                       continue;
                   } else {
+                    console.log("im filtering");
                       posts.splice(i, 1);
                       i--;
                   }
               }
           }
 
-          console.log(posts);
+          console.log("posts after filtering", posts);
           console.log(posts.length);
 
           postsLength.current = posts.length;
@@ -51,20 +52,23 @@ export default function FilterablePostTable(props) {
           console.log("FilterablePostTable.js useEffect");
           let data = await getPostsAll(page);
           console.log('data length is', data.length, "with page", page);
+          console.log('public private', data[0].publicPrivate);
 
           //for each loop
             for (let i = 0; i < data.length; i++) {
-                if (data[i].publicPrivate===false) {
+                if (data[i].publicPrivate===true) {
                     if (data[i].username === user.username) {
                        continue;
                     } else if (user.following.includes(data[i].username)) {
                         continue;
                     } else {
+                        console.log("im filtering");
                         data.splice(i, 1);
                         i--;
                     }
                 }
             }
+            console.log("data after new filtering is ", data);
             setRoster(roster.concat(data));
       }
       fetchData();
@@ -76,7 +80,7 @@ export default function FilterablePostTable(props) {
           const data = await getPostsAll(page);
           let posts = data.data;
           for (let i = 0; i < posts.length; i++) {
-              if (posts[i].publicPrivate===false) {
+              if (posts[i].publicPrivate===true) {
                   if (posts[i].username === user.username) {
                       continue;
                   } else if (user.following.includes(posts[i].username)) {
@@ -107,10 +111,10 @@ export default function FilterablePostTable(props) {
       let newData = await getPosts(page);
       console.log("new data is ", newData);
       for (let i = 0; i < newData.length; i++) {
-        if (newData.data[i].publicPrivate===false) {
-            if (newData.data[i].username===user) {
+        if (newData[i].publicPrivate===true) {
+            if (newData[i].username===user) {
                continue;
-            } else if (user.following.includes(newData.data[i].username)) {
+            } else if (user.following.includes(newData[i].username)) {
                 continue;
             } else {
                 newData.splice(i, 1);
@@ -118,11 +122,11 @@ export default function FilterablePostTable(props) {
             }
         }
     }
-    if (newData.data.length === 0 || newData.data.length < 3) {
+    if (newData.length === 0 || newData.length < 3) {
       setHasMore(false);
       return;
     }
-      setRoster(roster.concat(newData.data));
+      setRoster(roster.concat(newData));
     };
 
     return (
