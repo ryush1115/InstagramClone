@@ -52,7 +52,7 @@ const getMyFollowing = async (UserID) => {
     const db = await getDB();
     const me = await db.collection('User').findOne({_id: ObjectId(UserID)});
     const result = me.following;
-    console.log(`My following: ${JSON.stringify(result)}`);
+    // console.log(`My following: ${JSON.stringify(result)}`);
     return result;
   } catch (err) {
     console.log(`error: ${err.message}`);
@@ -60,8 +60,6 @@ const getMyFollowing = async (UserID) => {
 };
 
 const followUser = async (UserID, followingName) => {
-  console.log("followUser");
-  console.log(UserID);
   try {
     // get the db
     const db = await getDB();
@@ -113,7 +111,7 @@ const getCommentsArray = async (PostId) => {
     // get the db
     const db = await getDB();
     const result = await db.collection('Post').findOne({ _id: ObjectId(PostId) });
-    console.log(`CommentArray: ${JSON.stringify(result.postCommentArray)}`);
+    // console.log(`CommentArray: ${JSON.stringify(result.postCommentArray)}`);
     return result.postCommentArray;
   } catch (err) {
     console.log(`error: ${err.message}`);
@@ -174,15 +172,15 @@ const updateComment = async (text, postId, commentId) => {
   try {
     // get the db
     const db = await getDB();
-    console.log('aaaa');
-    console.log(`${postId}`);
-    console.log(`${commentId}`);
+    // console.log('aaaa');
+    // console.log(`${postId}`);
+    // console.log(`${commentId}`);
     const result = await db.collection('Post').updateOne(
       { _id: ObjectId(postId) },
       { $set: { 'postCommentArray.$[filter].message': text } },
       { arrayFilters: [{ 'filter._id': ObjectId(commentId) } ] }
     );
-    console.log('bbb');
+    // console.log('bbb');
     return result;
   } catch (err) {
     console.log(`error: ${err.message}`);

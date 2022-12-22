@@ -61,9 +61,7 @@ const isMyLikePost = async (PostId, UserId) => {
     // const mongo = await connect();
     // const db = mongo.db();
     const db = await getDB();
-    console.log('aaaa');
     const count = await db.collection('Post').find({ $and: [{ _id: ObjectId(PostId) }, { like: ObjectId(UserId) }] }).count();
-    console.log(count);
     return count > 0;
   } catch (err) {
     console.error(err);
@@ -72,7 +70,6 @@ const isMyLikePost = async (PostId, UserId) => {
 
 const incrementPostLike = async (PostId, UserId) => {
   try {
-    console.log('running increment post like');
     const db = await getDB();
     const result = await db.collection('Post').updateOne(
       { _id: ObjectId(PostId) },
@@ -94,11 +91,8 @@ const incrementPostLike = async (PostId, UserId) => {
 };
 
 const cancelPostLike = async (PostId, UserId) => {
-  console.log('running cancel post like123');
   try {
-    console.log('running cancel post like');
     const db = await getDB();
-    console.log(UserId);
     const result = await db.collection('Post').updateOne(
       { _id: ObjectId(PostId) },
       {

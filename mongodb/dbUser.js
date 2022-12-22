@@ -213,7 +213,8 @@ const resetFailedSignIns = async (email) => {
           { $set: { "loginAttemptsObject.currentNumber": 0, "loginAttemptsObject.lastAttempt": Date.now() } },
           { returnOriginal: false }
       );
-      return result.value.loginAttemptsObject.currentNumber;
+      const resetUser = await db.collection('User').findOne({ email: email });  
+      return resetUser.loginAttemptsObject.currentNumber;
     } else {
       return updatedUser.loginAttemptsObject.currentNumber;
     }
@@ -235,5 +236,5 @@ const getLoginAttempts = async (email) => {
 module.exports = {
   closeMongoDBConnection, connect, getDB, createUser, getAllUsers, getUser, updateUser, deleteUser,
   getUserByEmail, getSuggestionList, isFollowing, getUserByUsername, failedSignIn, resetFailedSignIns,
-  getLoginAttempts
+  getLoginAttempts, hasCommonFollowing
 };

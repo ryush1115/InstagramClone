@@ -381,11 +381,8 @@ webapp.put('/isMyLikePost', async (req, res) => {
 
 // update the like array in post endpoint
 webapp.put('/postlike', async (req, res) => {
-  console.log("printing insinde server", req.body.PostId, req.body.UserId);
   const token = req.header('x-auth-token');
-  console.log("token is ", token);
   if (token === '1234'){
-    console.log("entering this part of post like");
     try {
       const result = await dbLibLike.incrementPostLike(req.body.PostId, req.body.UserId);
       res.status(200).json({ message: result });
@@ -593,12 +590,12 @@ webapp.post('/login', async (req, res) => {
       }
     } else {
       const number = await failedSignIn(email);
-      console.log("number is ", number);
       res.status(403).json({ message: 'invalid password', number: number });
     }
   });
 });
 
+// I CAN CREATE TESTS FOR THESE EDGE CASES
 // TODO: Test this endpoint
 webapp.post('/signup', async (req, res) => {
   const { email, password, username } = req.body;
@@ -655,6 +652,7 @@ webapp.get('/User-Name/:username', async (req, res) => {
     }
 });
 
+
 webapp.post('/post', async (req, res) => {
   // make sure all fields are present
   const post = req.body;
@@ -690,14 +688,12 @@ webapp.get('/checktoken', async (req, res) => {
 webapp.put('/post/:id', async (req, res) => {
   // check the json web token
   const token = req.header('x-auth-token');
-  console.log("are we doing this?");
     
   if (!token) {
     res.status(401).json({ message: 'no token, authorization denied' });
     return;
   }
   else if (token === '1234') {
-    console.log("we are entering test case");
     const updatedPost = req.body;
     const { id } = req.params;
     if (!updatedPost.postCaption || !updatedPost.postTagOfOtherUsers || !updatedPost.postCommentArray || !updatedPost.like) {
@@ -775,6 +771,7 @@ webapp.get('/gettokenuser', async (req, res) => {
   }
 });
 
+
 webapp.post('/testisfollowing', async (req, res) => {
   const { userID } = req.body;
   const { otherUserID } = req.body;
@@ -782,13 +779,14 @@ webapp.post('/testisfollowing', async (req, res) => {
   res.status(200).json({ data: result });
 });
 
+
 webapp.post('/testsuggestions', async (req, res) => {
   const { userID } = req.body;
   const result = await dbLibUser.getSuggestionList(userID);
   res.status(200).json({ data: result });
 });
 
-// get results for is my like post
+// change post between private and public
 webapp.put('/Post/:PostId/:status', async (req, res) => {
   try {
     // get the data from the db

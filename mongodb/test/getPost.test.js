@@ -25,6 +25,11 @@ describe('Post endpoint integration test', () => {
   beforeAll(async () => {
     mongo = await connect();
     db = mongo.db();
+    response = await request(webapp).post('/post')
+    .send({
+        username: 'testname', postImage: 'testimage', postCaption: 'testdescription', publicPrivate: false, postTagOfOtherUsers: [], postCommentArray: [], postLikeArray: [], like: [],
+    });
+    testPostID = JSON.parse(response.text).data._id;
 
   });
 
@@ -35,6 +40,7 @@ describe('Post endpoint integration test', () => {
  */
   afterAll(async () => {
     try {
+      const result = await db.collection('Post').deleteOne({ username: 'testname' });
       await mongo.close();
       await closeMongoDBConnection(); // mongo client that started server.
     } catch (err) {
@@ -54,7 +60,7 @@ describe('Post endpoint integration test', () => {
 
 
     // // // testing getUserPost
-    res = await request(webapp).get('/userposts/grp3foreva');
+    res = await request(webapp).get('/userposts/testname');
     expect(res.status).toEqual(200);
     expect(res.type).toBe('application/json');
 
@@ -69,7 +75,7 @@ describe('Post endpoint integration test', () => {
     expect(res.type).toBe('application/json');
 
     // testing getPost
-    res = await request(webapp).get('/post/637aaaf308e936a0c97e4a31');
+    res = await request(webapp).get( `/post/${testPostID}`);
     expect(res.status).toEqual(200);
     expect(res.type).toBe('application/json');
     
@@ -81,5 +87,8 @@ describe('Post endpoint integration test', () => {
 
   });
 
- 
+  test('test private public', async () => {
+    const resp = await request(webapp).put(`/Post/${testPostID}/true`);
+    expect(resp.status).toEqual(200);
+  });
 });

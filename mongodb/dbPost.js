@@ -110,7 +110,7 @@ const getUsers = async () => {
     const db = await getDB();
     const result = await db.collection('User').find({}).toArray();
 
-    console.log(`All users: ${JSON.stringify(result)}`);
+    // console.log(`All users: ${JSON.stringify(result)}`);
     return result;
   } catch (err) {
     console.log(`error: ${err.message}`);

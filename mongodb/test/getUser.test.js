@@ -4,6 +4,7 @@ const request = require('supertest');
 // Import MongoDB module
 // const { ObjectId } = require('mongodb');
 const { closeMongoDBConnection, connect} = require('../dbUser');
+const {failedSignIn, resetFailedSignIns, getLoginAttempts, getUserByUsername, hasCommonFollowing} = require("../dbUser");
 
 // import the express server
 const webapp = require('../server');
@@ -24,6 +25,11 @@ describe('GET "/user/:id" endpoint integration test', () => {
 
   //let testUser;
   // test resource to create / expected response
+  const loginAttemptsObject = {
+    lastAttempt: Date.now(),
+    currentNumber: 0
+  };
+
   const testUser = {
     username: "testusername",
     email: "testuser@gmail.com",
@@ -33,7 +39,21 @@ describe('GET "/user/:id" endpoint integration test', () => {
     followers: [],
     following: [],
     posts: [],
+    loginAttemptsObject: loginAttemptsObject,
   };
+
+  const otherUser = {
+    username: "otherusername",
+    email: "ohteruser@gmail.com",
+    password: "test1234",
+    profilePicture: '',
+    bio: '',
+    followers: [],
+    following: [],
+    posts: [],
+    loginAttemptsObject: loginAttemptsObject,
+  };
+  
   /**
  * Make sure that the data is in the DB before running
  * any test
@@ -44,9 +64,13 @@ describe('GET "/user/:id" endpoint integration test', () => {
     db = mongo.db();
     const res = await request(webapp).post('/signup')
       .send(testUser);
+    const other = await request(webapp).post('/signup')
+      .send(otherUser);
+    
       // eslint-disable-next-line no-underscore-dangle
     // console.log(res);
     testID = JSON.parse(res.text).user.id;
+    otherTestID = JSON.parse(other.text).user.id;
     // console.log(testID);
     // testUserTemp = JSON.parse(res.text).data;
   });
@@ -59,6 +83,8 @@ describe('GET "/user/:id" endpoint integration test', () => {
   const clearDatabase = async () => {
     try {
       const result = await db.collection('User').deleteOne({ username: 'testusername' });
+      const otherResult = await db.collection('User').deleteOne({ username: 'otherusername' });
+      
       console.log('result', result);
       await mongo.close();
       await closeMongoDBConnection(); // mongo client that started server.
@@ -106,9 +132,60 @@ describe('GET "/user/:id" endpoint integration test', () => {
     expect(resp.status).toEqual(200);
   })
 
-//   test('user not in db status code 404', async () => {
-//     const resp = await request(webapp).get('/user/999');
-//     expect(resp.status).toEqual(404);
-//     expect(resp.type).toBe('application/json');
-//   });
+  test('failed sign in', async() => {
+    const number = await failedSignIn("testuser@gmail.com");
+    expect(number).toEqual(0);
+
+    const newResult = await db.collection('User').findOneAndUpdate(
+      { email: "testuser@gmail.com" },
+      { $set: { "loginAttemptsObject.currentNumber": 3, "loginAttemptsObject.lastAttempt": Date.now() } },
+      { returnOriginal: false }
+    );
+    const newNumber = await failedSignIn("testuser@gmail.com");
+    expect(newNumber).toEqual(3);
+  })
+
+  test('reset failed sign in', async() => {
+    const result = await db.collection('User').findOneAndUpdate(
+      { email: "testuser@gmail.com" },
+      { $set: { "loginAttemptsObject.currentNumber": 3, "loginAttemptsObject.lastAttempt": Date.now() } },
+      { returnOriginal: false }
+    );
+    const number = await resetFailedSignIns("testuser@gmail.com");
+    expect(number).toEqual(0);
+
+    const newResult = await db.collection('User').findOneAndUpdate(
+      { email: "testuser@gmail.com" },
+      { $set: { "loginAttemptsObject.currentNumber": 1, "loginAttemptsObject.lastAttempt": Date.now() } },
+      { returnOriginal: false }
+    );
+    const newNumber = await resetFailedSignIns("testuser@gmail.com");
+    expect(newNumber).toEqual(1);
+  })
+
+  test('getLoginAttempts', async() => {
+    const result = await db.collection('User').findOneAndUpdate(
+      { email: "testuser@gmail.com" },
+      { $set: { "loginAttemptsObject.currentNumber": 0, "loginAttemptsObject.lastAttempt": Date.now() } },
+      { returnOriginal: false }
+    );
+    const lastAttemptObject = await getLoginAttempts("testuser@gmail.com");
+    expect(lastAttemptObject.currentNumber).toEqual(0);
+  })
+
+  test('getUserByUsername', async() => {
+    const user = await getUserByUsername("testusername");
+    expect(user.email).toEqual("testuser@gmail.com");
+  })
+
+  test('has common following', async() => {
+    const result = await hasCommonFollowing(testID, otherTestID);
+    expect(result).toBe(false);
+  })
+
+  test('get user name', async() => {
+    const resp = await request(webapp).get(`/User-Name/testusername`);
+    expect(resp.status).toEqual(200);
+  })
+
 });
