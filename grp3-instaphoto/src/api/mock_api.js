@@ -524,6 +524,3 @@ export const checkJWT = async () => {
         console.error(err.message);
     }
 }
-
-
-

@@ -3,6 +3,16 @@
 // (1) import express
 // backend ==> require
 const express = require('express');
+const multer = require('multer');
+const { S3Client, PutObjectCommand } = require("@aws-sdk/client-s3");
+const dotenv = require('dotenv');
+const crypto = require('crypto');
+const sharp = require('sharp');
+const rootURL = 'http://localhost:8000'
+
+const randomImageName = (bytes = 32) => crypto.randomBytes(bytes).toString('hex');
+
+
 
 // to lock a user out after 3 unsuccessful attempts we'll need to keep track of:
 // their attempt count
@@ -800,6 +810,37 @@ webapp.put('/Post/:PostId/:status', async (req, res) => {
   }
 });
 
+
+//const upload = multer({ storage: storage })
+const upload = multer({ dest: 'uploads/' })
+const { uploadFile, getFileStream } = require('./s3')
+
+
+webapp.get('/postsfile/:key', (req, res) => {
+  console.log(req.params)
+  const key = req.params.key
+  const readStream = getFileStream(key)
+
+  readStream.pipe(res)
+
+  //const url = `http://localhost:8000/postsfile/${key}`
+  
+})
+
+
+// Post image file
+webapp.post('/postsfile',upload.single('image'),  async (req, res) => {
+
+  const file = req.file;
+  console.log(file)
+  const result = await uploadFile(file)
+  console.log(result)
+  
+  const caption = req.body.caption
+
+  res.send({imagePath: `${rootURL}/postsfile/${result.Key}`})
+  //res.status(200).json({ data: `http://localhost:8000/postsfile/${result.Key}`});
+});
 
 // catch all endpoint
 webapp.use((req, resp) => {
