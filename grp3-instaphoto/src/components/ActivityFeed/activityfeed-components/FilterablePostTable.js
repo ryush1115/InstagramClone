@@ -25,17 +25,20 @@ export default function FilterablePostTable(props) {
 
           let posts = await getPostsAll(page);
           console.log("Fetching first data");
-          console.log("printing post name", posts[0].username);
+          console.log("printing posts", posts[0]);
+          console.log("printing posts", posts[1]);
+          console.log("printing posts", posts[2]);
+          
+          console.log("printing posts", posts[0].username);
           console.log("printing followers", user.following);
-          const newPosts = new Set()
+          const newPosts = [];
           for (let i = 0; i < posts.length; i++) {
               if (posts[i].publicPrivate===true) {
                   if (posts[i].username === user.username) {
+                      newPosts.push(posts[i]);
                       continue;
                   } else if (user.following.includes(posts[i].username)) {
-                      console.log("following");
-                      console.log(posts[i]);
-                      newPosts.add(posts[i]);
+                      newPosts.push(posts[i]);
                       continue;
                   } else {
                     console.log("im filtering");
@@ -48,7 +51,7 @@ export default function FilterablePostTable(props) {
           console.log("posts after filtering", newPosts);
           console.log(newPosts.length);
 
-          postsLength.current = posts.length;
+          postsLength.current = newPosts.length;
 
           console.log("FilterablePostTable.js useEffect");
           let data = await getPostsAll(page);
@@ -56,11 +59,14 @@ export default function FilterablePostTable(props) {
           console.log('public private', data[0].publicPrivate);
 
           //for each loop
+          const newData = [];
             for (let i = 0; i < data.length; i++) {
                 if (data[i].publicPrivate===true) {
                     if (data[i].username === user.username) {
+                        newData.push(data[i]);
                        continue;
                     } else if (user.following.includes(data[i].username)) {
+                        newData.push(data[i]);
                         continue;
                     } else {
                         console.log("im filtering");
@@ -69,8 +75,8 @@ export default function FilterablePostTable(props) {
                     }
                 }
             }
-            console.log("data after new filtering is ", data);
-            setRoster(roster.concat(data));
+            console.log("data after new filtering is ", newData);
+            setRoster(roster.concat(newData));
       }
       fetchData();
 
@@ -80,11 +86,15 @@ export default function FilterablePostTable(props) {
           console.log("FilterablePostTable.js useEffect setInterval");
           const data = await getPostsAll(page);
           let posts = data;
+          const intervalPosts = [];
+          
           for (let i = 0; i < posts.length; i++) {
               if (posts[i].publicPrivate===true) {
                   if (posts[i].username === user.username) {
+                      intervalPosts.push(posts[i]);
                       continue;
                   } else if (user.following.includes(posts[i].username)) {
+                      intervalPosts.push(posts[i]);
                       continue;
                   } else {
                       posts.splice(i, 1);
@@ -92,8 +102,8 @@ export default function FilterablePostTable(props) {
                   }
               }
           }
-          console.log(posts.length);
-          if (postsLength.current !== posts.length) {
+          console.log(intervalPosts.length);
+          if (postsLength.current !== intervalPosts.length) {
                 setNewPosts(true);
           }
       }, MINUTE_MS);
@@ -105,18 +115,22 @@ export default function FilterablePostTable(props) {
       return new Promise( res => setTimeout(res, delay) );
     }
 
+    let newPage = 0;
+      
     const fetchNewData = async () => {
       await timeout(2000);
       setPage(page+1);
-      const newPage = 1;
+      newPage = newPage+ 1;
       console.log("new page is ", page);
       let newData = await getPosts(newPage);
       console.log("new data is ", newData.data[0].username);
-      const newPosts = new Set()
+      const newPosts = new Set();
       newData = newData.data;
       for (let i = 0; i < newData.length; i++) {
         if (newData[i].publicPrivate===true) {
-            if (newData[i].username===user) {
+            if (newData[i].username===user.username) {
+                console.log("it should be going here");
+                newPosts.add(newData[i]);
                continue;
             } else if (user.following.includes(newData[i].username)) {
                 newPosts.add(newData[i]);
@@ -133,9 +147,10 @@ export default function FilterablePostTable(props) {
         fetchNewData();
     }
 
+    
+    console.log("printing in infinite loop roster", newPosts.length);
     const setPosts = new Set(roster.concat(...newPosts))
     setRoster(setPosts);
-    console.log("printing in infinite loop roster", newPosts.length);
     
     if (newPosts.length === 0 || newPosts.length < 3) {
       setHasMore(false);

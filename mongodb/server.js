@@ -266,7 +266,6 @@ webapp.get('/post/:page', async (req, res) => {
     const results = await dbLibPost.getPosts(req.params.page);
     // send the response with the appropriate status code
     // console.log(results.username);
-
     res.status(200).json({ data: results });
   } catch (err) {
     res.status(404).json({ message: 'there was error' });
