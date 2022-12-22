@@ -74,7 +74,7 @@ export default function DragDrop(props) {
     ///////////////////////////setNewPost(newStoredPost);
     //props.setCreate('default');
     // reload the page
-    //window.location.reload();
+    window.location.reload();
   };
 
   // when dragActive is true, add an invisible elemnt to cover the entire state form. 
