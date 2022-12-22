@@ -132,7 +132,9 @@ export default function FilterablePostTable(props) {
     while (newPosts.length === 0){
         fetchNewData();
     }
-    setRoster(roster.concat(...newPosts));
+
+    const setPosts = new Set(roster.concat(...newPosts))
+    setRoster(setPosts);
     console.log("printing in infinite loop roster", newPosts.length);
     
     if (newPosts.length === 0 || newPosts.length < 3) {
