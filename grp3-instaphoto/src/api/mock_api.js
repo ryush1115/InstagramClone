@@ -10,9 +10,9 @@ const rootURL = 'http://localhost:8000'
 
 // Sends a Get request to the endpoint
 // returns all the Posts
-export const getPosts = async () => {
+export const getPosts = async (page) => {
   try {
-    const response = await fetch(`${rootURL}/posts`, {
+    const response = await fetch(`${rootURL}/post/${page}`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
