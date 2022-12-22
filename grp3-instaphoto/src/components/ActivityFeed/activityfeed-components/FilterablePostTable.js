@@ -24,16 +24,16 @@ export default function FilterablePostTable(props) {
       async function fetchData() {
 
           let posts = await getPosts();
-          console.log(posts.data);
-          console.log(posts.data.length);
+          console.log(posts);
+          console.log(posts.length);
 
-          for (let i = 0; i < posts.data.length; i++) {
+          for (let i = 0; i < posts.length; i++) {
               if (posts.data[i].publicPrivate===false) {
                   if (posts.data[i].username === user.username) {
                       continue;
-                  } else if (user.following.includes(posts.data[i].username)) {
+                  } else if (user.following.includes(posts[i].username)) {
                       console.log("following");
-                      console.log(posts.data[i]);
+                      console.log(posts[i]);
                       continue;
                   } else {
                       posts.data.splice(i, 1);
@@ -42,10 +42,10 @@ export default function FilterablePostTable(props) {
               }
           }
 
-          console.log(posts.data);
-          console.log(posts.data.length);
+          console.log(posts);
+          console.log(posts.length);
 
-          postsLength.current = posts.data.length;
+          postsLength.current = posts.length;
 
           console.log("FilterablePostTable.js useEffect");
           let data = await getPostsAll(page);
