@@ -15,7 +15,7 @@ export default function FilterablePostTable(props) {
     const user = props.user;
 
     let postsLength = useRef(0);
-    const MINUTE_MS = 6000;
+    const MINUTE_MS = 10000;
 
     const [newPosts, setNewPosts] = useState(false);
 
@@ -23,20 +23,21 @@ export default function FilterablePostTable(props) {
       // get the list of [Timeline] Posts from the backend
       async function fetchData() {
 
-          let posts = await getPosts();
+          let posts = await getPostsAll(page);
+          console.log("Fetching first data");
           console.log(posts);
           console.log(posts.length);
 
           for (let i = 0; i < posts.length; i++) {
-              if (posts.data[i].publicPrivate===false) {
-                  if (posts.data[i].username === user.username) {
+              if (posts[i].publicPrivate===false) {
+                  if (posts[i].username === user.username) {
                       continue;
                   } else if (user.following.includes(posts[i].username)) {
                       console.log("following");
                       console.log(posts[i]);
                       continue;
                   } else {
-                      posts.data.splice(i, 1);
+                      posts.splice(i, 1);
                       i--;
                   }
               }
@@ -72,7 +73,7 @@ export default function FilterablePostTable(props) {
 
       const interval = setInterval(async () => {
           console.log("FilterablePostTable.js useEffect setInterval");
-          const data = await getPosts();
+          const data = await getPostsAll(page);
           let posts = data.data;
           for (let i = 0; i < posts.length; i++) {
               if (posts[i].publicPrivate===false) {
@@ -103,13 +104,13 @@ export default function FilterablePostTable(props) {
       await timeout(2000);
       setPage(page+1);
       console.log("new page is ", page);
-      let newData = await getPostsAll(page);
+      let newData = await getPosts(page);
       console.log("new data is ", newData);
       for (let i = 0; i < newData.length; i++) {
-        if (newData[i].publicPrivate===false) {
-            if (newData[i].username===user) {
+        if (newData.data[i].publicPrivate===false) {
+            if (newData.data[i].username===user) {
                continue;
-            } else if (user.following.includes(newData[i].username)) {
+            } else if (user.following.includes(newData.data[i].username)) {
                 continue;
             } else {
                 newData.splice(i, 1);
@@ -117,11 +118,11 @@ export default function FilterablePostTable(props) {
             }
         }
     }
-    if (newData.length === 0 || newData.length < 3) {
+    if (newData.data.length === 0 || newData.data.length < 3) {
       setHasMore(false);
       return;
     }
-      setRoster(roster.concat(newData));
+      setRoster(roster.concat(newData.data));
     };
 
     return (
