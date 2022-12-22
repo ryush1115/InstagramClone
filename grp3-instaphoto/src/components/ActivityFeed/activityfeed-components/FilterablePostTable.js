@@ -128,6 +128,9 @@ export default function FilterablePostTable(props) {
     }
 
     console.log("printing in infinite loop", newPosts);
+    while (newPosts.length() === 0){
+        fetchNewData();
+    }
     setRoster(roster.concat(...newPosts));
     console.log("printing in infinite loop roster", roster);
     
