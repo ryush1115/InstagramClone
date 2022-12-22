@@ -8,24 +8,11 @@ const { S3Client, PutObjectCommand } = require("@aws-sdk/client-s3");
 const dotenv = require('dotenv');
 const crypto = require('crypto');
 const sharp = require('sharp');
+const rootURL = 'http://localhost:8000'
 
 const randomImageName = (bytes = 32) => crypto.randomBytes(bytes).toString('hex');
 
 
-dotenv.config();
-
-const bucketName=process.env.BUCKET_NAME;
-const bucketRegion=process.env.BUCKET_REGION;
-const accessKey=process.env.ACCESS_KEY
-const secretAccessKey=process.env.SECRET_ACCESS_KEY;
-
-const s3 = new S3Client({
-  credentials: {
-    accessKeyId: accessKey,
-    secretAccessKey: secretAccessKey,
-  },
-  region: bucketRegion
-});
 
 // to lock a user out after 3 unsuccessful attempts we'll need to keep track of:
 // their attempt count
@@ -800,37 +787,35 @@ webapp.put('/Post/:PostId/:status', async (req, res) => {
 });
 
 
-const storage = multer.memoryStorage()
-const upload = multer({ storage: storage })
+//const upload = multer({ storage: storage })
+const upload = multer({ dest: 'uploads/' })
+const { uploadFile, getFileStream } = require('./s3')
+
+
+webapp.get('/postsfile/:key', (req, res) => {
+  console.log(req.params)
+  const key = req.params.key
+  const readStream = getFileStream(key)
+
+  readStream.pipe(res)
+
+  //const url = `http://localhost:8000/postsfile/${key}`
+  
+})
+
 
 // Post image file
 webapp.post('/postsfile',upload.single('image'),  async (req, res) => {
-  console.log("req.body", req.body);
-  console.log("req.file", req.file);
 
-  // resize image
-  const buffer = await sharp(req.file.buffer).resize({height: 1920, width: 1080,fit:"contain"}).toBuffer();
+  const file = req.file;
+  console.log(file)
+  const result = await uploadFile(file)
+  console.log(result)
+  
+  const caption = req.body.caption
 
-  const imageName = randomImageName();
-
-  const params = {
-    Bucket: bucketName,
-    Key: imageName,
-    Body: buffer,
-    ContentType: req.file.mimetype,
-  }
-
-  const command = new PutObjectCommand(params);
-  await s3.send(command);
-
-  // s3.upload(params, function(err, data)) {
-  //   if (err) {
-  //     throw err;
-  // }
-  // console.log(`File uploaded successfully. ${data.Location}`);
-  // });
-
-  res.send({});
+  res.send({imagePath: `${rootURL}/postsfile/${result.Key}`})
+  //res.status(200).json({ data: `http://localhost:8000/postsfile/${result.Key}`});
 });
 
 // catch all endpoint
